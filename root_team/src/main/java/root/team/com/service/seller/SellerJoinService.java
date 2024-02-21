@@ -21,16 +21,40 @@ public class SellerJoinService implements SellerService {
 		try {
 			String s_pw = sellerVO.getS_pw();
 			String encodePassword = cryptPasswordEncoder.encode(s_pw);
-			System.out.println("암호화된 비밀번호: " + encodePassword);
-			System.out.println("암호화된 비밀번호 길이: " + encodePassword.length());
-
-			System.out.println("원 비밀번호와 암호화된 비밀번호 일치 여부: " + cryptPasswordEncoder.matches(s_pw, encodePassword));
 
 			sellerVO.setS_pw(encodePassword);
 
 			result = dao.join(sellerVO);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public int getS_idx(String s_businessnum) {
+		int s_idx = 0;
+
+		try {
+			s_idx = dao.getS_idx(s_businessnum);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return s_idx;
+	}
+
+	public int infoState(int s_idx) {
+		int result = 0;
+
+		try {
+			if (dao.info(s_idx) == 1 && dao.state(s_idx) == 1) {
+				result = 1;
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

@@ -1,5 +1,8 @@
 package root.team.com.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +18,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin;
+	SellerService sJoin, sLogin;
 
 	///////////////////////////////////////////////////////////////
 
@@ -29,10 +32,40 @@ public class SellerController {
 		String viewPage = "seller/user/join";
 
 		if (sJoin.join(sellerVO) == 1) {
-			viewPage = "redirect:/index.do";
+			if (sJoin.infoState(sJoin.getS_idx(sellerVO.getS_businessnum())) == 1) {
+				viewPage = "redirect:/index.do";
+			}
 		}
 
 		return viewPage;
+	}
+
+	@GetMapping("/login.do")
+	public String login() {
+		return "seller/user/login";
+	}
+
+	@PostMapping("/loginProcess.do")
+	public String loginProcess(String s_businessnum, String s_pw, HttpServletRequest request) {
+		String viewPage = "seller/user/login";
+
+		SellerVO sellerVO = sLogin.login(s_businessnum, s_pw);
+
+		if (sellerVO != null) {
+			System.out.println(sellerVO.getS_storename());
+			HttpSession session = request.getSession();
+			session.setAttribute("seller", sellerVO);
+			viewPage = "redirect:/seller/dashBoard.do";
+		}
+		return viewPage;
+	}
+	
+	@GetMapping("/logout.do")
+	public String logout(HttpServletRequest request) {
+		// 세션객체를 초기화하는 것으로 로그아웃 처리
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/index.do";// 메인 페이지 재요청
 	}
 
 	///////////////////////////////////////////////////////////////

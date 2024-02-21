@@ -10,7 +10,7 @@
 
 	<div class="seller_global_category_profile">
 		<div><img src="${pageContext.request.contextPath}/resources/css/img/test/yumyum.jpg" alt="(이미지)"></div>
-		<div><span>(매장이름)</span></div>
+		<div><span>${seller.s_storename}</span></div>
 	</div>
 
 	<div class="seller_global_dropdown_wrap">
