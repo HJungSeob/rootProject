@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<div class="warp">
+	<div class="wrap">
 		<header>
 			<%@ include file="../common/global_header.jsp"%>
 		</header>

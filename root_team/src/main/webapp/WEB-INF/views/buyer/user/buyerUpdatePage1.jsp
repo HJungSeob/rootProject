@@ -9,7 +9,8 @@
     <title>Root account</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
+    <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdatePage1.css">
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/publicRegex/nameRegex.js"></script>
@@ -19,7 +20,7 @@
 </head>
 
 <body>
-    <div class="warp">
+    <div class="wrap">
         <header>
 <%@ include file="../common/global_header.jsp" %>
     </header>
@@ -89,7 +90,6 @@
             <!-- #endregion -->
 
         </div>
-    </div>
 
     <!-- #region 이름 생일 수정 박스 -->
     <div class="m_userinfo_updatename_region_buer" id="main_region_buer"></div>
