@@ -1,0 +1,170 @@
+body {
+    background-color: #f9f9f9;
+}
+
+.arrow_small {
+    rotate: -90deg;
+    display: -webkit-inline-box;
+}
+
+/* #region 상단 타이틀 */
+.m_userinfopayup_header1 {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+}
+
+.m_userinfopayup_header {
+    margin: 0 auto;
+    width: 1200px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.m_userinfopayup_header_acc {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.m_userinfopayup_logout {
+    text-decoration: none;
+    color: #0071e3;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.a12 {
+    width: 12px;
+    height: 10px;
+    margin-right: 20px;
+    background-size: 12px;
+    filter: invert(28%) sepia(26%) saturate(6131%) hue-rotate(195deg) brightness(102%) contrast(107%);
+}
+
+/* #endregion */
+
+.m_userinfopayup_mainregion {
+    display: flex;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+/* #region 사이드 메뉴 */
+.m_userinfopayup_sideregion {
+    width: 120px;
+    margin-left: 20px;
+    margin-right: 100px;
+    height: 500px;
+}
+
+.m_userinfopayup_proflie {
+    margin-top: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: #0071e3;
+    border-radius: 50%;
+}
+
+.m_userinfopayup_username {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.m_userinfopayup_useremail {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.m_userinfopayup_side_region {
+    margin-top: 60px;
+}
+
+.m_userinfopayup_side {
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.m_userinfopayup_side {
+    color: #0071e3;
+}
+
+.m_userinfopayup_sidemanu {
+    font-size: 16px;
+    color: #111111;
+    transition: 0.4s;
+}
+
+.m_userinfopayup_sidemanu:hover {
+    color: #0071e3;
+}
+
+.m_userinfopayup_sidemanu_select {
+    font-size: 16px;
+    color: #0071e3;
+}
+
+/* #endregion */
+
+/* #region 메인 컨텐츠 메뉴 */
+.m_userinfopayup_mainPage {
+    width: 940px;
+    height: 500px;
+}
+
+.m_userinfopayup_main_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.m_userinfopayup_main_content_region {
+    display: flex;
+}
+
+.m_userinfopayup_content {
+    width: 440px;
+    height: 180px;
+    margin-top: 66px;
+    margin-right: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #111111;
+    transition: 0.8s;
+    cursor: pointer;
+}
+
+.m_userinfopayup_content1 {
+    width: 440px;
+    height: 180px;
+    margin-top: 66px;
+    margin-right: 40px;
+    border-radius: 10px;
+    color: #111111;
+}
+
+.m_userinfopayup_content_nametitle {
+    font-size: 20px;
+    padding-top: 30px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.m_userinfopayup_content_namesub {
+    font-size: 14px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.m_userinfopayup_content_namesuba {
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 20px;
+    color: #0071e3;
+}
+
+/* #endregion */
