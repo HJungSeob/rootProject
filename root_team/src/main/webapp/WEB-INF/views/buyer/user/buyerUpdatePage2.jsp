@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Root account</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
+    <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdatePage2.css">
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-    <div class="warp">
+    <div class="wrap">
             <header>
 <%@ include file="../common/global_header.jsp" %>
     </header>
@@ -93,7 +94,6 @@
             <!-- #endregion -->
 
         </div>
-    </div>
 
     <!-- #region 이메일 암호 수정 박스 -->
     <div class="m_userinfosclo_updatename_region_buer" id="m_userinfosclo_updatename_region_buer"></div>
