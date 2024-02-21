@@ -150,5 +150,4 @@ function mainSection() {
         });
         window.addEventListener('scroll', handleScroll);
         
-return mainSection();
 }

@@ -95,6 +95,3 @@ function navigation() {
 
 }
 
-window.onload = function () {
-    navigation()
-}
