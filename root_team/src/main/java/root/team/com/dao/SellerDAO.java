@@ -11,10 +11,31 @@ import root.team.com.vo.SellerVO;
 @Repository
 @RequiredArgsConstructor
 public class SellerDAO {
-	public static final String MAPPER="root.team.com.SellerMapper";
+	public static final String MAPPER = "root.team.com.SellerMapper";
 	private final SqlSession sqlSession;
-	
+
 	public int join(SellerVO vo) throws SQLException {
-		return sqlSession.insert(MAPPER+".sellerJoin", vo);
+		return sqlSession.insert(MAPPER + ".join", vo);
 	}
+
+	public int getS_idx(String s_businessnum) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getS_idx", s_businessnum);
+	}
+
+	public int info(int s_idx) throws SQLException {
+		return sqlSession.insert(MAPPER + ".info", s_idx);
+	}
+
+	public int state(int s_idx) throws SQLException {
+		return sqlSession.insert(MAPPER + ".state", s_idx);
+	}
+
+	public String getPassword(String s_businessnum) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getPassword", s_businessnum);
+	}
+
+	public SellerVO login(String s_businessnum) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".login", s_businessnum);
+	}
+
 }
