@@ -50,9 +50,7 @@ public class SellerController {
 		String viewPage = "seller/user/login";
 
 		SellerVO sellerVO = sLogin.login(s_businessnum, s_pw);
-
 		if (sellerVO != null) {
-			System.out.println(sellerVO.getS_storename());
 			HttpSession session = request.getSession();
 			session.setAttribute("seller", sellerVO);
 			viewPage = "redirect:/seller/dashBoard.do";

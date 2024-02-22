@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="root.team.com.vo.BuyerVO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -30,8 +32,9 @@
         <div class="m_userinfosclo_header1">
             <div class="m_userinfosclo_header">
                 <div class="m_userinfosclo_header_acc">Root ID</div>
-                <div class="m_userinfosclo_loar"><a href="#" class="m_userinfosclo_logout">로그아웃<div
-                            class="arrow_small a12"></div>
+                <div class="m_userinfosclo_loar">
+                <a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfosclo_logout">
+                로그아웃<div class="arrow_small a12"></div>
                     </a>
                 </div>
             </div>
@@ -43,10 +46,10 @@
                 <div class="m_userinfosclo_proflie">
                 </div>
                 <div class="m_userinfosclo_username">
-                    이름
+                    ${buyer.b_nickname}
                 </div>
                 <div class="m_userinfosclo_useremail">
-                    이메일
+                    ${buyer.b_email}
                 </div>
                 <div class="m_userinfosclo_side_region"></div>
                 <div class="m_userinfosclo_side">
@@ -75,10 +78,10 @@
                             이메일 및 전화번호
                         </div>
                         <div class="m_userinfosclo_content_namesub">
-                            이메일
+                             ${buyer.b_email}
                         </div>
                         <div class="m_userinfosclo_content_namesub">
-                            전화번호
+                             ${buyer.b_tel}
                         </div>
                     </div>
                     <div class="m_userinfosclo_content" id="m_userinfosclo_contentday">
@@ -86,7 +89,8 @@
                             암호
                         </div>
                         <div class="m_userinfosclo_content_namesub">
-                            최근 업데이트: 2020. 3. 12
+                        <fmt:formatDate var="pwmodifydate" value="${buyer.b_pwmodifydate}" pattern="yyyy.MM.dd HH:mm:ss"/>                                	              
+                            최근 업데이트: ${pwmodifydate}  
                         </div>
                     </div>
                 </div>
@@ -133,7 +137,7 @@
             암호 변경
         </div>
         <div class="m_userinfosclo_content_namesub1">
-            최근 업데이트: 2020. 3. 12
+            최근 업데이트: ${pwmodifydate}
         </div>
         <form action="./userinfosclo.html">
             <div class="m_userinfosclo_updatename_region_inbday">

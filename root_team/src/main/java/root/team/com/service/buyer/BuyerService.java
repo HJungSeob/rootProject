@@ -7,14 +7,12 @@ public interface BuyerService {
 	default int join(BuyerVO buyerVO) {
 		return 0;
 	}
-	
-	default int getB_idx(String b_emaill) {
+
+	default int infoState(String b_emaill) {
 		return 0;
 	}
 
-	default int infoState(int b_idx) {
-		return 0;
+	default BuyerVO login(String b_email, String b_pw){
+		return null;
 	}
-
-	
 }

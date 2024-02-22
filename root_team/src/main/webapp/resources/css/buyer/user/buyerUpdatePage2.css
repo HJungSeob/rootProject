@@ -78,6 +78,7 @@ body {
 .m_userinfosclo_useremail {
     font-size: 14px;
     margin-top: 10px;
+    color:#858585;
 }
 
 .m_userinfosclo_side_region {
@@ -164,7 +165,7 @@ body {
     font-size: 14px;
     margin: 0 auto;
     margin-top: 10px;
-    width: 200px;
+    text-align: center;
 }
 /* #endregion */
 

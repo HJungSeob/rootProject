@@ -72,11 +72,11 @@
                 나의 Root 계정 관리
             </div>
             <div class="m_userLogin_2loginre">
-                <form>
+                <form name="buyerLogin" method="post" action="buyerLoginProcess.do">
                     <div class="m_userLogin_buyerEmailRegion">
                         <div class="m_userLogin_emailRegion" id="emailRegion">
                             <label>
-                                <input type="email" name="email" class="m_userLogin_emailInput" id="emailInput">
+                                <input type="email" name="b_email" class="m_userLogin_emailInput" id="emailInput">
                                 <div class="m_userLogin_emailTitle" id="emailTitle">이메일</div>
                             </label>
                             <div class="arrow_small" id="emailArrowSmall"></div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="m_userLogin_pwRegion" id="pwRegion">
                         <label>
-                            <input type="password" name="pw" class="m_userLogin_pwInput" id="pwInput">
+                            <input type="password" name="b_pw" class="m_userLogin_pwInput" id="pwInput">
                             <div class="m_userLogin_pwTitle" id="pwTitle">암호</div>
                         </label>
                         <label>
@@ -93,8 +93,9 @@
                         </label>
                     </div>
                     <div class="m_userLogin_buyerIDSmg" id="buyerIDSmg"></div>
+                 </form>
             </div>
-            </form>
+           
 
             <div class="m_userLogin_2seletatag">
                 <a href="../entUserService/entUserLogin.html" class="m_userLogin_2entuser">기업 회원입니다.</a>

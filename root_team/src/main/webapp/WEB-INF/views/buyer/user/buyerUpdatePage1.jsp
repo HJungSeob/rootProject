@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="root.team.com.vo.BuyerVO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -29,7 +31,7 @@
         <div class="m_userinfo_header1">
             <div class="m_userinfo_header">
                 <div class="m_userinfo_header_acc">Root ID</div>
-                <div class="m_userinfo_loar"><a href="#" class="m_userinfo_logout">로그아웃<div
+                <div class="m_userinfo_loar"><a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfo_logout">로그아웃<div
                             class="arrow_small a12"></div>
                     </a>
                 </div>
@@ -42,10 +44,10 @@
                 <div class="m_userinfo_proflie">
                 </div>
                 <div class="m_userinfo_username">
-                    이름
+                    ${buyer.b_nickname}
                 </div>
                 <div class="m_userinfo_useremail">
-                    이메일
+                    ${buyer.b_email}
                 </div>
                 <div class="m_userinfo_side_region"></div>
                 <div class="m_userinfo_side">
@@ -74,7 +76,7 @@
                             이름
                         </div>
                         <div class="m_userinfo_content_namesub">
-                            이름
+                            ${buyer.b_firstname}&nbsp;${buyer.b_lastname}
                         </div>
                     </div>
                     <div class="m_userinfo_content" id="m_userinfo_contentday">
@@ -82,7 +84,8 @@
                             생년월일
                         </div>
                         <div class="m_userinfo_content_namesub">
-                            1999.11.05
+                        	<fmt:parseDate var="date" value="${buyer.b_birth}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                            <fmt:formatDate value="${date}" pattern="yyyy.MM.dd"/>
                         </div>
                     </div>
                 </div>
@@ -97,10 +100,10 @@
         <div class="m_userinfo_updatename_region_name">
             이름
         </div>
-        <form action="./userinfo.html">
+        <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
             <div class="m_userinfo_updatename_region_fname" id="firstNameRegion">
                 <label>
-                    <input type="text" name="finame" class="m_userinfo_updatename_region_infname"
+                    <input type="text" name="b_firstname" class="m_userinfo_updatename_region_infname"
                         id="firstNameInput">
                     <div class="m_userinfo_updatename_region_plfname" id="firstNametitle">성</div>
                 </label>
@@ -109,7 +112,7 @@
             <div class="m_userinfo_updatename_region_hr" id="active"></div>
             <div class="m_userinfo_updatename_region_fname" id="lastNameRegion">
                 <label>
-                    <input type="text" name="laname" class="m_userinfo_updatename_region_infname"
+                    <input type="text" name="b_lastname" class="m_userinfo_updatename_region_infname"
                         id="lastNameInput">
                     <div class="m_userinfo_updatename_region_plfname" id="lastNametitle">이름
                     </div>
@@ -132,7 +135,7 @@
         <div class="m_userinfo_updatename_region_bdaysub">
             생년월일은 연령대에 적합한 서비스를 결정하는 데 사용됩니다.
         </div>
-        <form action="./userinfo.html">
+        <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
             <div class="m_userinfo_updatename_region_inbday">
                 <div class="m_userinfo_updatename_region_inyyyy" id="yyyyregion">
                     <label>
@@ -152,10 +155,9 @@
                     </label>
                 </div>
             </div>
+        </form>
     </div>
-    </section>
-    </form>
-                
+    </section>               
     </div>
     <footer>
 	<%@ include file="../common/global_footer.jsp" %>

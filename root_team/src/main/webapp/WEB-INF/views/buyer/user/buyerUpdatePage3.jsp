@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="root.team.com.vo.BuyerVO" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -28,7 +29,7 @@
 				<div class="m_userinfopayup_header">
 					<div class="m_userinfopayup_header_acc">Root ID</div>
 					<div class="m_userinfopayup_loar">
-						<a href="#" class="m_userinfopayup_logout">로그아웃<div class="arrow_small a12"></div>
+						<a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfopayup_logout">로그아웃<div class="arrow_small a12"></div>
 						</a>
 					</div>
 				</div>
@@ -38,8 +39,8 @@
 				<!--  #region 사이드 메뉴 -->
 				<div class="m_userinfopayup_sideregion">
 					<div class="m_userinfopayup_proflie"></div>
-					<div class="m_userinfopayup_username">이름</div>
-					<div class="m_userinfopayup_useremail">이메일</div>
+					<div class="m_userinfopayup_username">${buyer.b_nickname}</div>
+					<div class="m_userinfopayup_useremail">${buyer.b_email}</div>
 					<div class="m_userinfopayup_side_region"></div>
 					<div class="m_userinfopayup_side">
 						<a

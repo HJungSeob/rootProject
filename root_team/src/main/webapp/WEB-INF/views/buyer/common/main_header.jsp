@@ -44,10 +44,19 @@
                             </button>
                         </div>
                     </div>
-
-                    <a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="global_nav_infoBtn info">
-                        <span></span>
-                    </a>
+					<c:choose>
+				      	<c:when test="${not empty buyer}">
+				      	   	<a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do" class="global_nav_infoBtn info">
+                        		<span></span>
+                   			</a>
+				      	</c:when>
+				      	<c:otherwise>				  	
+				      	   	<a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="global_nav_infoBtn info">
+                        		<span></span>
+                   			</a>			      	
+				      	</c:otherwise>
+				    </c:choose>
+                    
 
                 </div>
                 <div class="global_nav_lists">
