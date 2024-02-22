@@ -109,4 +109,14 @@ public class SellerController {
 	public String viewEdit() {
 		return "seller/service/viewEdit";
 	}
+	
+	@GetMapping("/sellerJoin.do")
+	public String sellerJoin() {
+		return "seller/user/sellerJoin";
+	}
+	
+	@GetMapping("/sellerLogin.do")
+	public String sellerLogin() {
+		return "seller/user/sellerLogin";
+	}
 }
