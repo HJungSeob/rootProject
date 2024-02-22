@@ -155,10 +155,11 @@
     </div>
     </section>
     </form>
-                <footer>
-<%@ include file="../common/global_footer.jsp" %>
-    </footer>
+                
     </div>
+    <footer>
+	<%@ include file="../common/global_footer.jsp" %>
+    </footer>
     <!-- #endregion -->
 </body>
 </html>
