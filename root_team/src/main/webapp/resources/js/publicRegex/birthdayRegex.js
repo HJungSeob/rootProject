@@ -43,6 +43,8 @@ $('#yyyyinput').blur(function () {
     }
     try {
         birdaydisable();
+    } catch (Exception) {}
+    try {
         globaldisable();
     } catch (Exception) {}
 });
