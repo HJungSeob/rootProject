@@ -11,10 +11,8 @@
     <title>main</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/global_header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css"> 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/main_section.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/global_footer.css">
     <script src="${pageContext.request.contextPath}/resources/js/buyer/main.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/mainSection.js"></script>
 </head>

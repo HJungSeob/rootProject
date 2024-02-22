@@ -15,13 +15,15 @@ public class BuyerVO {
 	private String b_pw;
 	private Date b_regdate;
 	private Date b_modifydate;
+	private Date b_lastlogindate;
+	private Date b_pwmodifydate;
 	
 	private String b_cancel;
 	private	String b_check;
 	private String b_terms;
 	
 	private String b_grade;
-	private int b_gender;
+	private String b_gender;
 	private String b_nickname;
 	private String b_profile;
 	private String b_point;

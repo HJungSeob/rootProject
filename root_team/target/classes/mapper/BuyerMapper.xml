@@ -5,7 +5,7 @@
 
 <mapper namespace="root.team.com.BuyerMapper">
 
-	<insert id="join" parameterType="sellerVO">
+	<insert id="join" parameterType="buyerVO">
 		insert into tb_buyer (b_firstname, b_lastname, b_tel, b_birth, b_email, b_pw)
 			values(#{b_firstname}, #{b_lastname}, #{b_tel}, #{b_birth}, #{b_email}, #{b_pw})
 	</insert>
@@ -16,14 +16,31 @@
 			where b_email = #{b_email}
 	</select>
 	
+	<insert id="info" parameterType="_int">
+		INSERT INTO tb_buyer_info (b_idx, b_nickname) 
+			VALUES (#{b_idx}, CONCAT('rootuser', #{b_idx}))	
+	</insert>
+	
 	<insert id="state" parameterType="_int">
 		INSERT INTO tb_buyer_state (b_idx) 
 			VALUES (#{b_idx})
 	</insert>
 	
-	<insert id="info" parameterType="_int">
-		INSERT INTO tb_buyer_info (b_idx, b_nickname) 
-			VALUES (#{b_idx}, CONCAT('rootuser', #{b_idx}))	
-	</insert>
+	<select id="getPassword" parameterType="string" resultType="string">
+		select b_pw from tb_buyer where b_email = #{b_email}
+	</select>
+	
+	<select id="login" parameterType="string" resultType="buyerVO">
+		select *
+			from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
+			where b.b_idx = bs.b_idx
+			and b.b_idx = bi.b_idx 
+			and b_email = #{b_email}		
+	</select>
+	
+	<update id="lastLoginDate" parameterType="_int">
+		update tb_buyer set b_lastlogindate = now()
+			where b_idx = #{b_idx}
+	</update>
 	
 </mapper>

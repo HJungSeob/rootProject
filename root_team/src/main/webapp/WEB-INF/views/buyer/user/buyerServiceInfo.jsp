@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="root.team.com.vo.BuyerVO" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -28,7 +30,7 @@
 				<div class="m_info_header">
 					<div class="m_info_header_acc">계정</div>
 					<div class="m_info_loar">
-						<a href="#" class="m_info_logout">로그아웃
+						<a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_info_logout">로그아웃
 							<div class="arrow_small a12"></div>
 						</a>
 					</div>
@@ -39,17 +41,19 @@
 			<!-- #region 프로필 영역 -->
 			<div class="m_info_profile">
 				<div class="m_info_sprofile">
-					<div class="m_info_proname">루키_1d85bb4d2b6f님, 안녕하세요</div>
+					<div class="m_info_proname">${buyer.b_nickname}님, 안녕하세요!</div>
 					<div class="m_info_pro">
 						<div class="m_info_proimg"></div>
 						<div class="m_info_werll">
 							<div class="m_info_mr">
-								적립금
-								<div class="m_info_mrp">234,234</div>
+								등급
+								<div class="m_info_mrp">${buyer.b_grade}</div>
 							</div>
 							<div class="m_info_point">
 								포인트
-								<div class="m_info_pointp">454,356,346</div>
+								<div class="m_info_pointp">
+								<fmt:formatNumber value="${buyer.b_point}" pattern="#,##0"/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -107,10 +111,8 @@
 						</div>
 						<div class="m_info_accsmain_title1 sub">
 							연락처 정보
-							<div class="m_info_accsmain_subtitle">이메일</div>
-							<div class="m_info_accsmain_subtitle">전화번호</div>
 							<div class="m_info_accsmain_subtitle">
-								<a href="#" class="a">편집</a>
+								<a href="${pageContext.request.contextPath}/buyer/buyerUpdatePage2.do" class="a">편집</a>
 							</div>
 						</div>
 					</div>
@@ -122,7 +124,7 @@
 								것으로 언제든 직접 데이터를 관리하고 계정을 삭제할 수도 있습니다. Root은 개인 정보 보호를 최우선으로
 								여깁니다.</div>
 							<div class="m_info_accsmain_subtitle">
-								<a href="#" class="a">내 개인 정보 관리
+								<a href="#" class="a">개인정보처리방침
 									<div class="arrow_small a20i"></div>
 								</a>
 							</div>
@@ -132,7 +134,6 @@
 						<div class="m_info_solosi">Root ID</div>
 						<div class="m_info_accsmain_title1 sub">
 							개인 정보
-							<div class="m_info_accsmain_subtitlev">이메일</div>
 							<div class="m_info_accsmain_subtitle">
 								<a href="${pageContext.request.contextPath}/buyer/buyerUpdatePage1.do" class="a">Root ID 관리
 									<div class="arrow_small a20i"></div>

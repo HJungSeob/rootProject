@@ -1,8 +1,6 @@
 package root.team.com.dao;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -28,8 +26,19 @@ public class BuyerDAO {
 		return sqlSession.insert(MAPPER + ".info", b_idx);
 	}
 
-	public int state(int b_idx) throws SQLException {	
+	public int state(int b_idx) throws SQLException {
 		return sqlSession.insert(MAPPER + ".state", b_idx);
 	}
 
+	public String getPassword(String b_email) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getPassword", b_email);
+	}
+
+	public BuyerVO login(String b_email) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".login", b_email);
+	}
+
+	public void lastLoginDate(int b_idx) throws SQLException {
+		sqlSession.update(MAPPER + ".lastLoginDate", b_idx);
+	}
 }
