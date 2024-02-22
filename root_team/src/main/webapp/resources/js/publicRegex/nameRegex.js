@@ -51,7 +51,9 @@ $('#firstNameInput').blur(function () {
     }
     try {
         namedisable()
-        globaldisable();
+    } catch (Exception) {}
+    try {
+        globaldisable()
     } catch (Exception) {}
 });
 });
@@ -86,7 +88,9 @@ $('#lastNameInput').blur(function () {
     }
     try {
         namedisable()
-        globaldisable();
+    } catch (Exception) {}
+    try {
+        globaldisable()
     } catch (Exception) {}
 });
 

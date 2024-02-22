@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/buyer")
 public class buyerController {
 
-	@GetMapping("/userLogin.do")
-	public String userLogin() {
-		return "buyer/user/userLogin";
+	@GetMapping("/buyerLogin.do")
+	public String buyerLogin() {
+		return "buyer/user/buyerLogin";
+	}
+	
+	@GetMapping("/buyerJoin.do")
+	public String buyerJoin() {
+		return "buyer/user/buyerJoin";
 	}
 	
 	@GetMapping("/buyerServiceInfo.do")

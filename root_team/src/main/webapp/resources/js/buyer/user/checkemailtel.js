@@ -1,4 +1,3 @@
-window.onload = function () {
 function globaldisable() {
     if (telValid && emailValid) {
         emailsubmit1.disabled = false
@@ -11,6 +10,4 @@ function globaldisable() {
             $('#edsubmit1').css("background-color", "#80befb")
         });
     }
-    return globaldisable()
-}
 }
