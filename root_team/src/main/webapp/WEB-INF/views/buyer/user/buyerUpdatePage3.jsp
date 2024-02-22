@@ -28,8 +28,7 @@
 				<div class="m_userinfopayup_header">
 					<div class="m_userinfopayup_header_acc">Root ID</div>
 					<div class="m_userinfopayup_loar">
-						<a href="#" class="m_userinfopayup_logout">로그아웃
-							<div class="arrow_small_right a12"></div>
+						<a href="#" class="m_userinfopayup_logout">로그아웃<div class="arrow_small a12"></div>
 						</a>
 					</div>
 				</div>
@@ -81,10 +80,11 @@
 
 			</div>
 		</section>
-		<footer>
+		
+	</div>
+	<footer>
 			<%@ include file="../common/global_footer.jsp"%>
 		</footer>
-	</div>
 </body>
 
 </html>

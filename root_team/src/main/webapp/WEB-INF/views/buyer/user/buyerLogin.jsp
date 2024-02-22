@@ -102,10 +102,11 @@
             </div>
         </div>
             </section>
-    		<footer>
+    		
+    </div>
+    <footer>
 			<%@ include file="../common/global_footer.jsp"%>
 		</footer>
-    </div>
     <!-- #endregion -->
 
 </body>

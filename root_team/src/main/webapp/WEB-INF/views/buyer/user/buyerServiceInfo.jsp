@@ -146,10 +146,11 @@
 
 			<div class="m_info_last"></div>
 		</section>
-		<footer>
+		
+	</div>
+	<footer>
 			<%@ include file="../common/global_footer.jsp"%>
 		</footer>
-	</div>
 </body>
 
 </html>

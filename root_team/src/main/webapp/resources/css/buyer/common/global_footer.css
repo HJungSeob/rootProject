@@ -1,8 +1,10 @@
 footer {
-    width: 100%;
+    width: 100%; 
     background-color: #222426;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    transform : translateY(-100%);
 }
 
 footer .notice {
