@@ -5,6 +5,7 @@ footer {
     flex-wrap: wrap;
     position: relative;
     transform : translateY(-100%);
+    overflow:hidden;
 }
 
 footer .notice {
