@@ -52,22 +52,22 @@
 				<div class="m_userLogin_tiregion">
 					<div class="m_userLogin_tiregionti">Root ID</div>
 					<div class="m_userLogin_tiregionre">
-						<a href="#" class="m_userLogin_tiregionss">로그인</a> <a href="#"
-							class="m_userLogin_tiregionss">Root ID 생성</a>
+						<a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="m_userLogin_tiregionss">로그인</a> 
+						<a href="${pageContext.request.contextPath}/buyer/buyerJoin.do"	class="m_userLogin_tiregionss">Root ID 생성</a>
 					</div>
 				</div>
 			</div>
 			<!-- #endregion -->
 
 			<div class="m_userLogin_mainRegion">
-				<form>
+				<form name="buyerJoin" method="post" action="buyerJoinProcess.do">
 					<!-- #region 페이지1 -->
 					<div class="m_userLogin_maintitle">Root ID 생성</div>
 					<div class="m_userLogin_subtitle">하나의 Root ID로 모든 Root 서비스를
 						이용할 수 있습니다.</div>
 					<div id="joinPage1" class="m_userLogin_page1">
 						<div class="m_userLogin_telRegion" id="telRegion">
-							<label> <input type="tel" name="tel"
+							<label> <input type="tel" name="b_tel"
 								class="m_userLogin_telInput" id="telInput" maxlength="13">
 								<div class="m_userLogin_teltitle" id="telTitle">전화번호</div>
 							</label>
@@ -78,7 +78,7 @@
 							기기나 웹 브라우저에 로그인할 때 해당 전화번호를 사용하여 신원을 확인합니다. 메시지 또는 데이터 요금이 적용될 수
 							있습니다.</div>
 						<div class="m_userLogin_checkregion">
-							<label> <input type="checkbox" name="terms" id="terms"
+							<label> <input type="checkbox" name="b_terms" id="terms"
 								value="y"> <span class="m_userLogin_rula"> <a
 									href="#" class="m_userLogin_atag">Root의 개인정보 처리방침</a>에 따라 개인
 									정보를 수집, 사용, 타사에 대한 제공 및 처리하는 데 동의합니다.</label> </span>
@@ -101,7 +101,7 @@
 					<div id="joinPage2" class="m_userLogin_page2">
 						<div class="m_userLogin_nameRegion">
 							<div class="m_userLogin_regionFirstName" id="firstNameRegion">
-								<label> <input type="text" name="firstName"
+								<label> <input type="text" name="b_firstname"
 									class="m_userLogin_firstNameInput" id="firstNameInput">
 									<div class="m_userLogin_firstNametitle" id="firstNametitle">성</div>
 								</label>
@@ -109,7 +109,7 @@
 							</div>
 							<div class="m_userinfo_updatename_region_hr" id="active"></div>
 							<div class="m_userLogin_regionFirstName" id="lastNameRegion">
-								<label> <input type="text" name="lastName"
+								<label> <input type="text" name="b_lastname"
 									class="m_userLogin_firstNameInput" id="lastNameInput">
 									<div class="m_userLogin_firstNametitle" id="lastNametitle">이름
 									</div>
@@ -119,7 +119,7 @@
 						</div>
 						<div class="m_userinfo_updatename_region_inbday">
 							<div class="m_userLogin_birthdayRegion" id="yyyyregion">
-								<label> <input type="text" name="birthday"
+								<label> <input type="text" name="b_birth"
 									class="m_userLogin_birthdayInput" id="yyyyinput" maxlength="8">
 									<div class="m_userLogin_birthdayText" id="yyyytext">생년월일</div>
 									<div id="result" class="m_userLogin_birthdayResult">yyyy년
@@ -144,7 +144,7 @@
 					<!-- #region 페이지3 -->
 					<div id="joinPage3" class="m_userLogin_page3">
 						<div class="m_userLogin_emailRegion" id="emailRegion">
-							<label> <input type="email" name="email"
+							<label> <input type="email" name="b_email"
 								class="m_userLogin_emailInput" id="emailInput">
 								<div class="m_userLogin_emailTitle" id="emailTitle">name@example.com</div>
 							</label>
@@ -154,7 +154,7 @@
 								입니다.</div>
 						</div>
 						<div class="m_userLogin_passwordRegion" id="newPwRegion">
-							<label> <input type="password" name="pw"
+							<label> <input type="password" name="b_pw"
 								class="m_userLogin_passwordInput" id="newPwInput">
 								<div class="m_userLogin_passwordTitle" id="passwordTitle">암호</div>
 							</label>

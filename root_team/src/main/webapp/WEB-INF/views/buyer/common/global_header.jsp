@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <a href="" class="global_nav_infoBtn info">
+                    <a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="global_nav_infoBtn info">
                         <span></span>
                     </a>
 

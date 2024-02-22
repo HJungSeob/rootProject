@@ -29,8 +29,8 @@
                 <div class="m_userLogin_tiregionti">
                     Root ID</div>
                 <div class="m_userLogin_tiregionre">
-                    <a href="#" class="m_userLogin_tiregionss">로그인</a>
-                    <a href="#" class="m_userLogin_tiregionss">Root ID 생성</a>
+                    <a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="m_userLogin_tiregionss">로그인</a>
+                    <a href="${pageContext.request.contextPath}/buyer/buyerJoin.do" class="m_userLogin_tiregionss">Root ID 생성</a>
                 </div>
             </div>
         </div>
