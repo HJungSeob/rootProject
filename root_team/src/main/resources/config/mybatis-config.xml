@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias alias="TestVO" type="root.team.com.vo.TestVO"/>
 		<typeAlias alias="SellerVO" type="root.team.com.vo.SellerVO"/>
+		<typeAlias alias="BuyerVO" type="root.team.com.vo.BuyerVO"/>
 	</typeAliases>
 
 </configuration>

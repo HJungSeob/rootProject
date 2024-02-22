@@ -70,9 +70,14 @@
 			</button>
 		</div>
 		<div>
-			<button class="seller_global_category_btn">
+			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/update.do">
 				<span class="">회원정보수정</span>
-			</button>
+			</a>
+		</div>
+		<div>
+			<a class="seller_global_category_btn" href="">
+				<span class="">환경설정</span>
+			</a>
 		</div>
 	</div>
 </div>
