@@ -56,113 +56,7 @@ $(function () {
         $('#lastNametitle').css("fontSize", "14px")
     });
 
-    $('#sidoInput').blur(function () {
-        $('#sidoRegion').css("border", "1px solid #858585")
-        $('#sidoRegion').css("boxShadow", "none")
-        $('#sidoTitle').css("margin-top", "-42px")
-        $('#sidoTitle').css("fontSize", "20px")
-        $('#sigunguRegion').css("border", "1px solid #858585")
-        $('#sigunguRegion').css("boxShadow", "none")
-        $('#sigungutitle').css("margin-top", "-42px")
-        $('#sigungutitle').css("fontSize", "20px")
-        $('#zonecodeRegion').css("border", "1px solid #858585")
-        $('#zonecodeRegion').css("boxShadow", "none")
-        $('#zonecodetitle').css("margin-top", "-42px")
-        $('#zonecodetitle').css("fontSize", "20px")
-        $('#addressRegion').css("border", "1px solid #858585")
-        $('#addressRegion').css("boxShadow", "none")
-        $('#addresstitle').css("margin-top", "-42px")
-        $('#addresstitle').css("fontSize", "20px")
-        updatesidoStyle()
-        updatesigunStyle()
-        updatezonecodeStyle()
-        updateaddressStyle()
-    });
-
-    let sidoTitle = document.getElementById('sidoTitle')
-    let sidoInput = document.getElementById('sidoInput')
-    $('#sidoInput').on('propertychange change keyup paste input', updatesidoStyle);
-
-    function updatesidoStyle() {
-        if (sidoInput.value.trim() !== '') {
-            sidoTitle.style.marginTop = '-52px';
-            sidoTitle.style.fontSize = '14px';
-        } else {
-            sidoTitle.style.marginTop = '-42px';
-            sidoTitle.style.fontSize = '20px';
-        }
-    }
-    $('#sidoInput').focus(function () {
-        $('#sidoRegion').css("border", "1px solid #0071E3")
-        $('#sidoRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#sidoTitle').css("margin-top", "-52px")
-        $('#sidoTitle').css("fontSize", "14px")
-        $('#sigungutitle').css("margin-top", "-52px")
-        $('#sigungutitle').css("fontSize", "14px")
-        $('#zonecodetitle').css("margin-top", "-52px")
-        $('#zonecodetitle').css("fontSize", "14px")
-        $('#addresstitle').css("margin-top", "-52px")
-        $('#addresstitle').css("fontSize", "14px")
-    });
-
-    $('#sigunguInput').blur(function () {
-        $('#sidoRegion').css("border", "1px solid #858585")
-        $('#sidoRegion').css("boxShadow", "none")
-        $('#sidoTitle').css("margin-top", "-42px")
-        $('#sidoTitle').css("fontSize", "20px")
-        $('#sigunguRegion').css("border", "1px solid #858585")
-        $('#sigunguRegion').css("boxShadow", "none")
-        $('#sigungutitle').css("margin-top", "-42px")
-        $('#sigungutitle').css("fontSize", "20px")
-        $('#zonecodeRegion').css("border", "1px solid #858585")
-        $('#zonecodeRegion').css("boxShadow", "none")
-        $('#zonecodetitle').css("margin-top", "-42px")
-        $('#zonecodetitle').css("fontSize", "20px")
-        $('#addressRegion').css("border", "1px solid #858585")
-        $('#addressRegion').css("boxShadow", "none")
-        $('#addresstitle').css("margin-top", "-42px")
-        $('#addresstitle').css("fontSize", "20px")
-        updatesidoStyle()
-        updatesigunStyle()
-        updatezonecodeStyle()
-        updateaddressStyle()
-    });
-
-    let sigungutitle = document.getElementById('sigungutitle')
-    let sigunguInput = document.getElementById('sigunguInput')
-    $('#sigunguInput').on('propertychange change keyup paste input', updatesigunStyle);
-
-    function updatesigunStyle() {
-        if (sigunguInput.value.trim() !== '') {
-            sigungutitle.style.marginTop = '-52px';
-            sigungutitle.style.fontSize = '14px';
-        } else {
-            sigungutitle.style.marginTop = '-42px';
-            sigungutitle.style.fontSize = '20px';
-        }
-    }
-    $('#sigunguInput').focus(function () {
-        $('#sigunguRegion').css("border", "1px solid #0071E3")
-        $('#sigunguRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#sidoTitle').css("margin-top", "-52px")
-        $('#sidoTitle').css("fontSize", "14px")
-        $('#sigungutitle').css("margin-top", "-52px")
-        $('#sigungutitle').css("fontSize", "14px")
-        $('#zonecodetitle').css("margin-top", "-52px")
-        $('#zonecodetitle').css("fontSize", "14px")
-        $('#addresstitle').css("margin-top", "-52px")
-        $('#addresstitle').css("fontSize", "14px")
-    });
-
     $('#zonecodeInput').blur(function () {
-        $('#sidoRegion').css("border", "1px solid #858585")
-        $('#sidoRegion').css("boxShadow", "none")
-        $('#sidoTitle').css("margin-top", "-42px")
-        $('#sidoTitle').css("fontSize", "20px")
-        $('#sigunguRegion').css("border", "1px solid #858585")
-        $('#sigunguRegion').css("boxShadow", "none")
-        $('#sigungutitle').css("margin-top", "-42px")
-        $('#sigungutitle').css("fontSize", "20px")
         $('#zonecodeRegion').css("border", "1px solid #858585")
         $('#zonecodeRegion').css("boxShadow", "none")
         $('#zonecodetitle').css("margin-top", "-42px")
@@ -171,8 +65,6 @@ $(function () {
         $('#addressRegion').css("boxShadow", "none")
         $('#addresstitle').css("margin-top", "-42px")
         $('#addresstitle').css("fontSize", "20px")
-        updatesidoStyle()
-        updatesigunStyle()
         updatezonecodeStyle()
         updateaddressStyle()
     });
@@ -193,25 +85,15 @@ $(function () {
     $('#zonecodeInput').focus(function () {
         $('#zonecodeRegion').css("border", "1px solid #0071E3")
         $('#zonecodeRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#sidoTitle').css("margin-top", "-52px")
-        $('#sidoTitle').css("fontSize", "14px")
-        $('#sigungutitle').css("margin-top", "-52px")
-        $('#sigungutitle').css("fontSize", "14px")
         $('#zonecodetitle').css("margin-top", "-52px")
         $('#zonecodetitle').css("fontSize", "14px")
+        $('#addressRegion').css("border", "1px solid #858585")
+        $('#addressRegion').css("boxShadow", "none")
         $('#addresstitle').css("margin-top", "-52px")
         $('#addresstitle').css("fontSize", "14px")
     });
 
     $('#addressInput').blur(function () {
-        $('#sidoRegion').css("border", "1px solid #858585")
-        $('#sidoRegion').css("boxShadow", "none")
-        $('#sidoTitle').css("margin-top", "-42px")
-        $('#sidoTitle').css("fontSize", "20px")
-        $('#sigunguRegion').css("border", "1px solid #858585")
-        $('#sigunguRegion').css("boxShadow", "none")
-        $('#sigungutitle').css("margin-top", "-42px")
-        $('#sigungutitle').css("fontSize", "20px")
         $('#zonecodeRegion').css("border", "1px solid #858585")
         $('#zonecodeRegion').css("boxShadow", "none")
         $('#zonecodetitle').css("margin-top", "-42px")
@@ -220,8 +102,6 @@ $(function () {
         $('#addressRegion').css("boxShadow", "none")
         $('#addresstitle').css("margin-top", "-42px")
         $('#addresstitle').css("fontSize", "20px")
-        updatesidoStyle()
-        updatesigunStyle()
         updatezonecodeStyle()
         updateaddressStyle()
     });
@@ -242,12 +122,10 @@ $(function () {
     $('#addressInput').focus(function () {
         $('#addressRegion').css("border", "1px solid #0071E3")
         $('#addressRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#sidoTitle').css("margin-top", "-52px")
-        $('#sidoTitle').css("fontSize", "14px")
-        $('#sigungutitle').css("margin-top", "-52px")
-        $('#sigungutitle').css("fontSize", "14px")
         $('#zonecodetitle').css("margin-top", "-52px")
         $('#zonecodetitle').css("fontSize", "14px")
+        $('#addressRegion').css("border", "1px solid #858585")
+        $('#addressRegion').css("boxShadow", "none")
         $('#addresstitle').css("margin-top", "-52px")
         $('#addresstitle').css("fontSize", "14px")
     });
