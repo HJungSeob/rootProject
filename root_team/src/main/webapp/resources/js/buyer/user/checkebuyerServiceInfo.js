@@ -1,5 +1,5 @@
 function globaldisable(){
-    if(firstNameValid && lastNameValid && sidoValid && sigunguValid && zonecodeValid &&addressValid ){
+    if(firstNameValid && lastNameValid && zonecodeValid && addressValid ){
         addressSubmit.disabled = false
         $(function () {
             $('#addressSubmitTitle').css("background-color", "#0071e3")
