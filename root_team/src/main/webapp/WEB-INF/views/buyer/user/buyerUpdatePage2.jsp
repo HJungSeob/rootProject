@@ -75,10 +75,7 @@
                 <div class="m_userinfosclo_main_content_region">
                     <div class="m_userinfosclo_content" id="m_userinfosclo_contentname">
                         <div class="m_userinfosclo_content_nametitle">
-                            이메일 및 전화번호
-                        </div>
-                        <div class="m_userinfosclo_content_namesub">
-                             ${buyer.b_email}
+                           전화번호
                         </div>
                         <div class="m_userinfosclo_content_namesub">
                              ${buyer.b_tel}
@@ -103,18 +100,9 @@
     <div class="m_userinfosclo_updatename_region_buer" id="m_userinfosclo_updatename_region_buer"></div>
     <div class="m_userinfosclo_updatename_region" id="m_userinfosclo_updatename_region_name">
         <div class="m_userinfosclo_updatename_region_name">
-            이메일 및 전화번호
+            전화번호
         </div>
         <form action="./userinfosclo.html">
-            <div class="m_userinfosclo_updatename_region_fname" id="emailRegion">
-                <label>
-                    <input type="email" class="m_userinfosclo_updatename_region_infname" id="emailInput">
-                    <div class="m_userinfosclo_updatename_region_plfname" id="emailTitle">이메일
-                    </div>
-                    </lable>
-                    <div class="m_userinfo_updatename_region_reuslt" id="emailMsg"></div>
-            </div>
-            <div class="m_userinfosclo_updatename_region_hr" id="active"></div>
             <div class="m_userinfosclo_updatename_region_fname" id="telRegion">
                 <label>
                     <input type="tel" class="m_userinfosclo_updatename_region_infname" id="telInput" maxlength="13">
