@@ -10,7 +10,7 @@
             <nav>
                 <div class="global_nav_bar">
 
-                    <a href="main.html" class="global_nav_mainBtn logo">
+                    <a href="${pageContext.request.contextPath}/index.do" class="global_nav_mainBtn logo">
                         <span></span>
                     </a>
 
