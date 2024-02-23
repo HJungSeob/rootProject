@@ -117,4 +117,9 @@ public class SellerController {
 	public String sellerLogin() {
 		return "seller/user/sellerLogin";
 	}
+	
+	@GetMapping("/sellerUpdateService.do")
+	public String sellerUpdateService() {
+		return "seller/user/sellerUpdateService";
+	}
 }
