@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="root.team.com.SellerMapper">
+
+	<insert id="join" parameterType="sellerVO">
+		insert into tb_seller (s_businessnum, s_pw, s_name, s_email, s_tel, s_birth)
+			values(#{s_businessnum}, #{s_pw}, #{s_name}, #{s_email}, #{s_tel}, #{s_birth})
+	</insert>
+	
+	<select id="getS_idx" parameterType="string" resultType="_int">
+		select s_idx
+			from tb_seller
+			where s_businessnum = #{s_businessnum}
+	</select>
+	
+	<insert id="info" parameterType="_int">
+		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
+			VALUES (#{s_idx}, '기본@!프로필.jpg', CONCAT('rootstore', #{s_idx}))
+			
+	</insert>
+	
+	<insert id="state" parameterType="_int">
+		INSERT INTO tb_seller_state (s_idx) 
+			VALUES (#{s_idx})
+	</insert>
+	
+	<select id="getPassword" parameterType="string" resultType="string">
+		select s_pw from tb_seller where s_businessnum = #{s_businessnum}
+	</select>
+	
+	<select id="login" parameterType="string" resultType="sellerVO">
+		select *
+			from tb_seller s, tb_seller_state ss, tb_seller_info si
+			where s.s_idx = ss.s_idx
+			and s.s_idx = si.s_idx 
+			and s_businessnum = #{s_businessnum}		
+	</select>
+	
+</mapper>
