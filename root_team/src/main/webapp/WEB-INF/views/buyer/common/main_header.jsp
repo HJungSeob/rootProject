@@ -44,9 +44,10 @@
                             </button>
                         </div>
                     </div>
+                    
 					<c:choose>
 				      	<c:when test="${not empty buyer}">
-				      	   	<a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do" class="global_nav_infoBtn info">
+				      	   	<a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}" class="global_nav_infoBtn info">
                         		<span></span>
                    			</a>
 				      	</c:when>

@@ -27,7 +27,7 @@
 			<!-- #region 상단 -->
 			<div class="m_userinfopayup_header1">
 				<div class="m_userinfopayup_header">
-					<div class="m_userinfopayup_header_acc">Root ID</div>
+					<div class="m_userinfopayup_header_acc"><a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}">계정</a> | Root ID 관리</div>
 					<div class="m_userinfopayup_loar">
 						<a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfopayup_logout">로그아웃<div class="arrow_small a12"></div>
 						</a>

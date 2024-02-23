@@ -109,15 +109,16 @@
 						<div class="m_info_accsmain_title1">배송</div>
 						<div class="m_info_accsmain_title1 sub">
 							배송주소
-							<div class="m_info_accsmain_subtitle">성</div>
-							<div class="m_info_accsmain_subtitle">이름</div>
-							<div class="m_info_accsmain_subtitle">주소</div>
-							<div class="m_info_accsmain_subtitle">우편</div>
-							<div class="m_info_accsmain_subtitle">나머지 주소</div>
+							<div class="m_info_accsmain_subtitle">${address.ba_firstname}</div>
+							<div class="m_info_accsmain_subtitle">${address.ba_lastname}</div>
+							<div class="m_info_accsmain_subtitle">${address.ba_address}</div>
+							<div class="m_info_accsmain_subtitle">${address.ba_zipcode}</div>
+							<div class="m_info_accsmain_subtitle">${address.ba_restaddress}</div>
 							<div class="m_info_accsmain_subtitle atag" id="deledit">편집</div>
 						</div>
 						<div class="m_info_accsmain_title1 sub">
 							연락처 정보
+							<div class="m_info_accsmain_subtitle">${address.ba_contact}</div>
 							<div class="m_info_accsmain_subtitle atag" id="teledit">편집</div>
 						</div>
 					</div>
@@ -158,12 +159,14 @@
 			<%@ include file="../common/global_footer.jsp"%>
 		</footer>
 		<div class="m_buyerServiceInfo_mainRegion" id="mainRegion"></div>
-        <form action="">
+        <form method="post" action="buyerInsertAddressProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
+        	<input type="hidden" name="ba_contact" value="${buyer.b_tel}">
             <div class="m_buyerServiceInfo_delRegion" id="delRegion">
                 <div class="m_buyerServiceInfo_delTitle">배송 주소를 편집하세요.</div>
                 <div class="m_buyerServiceInfo_regionFirstName" id="firstNameRegion">
                     <label>
-                        <input type="text" name="firstName" class="m_buyerServiceInfo_firstNameInput"
+                        <input type="text" name="ba_firstName" class="m_buyerServiceInfo_firstNameInput"
                             id="firstNameInput">
                         <div class="m_buyerServiceInfo_firstNametitle" id="firstNametitle">성</div>
                     </label>
@@ -171,34 +174,15 @@
                 </div>
                 <div class="m_buyerServiceInfo_regionLastName" id="LastNameRegion">
                     <label>
-                        <input type="text" name="lastName" class="m_buyerServiceInfo_lastNameInput" id="lastNameInput">
+                        <input type="text" name="ba_lastName" class="m_buyerServiceInfo_lastNameInput" id="lastNameInput">
                         <div class="m_buyerServiceInfo_lastNametitle" id="lastNametitle">이름</div>
                     </label>
                     <div class="m_buyerServiceInfo_lastnameMsg" id="lastNameMsg"></div>
                 </div>
 
-                <div class="m_buyerServiceInfo_sidogoRegion">
-                    <div class="m_buyerServiceInfo_sidoRegion test1Region" id="sidoRegion">
-                        <label>
-                            <input type="text" name="sido" class="m_buyerServiceInfo_sidoInput test1Input"
-                                id="sidoInput">
-                            <div class="m_buyerServiceInfo_sidoTitle testtitle" id="sidoTitle">시/도</div>
-                        </label>
-                        <div class="m_buyerServiceInfo_sidoMsg testMsg" id="sidoMsg"></div>
-                    </div>
-                    <div class="m_buyerServiceInfo_sigunguRegion test2Region" id="sigunguRegion">
-                        <label>
-                            <input type="text" name="sigungu" class="m_buyerServiceInfo_sigunguInput test1Input"
-                                id="sigunguInput">
-                            <div class="m_buyerServiceInfo_sigungutitle testtitle" id="sigungutitle">지역/도시</div>
-                        </label>
-                        <div class="m_buyerServiceInfo_sigunguMsg testMsg" id="sigunguMsg"></div>
-                    </div>
-                </div>
-
                 <div class="m_buyerServiceInfo_zonecodeRegion testRegion" id="zonecodeRegion">
                     <label>
-                        <input type="text" name="zonecode" class="m_buyerServiceInfo_zonecodeInput testInput"
+                        <input type="text" name="ba_zipcode" class="m_buyerServiceInfo_zonecodeInput testInput"
                             id="zonecodeInput">
                         <div class="m_buyerServiceInfo_zonecodetitle testtitle" id="zonecodetitle">우편번호</div>
                     </label>
@@ -206,7 +190,7 @@
                 </div>
                 <div class="m_buyerServiceInfo_addressRegion testRegion" id="addressRegion">
                     <label>
-                        <input type="text" name="address" class="m_buyerServiceInfo_addressInput testInput"
+                        <input type="text" name="ba_address" class="m_buyerServiceInfo_addressInput testInput"
                             id="addressInput">
                         <div class="m_buyerServiceInfo_addresstitle testtitle" id="addresstitle">건물 번지, 이름 또는 거리 이름
                         </div>
@@ -215,7 +199,7 @@
                 </div>
                 <div class="m_buyerServiceInfo_viewAddressRegion testRegion" id="viewAddressRegion">
                     <label>
-                        <input type="text" name="viewAddress" class="m_buyerServiceInfo_viewAddressInput testInput"
+                        <input type="text" name="ba_restaddress" class="m_buyerServiceInfo_viewAddressInput testInput"
                             id="viewAddressInput">
                         <div class="m_buyerServiceInfo_viewAddresstitle testtitle" id="viewAddresstitle">상세주소(선택)</div>
                     </label>
@@ -231,13 +215,13 @@
             </div>
         </form>
 
-        <form>
+        <form method="post" action="buyerInsertAddressProcess.do">
             <div class="m_buyerServiceInfo_telMainRegion" id="telMainRegion">
                 <div class="m_buyerServiceInfo_telTitleRegion">연락처 정보를 수정하세요.</div>
                 <div class="m_buyerServiceInfo_telSubTitle">청구 연락처는 문자 메시지로도 배송 관련 정보를 받아보려면 아래에 휴대폰 번호를 추가하세요.</div>
                 <div class="m_buyerServiceInfo_telRegion" id="telRegion">
                     <label>
-                        <input type="tel" name="tel" class="m_buyerServiceInfo_telInput"
+                        <input type="tel" name="ba_contact" class="m_buyerServiceInfo_telInput"
                             id="telInput" maxlength="13">
                         <div class="m_buyerServiceInfo_telTitle" id="telTitle">전화번호</div>
                     </label>

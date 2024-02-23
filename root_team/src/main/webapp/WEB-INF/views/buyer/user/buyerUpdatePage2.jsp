@@ -31,7 +31,7 @@
         <!-- #region 상단 -->
         <div class="m_userinfosclo_header1">
             <div class="m_userinfosclo_header">
-                <div class="m_userinfosclo_header_acc">Root ID</div>
+                <div class="m_userinfosclo_header_acc"><a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}">계정</a> | Root ID 관리</div>
                 <div class="m_userinfosclo_loar">
                 <a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfosclo_logout">
                 로그아웃<div class="arrow_small a12"></div>
@@ -102,10 +102,11 @@
         <div class="m_userinfosclo_updatename_region_name">
             전화번호
         </div>
-        <form action="./userinfosclo.html">
+        <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
             <div class="m_userinfosclo_updatename_region_fname" id="telRegion">
                 <label>
-                    <input type="tel" class="m_userinfosclo_updatename_region_infname" id="telInput" maxlength="13">
+                    <input type="tel" class="m_userinfosclo_updatename_region_infname" name="b_tel" id="telInput" maxlength="13">
                     <div class="m_userinfosclo_updatename_region_plfname" id="telTitle">
                         전화번호</div>
                 </label>
@@ -127,7 +128,8 @@
         <div class="m_userinfosclo_content_namesub1">
             최근 업데이트: ${pwmodifydate}
         </div>
-        <form action="./userinfosclo.html">
+        <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
             <div class="m_userinfosclo_updatename_region_inbday">
                 <div class="m_userinfosclo_updatename_region_inyyyy" id="exPwRegion">
                     <label>
@@ -138,7 +140,7 @@
                 </div>
                 <div class="m_userinfosclo_updatename_region_inyyyy" id="newPwRegion">
                     <label>
-                        <input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="newPwInput">
+                        <input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="newPwInput" name="b_pw">
                         <div class="m_userinfosclo_updatename_region_subyyyy" id="newPwTitle">새로운 암호</div>
                     </label>
                     <div class="m_userinfosclo_pwMsg" id="newPwMsg"></div>
@@ -159,8 +161,9 @@
                     </label>
                 </div>
             </div>
+         </form>
     </div>
-    </form>
+    
                    
     </div>
      <footer>
