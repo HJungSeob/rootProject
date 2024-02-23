@@ -17,6 +17,15 @@
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerServiceInfo.css">
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerServiceInfo.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/buyer/user/daumMapAPI.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/buyer/user/telAutoHyphen.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/publicRegex/nameRegex.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/publicRegex/telRegex.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/publicRegex/addressRegex.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/buyer/user/checkebuyerServiceInfo.js"></script>
 </head>
 
 <body>
@@ -105,15 +114,11 @@
 							<div class="m_info_accsmain_subtitle">주소</div>
 							<div class="m_info_accsmain_subtitle">우편</div>
 							<div class="m_info_accsmain_subtitle">나머지 주소</div>
-							<div class="m_info_accsmain_subtitle">
-								<a href="#" class="a">편집</a>
-							</div>
+							<div class="m_info_accsmain_subtitle atag" id="deledit">편집</div>
 						</div>
 						<div class="m_info_accsmain_title1 sub">
 							연락처 정보
-							<div class="m_info_accsmain_subtitle">
-								<a href="${pageContext.request.contextPath}/buyer/buyerUpdatePage2.do" class="a">편집</a>
-							</div>
+							<div class="m_info_accsmain_subtitle atag" id="teledit">편집</div>
 						</div>
 					</div>
 					<div class="m_info_accsmain_mtitle">
@@ -152,6 +157,101 @@
 	<footer>
 			<%@ include file="../common/global_footer.jsp"%>
 		</footer>
+		<div class="m_buyerServiceInfo_mainRegion" id="mainRegion"></div>
+        <form action="">
+            <div class="m_buyerServiceInfo_delRegion" id="delRegion">
+                <div class="m_buyerServiceInfo_delTitle">배송 주소를 편집하세요.</div>
+                <div class="m_buyerServiceInfo_regionFirstName" id="firstNameRegion">
+                    <label>
+                        <input type="text" name="firstName" class="m_buyerServiceInfo_firstNameInput"
+                            id="firstNameInput">
+                        <div class="m_buyerServiceInfo_firstNametitle" id="firstNametitle">성</div>
+                    </label>
+                    <div class="m_buyerServiceInfo_firstnameMsg" id="firstNameMsg"></div>
+                </div>
+                <div class="m_buyerServiceInfo_regionLastName" id="LastNameRegion">
+                    <label>
+                        <input type="text" name="lastName" class="m_buyerServiceInfo_lastNameInput" id="lastNameInput">
+                        <div class="m_buyerServiceInfo_lastNametitle" id="lastNametitle">이름</div>
+                    </label>
+                    <div class="m_buyerServiceInfo_lastnameMsg" id="lastNameMsg"></div>
+                </div>
+
+                <div class="m_buyerServiceInfo_sidogoRegion">
+                    <div class="m_buyerServiceInfo_sidoRegion test1Region" id="sidoRegion">
+                        <label>
+                            <input type="text" name="sido" class="m_buyerServiceInfo_sidoInput test1Input"
+                                id="sidoInput">
+                            <div class="m_buyerServiceInfo_sidoTitle testtitle" id="sidoTitle">시/도</div>
+                        </label>
+                        <div class="m_buyerServiceInfo_sidoMsg testMsg" id="sidoMsg"></div>
+                    </div>
+                    <div class="m_buyerServiceInfo_sigunguRegion test2Region" id="sigunguRegion">
+                        <label>
+                            <input type="text" name="sigungu" class="m_buyerServiceInfo_sigunguInput test1Input"
+                                id="sigunguInput">
+                            <div class="m_buyerServiceInfo_sigungutitle testtitle" id="sigungutitle">지역/도시</div>
+                        </label>
+                        <div class="m_buyerServiceInfo_sigunguMsg testMsg" id="sigunguMsg"></div>
+                    </div>
+                </div>
+
+                <div class="m_buyerServiceInfo_zonecodeRegion testRegion" id="zonecodeRegion">
+                    <label>
+                        <input type="text" name="zonecode" class="m_buyerServiceInfo_zonecodeInput testInput"
+                            id="zonecodeInput">
+                        <div class="m_buyerServiceInfo_zonecodetitle testtitle" id="zonecodetitle">우편번호</div>
+                    </label>
+                    <div class="m_buyerServiceInfo_zonecodeMsg testMsg" id="zonecodeMsg"></div>
+                </div>
+                <div class="m_buyerServiceInfo_addressRegion testRegion" id="addressRegion">
+                    <label>
+                        <input type="text" name="address" class="m_buyerServiceInfo_addressInput testInput"
+                            id="addressInput">
+                        <div class="m_buyerServiceInfo_addresstitle testtitle" id="addresstitle">건물 번지, 이름 또는 거리 이름
+                        </div>
+                    </label>
+                    <div class="m_buyerServiceInfo_addressMsg testMsg" id="addressMsg"></div>
+                </div>
+                <div class="m_buyerServiceInfo_viewAddressRegion testRegion" id="viewAddressRegion">
+                    <label>
+                        <input type="text" name="viewAddress" class="m_buyerServiceInfo_viewAddressInput testInput"
+                            id="viewAddressInput">
+                        <div class="m_buyerServiceInfo_viewAddresstitle testtitle" id="viewAddresstitle">상세주소(선택)</div>
+                    </label>
+                    <div class="m_buyerServiceInfo_viewAddressMsg testMsg" id="viewAddressMsg"></div>
+                </div>
+                <div class="m_buyerServiceInfo_addressSubmitRegion" id="addressSubmitRegion">
+                    <label>
+                        <div class="m_buyerServiceInfo_addressSubmitTitle" id="addressSubmitTitle">수정</div>
+                        <input type="submit" id="addressSubmit" disabled="disabled"
+                            class="m_buyerServiceInfo_addressSubmit">
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <form>
+            <div class="m_buyerServiceInfo_telMainRegion" id="telMainRegion">
+                <div class="m_buyerServiceInfo_telTitleRegion">연락처 정보를 수정하세요.</div>
+                <div class="m_buyerServiceInfo_telSubTitle">청구 연락처는 문자 메시지로도 배송 관련 정보를 받아보려면 아래에 휴대폰 번호를 추가하세요.</div>
+                <div class="m_buyerServiceInfo_telRegion" id="telRegion">
+                    <label>
+                        <input type="tel" name="tel" class="m_buyerServiceInfo_telInput"
+                            id="telInput" maxlength="13">
+                        <div class="m_buyerServiceInfo_telTitle" id="telTitle">전화번호</div>
+                    </label>
+                    <div class="m_buyerServiceInfo_telMsg" id="telMsg"></div>
+                </div>
+                <div class="m_buyerServiceInfo_telSubmitRegion" id="telSubmitRegion">
+                    <label>
+                        <div class="m_buyerServiceInfo_telSubmitTitle" id="telSubmitTitle">수정</div>
+                        <input type="submit" id="telSubmit" disabled="disabled"
+                            class="m_buyerServiceInfo_telSubmit">
+                    </label>
+                </div>
+            </div>
+        </form>
 </body>
 
 </html>
