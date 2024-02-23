@@ -24,7 +24,7 @@ public class BuyerLoginService implements BuyerService {
 
 		try {
 			String encodePassword = dao.getPassword(b_email);
-			if (encodePassword != null) { // 아이디가 유효한 경우
+			if (encodePassword != null) {
 				if (cryptPasswordEncoder.matches(b_pw, encodePassword)) {		
 					dao.lastLoginDate(dao.login(b_email).getB_idx());
 					buyerVO = dao.login(b_email);
@@ -41,9 +41,9 @@ public class BuyerLoginService implements BuyerService {
 	}
 	
 	public Date dateUpdate(Date date) {
-		LocalDateTime localDateTime = date.toInstant() // Date -> Instant
-		           .atZone(ZoneId.systemDefault()) // Instant -> ZonedDateTime 
-		           .toLocalDateTime(); // ZonedDateTime -> LocalDateTime
+		LocalDateTime localDateTime = date.toInstant()
+		           .atZone(ZoneId.systemDefault())
+		           .toLocalDateTime();
 		LocalDateTime updatedLocalDateTime = localDateTime.minusHours(9);
 		Instant instant = updatedLocalDateTime.atZone(ZoneId.systemDefault()).toInstant();
 		return Date.from(instant);
