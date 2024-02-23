@@ -1,11 +1,13 @@
 package root.team.com.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import root.team.com.vo.AddressVO;
 import root.team.com.vo.BuyerVO;
 
 @Repository
@@ -41,4 +43,30 @@ public class BuyerDAO {
 	public void lastLoginDate(int b_idx) throws SQLException {
 		sqlSession.update(MAPPER + ".lastLoginDate", b_idx);
 	}
+
+	public BuyerVO updateBuyer(BuyerVO vo) throws SQLException {
+		BuyerVO newVO = null;
+		if (sqlSession.update(MAPPER+".updateBuyer", vo) == 1) {// 회원정보 업데이트 성공
+			newVO = getBuyer(vo.getB_idx());
+		}
+		return newVO;
+	}
+	
+	public BuyerVO getBuyer(int b_idx) throws SQLException {
+		return sqlSession.selectOne(MAPPER+".getBuyer", b_idx);
+	}
+
+	public AddressVO getAddress(int b_idx) {
+		return sqlSession.selectOne(MAPPER + ".getAddress", b_idx);
+	}
+	
+	public int changeDefaultAddress(int b_idx) {
+		return sqlSession.update(MAPPER + ".changeDefaultAddress", b_idx);
+	}
+	
+	public int insertAddress(AddressVO vo) throws SQLException {
+		return sqlSession.insert(MAPPER + ".insertAddress", vo);
+	}
+
+	
 }

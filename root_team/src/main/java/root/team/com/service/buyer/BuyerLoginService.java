@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 import root.team.com.dao.BuyerDAO;
+import root.team.com.service.global.GlobalService;
 import root.team.com.vo.BuyerVO;
 
 @Service("bLogin")
@@ -28,10 +29,6 @@ public class BuyerLoginService implements BuyerService {
 				if (cryptPasswordEncoder.matches(b_pw, encodePassword)) {		
 					dao.lastLoginDate(dao.login(b_email).getB_idx());
 					buyerVO = dao.login(b_email);
-					buyerVO.setB_lastlogindate(dateUpdate(buyerVO.getB_lastlogindate()));
-					buyerVO.setB_modifydate(dateUpdate(buyerVO.getB_modifydate()));
-					buyerVO.setB_pwmodifydate(dateUpdate(buyerVO.getB_pwmodifydate()));
-					buyerVO.setB_regdate(dateUpdate(buyerVO.getB_regdate()));
 				}
 			}
 		} catch (SQLException e) {
@@ -40,12 +37,5 @@ public class BuyerLoginService implements BuyerService {
 		return buyerVO;
 	}
 	
-	public Date dateUpdate(Date date) {
-		LocalDateTime localDateTime = date.toInstant()
-		           .atZone(ZoneId.systemDefault())
-		           .toLocalDateTime();
-		LocalDateTime updatedLocalDateTime = localDateTime.minusHours(9);
-		Instant instant = updatedLocalDateTime.atZone(ZoneId.systemDefault()).toInstant();
-		return Date.from(instant);
-	}
+	
 }

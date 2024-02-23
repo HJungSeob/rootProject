@@ -30,7 +30,7 @@
         <!-- #region 상단 -->
         <div class="m_userinfo_header1">
             <div class="m_userinfo_header">
-                <div class="m_userinfo_header_acc">Root ID</div>
+                <div class="m_userinfo_header_acc"><a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}">계정</a> | Root ID 관리</div>
                 <div class="m_userinfo_loar"><a href="${pageContext.request.contextPath}/buyer/buyerLogout.do" class="m_userinfo_logout">로그아웃<div
                             class="arrow_small a12"></div>
                     </a>
@@ -101,6 +101,7 @@
             이름
         </div>
         <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
             <div class="m_userinfo_updatename_region_fname" id="firstNameRegion">
                 <label>
                     <input type="text" name="b_firstname" class="m_userinfo_updatename_region_infname"
@@ -136,10 +137,11 @@
             생년월일은 연령대에 적합한 서비스를 결정하는 데 사용됩니다.
         </div>
         <form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
             <div class="m_userinfo_updatename_region_inbday">
                 <div class="m_userinfo_updatename_region_inyyyy" id="yyyyregion">
                     <label>
-                        <input type="text" name="bday" class="m_userinfo_updatename_region_inputyyyy" id="yyyyinput"
+                        <input type="text" name="b_birth" class="m_userinfo_updatename_region_inputyyyy" id="yyyyinput"
                             maxlength="8">
                         <div class="m_userinfo_updatename_region_subyyyy" id="yyyytext">생년월일</div>
                         <div id="result" class="m_userinfo_updatename_region_resultyyyy">yyyy년

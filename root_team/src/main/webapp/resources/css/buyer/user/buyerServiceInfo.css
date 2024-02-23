@@ -279,7 +279,6 @@ background-color: #ffffff;
 }
 
 .m_buyerServiceInfo_delRegion{
-    border: 1px solid #0071E3;
     width: 500px;
     height: auto;
     min-height: 200px;
@@ -290,12 +289,10 @@ background-color: #ffffff;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    box-shadow: 0px 0px 20px 0px #0071e3;
     display: none;
 }
 
 .m_buyerServiceInfo_telMainRegion{
-    border: 1px solid #0071E3;
     width: 700px;
     height: auto;
     min-height: 200px;
@@ -306,7 +303,6 @@ background-color: #ffffff;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    box-shadow: 0px 0px 20px 0px #0071e3;
     display: none;
 }
 
