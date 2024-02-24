@@ -20,5 +20,7 @@ public interface SellerService {
 		return null;
 	}
 
-	
+	default SellerVO update(SellerVO sellerVO){
+		return null;
+	}
 }
