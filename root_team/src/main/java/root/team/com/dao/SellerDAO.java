@@ -38,4 +38,7 @@ public class SellerDAO {
 		return sqlSession.selectOne(MAPPER + ".login", s_businessnum);
 	}
 
+	public void lastLoginDate(int s_idx) throws SQLException {
+		sqlSession.update(MAPPER + ".lastLoginDate", s_idx);
+	}
 }

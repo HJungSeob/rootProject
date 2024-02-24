@@ -1,14 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>정보수정 페이지</title>
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/seller/user/sellerUpdateService.css">
+    
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/telAutoHyphen.js"></script>
@@ -20,21 +22,28 @@
     <script src="${pageContext.request.contextPath}/resources/js/publicRegex/birthdayRegex.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/birthdayIO.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/daumMapAPI.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/seller/service/service.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/seller/service/serviceSection.js"></script>
 </head>
 <body>
 	<div class="wrap">
+	
 		<%@include file="../common/header.jsp"%>
+		
 		<section>
 			<div class="seller_global_section">
+			
 				<%@include file="../common/navigation.jsp"%>
+				
 				<div class="m_sellerUpdateService_mainRegion">
+				
 					<form action="">
 						<div class="m_sellerUpdateService_mainTitle">매장정보 수정</div>
 						<hr>
 						<div class="m_sellerUpdateService_profileRegion">
 							<label>
-								<div class="m_sellerUpdateService_profileInput"></div> <input
-								type="file" class="m_sellerUpdateService_input">
+								<div class="m_sellerUpdateService_profileInput"></div>
+								<input type="file" class="m_sellerUpdateService_input">
 							</label>
 							<div class="m_sellerUpdateService_profileTitle">프로필 사진</div>
 						</div>
@@ -51,12 +60,12 @@
 						<hr>
 						<div class="m_sellerUpdateService_submitRegion">
 							<label>
-								<div class="m_sellerUpdateService_submitTitle">수정</div> <input
-								type="submit" class="upSubmit" id="upSellerSubmit"
-								disabled="disabled">
+								<div class="m_sellerUpdateService_submitTitle">수정</div>
+								<input type="submit" class="upSubmit" id="upSellerSubmit" disabled="disabled">
 							</label>
 						</div>
 					</form>
+					
 					<form>
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">암호 수정</div>
@@ -84,14 +93,14 @@
 							</div>
 							<div class="m_sellerUpdateService_submitRegion">
 								<label>
-									<div class="m_sellerUpdateService_submitTitle">수정</div> <input
-									type="submit" class="upSubmit" id="upPwSubmit"
-									disabled="disabled">
+									<div class="m_sellerUpdateService_submitTitle">수정</div>
+									<input type="submit" class="upSubmit" id="upPwSubmit" disabled="disabled">
 								</label>
 							</div>
 						</div>
 						<hr>
 					</form>
+					
 					<form>
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">회원정보 수정</div>
@@ -114,10 +123,9 @@
 						</div>
 						<div class="displayF">
 							<div class="allTitleText" id="yyyytext">생년월일</div>
-							<label> <input type="text" name="birthday"
-								class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8">
-								<div id="result" class="m_sellerUpdateService_biresult">yyyy년
-									mm월 dd일</div>
+							<label>
+								<input type="text" name="birthday" class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8">
+								<div id="result" class="m_sellerUpdateService_biresult">yyyy년 mm월 dd일</div>
 							</label>
 							<div class="Msg" id="resultmsg"></div>
 						</div>
@@ -143,8 +151,8 @@
 						<hr>
 						<div class="m_sellerUpdateService_submitRegion">
 							<label>
-								<div class="m_sellerUpdateService_submitTitle">수정</div> <input
-								type="submit" class="upSubmit" id="upSubmit" disabled="disabled">
+								<div class="m_sellerUpdateService_submitTitle">수정</div>
+								<input type="submit" class="upSubmit" id="upSubmit" disabled="disabled">
 							</label>
 						</div>
 					</form>
@@ -152,5 +160,9 @@
 			</div>
 		</section>
 	</div>
+	
+	<footer>
+		<%@include file="../../buyer/common/global_footer.jsp"%>
+	</footer>
 </body>
 </html>

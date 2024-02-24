@@ -296,13 +296,11 @@
                 </div>
             </div>
         </section>
-
-		<footer>
-			<%@include file="../buyer/common/global_footer.jsp"%>
-		</footer>
-
 	</div>
 
+	<footer>
+		<%@include file="../buyer/common/global_footer.jsp"%>
+	</footer>
 </body>
 
 </html>
