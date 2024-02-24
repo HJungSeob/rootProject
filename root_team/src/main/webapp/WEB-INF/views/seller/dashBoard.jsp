@@ -1,9 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="root.team.com.vo.SellerVO" %>
 
-    <!-------------------------------------- () <= 데이터로 값을 넘겨받을 자리 -------------------------------------->
-<!------------------------------------- [] <= 스크립트로 값을 넘겨받을 자리 ------------------------------------->
 <!DOCTYPE html>
 <html>
 
