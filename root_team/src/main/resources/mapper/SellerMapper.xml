@@ -6,8 +6,8 @@
 <mapper namespace="root.team.com.SellerMapper">
 
 	<insert id="join" parameterType="sellerVO">
-		insert into tb_seller (s_businessnum, s_pw, s_name, s_email, s_tel, s_birth)
-			values(#{s_businessnum}, #{s_pw}, #{s_name}, #{s_email}, #{s_tel}, #{s_birth})
+		insert into tb_seller (s_businessnum, s_pw, s_firstname, s_lastname, s_email, s_tel, s_birth)
+			values(#{s_businessnum}, #{s_pw}, #{s_firstname}, #{s_lastname}, #{s_email}, #{s_tel}, #{s_birth})
 	</insert>
 	
 	<select id="getS_idx" parameterType="string" resultType="_int">
@@ -19,7 +19,6 @@
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
 			VALUES (#{s_idx}, '기본@!프로필.jpg', CONCAT('rootstore', #{s_idx}))
-			
 	</insert>
 	
 	<insert id="state" parameterType="_int">
@@ -28,7 +27,9 @@
 	</insert>
 	
 	<select id="getPassword" parameterType="string" resultType="string">
-		select s_pw from tb_seller where s_businessnum = #{s_businessnum}
+		select s_pw
+			from tb_seller
+			where s_businessnum = #{s_businessnum}
 	</select>
 	
 	<select id="login" parameterType="string" resultType="sellerVO">
@@ -39,4 +40,8 @@
 			and s_businessnum = #{s_businessnum}		
 	</select>
 	
+	<update id="lastLoginDate" parameterType="_int">
+		update tb_seller set s_lastlogindate = now()
+			where s_idx = #{s_idx}
+	</update>
 </mapper>

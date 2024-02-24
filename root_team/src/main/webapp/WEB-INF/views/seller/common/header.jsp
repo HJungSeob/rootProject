@@ -11,9 +11,9 @@
             <a href="${pageContext.request.contextPath}/seller/dashBoard.do"><span class="logo"></span></a>
         </div>
         <div class="seller_global_service_btns">
-            <div><span>${seller.s_name} 님</span></div>
+            <div><span>${seller.s_firstname} ${seller.s_lastname} 님</span></div>
             <div><a href=""><span>스토어로 이동</span></a></div>
-            <div><a href="${pageContext.request.contextPath}/seller/logout.do"><span>로그아웃</span></a></div>
+            <div><a href="${pageContext.request.contextPath}/seller/sellerLogout.do"><span>로그아웃</span></a></div>
         </div>
     </div>
 </header>

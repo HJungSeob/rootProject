@@ -49,7 +49,7 @@
 			<!-- #endregion -->
 
 			<div class="m_sellerJoin_mainRegion">
-				<form>
+				<form name="sellerJoin" method="post" action="sellerJoinProcess.do"> 
 					<!-- #region 페이지1 -->
 					<div class="m_sellerJoin_maintitle">ENT Root ID 생성</div>
 					<div class="m_sellerJoin_subtitle">하나의 ENT Root ID로 모든 Root 서비스를 이용할 수 있습니다.</div>
@@ -57,7 +57,7 @@
 					<div id="joinPage1" class="m_sellerJoin_page1">
 						<div class="m_sellerJoin_telRegion" id="telRegion">
 							<label>
-								<input type="tel" name="tel" class="m_sellerJoin_telInput" id="telInput" maxlength="13">
+								<input type="tel" name="s_tel" class="m_sellerJoin_telInput" id="telInput" maxlength="13">
 								<div class="m_sellerJoin_teltitle" id="telTitle">전화번호</div>
 							</label>
 							<div class="m_sellerJoin_telMsg" id="telSmg"></div>
@@ -71,7 +71,7 @@
 							
 						<div class="m_sellerJoin_checkregion">
 							<label>
-								<input type="checkbox" name="terms" id="terms" value="y">
+								<input type="checkbox" name="s_terms" id="terms" value="Y">
 								<span class="m_sellerJoin_rula">
 									<a href="#" class="m_sellerJoin_atag">Root의 개인정보 처리방침</a>
 									에 따라 개인 정보를 수집, 사용, 타사에 대한 제공 및 처리하는 데 동의합니다.
@@ -99,7 +99,7 @@
 						<div class="m_sellerJoin_nameRegion">
 							<div class="m_sellerJoin_regionFirstName" id="firstNameRegion">
 								<label>
-									<input type="text" name="firstName" class="m_sellerJoin_firstNameInput" id="firstNameInput">
+									<input type="text" name="s_firstname" class="m_sellerJoin_firstNameInput" id="firstNameInput">
 									<div class="m_sellerJoin_firstNametitle" id="firstNametitle">성</div>
 								</label>
 								<div class="m_sellerJoin_nameMsg" id="firstNameMsg"></div>
@@ -109,7 +109,7 @@
 							
 							<div class="m_sellerJoin_regionFirstName" id="lastNameRegion">
 								<label>
-									<input type="text" name="lastName" class="m_sellerJoin_firstNameInput" id="lastNameInput">
+									<input type="text" name="s_lastname" class="m_sellerJoin_firstNameInput" id="lastNameInput">
 									<div class="m_sellerJoin_firstNametitle" id="lastNametitle">이름</div>
 								</label>
 								<div class="m_sellerJoin_nameMsg" id="lastNameMsg"></div>
@@ -119,7 +119,7 @@
 						<div class="m_sellerJoin_updatename_region_taxid">
 							<div class="m_sellerJoin_taxidRegion" id="taxidRegion">
 								<label>
-									<input type="text" name="taxid" class="m_sellerJoin_taxidInput" id="taxidInput" maxlength="12">
+									<input type="text" name="s_businessnum" class="m_sellerJoin_taxidInput" id="taxidInput" maxlength="12">
 									<div class="m_sellerJoin_taxidTitle" id="taxidTitle">사업자번호</div>
 								</label>
 								<div class="m_sellerJoin_taxidMsg" id="taxidMsg"></div>
@@ -129,7 +129,7 @@
 						<div class="m_sellerJoin_updatename_region_inbday">
 							<div class="m_sellerJoin_birthdayRegion" id="yyyyregion">
 								<label>
-									<input type="text" name="birthday" class="m_sellerJoin_birthdayInput" id="yyyyinput" maxlength="8">
+									<input type="text" name="s_birth" class="m_sellerJoin_birthdayInput" id="yyyyinput" maxlength="8">
 									<div class="m_sellerJoin_birthdayText" id="yyyytext">생년월일</div>
 									<div id="result" class="m_sellerJoin_birthdayResult">yyyy년mm월 dd일</div>
 								</label>
@@ -153,7 +153,7 @@
 					<div id="joinPage3" class="m_sellerJoin_page3">
 						<div class="m_sellerJoin_emailRegion" id="emailRegion">
 							<label>
-								<input type="email" name="email" class="m_sellerJoin_emailInput" id="emailInput">
+								<input type="email" name="s_email" class="m_sellerJoin_emailInput" id="emailInput">
 								<div class="m_sellerJoin_emailTitle" id="emailTitle">name@example.com</div>
 							</label>
 							<div class="m_sellerJoin_emailMsg" id="emailMsg"></div>
@@ -162,7 +162,7 @@
 						
 						<div class="m_sellerJoin_passwordRegion" id="newPwRegion">
 							<label>
-								<input type="password" name="pw" class="m_sellerJoin_passwordInput" id="newPwInput">
+								<input type="password" name="s_pw" class="m_sellerJoin_passwordInput" id="newPwInput">
 								<div class="m_sellerJoin_passwordTitle" id="passwordTitle">암호</div>
 							</label>
 							<div class="m_sellerJoin_passwordMsg" id="newPwMsg"></div>

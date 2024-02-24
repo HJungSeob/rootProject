@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.Setter;
+import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.SellerVO;
 
@@ -19,51 +20,69 @@ public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
 	SellerService sJoin, sLogin;
+	
+	@Setter(onMethod_ = { @Autowired })
+	GlobalService gDateUpdate;
 
 	///////////////////////////////////////////////////////////////
 
-	@GetMapping("/join.do")
-	public String join() {
-		return "seller/user/join";
+	@GetMapping("/sellerJoin.do")
+	public String sellerJoin() {
+		
+		return "seller/user/sellerJoin";
 	}
 
-	@PostMapping("/joinProcess.do")
-	public String joinProcess(SellerVO sellerVO) {
-		String viewPage = "seller/user/join";
+	@PostMapping("/sellerJoinProcess.do")
+	public String sellerJoinProcess(SellerVO sellerVO) {
+		String viewPage = "seller/user/sellerJoin";
 
 		if (sJoin.join(sellerVO) == 1) {
 			if (sJoin.infoState(sJoin.getS_idx(sellerVO.getS_businessnum())) == 1) {
 				viewPage = "redirect:/index.do";
 			}
 		}
-
+		
 		return viewPage;
 	}
 
-	@GetMapping("/login.do")
-	public String login() {
-		return "seller/user/login";
+	@GetMapping("/sellerLogin.do")
+	public String sellerLogin() {
+		
+		return "seller/user/sellerLogin";
 	}
 
-	@PostMapping("/loginProcess.do")
-	public String loginProcess(String s_businessnum, String s_pw, HttpServletRequest request) {
-		String viewPage = "seller/user/login";
+	@PostMapping("/sellerLoginProcess.do")
+	public String sellerLoginProcess(String s_businessnum, String s_pw, HttpServletRequest request) {
+		String viewPage = "seller/user/sellerLogin";
 
 		SellerVO sellerVO = sLogin.login(s_businessnum, s_pw);
+		
 		if (sellerVO != null) {
+			sellerVO.setS_lastlogindate(gDateUpdate.dateUpdate(sellerVO.getS_lastlogindate()));
+			sellerVO.setS_pwmodifydate(gDateUpdate.dateUpdate(sellerVO.getS_pwmodifydate()));
+			sellerVO.setS_modifydate(gDateUpdate.dateUpdate(sellerVO.getS_modifydate()));
+			sellerVO.setS_regdate(gDateUpdate.dateUpdate(sellerVO.getS_regdate()));
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("seller", sellerVO);
+			
 			viewPage = "redirect:/seller/dashBoard.do";
 		}
+		
 		return viewPage;
 	}
 	
-	@GetMapping("/logout.do")
-	public String logout(HttpServletRequest request) {
-		// 세션객체를 초기화하는 것으로 로그아웃 처리
+	@GetMapping("/sellerLogout.do")
+	public String sellerLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "redirect:/index.do";// 메인 페이지 재요청
+		
+		return "redirect:/index.do";
+	}
+	
+	@GetMapping("/sellerUpdate.do")
+	public String sellerUpdate() {
+		return "seller/user/sellerUpdate";
 	}
 
 	///////////////////////////////////////////////////////////////
@@ -106,20 +125,5 @@ public class SellerController {
 	@GetMapping("/viewEdit.do")
 	public String viewEdit() {
 		return "seller/service/viewEdit";
-	}
-	
-	@GetMapping("/sellerJoin.do")
-	public String sellerJoin() {
-		return "seller/user/sellerJoin";
-	}
-	
-	@GetMapping("/sellerLogin.do")
-	public String sellerLogin() {
-		return "seller/user/sellerLogin";
-	}
-	
-	@GetMapping("/sellerUpdateService.do")
-	public String sellerUpdateService() {
-		return "seller/user/sellerUpdateService";
 	}
 }

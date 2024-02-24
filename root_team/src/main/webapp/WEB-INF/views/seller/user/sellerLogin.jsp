@@ -63,12 +63,12 @@
 				<div class="m_sellerLogin_2subtitle">나의 ENT Root 계정 관리</div>
 				
 				<div class="m_sellerLogin_2loginre">
-					<form>
+					<form name="sellerLogin" method="post" action="sellerLoginProcess.do">
 						<div class="m_sellerLogin_buyerEmailRegion">
 							<div class="m_sellerLogin_emailRegion" id="emailRegion">
 								<label>
-									<input type="email" name="email" class="m_sellerLogin_emailInput" id="emailInput">
-									<div class="m_sellerLogin_emailTitle" id="emailTitle">이메일</div>
+									<input type="text" name="s_businessnum" class="m_sellerLogin_emailInput" id="emailInput">
+									<div class="m_sellerLogin_emailTitle" id="emailTitle">사업자번호</div>
 								</label>
 								<div class="arrow_small" id="emailArrowSmall"></div>
 							</div>
@@ -76,7 +76,7 @@
 						
 						<div class="m_sellerLogin_pwRegion" id="pwRegion">
 							<label>
-								<input type="password" name="pw" class="m_sellerLogin_pwInput" id="pwInput">
+								<input type="password" name="s_pw" class="m_sellerLogin_pwInput" id="pwInput">
 								<div class="m_sellerLogin_pwTitle" id="pwTitle">암호</div>
 							</label>
 							<label>
