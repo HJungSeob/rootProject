@@ -42,7 +42,7 @@ body{
 }
 
 .m_sellerLogin_main{
-    width: 100%;
+    width: 1200px;
     margin: 0 auto;
     display: block;
 }
@@ -60,6 +60,7 @@ body{
 }
 .m_sellerLogin_main_loginbtnregion{
     margin-top: 120px;
+    margin-bottom: 300px;
 }
 .m_sellerLogin_main_loginbtn{
     display: flex;
@@ -82,6 +83,8 @@ body{
 .m_sellerLogin_2page {
     display: none;
     text-align: center;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 .m_sellerLogin_2title {
@@ -104,6 +107,7 @@ body{
 
 .m_sellerLogin_2seletatag{
     margin-top: 80px;
+   	margin-bottom: 300px;
 }
 .m_sellerLogin_2entuser{
     margin-right: 40px;
