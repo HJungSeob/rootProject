@@ -152,4 +152,9 @@ public class SellerController {
 	public String viewEdit() {
 		return "seller/service/viewEdit";
 	}
+	
+	@GetMapping("/writetest.do")
+	public String writetest() {
+		return "seller/service/writetest";
+	}
 }

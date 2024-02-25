@@ -43,4 +43,61 @@
 			where b_idx = #{b_idx}
 	</update>
 	
+	<update id="updateBuyer" parameterType="buyerVO">
+		update tb_buyer set
+		<choose>
+			<when test="b_firstname != null and b_lastname != null">
+				b_firstname = #{b_firstname}, b_lastname = #{b_lastname}, b_modifydate = now()
+			</when>
+			<when test="b_birth != null">
+				b_birth = #{b_birth}, b_modifydate = now()
+			</when>
+			<when test="b_tel != null">
+				b_tel = #{b_tel}, b_modifydate = now()			
+			</when>
+			<when test="b_pw != null">
+				b_pw = #{b_pw}, b_modifydate = now(), b_pwmodifydate = now()		
+			</when>
+		</choose>
+		where b_idx = #{b_idx}
+	</update>
+	
+	<select id="getBuyer" parameterType="_int" resultType="buyerVO">
+		select * from tb_buyer where b_idx = #{b_idx}
+	</select>
+	
+	<select id="getAddress" parameterType="_int" resultType="addressVO">		
+		select * from tb_buyer_address
+			where b_idx = #{b_idx}
+			and ba_check = 'Y'
+			order by ba_check desc			
+	</select>
+	
+	<update id="changeDefaultAddress" parameterType="_int">
+		update tb_buyer_address set ba_check = 'N'
+			where ba_check = 'Y'
+			and b_idx = #{b_idx}
+	</update>
+	
+	<insert id="insertAddress" parameterType="addressVO">
+		insert into tb_buyer_address
+		<choose>
+			<when test="ba_firstname == null and ba_lastname == null and ba_address == null and ba_zipcode == null">
+				(b_idx, ba_contact)
+				values(#{b_idx}, #{ba_contact})
+			</when>	
+			<otherwise>
+				(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
+				values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, 'Y')
+			</otherwise>
+		</choose>
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
