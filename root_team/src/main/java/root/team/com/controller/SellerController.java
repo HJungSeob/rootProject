@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
@@ -21,7 +19,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin;
+	SellerService sJoin, sLogin, sUpdate;
 	
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
@@ -86,6 +84,32 @@ public class SellerController {
 	public String sellerUpdate() {
 		return "seller/user/sellerUpdate";
 	}
+	
+	@PostMapping("/sellerUpdateProcess.do")
+	public String sellerUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
+		
+		
+		String viewPage = "seller/user/sellerUpdate";
+
+		SellerVO newVO = sUpdate.update(sellerVO);
+
+		if (newVO != null) {
+			newVO.setS_lastlogindate(gDateUpdate.dateUpdate(newVO.getS_lastlogindate()));
+			newVO.setS_pwmodifydate(gDateUpdate.dateUpdate(newVO.getS_pwmodifydate()));
+			newVO.setS_modifydate(gDateUpdate.dateUpdate(newVO.getS_modifydate()));
+			newVO.setS_regdate(gDateUpdate.dateUpdate(newVO.getS_regdate()));
+			
+			HttpSession session = request.getSession();
+			session.removeAttribute("seller");
+			session.setAttribute("seller", newVO);
+
+			viewPage = "redirect:/seller/sellerUpdate.do";
+			
+		}
+		
+		return viewPage;
+	}
+
 
 	///////////////////////////////////////////////////////////////
 

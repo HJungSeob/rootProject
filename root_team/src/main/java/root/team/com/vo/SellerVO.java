@@ -26,4 +26,5 @@ public class SellerVO {
 	private String s_profile;
 	private String s_storename;
 	private String s_storeintro;
+	private String s_address;
 }
