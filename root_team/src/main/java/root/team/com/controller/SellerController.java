@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
@@ -125,5 +127,10 @@ public class SellerController {
 	@GetMapping("/viewEdit.do")
 	public String viewEdit() {
 		return "seller/service/viewEdit";
+	}
+	
+	@GetMapping("/writetest.do")
+	public String writetest() {
+		return "seller/service/writetest";
 	}
 }
