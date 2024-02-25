@@ -7,9 +7,9 @@
 
 	<!-- *Mapper.xml에서 사용할 별칭 정의 -->
 	<typeAliases>
-		<typeAlias alias="SellerVO" type="root.team.com.vo.SellerVO"/>
 		<typeAlias alias="BuyerVO" type="root.team.com.vo.BuyerVO"/>
 		<typeAlias alias="AddressVO" type="root.team.com.vo.AddressVO"/>
+		<typeAlias alias="SellerVO" type="root.team.com.vo.SellerVO"/>
 	</typeAliases>
 
 </configuration>

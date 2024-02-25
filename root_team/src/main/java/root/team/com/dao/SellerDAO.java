@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 @Repository
@@ -40,5 +41,19 @@ public class SellerDAO {
 
 	public void lastLoginDate(int s_idx) throws SQLException {
 		sqlSession.update(MAPPER + ".lastLoginDate", s_idx);
+	}
+
+	public SellerVO update(SellerVO vo) throws SQLException {
+		SellerVO newVO = null;
+		
+		if (sqlSession.update(MAPPER + ".update", vo) == 1) {
+			newVO = getSeller(vo.getS_idx());
+		}
+		
+		return newVO;
+	}
+
+	public SellerVO getSeller(int s_idx) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getSeller", s_idx);
 	}
 }

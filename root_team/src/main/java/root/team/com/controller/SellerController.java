@@ -19,7 +19,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin;
+	SellerService sJoin, sLogin, sUpdate;
 	
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
@@ -84,6 +84,32 @@ public class SellerController {
 	public String sellerUpdate() {
 		return "seller/user/sellerUpdate";
 	}
+	
+	@PostMapping("/sellerUpdateProcess.do")
+	public String sellerUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
+		
+		
+		String viewPage = "seller/user/sellerUpdate";
+
+		SellerVO newVO = sUpdate.update(sellerVO);
+
+		if (newVO != null) {
+			newVO.setS_lastlogindate(gDateUpdate.dateUpdate(newVO.getS_lastlogindate()));
+			newVO.setS_pwmodifydate(gDateUpdate.dateUpdate(newVO.getS_pwmodifydate()));
+			newVO.setS_modifydate(gDateUpdate.dateUpdate(newVO.getS_modifydate()));
+			newVO.setS_regdate(gDateUpdate.dateUpdate(newVO.getS_regdate()));
+			
+			HttpSession session = request.getSession();
+			session.removeAttribute("seller");
+			session.setAttribute("seller", newVO);
+
+			viewPage = "redirect:/seller/sellerUpdate.do";
+			
+		}
+		
+		return viewPage;
+	}
+
 
 	///////////////////////////////////////////////////////////////
 

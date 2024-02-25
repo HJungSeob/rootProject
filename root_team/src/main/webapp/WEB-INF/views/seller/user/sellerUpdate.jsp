@@ -66,7 +66,8 @@
 						</div>
 					</form>
 					
-					<form>
+					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
+						<input type="hidden" name="s_idx" value="${seller.s_idx}">
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">암호 수정</div>
 						<hr>
@@ -83,7 +84,7 @@
 							</div>
 							<div class="displayF">
 								<div class="allTitleText">새로운 암호</div>
-								<input type="password" class="inputBoxCss" id="newPwInput">
+								<input type="password" name="s_pw" class="inputBoxCss" id="newPwInput">
 								<div class="Msg" id="newPwMsg"></div>
 							</div>
 							<div class="displayF">
@@ -101,35 +102,35 @@
 						<hr>
 					</form>
 					
-					<form>
+					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
+						<input type="hidden" name="s_idx" value="${seller.s_idx}">
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">회원정보 수정</div>
 						<hr>
 						<div class="displayF">
 							<div class="allTitleText">성</div>
-							<input type="text" class="inputBoxCss" id="firstNameInput">
+							<input type="text" class="inputBoxCss" id="firstNameInput" name="s_firstname">
 							<div class="Msg" id="firstNameMsg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText">이름</div>
-							<input type="text" class="inputBoxCss" id="lastNameInput">
+							<input type="text" class="inputBoxCss" id="lastNameInput" name="s_lastname">
 							<div class="Msg" id="lastNameMsg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText">핸드폰</div>
-							<input type="tel" class="inputBoxCss" maxlength="13"
-								id="telInput">
+							<input type="tel" class="inputBoxCss" maxlength="13" id="telInput" name="s_tel">
 							<div class="Msg" id="telSmg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText" id="yyyytext">생년월일</div>
 							<label>
-								<input type="text" name="birthday" class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8">
+								<input type="text" name="birthday" class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8" name="s_birth">
 								<div id="result" class="m_sellerUpdateService_biresult">yyyy년 mm월 dd일</div>
 							</label>
 							<div class="Msg" id="resultmsg"></div>
 						</div>
-						<div class="displayF">
+						<!-- <div class="displayF">
 							<div class="allTitleText">주소</div>
 							<div class="Msg pointer" id="updateAddBtn">주소 찾기</div>
 							<div class="Msg disnone pointer" id="cancelAddBtn">취소 하기</div>
@@ -147,7 +148,7 @@
 								<div class="allTitleText">상세 주소</div>
 								<input type="text" class="inputBoxCss">
 							</div>
-						</div>
+						</div> -->
 						<hr>
 						<div class="m_sellerUpdateService_submitRegion">
 							<label>
