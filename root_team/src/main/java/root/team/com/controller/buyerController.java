@@ -83,6 +83,11 @@ public class buyerController {
 		return "buyer/user/buyerServiceInfo";
 	}
 
+	@GetMapping("/buyerUpdatePage.do")
+	public String buyerUpdatePage() {
+		return "buyer/user/buyerUpdatePage";
+	}
+	
 	@GetMapping("/buyerUpdatePage1.do")
 	public String buyerUpdatePage1() {
 		return "buyer/user/buyerUpdatePage1";

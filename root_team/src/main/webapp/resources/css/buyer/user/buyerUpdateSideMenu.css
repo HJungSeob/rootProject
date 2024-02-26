@@ -1,0 +1,108 @@
+/* #region 상단 타이틀 */
+.m_userinfo_header1 {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+}
+
+.arrow_small {
+    rotate: -90deg;
+    display: -webkit-inline-box;
+}
+
+.m_userinfo_header {
+    margin: 0 auto;
+    width: 1200px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.m_userinfo_header_acc {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.m_userinfo_logout {
+    text-decoration: none;
+    color: #0071e3;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.a12 {
+    width: 12px;
+    height: 10px;
+    margin-right: 20px;
+    background-size: 12px;
+    filter: invert(28%) sepia(26%) saturate(6131%) hue-rotate(195deg) brightness(102%) contrast(107%);
+}
+
+/* #endregion */
+
+.m_userinfo_mainregion {
+    display: flex;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+/* #region 사이드 메뉴 */
+.m_userinfo_sideregion {
+    width: 120px;
+    margin-left: 20px;
+    margin-right: 100px;
+    height: 500px;
+}
+
+.m_userinfo_proflie {
+    margin-top: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: #0071e3;
+    border-radius: 50%;
+}
+
+.m_userinfo_username {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.m_userinfo_useremail {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #858585;
+}
+
+.m_userinfo_side_region {
+    margin-top: 60px;
+}
+
+.m_userinfo_side {
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.m_userinfo_side {
+    color: #0071e3;
+}
+
+.m_userinfo_sidemanu {
+    font-size: 16px;
+    color: #111111;
+    transition: 0.4s;
+}
+
+.m_userinfo_sidemanu:hover {
+    color: #0071e3;
+}
+
+.select {
+    font-size: 16px;
+    color: #0071e3;
+}
+
+/* #endregion */
