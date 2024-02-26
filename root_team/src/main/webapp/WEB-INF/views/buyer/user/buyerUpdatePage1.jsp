@@ -57,6 +57,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="m_userinfo_main_content_region">
+					<div class="m_userinfo_content" id="genderBox">
+						<div class="m_userinfo_content_nametitle">성별</div>
+						<div class="m_userinfo_content_namesub">남성</div>
+					</div>
+					<div class="m_userinfo_content_temp" id="m_userinfo_contentday">
+					</div>
+				</div>
 			</div>
 			<!-- #endregion -->
 
@@ -124,6 +132,30 @@
 								class="m_userinfo_updatename_region_submit1" id="submit">
 							</label>
 						</div>
+					</div>
+				</form>
+			</div>
+			<div class="m_userinfo_genderRegion" id="genderRegion">
+				<form>
+					<div class="m_userinfo_genderTitle">성별</div>
+					<label>
+						<div class="m_userinfo_flex">
+							<div class="m_userinfo_selectGenderTitle">남자</div>
+							<input type="radio" name="gender" class="m_userinfo_selectGender">
+						</div>
+					</label> <label>
+						<div class="m_userinfo_flex">
+							<div class="m_userinfo_selectGenderTitle">여자</div>
+							<input type="radio" name="gender" class="m_userinfo_selectGender">
+						</div>
+					</label>
+					<div class="m_userinfo_updatename_region_submit hr2"
+						id="Gendersubmit">
+						<label>
+							<div class="m_userinfo_updatename_region_submited">수정</div> <input
+							type="submit" class="m_userinfo_updatename_region_submit1"
+							id="submit">
+						</label>
 					</div>
 				</form>
 			</div>

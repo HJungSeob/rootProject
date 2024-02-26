@@ -91,4 +91,13 @@ $(function () {
         $('#result').css("opacity", "1")
         updateYyyyStyle()
     });
+    
+    $('#genderBox').click(function(){
+            $('#main_region_buer').fadeIn(400)
+            $('#genderRegion').fadeIn(400)
+        })
+        $('#main_region_buer').click(function(){
+            $('#main_region_buer').fadeOut(400)
+            $('#genderRegion').fadeOut(400)
+        })
 })
