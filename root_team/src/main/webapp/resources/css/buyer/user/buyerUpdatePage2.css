@@ -26,7 +26,7 @@ body {
 
 .m_userinfosclo_header_acc {
     font-size: 20px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
     margin-left: 20px;
 }
 
@@ -71,7 +71,7 @@ body {
 
 .m_userinfosclo_username {
     font-size: 16px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
     margin-top: 20px;
 }
 
@@ -119,7 +119,7 @@ body {
 
 .m_userinfosclo_main_title {
     font-size: 24px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
     margin-top: 40px;
 }
 
@@ -152,7 +152,7 @@ body {
     font-size: 20px;
     padding-top: 30px;
     margin-left: 20px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
 }
 
 .m_userinfosclo_content_namesub {
@@ -205,7 +205,7 @@ body {
 
 .m_userinfosclo_updatename_region_name {
     font-size: 24px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
     text-align: center;
     margin-top: 60px;
     margin-bottom: 40px;
@@ -271,7 +271,7 @@ body {
 
 .m_userinfosclo_updatename_region_bdaytitle {
     font-size: 24px;
-    font-weight: bold;
+    font-family: 'NEXONLv1GothicBold';
     text-align: center;
     margin-top: 60px;
     margin-bottom: 20px;
