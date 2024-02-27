@@ -13,7 +13,15 @@ public class ItemDAO {
 	private final SqlSession sqlSession;
 
 	public int insert(ItemVO vo) {
-		return sqlSession.insert(MAPPER + ".insert", vo);
+		return sqlSession.insert(MAPPER + ".insertItem", vo);
+	}
+
+	public int insertItemOption(ItemVO vo) {
+		return sqlSession.insert(MAPPER + ".insertItemOption", vo);	
+	}
+
+	public int insertItemImage(ItemVO vo) {
+		return sqlSession.insert(MAPPER + ".insertItemImage", vo);
 	}
 	
 }
