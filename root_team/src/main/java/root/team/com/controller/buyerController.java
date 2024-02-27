@@ -22,7 +22,7 @@ import root.team.com.vo.BuyerVO;
 public class buyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact;
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
 
@@ -88,7 +88,7 @@ public class buyerController {
 	public String buyerUpdatePage() {
 		return "buyer/user/buyerUpdatePage";
 	}
-	
+
 	@GetMapping("/buyerUpdatePage1.do")
 	public String buyerUpdatePage1() {
 		return "buyer/user/buyerUpdatePage1";
@@ -136,14 +136,26 @@ public class buyerController {
 
 	@PostMapping("/buyerInsertAddressProcess.do")
 	public String buyerInsertAddressProcess(AddressVO addressVO, RedirectAttributes ra) {
-		
 		String viewPage = "buyer/user/buyerServiceInfo";
 		
 		if (bInsertAddress.insertAddress(addressVO) == 1) {
 			ra.addAttribute("b_idx", addressVO.getB_idx());
 			viewPage = "redirect:/buyer/buyerServiceInfo.do";
 		}
+		return viewPage;
+	}
 
+	@PostMapping("/buyerInsertContactProcess.do")
+	public String buyerInsertContactProcess(AddressVO addressVO, RedirectAttributes ra, Model model) {
+		String viewPage = "buyer/user/buyerServiceInfo";
+		
+		AddressVO newVO = bInsertContact.insertContact(addressVO);
+
+		model.addAttribute("address", newVO);
+		
+		ra.addAttribute("b_idx", addressVO.getB_idx());
+		viewPage = "redirect:/buyer/buyerServiceInfo.do";
+		
 		return viewPage;
 	}
 }

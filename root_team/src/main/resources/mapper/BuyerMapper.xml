@@ -81,17 +81,35 @@
 	
 	<insert id="insertAddress" parameterType="addressVO">
 		insert into tb_buyer_address
+			(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
+			values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, #{ba_check})
+	</insert>
+	
+	<update id="insertContact" parameterType="addressVO">
+		update tb_buyer_address set ba_contact = #{ba_contact}
+			where ba_check = 'Y'
+			and b_idx = #{b_idx}
+	</update>
+
+	 
+	<!-- <insert id="insertAddress" parameterType="addressVO">
+		insert into tb_buyer_address
 		<choose>
-			<when test="ba_firstname == null and ba_lastname == null and ba_address == null and ba_zipcode == null">
-				(b_idx, ba_contact)
-				values(#{b_idx}, #{ba_contact})
+			<when test="ba_check = 'Y'">
+				update tb_buyer_address
+					set ba_contact = #{ba_contact}
+					where ba_check = 'Y'
+					and b_idx = #{b_idx}
 			</when>	
 			<otherwise>
-				(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
-				values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, #{ba_check})
+				insert into tb_buyer_address
+					(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
+					values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, #{ba_check})
 			</otherwise>
 		</choose>
-	</insert>
+	</insert> -->
+	
+	
 	
 	
 	

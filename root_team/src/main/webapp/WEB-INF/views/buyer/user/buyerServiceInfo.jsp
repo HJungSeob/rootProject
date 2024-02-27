@@ -216,7 +216,9 @@
             </div>
         </form>
 
-        <form method="post" action="buyerInsertAddressProcess.do">
+        <form method="post" action="buyerInsertContactProcess.do">
+        	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
+        	<input type="hidden" name="ba_idx" value="${address.ba_idx}">
             <div class="m_buyerServiceInfo_telMainRegion" id="telMainRegion">
                 <div class="m_buyerServiceInfo_telTitleRegion">연락처 정보를 수정하세요.</div>
                 <div class="m_buyerServiceInfo_telSubTitle">청구 연락처는 문자 메시지로도 배송 관련 정보를 받아보려면 아래에 휴대폰 번호를 추가하세요.</div>
