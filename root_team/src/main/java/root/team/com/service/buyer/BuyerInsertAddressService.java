@@ -17,9 +17,9 @@ public class BuyerInsertAddressService implements BuyerService {
 		int result = 0;
 
 		try {
-			if(dao.changeDefaultAddress(addressVO.getB_idx()) == 1){
+			dao.changeDefaultAddress(addressVO.getB_idx());
 			result = dao.insertAddress(addressVO);
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

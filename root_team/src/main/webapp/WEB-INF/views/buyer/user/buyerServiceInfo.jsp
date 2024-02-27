@@ -162,11 +162,12 @@
         <form method="post" action="buyerInsertAddressProcess.do">
         	<input type="hidden" name="b_idx" value="${buyer.b_idx}">
         	<input type="hidden" name="ba_contact" value="${buyer.b_tel}">
+        	<input type="hidden" name="ba_check" value="Y">
             <div class="m_buyerServiceInfo_delRegion" id="delRegion">
                 <div class="m_buyerServiceInfo_delTitle">배송 주소를 편집하세요.</div>
                 <div class="m_buyerServiceInfo_regionFirstName" id="firstNameRegion">
                     <label>
-                        <input type="text" name="ba_firstName" class="m_buyerServiceInfo_firstNameInput"
+                        <input type="text" name="ba_firstname" class="m_buyerServiceInfo_firstNameInput"
                             id="firstNameInput">
                         <div class="m_buyerServiceInfo_firstNametitle" id="firstNametitle">성</div>
                     </label>
@@ -174,7 +175,7 @@
                 </div>
                 <div class="m_buyerServiceInfo_regionLastName" id="LastNameRegion">
                     <label>
-                        <input type="text" name="ba_lastName" class="m_buyerServiceInfo_lastNameInput" id="lastNameInput">
+                        <input type="text" name="ba_lastname" class="m_buyerServiceInfo_lastNameInput" id="lastNameInput">
                         <div class="m_buyerServiceInfo_lastNametitle" id="lastNametitle">이름</div>
                     </label>
                     <div class="m_buyerServiceInfo_lastnameMsg" id="lastNameMsg"></div>
