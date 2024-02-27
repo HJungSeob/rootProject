@@ -63,7 +63,11 @@
 	</update>
 	
 	<select id="getBuyer" parameterType="_int" resultType="buyerVO">
-		select * from tb_buyer where b_idx = #{b_idx}
+		select * 
+			from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
+			where b.b_idx = bs.b_idx
+			and b.b_idx = bi.b_idx
+			and b.b_idx = #{b_idx}
 	</select>
 	
 	<select id="getAddress" parameterType="_int" resultType="addressVO">		
@@ -91,24 +95,18 @@
 			and b_idx = #{b_idx}
 	</update>
 
-	 
-	<!-- <insert id="insertAddress" parameterType="addressVO">
-		insert into tb_buyer_address
+	<update id="infoUpdateBuyer" parameterType="buyerVO">
+		update tb_buyer_info set
 		<choose>
-			<when test="ba_check = 'Y'">
-				update tb_buyer_address
-					set ba_contact = #{ba_contact}
-					where ba_check = 'Y'
-					and b_idx = #{b_idx}
-			</when>	
-			<otherwise>
-				insert into tb_buyer_address
-					(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
-					values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, #{ba_check})
-			</otherwise>
+			<when test="b_nickname != null">
+				b_nickname = #{b_nickname}
+			</when>
+			<when test="b_gender != null">
+				b_gender = #{b_gender}
+			</when>
 		</choose>
-	</insert> -->
-	
+		where b_idx = #{b_idx}
+	</update>
 	
 	
 	

@@ -38,7 +38,7 @@
 					</div>
 					<div class="m_buyerUpdatePage4_content" id="nickNamebox">
 						<div class="m_buyerUpdatePage4_content_nametitle">닉네임</div>
-						<div class="m_buyerUpdatePage4_content_namesub">닉네임</div>
+						<div class="m_buyerUpdatePage4_content_namesub">${buyer.b_nickname}</div>
 					</div>
 				</div>
 			</div>
@@ -81,13 +81,13 @@
 					</div>
 				</div>
 			</form>
-			<form>
+			<form name="buyerUpdate" method="post" action="buyerInfoUpdateProcess.do">
+			<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 				<div class="m_buyerUpdatePage4_nickNameRegion" id="nickNameRegion">
 					<div class="m_buyerUpdatePage4_nickNameUpTitle">닉네임</div>
 					<div class="m_buyerUpdatePage4_nickNameInputRegion"
 						id="nickNameInputRegion">
-						<label> <input type="text"
-							class="m_buyerUpdatePage4_nickNameInput" id="nickNameInput">
+						<label> <input type="text" name="b_nickname" class="m_buyerUpdatePage4_nickNameInput" id="nickNameInput">
 							<div class="m_buyerUpdatePage4_nickNameTitle" id="nickNameTitle">닉네임</div>
 							<div class="m_buyerUpdatePage4_nickNameMsg" id="nickNameMsg"></div>
 						</label>

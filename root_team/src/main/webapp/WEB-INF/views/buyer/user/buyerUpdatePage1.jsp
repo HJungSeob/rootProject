@@ -60,7 +60,19 @@
 				<div class="m_userinfo_main_content_region">
 					<div class="m_userinfo_content" id="genderBox">
 						<div class="m_userinfo_content_nametitle">성별</div>
-						<div class="m_userinfo_content_namesub">남성</div>
+						<div class="m_userinfo_content_namesub">
+						<c:choose>
+							<c:when test="${buyer.b_gender eq 'F'}">
+								여자
+							</c:when>
+							<c:when test="${buyer.b_gender eq 'M'}">
+								남자
+							</c:when>
+							<c:otherwise>
+								미선택
+							</c:otherwise>			
+						</c:choose>					
+						</div>
 					</div>
 					<div class="m_userinfo_content_temp" id="m_userinfo_contentday">
 					</div>
@@ -109,8 +121,7 @@
 				<div class="m_userinfo_updatename_region_bdaytitle">생년월일</div>
 				<div class="m_userinfo_updatename_region_bdaysub">생년월일은 연령대에
 					적합한 서비스를 결정하는 데 사용됩니다.</div>
-				<form name="buyerUpdate" method="post"
-					action="buyerUpdateProcess.do">
+				<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
 					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 					<div class="m_userinfo_updatename_region_inbday">
 						<div class="m_userinfo_updatename_region_inyyyy" id="yyyyregion">
@@ -136,17 +147,18 @@
 				</form>
 			</div>
 			<div class="m_userinfo_genderRegion" id="genderRegion">
-				<form>
+				<form name="buyerUpdate" method="post" action="buyerInfoUpdateProcess.do">
+				<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 					<div class="m_userinfo_genderTitle">성별</div>
 					<label>
 						<div class="m_userinfo_flex">
 							<div class="m_userinfo_selectGenderTitle">남자</div>
-							<input type="radio" name="gender" class="m_userinfo_selectGender">
+							<input type="radio" name="b_gender" value="M" class="m_userinfo_selectGender">
 						</div>
 					</label> <label>
 						<div class="m_userinfo_flex">
 							<div class="m_userinfo_selectGenderTitle">여자</div>
-							<input type="radio" name="gender" class="m_userinfo_selectGender">
+							<input type="radio" name="b_gender" value="F" class="m_userinfo_selectGender">
 						</div>
 					</label>
 					<div class="m_userinfo_updatename_region_submit hr2"

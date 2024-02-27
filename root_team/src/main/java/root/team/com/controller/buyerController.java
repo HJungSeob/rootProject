@@ -22,7 +22,8 @@ import root.team.com.vo.BuyerVO;
 public class buyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate;
+
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
 
@@ -144,7 +145,7 @@ public class buyerController {
 		}
 		return viewPage;
 	}
-
+	
 	@PostMapping("/buyerInsertContactProcess.do")
 	public String buyerInsertContactProcess(AddressVO addressVO, RedirectAttributes ra, Model model) {
 		String viewPage = "buyer/user/buyerServiceInfo";
@@ -156,6 +157,37 @@ public class buyerController {
 		ra.addAttribute("b_idx", addressVO.getB_idx());
 		viewPage = "redirect:/buyer/buyerServiceInfo.do";
 		
+		return viewPage;
+	}
+	
+	@PostMapping("/buyerInfoUpdateProcess.do")
+	public String buyerInfoUpdateProcess(BuyerVO buyerVO, HttpServletRequest request) {
+		String viewPage = null;
+		
+		if (buyerVO.getB_nickname() != null) {
+			viewPage = "buyer/user/buyerUpdatePage";
+		} else if (buyerVO.getB_gender() != null) {
+			viewPage = "buyer/user/buyerUpdatePage1";
+		}
+
+		BuyerVO newVO = bInfoUpdate.update(buyerVO);
+
+		if (newVO != null) {
+			newVO.setB_lastlogindate(gDateUpdate.dateUpdate(newVO.getB_lastlogindate()));
+			newVO.setB_pwmodifydate(gDateUpdate.dateUpdate(newVO.getB_pwmodifydate()));
+			newVO.setB_modifydate(gDateUpdate.dateUpdate(newVO.getB_modifydate()));
+			newVO.setB_regdate(gDateUpdate.dateUpdate(newVO.getB_regdate()));
+			
+			HttpSession session = request.getSession();
+			session.removeAttribute("buyer");
+			session.setAttribute("buyer", newVO);
+
+			if (buyerVO.getB_nickname() != null) {
+				viewPage = "redirect:/buyer/buyerUpdatePage.do";
+			} else if (buyerVO.getB_gender() != null) {
+				viewPage = "redirect:/buyer/buyerUpdatePage1.do";
+			}
+		}
 		return viewPage;
 	}
 }
