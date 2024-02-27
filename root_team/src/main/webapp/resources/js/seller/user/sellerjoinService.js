@@ -194,4 +194,98 @@ $(function(){
         $('#ckeckPwRegion').css("border","1px solid #0071E3")
         $('#ckeckPwRegion').css("boxShadow","0px 0px 4px 0px #0071e3")
     });
+    
+     $('#zonecodeInput').blur(function () {
+        $('#zonecodeRegion').css("border", "1px solid #858585")
+        $('#zonecodeRegion').css("boxShadow", "none")
+        $('#zonecodetitle').css("bottom", "28px")
+        $('#zonecodetitle').css("fontSize", "20px")
+        $('#addressRegion').css("border", "1px solid #858585")
+        $('#addressRegion').css("boxShadow", "none")
+        $('#addresstitle').css("bottom", "28px")
+        $('#addresstitle').css("fontSize", "20px")
+        updatezonecodeStyle()
+        updateaddressStyle()
+    });
+
+    let zonecodetitle = document.getElementById('zonecodetitle')
+    let zonecodeInput = document.getElementById('zonecodeInput')
+    $('#zonecodeInput').on('propertychange change keyup paste input', updatezonecodeStyle);
+
+    function updatezonecodeStyle() {
+        if (zonecodeInput.value.trim() !== '') {
+            zonecodetitle.style.bottom = '50px';
+            zonecodetitle.style.fontSize = '16px';
+        } else {
+            zonecodetitle.style.bottom = '28px';
+            zonecodetitle.style.fontSize = '20px';
+        }
+    }
+    $('#zonecodeInput').focus(function () {
+        $('#zonecodeRegion').css("border", "1px solid #0071E3")
+        $('#zonecodeRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
+        $('#zonecodetitle').css("bottom", "50px")
+        $('#zonecodetitle').css("fontSize", "16px")
+        $('#addresstitle').css("bottom", "50px")
+        $('#addresstitle').css("fontSize", "16px")
+    });
+
+    $('#addressInput').blur(function () {
+        $('#zonecodeRegion').css("border", "1px solid #858585")
+        $('#zonecodeRegion').css("boxShadow", "none")
+        $('#zonecodetitle').css("bottom", "28px")
+        $('#zonecodetitle').css("fontSize", "20px")
+        $('#addressRegion').css("border", "1px solid #858585")
+        $('#addressRegion').css("boxShadow", "none")
+        $('#addresstitle').css("bottom", "28px")
+        $('#addresstitle').css("fontSize", "20px")
+        updatezonecodeStyle()
+        updateaddressStyle()
+    });
+
+    let addresstitle = document.getElementById('addresstitle')
+    let addressInput = document.getElementById('addressInput')
+    $('#addressInput').on('propertychange change keyup paste input', updateaddressStyle);
+
+    function updateaddressStyle() {
+        if (addressInput.value.trim() !== '') {
+            addresstitle.style.bottom = '50px';
+            addresstitle.style.fontSize = '16px';
+        } else {
+            addresstitle.style.bottom = '28px';
+            addresstitle.style.fontSize = '20px';
+        }
+    }
+    $('#addressInput').focus(function () {
+        $('#addressRegion').css("border", "1px solid #0071E3")
+        $('#addressRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
+        $('#zonecodetitle').css("bottom", "50px")
+        $('#zonecodetitle').css("fontSize", "16px")
+        $('#addresstitle').css("bottom", "50px")
+        $('#addresstitle').css("fontSize", "16px")
+    });
+
+    $('#addAddressInput').blur(function () {
+        $('#addAddressRegion').css("border", "1px solid #858585")
+        $('#addAddressRegion').css("boxShadow", "none")
+        $('#addAddresstitle').css("bottom", "28px")
+        $('#addAddresstitle').css("fontSize", "20px")
+        updateaviewddressStyle()
+    });
+
+    let addAddresstitle = document.getElementById('addAddresstitle')
+    let addAddressInput = document.getElementById('addAddressInput')
+
+    function updateaviewddressStyle() {
+        if (addAddressInput.value.trim() !== '') {
+            addAddresstitle.style.bottom = '50px';
+            addAddresstitle.style.fontSize = '16px';
+        }
+    }
+    $('#addAddressInput').focus(function () {
+        $('#addAddressRegion').css("border", "1px solid #0071E3")
+        $('#addAddressRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
+        $('#addAddresstitle').css("bottom", "50px")
+        $('#addAddresstitle').css("fontSize", "16px")
+    });
 });
