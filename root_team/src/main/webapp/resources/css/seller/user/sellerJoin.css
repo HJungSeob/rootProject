@@ -162,6 +162,10 @@
         .m_sellerJoin_page3 {
             display: none;
         }
+        
+        .m_sellerJoin_page4 {
+            display: none;
+        }
 
         /* #endregion */
 
@@ -418,6 +422,125 @@
         }
 
         .m_sellerJoin_checkPasswordTitle {
+            position: absolute;
+            left: 20px;
+            bottom: 28px;
+            font-size: 20px;
+            color: #858585;
+            transition: 0.4s;
+        }
+        /* #endregion */
+        
+                 /* #region 페이지 4 */
+        .m_sellerJoin_zonecodeRegion {
+            width: 700px;
+            height: 80px;
+            border: 1px solid #858585;
+            border-radius: 10px;
+            position: relative;
+            margin: 0 auto;
+            transition: 0.4s;
+            margin-top: 100px;
+        }
+
+        .m_sellerJoin_zonecodeInput {
+            width: 660px;
+            height: 60px;
+            margin-top: 20px;
+            outline: none;
+            font-size: 20px;
+            border: none;
+            background-color: #f9f9f9;
+        }
+
+        .m_sellerJoin_zonecodeMsg {
+            font-size: 10px;
+            margin-left: 20px;
+            color: #F74848;
+            position: relative;
+            margin-top: 6px;
+            text-align: left;
+        }
+
+        .m_sellerJoin_zonecodeTitle {
+            position: absolute;
+            left: 20px;
+            bottom: 28px;
+            font-size: 20px;
+            color: #858585;
+            transition: 0.4s;
+        }
+
+        .m_sellerJoin_addressRegion {
+            width: 700px;
+            height: 80px;
+            border: 1px solid #858585;
+            border-radius: 10px;
+            position: relative;
+            margin: 0 auto;
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .m_sellerJoin_addressInput {
+            width: 660px;
+            height: 60px;
+            margin-top: 20px;
+            outline: none;
+            font-size: 20px;
+            border: none;
+            background-color: #f9f9f9;
+        }
+
+        .m_sellerJoin_addressMsg {
+            font-size: 10px;
+            margin-left: 20px;
+            color: #F74848;
+            position: relative;
+            margin-top: 6px;
+            text-align: left;
+        }
+
+        .m_sellerJoin_addressTitle {
+            position: absolute;
+            left: 20px;
+            bottom: 28px;
+            font-size: 20px;
+            color: #858585;
+            transition: 0.4s;
+        }
+
+        .m_sellerJoin_addAddressRegion {
+            width: 700px;
+            height: 80px;
+            border: 1px solid #858585;
+            border-radius: 10px;
+            position: relative;
+            margin: 0 auto;
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .m_sellerJoin_addAddressInput {
+            width: 660px;
+            height: 60px;
+            margin-top: 20px;
+            outline: none;
+            font-size: 20px;
+            border: none;
+            background-color: #f9f9f9;
+        }
+
+        .m_sellerJoin_addAddressMsg {
+            font-size: 10px;
+            margin-left: 20px;
+            color: #F74848;
+            position: relative;
+            margin-top: 6px;
+            text-align: left;
+        }
+
+        .m_sellerJoin_addAddressTitle {
             position: absolute;
             left: 20px;
             bottom: 28px;
