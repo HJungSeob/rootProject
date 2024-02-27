@@ -12,10 +12,14 @@ public class ItemInsertService implements ItemService {
 	private ItemDAO dao;
 
 	public int insert(ItemVO vo) {
+
 		int result = 0;
-
-		result = dao.insert(vo);
-
+		
+		if (dao.insert(vo) == 1) {		
+			if (dao.insertItemOption(vo) == 1 && dao.insertItemImage(vo) == 1) {
+				result = 1;
+			}
+		}
 		return result;
 	}
 }

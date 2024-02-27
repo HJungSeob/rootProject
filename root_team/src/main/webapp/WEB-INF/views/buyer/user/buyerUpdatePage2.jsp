@@ -40,7 +40,6 @@
 		</header>
 		<section>
 			<%@ include file="buyerUpdateSideMenu.jsp"%>
-
 			<!-- #region 메인 컨텐츠 메뉴 -->
 			<div class="m_userinfosclo_mainPage">
 				<div class="m_userinfosclo_main_title">로그인 및 보안</div>

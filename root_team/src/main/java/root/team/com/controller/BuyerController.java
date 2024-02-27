@@ -19,7 +19,7 @@ import root.team.com.vo.BuyerVO;
 
 @Controller
 @RequestMapping("/buyer")
-public class buyerController {
+public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
 	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate;

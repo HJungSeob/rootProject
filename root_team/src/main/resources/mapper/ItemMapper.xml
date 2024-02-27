@@ -4,12 +4,23 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="root.team.com.ItemMapper">
-
-	<insert id="insert" parameterType="itemVO">
-	
-		insert into tb_item (i_name, i_explain) 
-				     values(#{i_name},#{i_explain})
-							   	
-	</insert>
+    
+	<insert id="insertItem" parameterType="itemVO">    
+        INSERT INTO tb_item (c_idx, i_name, i_price, i_explain, i_count)
+        VALUES (#{c_idx}, #{i_name}, #{i_price}, #{i_explain}, #{i_count})
+        <selectKey keyProperty="i_idx" order="AFTER" resultType="int">
+        SELECT LAST_INSERT_ID()
+	    </selectKey>
+    </insert>    
+	    
+    <insert id="insertItemOption" parameterType="itemVO">
+        INSERT INTO tb_item_option (i_idx, i_option0, i_option1, i_option2, i_option3, i_option4)
+        VALUES (#{i_idx}, #{i_option0}, #{i_option1}, #{i_option2}, #{i_option3}, #{i_option4})
+    </insert>
+	    
+    <insert id="insertItemImage" parameterType="itemVO">
+        INSERT INTO tb_item_img (i_idx, i_saveimg0, i_saveimg1, i_saveimg2, i_saveimg3, i_saveimg4)
+        VALUES (#{i_idx}, #{i_saveimg0}, #{i_saveimg1}, #{i_saveimg2}, #{i_saveimg3}, #{i_saveimg4})
+    </insert>
 	
 </mapper>

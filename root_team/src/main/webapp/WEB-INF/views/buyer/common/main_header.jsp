@@ -66,7 +66,7 @@
                             <div class="global_nav_categories">
                                 <span>디지털/가전 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/seller/writetest.do">휴대폰</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/write.do">휴대폰</a></li>
                                     <li><a href="">영상가전</a></li>
                                     <li><a href="">PC/게임</a></li>
                                     <li><a href="">음향가전</a></li>
