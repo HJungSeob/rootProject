@@ -180,7 +180,7 @@
 					<!-- #region 페이지4 -->
 					<div id="joinPage4" class="m_sellerJoin_page4">
 						<div class="m_sellerJoin_emailRegion" id="emailRegion">
-							<label> <input type="email" name="email"
+							<label> <input type="email" name="s_email"
 								class="m_sellerJoin_emailInput" id="emailInput">
 								<div class="m_sellerJoin_emailTitle" id="emailTitle">name@example.com</div>
 							</label>
@@ -188,7 +188,7 @@
 							<div id="active"></div>
 						</div>
 						<div class="m_sellerJoin_passwordRegion" id="newPwRegion">
-							<label> <input type="password" name="pw"
+							<label> <input type="password" name="s_pw"
 								class="m_sellerJoin_passwordInput" id="newPwInput">
 								<div class="m_sellerJoin_passwordTitle" id="passwordTitle">암호</div>
 							</label>
@@ -218,21 +218,21 @@
 					<!-- #region 페이지3 -->
 					<div id="joinPage3" class="m_sellerJoin_page3">
 						<div class="m_sellerJoin_zonecodeRegion" id="zonecodeRegion">
-							<label> <input type="number" name="zonecode"
+							<label> <input type="number" name="s_zipcode"
 								class="m_sellerJoin_zonecodeInput" id="zonecodeInput">
 								<div class="m_sellerJoin_zonecodeTitle" id="zonecodetitle">우편번호</div>
 							</label>
 							<div class="m_sellerJoin_zonecodeMsg" id="zonecodeMsg"></div>
 						</div>
 						<div class="m_sellerJoin_addressRegion" id="addressRegion">
-							<label> <input type="text" name="address"
+							<label> <input type="text" name="s_address"
 								class="m_sellerJoin_addressInput" id="addressInput">
 								<div class="m_sellerJoin_addressTitle" id="addresstitle">주소</div>
 							</label>
 							<div class="m_sellerJoin_addressMsg" id="addressMsg"></div>
 						</div>
 						<div class="m_sellerJoin_addAddressRegion" id="addAddressRegion">
-							<label> <input type="text" name="addAddress"
+							<label> <input type="text" name="s_restaddress"
 								class="m_sellerJoin_addAddressInput" id="addAddressInput">
 								<div class="m_sellerJoin_addAddressTitle" id="addAddresstitle">상세
 									주소</div>

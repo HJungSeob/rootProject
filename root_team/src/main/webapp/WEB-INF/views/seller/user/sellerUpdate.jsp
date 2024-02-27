@@ -130,7 +130,7 @@
 							</label>
 							<div class="Msg" id="resultmsg"></div>
 						</div>
-						<!-- <div class="displayF">
+						<div class="displayF">
 							<div class="allTitleText">주소</div>
 							<div class="Msg pointer" id="updateAddBtn">주소 찾기</div>
 							<div class="Msg disnone pointer" id="cancelAddBtn">취소 하기</div>
@@ -138,22 +138,22 @@
 						<div class="disnone" id="updateAddPage">
 							<div class="displayF">
 								<div class="allTitleText">우편번호</div>
-								<input type="text" class="inputBoxCss" id="zonecodeInput">
+								<input type="text" name="s_zipcode" class="inputBoxCss" id="zonecodeInput">
 							</div>
 							<div class="displayF">
 								<div class="allTitleText">주소</div>
-								<input type="text" class="inputBoxCss" id="addressInput">
+								<input type="text" name="s_address" class="inputBoxCss" id="addressInput">
 							</div>
 							<div class="displayF">
 								<div class="allTitleText">상세 주소</div>
-								<input type="text" class="inputBoxCss">
+								<input type="text" name="s_restaddress" class="inputBoxCss">
 							</div>
-						</div> -->
+						</div>
 						<hr>
 						<div class="m_sellerUpdateService_submitRegion">
 							<label>
 								<div class="m_sellerUpdateService_submitTitle">수정</div>
-								<input type="submit" class="upSubmit" id="upSubmit" disabled="disabled">
+								<input type="submit" class="upSubmit" id="upSubmit">
 							</label>
 						</div>
 					</form>
