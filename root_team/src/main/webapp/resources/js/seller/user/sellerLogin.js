@@ -1,5 +1,5 @@
 $(function () {
-    $('#emailInput').blur(function () {
+    $('#taxidInput').blur(function () {
         $('#emailRegion').css("border", "1px solid #858585")
         $('#emailRegion').css("boxShadow", "none")
         $('#emailTitle').css("bottom", "20px")
@@ -10,12 +10,12 @@ $(function () {
             )
         updateIdStyle()
     });
-    let emailInput = document.getElementById('emailInput')
+    let taxidInput = document.getElementById('taxidInput')
     let emailTitle = document.getElementById('emailTitle')
     let emailArrowSmall = document.getElementById('emailArrowSmall')
 
     function updateIdStyle() {
-        if (emailInput.value.trim() !== '') {
+        if (taxidInput.value.trim() !== '') {
             emailTitle.style.bottom = '34px';
             emailTitle.style.fontSize = '10px';
             emailArrowSmall.style.marginTop = '28px';
@@ -24,7 +24,7 @@ $(function () {
         }
     }
 
-    $('#emailInput').focus(function () {
+    $('#taxidInput').focus(function () {
         $('#emailRegion').css("border", "1px solid #0071E3'")
         $('#emailRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
         $('#emailTitle').css("bottom", "34px")
@@ -32,7 +32,7 @@ $(function () {
         $('#emailArrowSmall').css("margin-top", "28px")
     });
 
-    $('#emailInput').on('input', function () {
+    $('#taxidInput').on('input', function () {
         if ($(this).val().trim() !== '') {
             $('#emailArrowSmall').css("filter",
                 "invert(28%) sepia(98%) saturate(1518%) hue-rotate(194deg) brightness(94%) contrast(106%)"

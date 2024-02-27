@@ -14,6 +14,9 @@ public class SellerVO {
 	private String s_email;
 	private String s_tel;
 	private String s_birth;
+	private String s_zipcode;
+	private String s_address;
+	private String s_restaddress;
 	private Date s_regdate;
 	private Date s_lastlogindate;
 	private Date s_modifydate;
@@ -26,5 +29,5 @@ public class SellerVO {
 	private String s_profile;
 	private String s_storename;
 	private String s_storeintro;
-	private String s_address;
+	private String s_memo;
 }

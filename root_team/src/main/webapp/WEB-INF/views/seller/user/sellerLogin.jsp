@@ -17,6 +17,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/seller/user/pagetrg.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/seller/user/sellerLogin.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/seller/user/sellerLoginMinor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/seller/user/taxidAutoHyphen.js"></script>
 </head>
 
 <body>
@@ -67,7 +68,7 @@
 						<div class="m_sellerLogin_buyerEmailRegion">
 							<div class="m_sellerLogin_emailRegion" id="emailRegion">
 								<label>
-									<input type="text" name="s_businessnum" class="m_sellerLogin_emailInput" id="emailInput">
+									<input type="text" name="s_businessnum" class="m_sellerLogin_emailInput" id="taxidInput" maxlength="12">
 									<div class="m_sellerLogin_emailTitle" id="emailTitle">사업자번호</div>
 								</label>
 								<div class="arrow_small" id="emailArrowSmall"></div>
