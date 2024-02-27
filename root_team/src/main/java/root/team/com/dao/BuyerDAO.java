@@ -46,27 +46,33 @@ public class BuyerDAO {
 
 	public BuyerVO updateBuyer(BuyerVO vo) throws SQLException {
 		BuyerVO newVO = null;
-		if (sqlSession.update(MAPPER+".updateBuyer", vo) == 1) {// 회원정보 업데이트 성공
+		if (sqlSession.update(MAPPER + ".updateBuyer", vo) == 1) {// 회원정보 업데이트 성공
 			newVO = getBuyer(vo.getB_idx());
 		}
 		return newVO;
 	}
-	
+
 	public BuyerVO getBuyer(int b_idx) throws SQLException {
-		return sqlSession.selectOne(MAPPER+".getBuyer", b_idx);
+		return sqlSession.selectOne(MAPPER + ".getBuyer", b_idx);
 	}
 
 	public AddressVO getAddress(int b_idx) {
 		return sqlSession.selectOne(MAPPER + ".getAddress", b_idx);
 	}
-	
+
 	public int changeDefaultAddress(int b_idx) {
 		return sqlSession.update(MAPPER + ".changeDefaultAddress", b_idx);
 	}
-	
+
 	public int insertAddress(AddressVO vo) throws SQLException {
 		return sqlSession.insert(MAPPER + ".insertAddress", vo);
 	}
 
-	
+	public AddressVO insertContact(AddressVO vo) throws SQLException {
+		AddressVO newVO = null;
+		if (sqlSession.update(MAPPER + ".insertContact", vo) == 1) {
+			newVO = getAddress(vo.getB_idx());
+		}
+		return newVO;
+	}
 }

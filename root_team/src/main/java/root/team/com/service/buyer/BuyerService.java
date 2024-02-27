@@ -28,5 +28,9 @@ public interface BuyerService {
 	default int insertAddress(AddressVO addressVO) {
 		return 0;
 	}
+	
+	default AddressVO insertContact(AddressVO addressVO) {
+		return null;
+	}
 
 }
