@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
 import root.team.com.service.buyer.BuyerService;
@@ -134,11 +135,13 @@ public class buyerController {
 	}
 
 	@PostMapping("/buyerInsertAddressProcess.do")
-	public String buyerInsertAddressProcess(AddressVO addressVO) {
+	public String buyerInsertAddressProcess(AddressVO addressVO, RedirectAttributes ra) {
+		
 		String viewPage = "buyer/user/buyerServiceInfo";
 		
 		if (bInsertAddress.insertAddress(addressVO) == 1) {
-			viewPage = "redirect:/index.do";
+			ra.addAttribute("b_idx", addressVO.getB_idx());
+			viewPage = "redirect:/buyer/buyerServiceInfo.do";
 		}
 
 		return viewPage;
