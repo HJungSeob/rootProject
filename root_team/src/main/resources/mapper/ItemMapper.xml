@@ -22,5 +22,19 @@
         INSERT INTO tb_item_img (i_idx, i_saveimg0, i_saveimg1, i_saveimg2, i_saveimg3, i_saveimg4)
         VALUES (#{i_idx}, #{i_saveimg0}, #{i_saveimg1}, #{i_saveimg2}, #{i_saveimg3}, #{i_saveimg4})
     </insert>
+    
+    <insert id="insertItemThumbnail" parameterType="itemVO">
+        INSERT INTO tb_item_thumbnail (i_idx, i_thumbnail)
+        VALUES (#{i_idx}, #{i_thumbnail})
+    </insert>
+    
+    <select id="getItem" parameterType="_int" resultType="itemVO">
+		select * from tb_category c, tb_item i, tb_item_option io, tb_item_thumbnail it, tb_item_img ii
+		where i.i_idx = io.i_idx
+		AND i.i_idx = it.i_idx
+		AND i.i_idx = ii.i_idx
+		AND i.c_idx = c.c_idx
+		AND i.i_idx = #{i_idx}
+	</select>
 	
 </mapper>
