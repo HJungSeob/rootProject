@@ -56,4 +56,35 @@ $(function(){
         $('#addressInput').val('');
         $('#zonecodeInput').val('');
     });
+    
+    $('#cancelOpenPage').click(function () {
+        $('#cancelPwPage').fadeIn(400)
+        $('#cancelOpenPage').css("cursor", "default")
+        $('#cancelOrNotRegion').css("box-shadow", "0px 0px 10px 0px #F74848")
+        $('#cancelOrNotRegion').css("border", "1px solid #F74848")
+    });
+
+    $('#firstReturnBtn').click(function () {
+        $('#cancelPwPage').fadeOut(400)
+        $('#cancelOpenPage').css("cursor", "pointer")
+        $('#cancelOrNotRegion').css("box-shadow", "none")
+        $('#cancelOrNotRegion').css("border", "none")
+    })
+
+    $('#firstNextBtn').click(function () {
+        $('#cancelOpenPage').css("cursor", "default")
+        $('#firstBtnRegion').fadeOut(400, function () {
+            $('#cancelSubmitPage').fadeIn(400)
+        })
+    })
+
+    $('#lastReturnBtn').click(function () {
+        $('#cancelPwPage').fadeOut(400)
+        $('#cancelSubmitPage').fadeOut(400, function () {
+            $('#firstBtnRegion').fadeIn(400)
+        })
+        $('#cancelOpenPage').css("cursor", "pointer")
+        $('#cancelOrNotRegion').css("box-shadow", "none")
+        $('#cancelOrNotRegion').css("border", "none")
+    })
 });
