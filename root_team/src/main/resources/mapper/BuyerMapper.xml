@@ -43,8 +43,7 @@
 		bs.b_idx
 		and b.b_idx = bi.b_idx
 		and b_email = #{b_email}
-		and bs.b_cancel
-		= 'N'
+		and bs.b_cancel = 'N'
 	</select>
 
 	<update id="lastLoginDate" parameterType="_int">
@@ -135,7 +134,14 @@
 		WHERE b.b_idx = #{b_idx};
 	</update>
 
-
+	<update id="cancel" parameterType="_int">
+		UPDATE tb_buyer_state bs
+		JOIN
+		tb_buyer b ON bs.b_idx = b.b_idx
+		SET bs.b_cancel = 'Y',
+		b.b_modifydate = NOW()
+		WHERE b.b_idx = #{b_idx};
+	</update>
 
 
 

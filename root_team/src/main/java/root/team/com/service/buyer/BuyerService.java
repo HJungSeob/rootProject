@@ -33,4 +33,7 @@ public interface BuyerService {
 		return null;
 	}
 
+	default int cancel(int b_idx) {
+		return 0;
+	}
 }
