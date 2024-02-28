@@ -4,6 +4,7 @@ $(function () {
         $('#main_region_name').fadeOut(400);
         $('#m_userinfo_updatename_region_bday').fadeOut(400);
     });
+    
 
     $('#m_userinfo_contentday').click(function () {
         $('#main_region_buer').fadeIn(400);
@@ -70,6 +71,7 @@ $(function () {
         $('#yyyytext').css("fontSize", "16px")
         $('#result').css("opacity", "0")
         updateYyyyStyle()
+        birdaydisable()
     });
 
     let yinput = document.getElementById('yyyyinput');
@@ -90,6 +92,7 @@ $(function () {
         $('#yyyytext').css("fontSize", "14px")
         $('#result').css("opacity", "1")
         updateYyyyStyle()
+        birdaydisable()
     });
     
     $('#genderBox').click(function(){

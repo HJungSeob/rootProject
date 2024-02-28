@@ -166,7 +166,7 @@
 						<label>
 							<div class="m_userinfo_updatename_region_submited">수정</div> <input
 							type="submit" class="m_userinfo_updatename_region_submit1"
-							id="submit">
+							id="gendersubmit">
 						</label>
 					</div>
 				</form>
