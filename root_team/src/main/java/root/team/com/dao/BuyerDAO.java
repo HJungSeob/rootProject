@@ -1,7 +1,6 @@
 package root.team.com.dao;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -75,12 +74,16 @@ public class BuyerDAO {
 		}
 		return newVO;
 	}
-	
+
 	public BuyerVO infoUpdateBuyer(BuyerVO vo) throws SQLException {
 		BuyerVO newVO = null;
 		if (sqlSession.update(MAPPER + ".infoUpdateBuyer", vo) == 2) {
 			newVO = getBuyer(vo.getB_idx());
 		}
 		return newVO;
+	}
+
+	public int cancel(int b_idx) throws SQLException {
+		return sqlSession.update(MAPPER + ".cancel", b_idx);
 	}
 }

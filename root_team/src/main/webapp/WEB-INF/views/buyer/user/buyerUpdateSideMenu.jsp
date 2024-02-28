@@ -55,16 +55,14 @@
 	</div>
 	<div class="m_buyerUpdateSideMenu_cancelBlur" id="cancelBlur"></div>
 	<div class="m_buyerUpdateSideMenu_cancelRegion" id="cancelRegion">
-		<form>
+		<form name="buyerCancel" method="get" action="buyerCancelProcess.do">
 			<div class="m_buyerUpdateSideMenu_cancelTitle">회원탈퇴</div>
 			<div id="cancelPage1">
-				<div class="m_buyerUpdateSideMenu_cancelSubTitle">계정을 삭제하시려면
-					암호를 입력해 주세요.</div>
+				<div class="m_buyerUpdateSideMenu_cancelSubTitle">계정을 삭제하시려면 암호를 입력해 주세요.</div>
 				<div class="m_buyerUpdateSideMenu_exPwRegion" id="exPwRegion">
-					<label> <input type="password"
-						class="m_buyerUpdateSideMenu_exPwInput" id="exPwInput">
-						<div class="m_buyerUpdateSideMenu_exPwTitle" id="exPwTitle">현재
-							암호</div>
+					<label>
+						<input type="password" class="m_buyerUpdateSideMenu_exPwInput" id="exPwInput">
+						<div class="m_buyerUpdateSideMenu_exPwTitle" id="exPwTitle">현재암호</div>
 					</label>
 					<div class="m_buyerUpdateSideMenu_exPwMsg" id="exPwMsg"></div>
 				</div>
@@ -76,12 +74,11 @@
 				</div>
 			</div>
 			<div id="cancelPage2" class="m_buyerUpdateSideMenu_none">
-				<div class="m_buyerUpdateSideMenu_checkTitle">정말 계정을 삭제
-					하시겠습니까?</div>
+				<div class="m_buyerUpdateSideMenu_checkTitle">정말 계정을 삭제하시겠습니까?</div>
 				<div class="m_buyerUpdateSideMenu_cancelNextBtn">
 					<label>
-						<div class="m_buyerUpdateSideMenu_cancelSubmitBtn">삭제</div> <input
-						type="submit" class="m_buyerUpdateSideMenu_none" disabled="disabled" id="cancelOkBtn">
+						<div class="m_buyerUpdateSideMenu_cancelSubmitBtn">삭제</div>
+						<input type="submit" class="m_buyerUpdateSideMenu_none" disabled="disabled" id="cancelOkBtn">
 					</label>
 				</div>
 			</div>

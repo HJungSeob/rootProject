@@ -22,7 +22,7 @@ import root.team.com.vo.BuyerVO;
 public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
@@ -61,11 +61,12 @@ public class BuyerController {
 			buyerVO.setB_pwmodifydate(gDateUpdate.dateUpdate(buyerVO.getB_pwmodifydate()));
 			buyerVO.setB_modifydate(gDateUpdate.dateUpdate(buyerVO.getB_modifydate()));
 			buyerVO.setB_regdate(gDateUpdate.dateUpdate(buyerVO.getB_regdate()));
+
 			HttpSession session = request.getSession();
 			session.setAttribute("buyer", buyerVO);
 			viewPage = "redirect:/index.do";
 		}
-
+		
 		return viewPage;
 	}
 
@@ -188,6 +189,23 @@ public class BuyerController {
 				viewPage = "redirect:/buyer/buyerUpdatePage1.do";
 			}
 		}
+		return viewPage;
+	}
+
+	@GetMapping("/buyerCancelProcess.do")
+	public String buyerCancelProcess(HttpServletRequest request) {
+		String viewPage = "buyer/user/buyerUpdatePage";
+
+		HttpSession session = request.getSession();
+		BuyerVO vo = (BuyerVO) session.getAttribute("buyer");
+		int b_idx = vo.getB_idx();
+
+		if (bCancel.cancel(b_idx) == 2) {
+
+			session.invalidate();
+			viewPage = "redirect:/index.do";
+		}
+
 		return viewPage;
 	}
 }
