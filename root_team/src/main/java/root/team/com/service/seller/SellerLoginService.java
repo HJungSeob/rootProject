@@ -20,12 +20,20 @@ public class SellerLoginService implements SellerService {
 
 		try {
 			String encodePassword = dao.getPassword(s_businessnum);
+
 			if (encodePassword != null) {
 				if (cryptPasswordEncoder.matches(s_pw, encodePassword)) {
-					dao.lastLoginDate(dao.login(s_businessnum).getS_idx());
+					
+					try {
+						dao.lastLoginDate(dao.login(s_businessnum).getS_idx());
+
+					} catch (Exception e) {
+					}
+
 					sellerVO = dao.login(s_businessnum);
 				}
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

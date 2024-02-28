@@ -56,4 +56,8 @@ public class SellerDAO {
 	public SellerVO getSeller(int s_idx) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".getSeller", s_idx);
 	}
+	
+	public int cancel(int s_idx) throws SQLException {
+		return sqlSession.update(MAPPER + ".cancel", s_idx);
+	}
 }

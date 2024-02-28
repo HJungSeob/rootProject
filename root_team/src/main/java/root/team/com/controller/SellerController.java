@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
+import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -19,7 +20,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate;
+	SellerService sJoin, sLogin, sUpdate, sCancel;
 	
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate;
@@ -87,8 +88,6 @@ public class SellerController {
 	
 	@PostMapping("/sellerUpdateProcess.do")
 	public String sellerUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
-		
-		
 		String viewPage = "seller/user/sellerUpdate";
 
 		SellerVO newVO = sUpdate.update(sellerVO);
@@ -104,12 +103,26 @@ public class SellerController {
 			session.setAttribute("seller", newVO);
 
 			viewPage = "redirect:/seller/sellerUpdate.do";
-			
 		}
 		
 		return viewPage;
 	}
 
+	@GetMapping("/sellerCancelProcess.do")
+	public String sellerCancelProcess(HttpServletRequest request) {
+		String viewPage = "seller/user/sellerUpdate";
+
+		HttpSession session = request.getSession();
+		SellerVO vo = (SellerVO) session.getAttribute("seller");
+		int s_idx = vo.getS_idx();
+
+		if (sCancel.cancel(s_idx) == 2) {
+			session.invalidate();
+			viewPage = "redirect:/index.do";
+		}
+
+		return viewPage;
+	}
 
 	///////////////////////////////////////////////////////////////
 

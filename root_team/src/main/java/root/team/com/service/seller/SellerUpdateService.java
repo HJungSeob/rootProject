@@ -22,7 +22,6 @@ public class SellerUpdateService implements SellerService {
 			if (sellerrVO.getS_pw() != null) {
 				sellerrVO.setS_pw(cryptPasswordEncoder.encode(sellerrVO.getS_pw()));
 			}
-			
 			newVO = dao.update(sellerrVO);
 			
 		} catch (SQLException e) {
