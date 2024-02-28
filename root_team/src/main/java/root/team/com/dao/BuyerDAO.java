@@ -78,7 +78,7 @@ public class BuyerDAO {
 	
 	public BuyerVO infoUpdateBuyer(BuyerVO vo) throws SQLException {
 		BuyerVO newVO = null;
-		if (sqlSession.update(MAPPER + ".infoUpdateBuyer", vo) == 1) {
+		if (sqlSession.update(MAPPER + ".infoUpdateBuyer", vo) == 2) {
 			newVO = getBuyer(vo.getB_idx());
 		}
 		return newVO;

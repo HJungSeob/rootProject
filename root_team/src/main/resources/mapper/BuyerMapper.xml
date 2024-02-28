@@ -6,114 +6,143 @@
 <mapper namespace="root.team.com.BuyerMapper">
 
 	<insert id="join" parameterType="buyerVO">
-		insert into tb_buyer (b_firstname, b_lastname, b_tel, b_birth, b_email, b_pw)
-			values(#{b_firstname}, #{b_lastname}, #{b_tel}, #{b_birth}, #{b_email}, #{b_pw})
+		insert into tb_buyer
+		(b_firstname, b_lastname, b_tel, b_birth, b_email, b_pw)
+		values(#{b_firstname}, #{b_lastname}, #{b_tel}, #{b_birth},
+		#{b_email}, #{b_pw})
 	</insert>
-	
+
 	<select id="getB_idx" parameterType="string" resultType="_int">
-		select b_idx
-			from tb_buyer
-			where b_email = #{b_email}
+		select
+		b_idx
+		from tb_buyer
+		where b_email = #{b_email}
 	</select>
-	
+
 	<insert id="info" parameterType="_int">
-		INSERT INTO tb_buyer_info (b_idx, b_nickname) 
-			VALUES (#{b_idx}, CONCAT('rootuser', #{b_idx}))	
+		INSERT INTO tb_buyer_info
+		(b_idx, b_nickname)
+		VALUES (#{b_idx}, CONCAT('rootuser', #{b_idx}))
 	</insert>
-	
+
 	<insert id="state" parameterType="_int">
-		INSERT INTO tb_buyer_state (b_idx) 
-			VALUES (#{b_idx})
+		INSERT INTO tb_buyer_state
+		(b_idx)
+		VALUES (#{b_idx})
 	</insert>
-	
-	<select id="getPassword" parameterType="string" resultType="string">
+
+	<select id="getPassword" parameterType="string"
+		resultType="string">
 		select b_pw from tb_buyer where b_email = #{b_email}
 	</select>
-	
+
 	<select id="login" parameterType="string" resultType="buyerVO">
 		select *
-			from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
-			where b.b_idx = bs.b_idx
-			and b.b_idx = bi.b_idx 
-			and b_email = #{b_email}		
+		from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
+		where b.b_idx =
+		bs.b_idx
+		and b.b_idx = bi.b_idx
+		and b_email = #{b_email}
+		and bs.b_cancel
+		= 'N'
 	</select>
-	
+
 	<update id="lastLoginDate" parameterType="_int">
-		update tb_buyer set b_lastlogindate = now()
-			where b_idx = #{b_idx}
+		update tb_buyer set
+		b_lastlogindate = now()
+		where b_idx = #{b_idx}
 	</update>
-	
+
 	<update id="updateBuyer" parameterType="buyerVO">
 		update tb_buyer set
 		<choose>
 			<when test="b_firstname != null and b_lastname != null">
-				b_firstname = #{b_firstname}, b_lastname = #{b_lastname}, b_modifydate = now()
+				b_firstname = #{b_firstname}, b_lastname =
+				#{b_lastname}, b_modifydate = now()
 			</when>
 			<when test="b_birth != null">
 				b_birth = #{b_birth}, b_modifydate = now()
 			</when>
 			<when test="b_tel != null">
-				b_tel = #{b_tel}, b_modifydate = now()			
+				b_tel = #{b_tel}, b_modifydate = now()
 			</when>
 			<when test="b_pw != null">
-				b_pw = #{b_pw}, b_modifydate = now(), b_pwmodifydate = now()		
+				b_pw = #{b_pw}, b_modifydate = now(), b_pwmodifydate
+				= now()
 			</when>
 		</choose>
 		where b_idx = #{b_idx}
 	</update>
-	
+
 	<select id="getBuyer" parameterType="_int" resultType="buyerVO">
-		select * 
-			from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
-			where b.b_idx = bs.b_idx
-			and b.b_idx = bi.b_idx
-			and b.b_idx = #{b_idx}
+		select *
+		from tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
+		where b.b_idx =
+		bs.b_idx
+		and b.b_idx = bi.b_idx
+		and b.b_idx = #{b_idx}
 	</select>
-	
-	<select id="getAddress" parameterType="_int" resultType="addressVO">		
+
+	<select id="getAddress" parameterType="_int"
+		resultType="addressVO">
 		select * from tb_buyer_address
-			where b_idx = #{b_idx}
-			and ba_check = 'Y'
-			order by ba_check desc			
+		where b_idx = #{b_idx}
+		and
+		ba_check = 'Y'
+		order by ba_check desc
 	</select>
-	
+
 	<update id="changeDefaultAddress" parameterType="_int">
-		update tb_buyer_address set ba_check = 'N'
-			where ba_check = 'Y'
-			and b_idx = #{b_idx}
+		update
+		tb_buyer_address set ba_check = 'N'
+		where ba_check = 'Y'
+		and b_idx =
+		#{b_idx}
 	</update>
-	
+
 	<insert id="insertAddress" parameterType="addressVO">
-		insert into tb_buyer_address
-			(b_idx, ba_firstname, ba_lastname, ba_address, ba_restaddress, ba_zipcode, ba_contact, ba_check)
-			values(#{b_idx}, #{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress}, #{ba_zipcode}, #{ba_contact}, #{ba_check})
+		insert into
+		tb_buyer_address
+		(b_idx, ba_firstname, ba_lastname, ba_address,
+		ba_restaddress, ba_zipcode,
+		ba_contact, ba_check)
+		values(#{b_idx},
+		#{ba_firstname}, #{ba_lastname}, #{ba_address}, #{ba_restaddress},
+		#{ba_zipcode}, #{ba_contact}, #{ba_check})
 	</insert>
-	
+
 	<update id="insertContact" parameterType="addressVO">
-		update tb_buyer_address set ba_contact = #{ba_contact}
-			where ba_check = 'Y'
-			and b_idx = #{b_idx}
+		update tb_buyer_address
+		set ba_contact = #{ba_contact}
+		where ba_check = 'Y'
+		and b_idx = #{b_idx}
 	</update>
 
 	<update id="infoUpdateBuyer" parameterType="buyerVO">
-		update tb_buyer_info set
+		UPDATE tb_buyer_info bi
+		JOIN tb_buyer b ON bi.b_idx = b.b_idx
+		SET
 		<choose>
 			<when test="b_nickname != null">
-				b_nickname = #{b_nickname}
+				bi.b_nickname = #{b_nickname},
+				b.b_modifydate = NOW()
 			</when>
 			<when test="b_gender != null">
-				b_gender = #{b_gender}
+				bi.b_gender = #{b_gender},
+				b.b_modifydate = NOW()
 			</when>
 		</choose>
-		where b_idx = #{b_idx}
+		WHERE b.b_idx = #{b_idx};
 	</update>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

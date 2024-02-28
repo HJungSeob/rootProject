@@ -138,32 +138,32 @@ public class BuyerController {
 	@PostMapping("/buyerInsertAddressProcess.do")
 	public String buyerInsertAddressProcess(AddressVO addressVO, RedirectAttributes ra) {
 		String viewPage = "buyer/user/buyerServiceInfo";
-		
+
 		if (bInsertAddress.insertAddress(addressVO) == 1) {
 			ra.addAttribute("b_idx", addressVO.getB_idx());
 			viewPage = "redirect:/buyer/buyerServiceInfo.do";
 		}
 		return viewPage;
 	}
-	
+
 	@PostMapping("/buyerInsertContactProcess.do")
 	public String buyerInsertContactProcess(AddressVO addressVO, RedirectAttributes ra, Model model) {
 		String viewPage = "buyer/user/buyerServiceInfo";
-		
+
 		AddressVO newVO = bInsertContact.insertContact(addressVO);
 
 		model.addAttribute("address", newVO);
-		
+
 		ra.addAttribute("b_idx", addressVO.getB_idx());
 		viewPage = "redirect:/buyer/buyerServiceInfo.do";
-		
+
 		return viewPage;
 	}
-	
+
 	@PostMapping("/buyerInfoUpdateProcess.do")
 	public String buyerInfoUpdateProcess(BuyerVO buyerVO, HttpServletRequest request) {
 		String viewPage = null;
-		
+
 		if (buyerVO.getB_nickname() != null) {
 			viewPage = "buyer/user/buyerUpdatePage";
 		} else if (buyerVO.getB_gender() != null) {
@@ -177,7 +177,7 @@ public class BuyerController {
 			newVO.setB_pwmodifydate(gDateUpdate.dateUpdate(newVO.getB_pwmodifydate()));
 			newVO.setB_modifydate(gDateUpdate.dateUpdate(newVO.getB_modifydate()));
 			newVO.setB_regdate(gDateUpdate.dateUpdate(newVO.getB_regdate()));
-			
+
 			HttpSession session = request.getSession();
 			session.removeAttribute("buyer");
 			session.setAttribute("buyer", newVO);
