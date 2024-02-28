@@ -38,7 +38,6 @@ public class SellerJoinService implements SellerService {
 
 		try {
 			s_idx = dao.getS_idx(s_businessnum);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -60,33 +60,31 @@
 						<hr>
 						<div class="m_sellerUpdateService_profileRegion">
 							<label>
-								<div class="m_sellerUpdateService_profileInput"></div> <input
-								type="file" class="m_sellerUpdateService_input">
+								<div class="m_sellerUpdateService_profileInput"></div>
+								<input type="file" name="s_profile" class="m_sellerUpdateService_input">
 							</label>
 							<div class="m_sellerUpdateService_profileTitle">프로필 사진</div>
 						</div>
 						<hr>
 						<div class="displayF textHr">
 							<div class="allTitleText">매장 이름</div>
-							<input type="text" class="inputBoxCss" id="sellerTitleInput">
+							<input type="text" name="s_storename" class="inputBoxCss" id="sellerTitleInput">
 							<div class="Msg" id="sellerTitleMsg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText">소개글</div>
-							<textarea class="inputTextBoxCss"></textarea>
+							<textarea class="inputTextBoxCss" name="s_storeintro"></textarea>
 						</div>
 						<hr>
 						<div class="m_sellerUpdateService_submitRegion">
 							<label>
-								<div class="m_sellerUpdateService_submitTitle">수정</div> <input
-								type="submit" class="upSubmit" id="upSellerSubmit"
-								disabled="disabled">
+								<div class="m_sellerUpdateService_submitTitle">수정</div>
+								<input type="submit" class="upSubmit" id="upSellerSubmit" disabled="disabled">
 							</label>
 						</div>
 					</form>
 
-					<form name="sellerUpdate" method="post"
-						action="sellerUpdateProcess.do">
+					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
 						<input type="hidden" name="s_idx" value="${seller.s_idx}">
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">암호 수정</div>
@@ -124,37 +122,31 @@
 						<hr>
 					</form>
 
-					<form name="sellerUpdate" method="post"
-						action="sellerUpdateProcess.do">
+					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
 						<input type="hidden" name="s_idx" value="${seller.s_idx}">
 						<div class="hr"></div>
 						<div class="m_sellerUpdateService_mainTitle">회원정보 수정</div>
 						<hr>
 						<div class="displayF">
 							<div class="allTitleText">성</div>
-							<input type="text" class="inputBoxCss" id="firstNameInput"
-								name="s_firstname">
+							<input type="text" class="inputBoxCss" id="firstNameInput" name="s_firstname">
 							<div class="Msg" id="firstNameMsg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText">이름</div>
-							<input type="text" class="inputBoxCss" id="lastNameInput"
-								name="s_lastname">
+							<input type="text" class="inputBoxCss" id="lastNameInput" name="s_lastname">
 							<div class="Msg" id="lastNameMsg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText">핸드폰</div>
-							<input type="tel" class="inputBoxCss" maxlength="13"
-								id="telInput" name="s_tel">
+							<input type="tel" class="inputBoxCss" maxlength="13" id="telInput" name="s_tel">
 							<div class="Msg" id="telSmg"></div>
 						</div>
 						<div class="displayF">
 							<div class="allTitleText" id="yyyytext">생년월일</div>
-							<label> <input type="text" name="birthday"
-								class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8"
-								name="s_birth">
-								<div id="result" class="m_sellerUpdateService_biresult">yyyy년
-									mm월 dd일</div>
+							<label>
+								<input type="text" class="inputBoxCss opsit pointer" id="yyyyinput" maxlength="8" name="s_birth">
+								<div id="result" class="m_sellerUpdateService_biresult">yyyy년 mm월 dd일</div>
 							</label>
 							<div class="Msg" id="resultmsg"></div>
 						</div>
@@ -166,13 +158,11 @@
 						<div class="disnone" id="updateAddPage">
 							<div class="displayF">
 								<div class="allTitleText">우편번호</div>
-								<input type="text" name="s_zipcode" class="inputBoxCss"
-									id="zonecodeInput">
+								<input type="text" name="s_zipcode" class="inputBoxCss" id="zonecodeInput">
 							</div>
 							<div class="displayF">
 								<div class="allTitleText">주소</div>
-								<input type="text" name="s_address" class="inputBoxCss"
-									id="addressInput">
+								<input type="text" name="s_address" class="inputBoxCss" id="addressInput">
 							</div>
 							<div class="displayF">
 								<div class="allTitleText">상세 주소</div>
@@ -187,7 +177,8 @@
 							</label>
 						</div>
 					</form>
-					<form action="">
+					
+					<form name="sellerCancel" method="get" action="sellerCancelProcess.do">
 						<div class="m_sellerUpdateService_cancelOrNotRegion"
 							id="cancelOrNotRegion">
 							<div class="m_sellerUpdateService_cancelTitle"

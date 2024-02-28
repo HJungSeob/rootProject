@@ -56,8 +56,7 @@
 		update tb_buyer set
 		<choose>
 			<when test="b_firstname != null and b_lastname != null">
-				b_firstname = #{b_firstname}, b_lastname =
-				#{b_lastname}, b_modifydate = now()
+				b_firstname = #{b_firstname}, b_lastname = #{b_lastname}, b_modifydate = now()
 			</when>
 			<when test="b_birth != null">
 				b_birth = #{b_birth}, b_modifydate = now()
@@ -66,8 +65,7 @@
 				b_tel = #{b_tel}, b_modifydate = now()
 			</when>
 			<when test="b_pw != null">
-				b_pw = #{b_pw}, b_modifydate = now(), b_pwmodifydate
-				= now()
+				b_pw = #{b_pw}, b_modifydate = now(), b_pwmodifydate = now()
 			</when>
 		</choose>
 		where b_idx = #{b_idx}
