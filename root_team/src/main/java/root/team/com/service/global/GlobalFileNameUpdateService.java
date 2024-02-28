@@ -17,7 +17,6 @@ public class GlobalFileNameUpdateService implements GlobalService {
 		MultipartFile uploadFile = imgFile;
 
 		String saveFilename = null;
-		System.out.println("여기있음");
 		if (uploadFile.getSize() != 0) {// 게시글 등록시 첨부파일을 업로드한 경우
 
 			String orgFilename = uploadFile.getOriginalFilename(); // 원본 파일 명

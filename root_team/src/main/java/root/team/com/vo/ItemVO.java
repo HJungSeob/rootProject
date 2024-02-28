@@ -10,6 +10,7 @@ import lombok.Data;
 public class ItemVO {
 	private int i_idx;
 	private int c_idx;
+	private String c_name;
 	private int s_idx;
 	private String i_name;
 	private String i_price;

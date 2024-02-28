@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.item.ItemService;
+import root.team.com.vo.AddressVO;
 import root.team.com.vo.ItemVO;
 
 @Controller
@@ -18,13 +20,13 @@ import root.team.com.vo.ItemVO;
 public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
-	ItemService iInsert;
+	ItemService iInsert, iView;
 
 	@Setter(onMethod_ = { @Autowired })
-	GlobalService gFileNameUpdate;
+	GlobalService gFileNameUpdate, gDateUpdate;
 
 	@GetMapping("/write.do")
-	public String writetest() {
+	public String write() {
 		return "seller/service/write";
 	}
 
@@ -49,6 +51,18 @@ public class ItemController {
 			viewPage = "redirect:/index.do";
 		}
 		return viewPage;
+	}
+
+	@GetMapping("/view.do")
+	public String view(int i_idx, Model model) {
+
+		ItemVO item = iView.view(i_idx);
+		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
+		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
+		
+		model.addAttribute("item", item);
+
+		return "buyer/service/view";
 	}
 
 }

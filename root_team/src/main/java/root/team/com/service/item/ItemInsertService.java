@@ -14,9 +14,9 @@ public class ItemInsertService implements ItemService {
 	public int insert(ItemVO vo) {
 
 		int result = 0;
-		
-		if (dao.insert(vo) == 1) {		
-			if (dao.insertItemOption(vo) == 1 && dao.insertItemImage(vo) == 1) {
+
+		if (dao.insert(vo) == 1) {
+			if (dao.insertItemOption(vo) == 1 && dao.insertItemImage(vo) == 1 && dao.insertItemThumbnail(vo) == 1) {
 				result = 1;
 			}
 		}
