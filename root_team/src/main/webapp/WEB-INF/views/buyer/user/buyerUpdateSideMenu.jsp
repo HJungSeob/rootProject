@@ -4,14 +4,14 @@
 <head>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdateSideMenu.css">
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerUpdateSideMenu.js"></script>
 </head>
 
 <div class="m_buyerUpdateSideMenu_header1">
 	<div class="m_buyerUpdateSideMenu_header">
 		<div class="m_buyerUpdateSideMenu_header_acc">
-			<a
-				href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}">계정</a>
+			<a href="${pageContext.request.contextPath}/buyer/buyerServiceInfo.do?b_idx=${buyer.b_idx}">계정</a>
 			| Root ID 관리
 		</div>
 		<div class="m_buyerUpdateSideMenu_loar">
@@ -25,7 +25,7 @@
 <!-- #endregion -->
 <div class="m_buyerUpdateSideMenu_mainregion">
 	<div class="m_buyerUpdateSideMenu_sideregion">
-		<div class="m_buyerUpdateSideMenu_proflie"></div>
+		<img src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}" class="m_buyerUpdateSideMenu_proflie" alt="이미지를 찾을 수 없음">
 		<div class="m_buyerUpdateSideMenu_username">${buyer.b_nickname}</div>
 		<div class="m_buyerUpdateSideMenu_useremail">${buyer.b_email}</div>
 		<div class="m_buyerUpdateSideMenu_side_region"></div>

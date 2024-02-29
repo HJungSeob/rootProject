@@ -21,8 +21,8 @@
 
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_buyer_info
-		(b_idx, b_nickname)
-		VALUES (#{b_idx}, CONCAT('rootuser', #{b_idx}))
+		(b_idx, b_profile, b_nickname)
+		VALUES (#{b_idx}, '기본프로필.png', CONCAT('rootuser', #{b_idx}))
 	</insert>
 
 	<insert id="state" parameterType="_int">
@@ -115,11 +115,15 @@
 		and b_idx = #{b_idx}
 	</update>
 
-	<update id="infoUpdateBuyer" parameterType="buyerVO">
+	<update id="infoUpdate" parameterType="buyerVO">
 		UPDATE tb_buyer_info bi
 		JOIN tb_buyer b ON bi.b_idx = b.b_idx
 		SET
 		<choose>
+			<when test="b_profile != null">
+				bi.b_profile = #{b_profile},
+				b.b_modifydate = NOW()
+			</when>
 			<when test="b_nickname != null">
 				bi.b_nickname = #{b_nickname},
 				b.b_modifydate = NOW()

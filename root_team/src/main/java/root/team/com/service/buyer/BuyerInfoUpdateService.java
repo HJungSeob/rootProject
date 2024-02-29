@@ -16,11 +16,14 @@ public class BuyerInfoUpdateService implements BuyerService {
 
 	public BuyerVO update(BuyerVO buyerVO) {
 		BuyerVO newVO = null;
+		
 		try {
-			newVO = dao.infoUpdateBuyer(buyerVO);
+			newVO = dao.infoUpdate(buyerVO);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return newVO;
 	}
 

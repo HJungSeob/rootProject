@@ -25,7 +25,7 @@ public class BuyerController {
 	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel;
 
 	@Setter(onMethod_ = { @Autowired })
-	GlobalService gDateUpdate;
+	GlobalService gDateUpdate, gFileNameUpdate;
 
 	@GetMapping("/buyerJoin.do")
 	public String buyerJoin() {
@@ -165,10 +165,18 @@ public class BuyerController {
 	public String buyerInfoUpdateProcess(BuyerVO buyerVO, HttpServletRequest request) {
 		String viewPage = null;
 
-		if (buyerVO.getB_nickname() != null) {
+		if ((buyerVO.getB_tempprofile() != null) || (buyerVO.getB_nickname() != null)) {
 			viewPage = "buyer/user/buyerUpdatePage";
 		} else if (buyerVO.getB_gender() != null) {
 			viewPage = "buyer/user/buyerUpdatePage1";
+		}
+		
+		String saveDirectory = request.getServletContext().getRealPath("resources/uploads/");
+		
+		try {
+			buyerVO.setB_profile(gFileNameUpdate.fileNameUpdate(buyerVO.getB_tempprofile(), saveDirectory));
+		
+		} catch (NullPointerException e) {
 		}
 
 		BuyerVO newVO = bInfoUpdate.update(buyerVO);
@@ -183,7 +191,7 @@ public class BuyerController {
 			session.removeAttribute("buyer");
 			session.setAttribute("buyer", newVO);
 
-			if (buyerVO.getB_nickname() != null) {
+			if ((buyerVO.getB_tempprofile() != null) || (buyerVO.getB_nickname() != null)) {
 				viewPage = "redirect:/buyer/buyerUpdatePage.do";
 			} else if (buyerVO.getB_gender() != null) {
 				viewPage = "redirect:/buyer/buyerUpdatePage1.do";
@@ -207,5 +215,10 @@ public class BuyerController {
 		}
 
 		return viewPage;
+	}
+	
+	@GetMapping("/buyerFindPw.do")
+	public String buyerFindPw() {
+		return "buyer/user/buyerFindPw";
 	}
 }

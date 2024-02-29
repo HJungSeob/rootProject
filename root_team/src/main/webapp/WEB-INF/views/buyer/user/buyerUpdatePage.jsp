@@ -32,8 +32,7 @@
 						<div class="m_buyerUpdatePage4_content_profiletitle">프로필 이미지
 						</div>
 						<div class="m_buyerUpdatePage4_profile">
-							<img src=""
-								alt="이미지" class="m_buyerUpdatePage4_profileRegion">
+							<img src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}" class="m_buyerUpdatePage4_profileRegion" alt="이미지를 찾을 수 없음">
 						</div>
 					</div>
 					<div class="m_buyerUpdatePage4_content" id="nickNamebox">
@@ -43,18 +42,16 @@
 				</div>
 			</div>
 			<div class="m_buyerUpdatePage4_backBlur" id="backBlur"></div>
-			<form action="">
+			<form name="buyerUpdate" method="post" action="buyerInfoUpdateProcess.do" enctype="multipart/form-data">
+				<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 				<div class="m_buyerUpdatePage4_profileUpRegion" id="profileUpRegion">
 					<div class="m_buyerUpdatePage4_profileUpTitle">프로필 이미지</div>
 					<div class="m_buyerUpdatePage4_imgRegion">
-						<label> <input type="file"
-							class="m_buyerUpdatePage4_profileInput" name=""
-							accept=".JPEG,.JPG,.GIF,.PNG" id="profileInput" />
+						<label>
+							<input type="file" name="b_tempprofile" class="m_buyerUpdatePage4_profileInput" name="" accept=".JPEG,.JPG,.GIF,.PNG" id="profileInput" />
 							<div class="m_buyerUpdatePage4_imageContainer1"></div>
-							<div id="image_container"
-								class="m_buyerUpdatePage4_imageContainer">
-								<img src="" alt="이미지 호출" id="profile1"
-									class="m_buyerUpdatePage4_profile1">
+							<div id="image_container" class="m_buyerUpdatePage4_imageContainer">
+								<img src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}" id="profile1" class="m_buyerUpdatePage4_profile1" alt="이미지를 찾을 수 없음">
 							</div>
 						</label>
 					</div>
@@ -66,12 +63,12 @@
 						<div class="m_buyerUpdatePage4_sub">최대 파일 크기</div>
 						<div>5 MB</div>
 					</div>
-					<div class="m_buyerUpdatePage4_flax">업로드된 이미지는 프로필에서 원형으로
-						크롭되어 표시됩니다.</div>
+					<div class="m_buyerUpdatePage4_flax">업로드된 이미지는 프로필에서 원형으로 크롭되어 표시됩니다.</div>
 					<div class="m_buyerUpdatePage4_flax1">
 						<div class="m_buyerUpdatePage4_submitBtnRegion">
 							<label>
-								<div class="m_buyerUpdatePage4_submitBtn">확정</div> <input
+								<div class="m_buyerUpdatePage4_submitBtn">확정</div>
+								<input
 								type="submit" class="m_buyerUpdatePage4_profileInput">
 							</label>
 						</div>

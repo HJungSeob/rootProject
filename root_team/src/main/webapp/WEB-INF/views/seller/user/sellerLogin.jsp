@@ -92,7 +92,7 @@
 
 				<div class="m_sellerLogin_2seletatag">
 					<a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="m_sellerLogin_2entuser">일반 회원입니다.</a>
-					<a href="#" class="m_sellerLogin_2pwblive">암호를 잊으셨나요?</a>
+					<a href="${pageContext.request.contextPath}/seller/sellerFindPw.do" class="m_sellerLogin_2pwblive">암호를 잊으셨나요?</a>
 				</div>
 			</div>
 		</section>

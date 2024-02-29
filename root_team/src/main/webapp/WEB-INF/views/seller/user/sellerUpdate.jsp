@@ -93,7 +93,7 @@
 								<img src="${pageContext.request.contextPath}/resources/uploads/${seller.s_profile}" id="profileImg" class="m_sellerUpdateService_profileInput" alt="이미지를 찾을 수 없음">
 								<input type="file" id="profileImgInput" name="s_tempprofile" class="m_sellerUpdateService_input">
 							</label>
-							<div class="m_sellerUpdateService_profileTitle">프로필 사진</div>
+							<div class="m_sellerUpdateService_profileTitle">프로필 이미지</div>
 							<label>
 								<div class="m_sellerUpdateService_returnSubmitTitle" id="returnBtn1">이미지 초기화</div>
 								<input type="submit" class="upSubmit" id="ReturnSellerprofileSubmit">

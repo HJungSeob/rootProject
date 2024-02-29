@@ -2,6 +2,8 @@ package root.team.com.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data	
@@ -27,4 +29,6 @@ public class BuyerVO {
 	private String b_nickname;
 	private String b_profile;
 	private String b_point;
+	
+	private MultipartFile b_tempprofile;
 }

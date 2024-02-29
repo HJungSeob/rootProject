@@ -152,8 +152,11 @@ public class SellerController {
 
 		return viewPage;
 	}
-
 	
+	@GetMapping("/sellerFindPw.do")
+	public String sellerFindPw() {
+		return "seller/user/sellerFindPw";
+	}
 
 	///////////////////////////////////////////////////////////////
 
