@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.item.ItemService;
-import root.team.com.vo.AddressVO;
+import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
 
 @Controller
@@ -21,6 +21,9 @@ public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
 	ItemService iInsert, iView;
+	
+	@Setter(onMethod_ = { @Autowired })
+	SellerService sGet;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gFileNameUpdate, gDateUpdate;
@@ -60,7 +63,6 @@ public class ItemController {
 		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
 		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
 		
-		model.addAttribute("item", item);
 
 		return "buyer/service/view";
 	}

@@ -27,4 +27,8 @@ public interface SellerService {
 	default int cancel(int s_idx) {
 		return 0;
 	}
+	
+	default SellerVO getSeller(int S_idx){
+		return null;
+	}
 }

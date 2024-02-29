@@ -6,8 +6,8 @@
 <mapper namespace="root.team.com.ItemMapper">
     
 	<insert id="insertItem" parameterType="itemVO">    
-        INSERT INTO tb_item (c_idx, i_name, i_price, i_explain, i_count)
-        VALUES (#{c_idx}, #{i_name}, #{i_price}, #{i_explain}, #{i_count})
+        INSERT INTO tb_item (c_idx, s_idx, i_name, i_price, i_explain, i_count)
+        VALUES (#{c_idx}, #{s_idx}, #{i_name}, #{i_price}, #{i_explain}, #{i_count})
         <selectKey keyProperty="i_idx" order="AFTER" resultType="int">
         SELECT LAST_INSERT_ID()
 	    </selectKey>
