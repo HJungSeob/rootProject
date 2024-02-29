@@ -608,6 +608,7 @@
 
         .item_write_btns {
             float: right;
+            height: 100px;
         }
 
         label[for="item_submit_btn"] span {
@@ -651,7 +652,7 @@
 
 <body>
     <div class="wrap">
-        <header></header>
+        <%@include file="../common/header.jsp" %>
         <section>
             <select name="" id="largeCategory" class="itemcategory">
                 <option value='0' selected disabled hidden>===== 선택 =====</option>
@@ -670,6 +671,7 @@
             <!-- --------------------------------------------------------------------------------------- -->
             <form method="post" action="writeProcess.do" enctype="multipart/form-data">
                 <input type="hidden" name="c_idx" id="categoryidx">
+                <input type="hidden" name="s_idx" id="categoryidx" value="${seller.s_idx}">
                 <input type="hidden" name="i_explain" id="itemexplain">              
                 <input type="text" name="i_name" class="itemtitle" placeholder="상품명을 입력해 주세요.">
                 <input type="text" name="i_price" class="itemprice" placeholder="가격을 입력해 주세요.">
@@ -718,7 +720,9 @@
             </div>
         </section>
     </div>
-    <footer></footer>
+    <footer>
+            <%@ include file="../../buyer/common/global_footer.jsp" %>
+        </footer>
 
 </body>
 

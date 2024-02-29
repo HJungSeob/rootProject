@@ -24,7 +24,7 @@
 					<a href="${pageContext.request.contextPath}/seller/viewEdit.do">상품 조회/수정</a>
 				</li>
 				<li class="seller_global_category_list">
-					<a href="">상품 등록</a>
+					<a href="${pageContext.request.contextPath}/item/write.do">상품 등록</a>
 				</li>
 			</ul>
 		</div>

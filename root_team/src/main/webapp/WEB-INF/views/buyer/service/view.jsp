@@ -23,7 +23,23 @@
             background-color: rgb(172, 172, 255);
         }
 
-        
+        .arrow_small{
+            width: 18px;
+            height: 18px;
+            background-size: 18px;
+            rotate: -90deg;
+            vertical-align: top;
+            filter: invert(0%) sepia(1%) saturate(2514%) hue-rotate(223deg) brightness(0%) contrast(87%);
+        }
+
+        .category_link{
+        	font-weight: bold;
+        }
+
+        .item_title{
+            font-size: 32px;
+            font-weight: bold;
+        }
 
 
         /* ---------------------------------------------- */
@@ -36,27 +52,31 @@
             <%@ include file="../common/global_header.jsp"%>
         </header>
         <section>
-        <c:choose>
+        	<a href="" class="category_link">
+        <c:choose>     	
         	<c:when test="${item.c_idx le 5}">
-        		<a href=""><span>디지털/가전</span></a>
+        		<span>디지털/가전</span>
         	</c:when>
         	<c:when test="${item.c_idx le 10}">
-        		<a href=""><span>인테리어</span></a>
+        		<span>인테리어</span>
         	</c:when>
         	<c:when test="${item.c_idx le 15}">
-        		<a href=""><span>식품</span></a>
+        		<span>식품</span>
         	</c:when>
         	<c:when test="${item.c_idx le 20}">
-        		<a href=""><span>의류</span></a>
+        		<span>의류</span>
         	</c:when>
         	<c:otherwise>
-        		<a href=""><span>생활</span></a>
-        	</c:otherwise>
-        </c:choose>          
+        		<span>생활</span>
+        	</c:otherwise>       	
+        </c:choose>
+        	</a>        
             <span class="arrow_small"></span>
-            <a href=""><span>${item.c_name}</span></a>
-            <span class="arrow_small"></span>
+            <a href="" class="category_link"><span>${item.c_name}</span></a>
+            <span class="arrow_small"></span><br>                     
+            <span class ="item_title">${item.i_name}</span>
             
+           	
             
             <c:out value="${item.i_option0}" escapeXml="false"/>
             <c:out value="${item.i_option1}" escapeXml="false"/>

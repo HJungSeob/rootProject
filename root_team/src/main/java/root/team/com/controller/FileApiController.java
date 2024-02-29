@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/tui-editor")
 public class FileApiController {
 	
-	private final String uploadDir = Paths.get("C:", "tui-editor", "upload").toString();
-	
 	@PostMapping("/image-upload.do")
-	public String uploadEditorImage(@RequestParam final MultipartFile image) {
+	public String uploadEditorImage(@RequestParam final MultipartFile image, HttpServletRequest request) {
+		
+		String uploadDir = request.getServletContext().getRealPath("resources/uploads/");
+		
 		if (image.isEmpty()) {
 			return "";
 		}
@@ -50,7 +53,10 @@ public class FileApiController {
 	
 	// /image-print 경로에 대한 GET 요청에 대한 응답으로 GIF, JPEG, PNG 이미지를 반환할 수 있도록 설정
 	@GetMapping(value = "/image-print.do", produces = { MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
-    public byte[] printEditorImage(@RequestParam final String filename) {
+    public byte[] printEditorImage(@RequestParam final String filename, HttpServletRequest request) {
+		
+		String uploadDir = request.getServletContext().getRealPath("resources/uploads/");
+		
         // 업로드된 파일의 전체 경로
         String fileFullPath = Paths.get(uploadDir, filename).toString();
 
