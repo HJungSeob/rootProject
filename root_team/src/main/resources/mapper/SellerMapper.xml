@@ -59,6 +59,20 @@
 		where s_idx = #{s_idx}
 	</update>
 	
+	<update id="infoUpdate" parameterType="sellerVO">
+		UPDATE tb_seller_info si
+		JOIN tb_seller s ON si.s_idx = s.s_idx
+		<choose>
+			<when test="s_profile != null">
+				SET si.s_profile = #{s_profile}, si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+			</when>
+			<otherwise>
+				SET si.s_profile = "기본프로필.png", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+			</otherwise>
+		</choose>
+		WHERE s.s_idx = #{s_idx};
+	</update>
+	
 	<select id="getSeller" parameterType="_int" resultType="sellerVO">
 		select *
 			from tb_seller s, tb_seller_state ss, tb_seller_info si

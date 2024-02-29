@@ -52,6 +52,16 @@ public class SellerDAO {
 		
 		return newVO;
 	}
+	
+	public SellerVO infoUpdate(SellerVO vo) throws SQLException {
+		SellerVO newVO = null;
+		
+		if (sqlSession.update(MAPPER + ".infoUpdate", vo) == 2) {
+			newVO = getSeller(vo.getS_idx());
+		}
+		
+		return newVO;
+	}
 
 	public SellerVO getSeller(int s_idx) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".getSeller", s_idx);
