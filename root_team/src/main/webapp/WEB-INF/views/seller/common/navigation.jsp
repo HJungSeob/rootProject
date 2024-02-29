@@ -9,7 +9,7 @@
 <div class="seller_global_category">
 
 	<div class="seller_global_category_profile">
-		<div><img src="${pageContext.request.contextPath}/resources/css/img/test/yumyum.jpg" alt="(이미지)"></div>
+		<div><img src="${pageContext.request.contextPath}/resources/uploads/${seller.s_profile}" alt="(이미지)"></div>
 		<div><span>${seller.s_storename}</span></div>
 	</div>
 

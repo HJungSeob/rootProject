@@ -2,6 +2,8 @@ package root.team.com.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data	
@@ -30,4 +32,6 @@ public class SellerVO {
 	private String s_storename;
 	private String s_storeintro;
 	private String s_memo;
+	
+	private MultipartFile s_tempprofile;
 }

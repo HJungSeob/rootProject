@@ -20,16 +20,16 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sCancel;
-	
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel;
+
 	@Setter(onMethod_ = { @Autowired })
-	GlobalService gDateUpdate;
+	GlobalService gDateUpdate, gFileNameUpdate;
 
 	///////////////////////////////////////////////////////////////
 
 	@GetMapping("/sellerJoin.do")
 	public String sellerJoin() {
-		
+
 		return "seller/user/sellerJoin";
 	}
 
@@ -42,13 +42,13 @@ public class SellerController {
 				viewPage = "redirect:/index.do";
 			}
 		}
-		
+
 		return viewPage;
 	}
 
 	@GetMapping("/sellerLogin.do")
 	public String sellerLogin() {
-		
+
 		return "seller/user/sellerLogin";
 	}
 
@@ -57,35 +57,35 @@ public class SellerController {
 		String viewPage = "seller/user/sellerLogin";
 
 		SellerVO sellerVO = sLogin.login(s_businessnum, s_pw);
-		
+
 		if (sellerVO != null) {
 			sellerVO.setS_lastlogindate(gDateUpdate.dateUpdate(sellerVO.getS_lastlogindate()));
 			sellerVO.setS_pwmodifydate(gDateUpdate.dateUpdate(sellerVO.getS_pwmodifydate()));
 			sellerVO.setS_modifydate(gDateUpdate.dateUpdate(sellerVO.getS_modifydate()));
 			sellerVO.setS_regdate(gDateUpdate.dateUpdate(sellerVO.getS_regdate()));
-			
+
 			HttpSession session = request.getSession();
 			session.setAttribute("seller", sellerVO);
-			
+
 			viewPage = "redirect:/seller/dashBoard.do";
 		}
-		
+
 		return viewPage;
 	}
-	
+
 	@GetMapping("/sellerLogout.do")
 	public String sellerLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
+
 		return "redirect:/index.do";
 	}
-	
+
 	@GetMapping("/sellerUpdate.do")
 	public String sellerUpdate() {
 		return "seller/user/sellerUpdate";
 	}
-	
+
 	@PostMapping("/sellerUpdateProcess.do")
 	public String sellerUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
 		String viewPage = "seller/user/sellerUpdate";
@@ -97,7 +97,36 @@ public class SellerController {
 			newVO.setS_pwmodifydate(gDateUpdate.dateUpdate(newVO.getS_pwmodifydate()));
 			newVO.setS_modifydate(gDateUpdate.dateUpdate(newVO.getS_modifydate()));
 			newVO.setS_regdate(gDateUpdate.dateUpdate(newVO.getS_regdate()));
-			
+
+			HttpSession session = request.getSession();
+			session.removeAttribute("seller");
+			session.setAttribute("seller", newVO);
+
+			viewPage = "redirect:/seller/sellerUpdate.do";
+		}
+
+		return viewPage;
+	}
+	
+	@PostMapping("/sellerInfoUpdateProcess.do")
+	public String sellerInfoUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
+		String viewPage = "seller/user/sellerUpdate";
+		String saveDirectory = request.getServletContext().getRealPath("resources/uploads/");
+		
+		try {
+			sellerVO.setS_profile(gFileNameUpdate.fileNameUpdate(sellerVO.getS_tempprofile(), saveDirectory));
+		
+		} catch (NullPointerException e) {
+		}
+		
+		SellerVO newVO = sInfoUpdate.update(sellerVO);
+		
+		if (newVO != null) {
+			newVO.setS_lastlogindate(gDateUpdate.dateUpdate(newVO.getS_lastlogindate()));
+			newVO.setS_pwmodifydate(gDateUpdate.dateUpdate(newVO.getS_pwmodifydate()));
+			newVO.setS_modifydate(gDateUpdate.dateUpdate(newVO.getS_modifydate()));
+			newVO.setS_regdate(gDateUpdate.dateUpdate(newVO.getS_regdate()));
+
 			HttpSession session = request.getSession();
 			session.removeAttribute("seller");
 			session.setAttribute("seller", newVO);
@@ -123,6 +152,8 @@ public class SellerController {
 
 		return viewPage;
 	}
+
+	
 
 	///////////////////////////////////////////////////////////////
 
@@ -165,6 +196,5 @@ public class SellerController {
 	public String viewEdit() {
 		return "seller/service/viewEdit";
 	}
-	
-	
+
 }

@@ -1,10 +1,4 @@
-function globaldisable(){
-    if(sellerTitleValid){
-        upSellerSubmit.disabled = false
-    }else{
-        upSellerSubmit.disabled = true
-    }
-}
+
 
 function globaldisable(){
     if(exPwValid && newPwValid && ckeckPwValid){
@@ -30,6 +24,29 @@ $(function(){
         } catch (error) {}
     });
 
+	$("#profileImgInput").on("input", function() {
+    if ($("#profileImgInput").val() !== "") {
+        $("#upSellerSubmit").prop("disabled", false);
+        $("#ReturnSellerprofileSubmit").prop("disabled", true);
+    } else {
+        $("#upSellerSubmit").prop("disabled", true);
+         $("#ReturnSellerprofileSubmit").prop("disabled", false);
+    }
+});
+
+
+	$("#profileImgInput").on("input", function() {
+    if ($("#profileImgInput").val() !== "") {
+        $("#upSellerSubmit").prop("disabled", false);
+    } else {
+        $("#upSellerSubmit").prop("disabled", true);
+    }
+});
+
+$('#returnBtn1').click(function(){
+    $('profileImgInput').val("")
+})
+    
     $('#updatePwBtn').click(function(){
         $('#updatePwPage').fadeIn(400);
         $('#cancelPwBtn').fadeIn(0);

@@ -1,6 +1,6 @@
 .m_sellerUpdateService_mainRegion{
     width: 960px;
-   	paddion: 20px;
+   	padding: 20px;
     margin: 0 auto;
 }
 .m_sellerUpdateService_mainTitle{
@@ -35,6 +35,22 @@
     font-size: 13px;
 }
 
+.seller_update_contents_title {
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 9px;
+    padding-right: 811;
+    width: 960px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.seller_update_contents_title>span {
+    font-size: 12px;
+}
+
 .m_sellerUpdateService_profileRegion{
     width: 1000px;
     min-height: 100px;
@@ -49,6 +65,7 @@
 }
 
 .m_sellerUpdateService_profileInput{
+    display: block;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -216,4 +233,10 @@
     font-size: 14px;
     font-family: 'NEXONLv1GothicBold';
     margin: 10px;
+}
+
+.m_sellerUpdateService_returnSubmitTitle{
+	margin-bottom: 20px;
+	font-size: 13px;
+	cursor: pointer;
 }
