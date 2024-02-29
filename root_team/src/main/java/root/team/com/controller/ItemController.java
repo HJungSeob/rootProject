@@ -14,6 +14,7 @@ import root.team.com.service.global.GlobalService;
 import root.team.com.service.item.ItemService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.SellerVO;
 
 @Controller
 @RequestMapping("/item")
@@ -62,8 +63,13 @@ public class ItemController {
 		ItemVO item = iView.view(i_idx);
 		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
 		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
+		SellerVO seller = sGet.getSeller(item.getS_idx());
 		
-
+		String[] imgArr = {item.getI_saveimg0(), item.getI_saveimg1(),item.getI_saveimg2(),item.getI_saveimg3(), item.getI_saveimg4()};
+		model.addAttribute("imgArr", imgArr);
+		model.addAttribute("item", item);
+		model.addAttribute("seller", seller);
+		
 		return "buyer/service/view";
 	}
 
