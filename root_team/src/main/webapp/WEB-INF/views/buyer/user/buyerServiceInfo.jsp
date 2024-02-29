@@ -52,7 +52,7 @@
 				<div class="m_info_sprofile">
 					<div class="m_info_proname">${buyer.b_nickname}님, 안녕하세요!</div>
 					<div class="m_info_pro">
-						<div class="m_info_proimg"></div>
+						<img src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}" class="m_info_proimg" alt="이미지를 찾을 수 없음">
 						<div class="m_info_werll">
 							<div class="m_info_mr">
 								등급

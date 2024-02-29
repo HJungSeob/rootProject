@@ -18,7 +18,7 @@
 	
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
-			VALUES (#{s_idx}, '기본@!프로필.jpg', CONCAT('rootstore', #{s_idx}))
+			VALUES (#{s_idx}, '기본프로필.png', CONCAT('rootstore', #{s_idx}))
 	</insert>
 	
 	<insert id="state" parameterType="_int">
