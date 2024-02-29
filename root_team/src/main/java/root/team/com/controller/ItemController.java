@@ -63,7 +63,6 @@ public class ItemController {
 		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
 		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
 		
-		model.addAttribute("item", item);
 
 		return "buyer/service/view";
 	}
