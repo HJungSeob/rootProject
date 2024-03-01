@@ -17,6 +17,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/loginNextPage.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerLogin.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerLoginMinor.js"></script>
+
 </head>
 
 <body>

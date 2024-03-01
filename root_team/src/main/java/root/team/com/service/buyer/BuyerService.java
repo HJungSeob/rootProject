@@ -36,4 +36,8 @@ public interface BuyerService {
 	default int cancel(int b_idx) {
 		return 0;
 	}
+	
+	default int emailCheck(String b_email) {
+		return 0;
+	}
 }

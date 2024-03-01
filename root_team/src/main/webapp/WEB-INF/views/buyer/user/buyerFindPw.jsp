@@ -42,9 +42,8 @@
                     <div class="m_buyerFindPw_findPwSubTitle">계속하려면 계정에서 사용하는 전화번호를 입력하십시오.</div>
                     <div class="m_buyerFindPw_telRegion" id="telRegion">
                         <label>
-                            <input type="tel" name="tel" class="m_buyerFindPw_telInput" id="telInput" maxlength="13">
-                            <div class="m_buyerFindPw_teltitle" id="telTitle">
-                                전화번호</div>
+                            <input type="tel" name="b_tel" class="m_buyerFindPw_telInput" id="telInput" maxlength="13">
+                            <div class="m_buyerFindPw_teltitle" id="telTitle">전화번호</div>
                         </label>
                     </div>
                     <div class="m_buyerFindPw_nextRegion">
@@ -56,7 +55,7 @@
                     <div class="m_buyerFindPw_findPwTitle">이메일를 입력해 주세요</div>
                     <div class="m_buyerFindPw_emailRegion" id="emailRegion">
                         <label>
-                            <input type="email" name="email" class="m_buyerFindPw_emailInput" id="emailInput">
+                            <input type="email" name="b_email" class="m_buyerFindPw_emailInput" id="emailInput">
                             <div class="m_buyerFindPw_emailTitle" id="emailTitle">이메일 주소</div>
                         </label>
                     </div>

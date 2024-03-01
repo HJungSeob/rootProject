@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
@@ -22,7 +24,7 @@ import root.team.com.vo.BuyerVO;
 public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bEmailCheck;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -66,7 +68,7 @@ public class BuyerController {
 			session.setAttribute("buyer", buyerVO);
 			viewPage = "redirect:/index.do";
 		}
-		
+
 		return viewPage;
 	}
 
@@ -170,12 +172,12 @@ public class BuyerController {
 		} else if (buyerVO.getB_gender() != null) {
 			viewPage = "buyer/user/buyerUpdatePage1";
 		}
-		
+
 		String saveDirectory = request.getServletContext().getRealPath("resources/uploads/");
-		
+
 		try {
 			buyerVO.setB_profile(gFileNameUpdate.fileNameUpdate(buyerVO.getB_tempprofile(), saveDirectory));
-		
+
 		} catch (NullPointerException e) {
 		}
 
@@ -216,9 +218,16 @@ public class BuyerController {
 
 		return viewPage;
 	}
-	
+
 	@GetMapping("/buyerFindPw.do")
 	public String buyerFindPw() {
 		return "buyer/user/buyerFindPw";
 	}
+
+	@GetMapping("/emailCheckProcess.do")
+	@ResponseBody
+	public int emailCheckProcess(@RequestParam("userEmail") String b_email) {
+		return bEmailCheck.emailCheck(b_email);
+	}
+
 }
