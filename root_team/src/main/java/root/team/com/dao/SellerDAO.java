@@ -70,4 +70,16 @@ public class SellerDAO {
 	public int cancel(int s_idx) throws SQLException {
 		return sqlSession.update(MAPPER + ".cancel", s_idx);
 	}
+	
+	public int telCheck(String s_tel) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".telCheck", s_tel);
+	}
+	
+	public int businessnumCheck(String s_businessnum) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".businessnumCheck", s_businessnum);
+	}
+	
+	public int emailCheck(String s_email) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".emailCheck", s_email);
+	}
 }

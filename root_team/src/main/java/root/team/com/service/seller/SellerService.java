@@ -31,4 +31,16 @@ public interface SellerService {
 	default SellerVO getSeller(int S_idx){
 		return null;
 	}
+	
+	default int telCheck(String s_tel) {
+		return 0;
+	}
+	
+	default int businessnumCheck(String s_businessnum) {
+		return 0;
+	}
+	
+	default int emailCheck(String s_email) {
+		return 0;
+	}
 }
