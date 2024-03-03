@@ -27,33 +27,58 @@
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/terms.js"></script>
 
 <script>
-let emailCheckValid = false;
 $(function(){
-	$("#emailInput").change(function() {
+	$("#emailInput").focusout(function() {
 		var emailInput = $('#emailInput').val();
-        $.ajax({
-            type: 'post',
-            url: '${pageContext.request.contextPath}/buyer/emailCheckProcess.do?b_email=' + emailInput,
-            data: {email: emailInput}, // 데이터 전송 방식 수정
-            dataType: "text",
-            success: function(data) {	
-                if (data == 1) {
-                    $("#emailMsg").text("사용중인 이메일입니다.");
-                    $('#emailRegion').css("border", "1px solid #F74848")
-                    emailCheckValid = false
-                } else {
-                    // 중복이 아닌 경우 초기화 작업 수행
-                    $("#emailMsg").text(""); // 메시지 초기화
-                    $('#emailRegion').css("border", "1px solid #858585")
-                    emailCheckValid = true
-                }
-            },
-            error: function() {
-                console.log("실패");
-            }
-        });
-    })
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/buyer/emailCheckProcess.do?b_email=' + emailInput,
+			data: {email: emailInput}, // 데이터 전송 방식 수정
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#emailMsg").text("사용중인 이메일입니다.");
+					$("#joinSubmit").attr("disabled", true);
+				} else {
+					// 중복이 아닌 경우 초기화 작업 수행
+					$("#emailMsg").text(""); // 메시지 초기화
+					$("#joinSubmit").attr("disabled", false); // 버튼 활성화
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
 });
+
+$(function(){
+	$("#telInput").focusout(function() {
+		var telInput = $('#telInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/buyer/telCheckProcess.do?b_tel=' + telInput,
+			data: {tel: telInput}, // 데이터 전송 방식 수정
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#telSmg").text("사용중인 전화번호입니다.");
+					$("#nextPage").attr("disabled", true);
+				} else {
+					// 중복이 아닌 경우 초기화 작업 수행
+					$("#telSmg").text(""); // 메시지 초기화
+					$("#nextPage").attr("disabled", false); // 버튼 활성화
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+
 </script>
 </head>
 
@@ -88,9 +113,10 @@ $(function(){
 									<div class="m_userLogin_teltitle" id="telTitle">전화번호</div>
 							</label>
 							<div class="m_userLogin_telMsg" id="telSmg"></div>
+							<div id="active"></div>
 						</div>
 						
-						<div id="active"></div>
+						
 						
 						<div class="m_userLogin_content">항상 사용할 수 있는 전화번호를 입력하십시오. 새 기기나 웹 브라우저에 로그인할 때 해당 전화번호를 사용하여 신원을 확인합니다. 메시지 또는 데이터 요금이 적용될 수 있습니다.</div>
 						<div class="m_userLogin_checkregion">

@@ -40,4 +40,8 @@ public interface BuyerService {
 	default int emailCheck(String b_email) {
 		return 0;
 	}
+	
+	default int telCheck(String b_tel) {
+		return 0;
+	}
 }
