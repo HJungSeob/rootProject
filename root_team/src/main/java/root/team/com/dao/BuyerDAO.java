@@ -92,4 +92,8 @@ public class BuyerDAO {
 	public int emailCheck(String b_email) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".emailCheck", b_email);
 	}
+	
+	public int telCheck(String b_tel) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".telCheck", b_tel);
+	}
 }

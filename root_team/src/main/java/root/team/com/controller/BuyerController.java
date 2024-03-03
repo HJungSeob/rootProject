@@ -24,7 +24,7 @@ import root.team.com.vo.BuyerVO;
 public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bEmailCheck;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bCheck;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -227,7 +227,12 @@ public class BuyerController {
 	@PostMapping("/emailCheckProcess.do")
 	@ResponseBody
 	public int emailCheckProcess(@RequestParam("b_email") String b_email) {
-		return bEmailCheck.emailCheck(b_email);
+		return bCheck.emailCheck(b_email);
 	}
 
+	@PostMapping("/telCheckProcess.do")
+	@ResponseBody
+	public int telCheckProcess(@RequestParam("b_tel") String b_tel) {
+		return bCheck.telCheck(b_tel);
+	}
 }

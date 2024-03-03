@@ -151,7 +151,11 @@
 		where b_email = #{b_email}
 	</select>
 
-
+	<select id="telCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_buyer
+		where b_tel = #{b_tel}
+	</select>
 
 
 
