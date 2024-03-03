@@ -27,47 +27,32 @@
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/terms.js"></script>
 
 <script>
-	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-	$("#emailInput").blur(function() {
-		// id = "id_reg" / name = "userId"
-		var user_email = $('#emailInput').val();
+$(function(){
+	$("#emailInput").focusout(function() {
+		var emailInput = $('#emailInput').val();
+		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/user/idCheck?userId='+ user_id,
-			type : 'get',
-			success : function(data) {
-				console.log("1 = 중복o / 0 = 중복x : "+ data);							
-				
+			type: 'post',
+			url: '${pageContext.request.contextPath}/buyer/emailCheckProcess.do?b_email=' + emailInput,
+			data: {email: emailInput}, // 데이터 전송 방식 수정
+			dataType: "text",
+			success: function(data) {	
 				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#id_check").text("사용중인 아이디입니다 :p");
-						$("#id_check").css("color", "red");
-						$("#reg_submit").attr("disabled", true);
-					} else {
-						
-						if(idJ.test(user_id)){
-							// 0 : 아이디 길이 / 문자열 검사
-							$("#id_check").text("");
-							$("#reg_submit").attr("disabled", false);
-				
-						} else if(user_id == ""){
-							
-							$('#id_check').text('아이디를 입력해주세요 :)');
-							$('#id_check').css('color', 'red');
-							$("#reg_submit").attr("disabled", true);				
-							
-						} else {
-							
-							$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-							$('#id_check').css('color', 'red');
-							$("#reg_submit").attr("disabled", true);
-						}
-						
-					}
-				}, error : function() {
-						console.log("실패");
+					$("#emailMsg").text("사용중인 이메일입니다.");
+					$("#joinSubmit").attr("disabled", true);
+				} else {
+					// 중복이 아닌 경우 초기화 작업 수행
+					$("#emailMsg").text(""); // 메시지 초기화
+					$("#joinSubmit").attr("disabled", false); // 버튼 활성화
 				}
-			});
+			},
+			error: function() {
+				console.log("실패");
+			}
 		});
+	});
+});
+
 </script>
 </head>
 
