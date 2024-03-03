@@ -224,9 +224,9 @@ public class BuyerController {
 		return "buyer/user/buyerFindPw";
 	}
 
-	@GetMapping("/emailCheckProcess.do")
+	@PostMapping("/emailCheckProcess.do")
 	@ResponseBody
-	public int emailCheckProcess(@RequestParam("userEmail") String b_email) {
+	public int emailCheckProcess(@RequestParam("b_email") String b_email) {
 		return bEmailCheck.emailCheck(b_email);
 	}
 
