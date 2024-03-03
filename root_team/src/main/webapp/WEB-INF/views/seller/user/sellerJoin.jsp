@@ -52,6 +52,84 @@
 	src="${pageContext.request.contextPath}/resources/js/buyer/user/terms.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/publicRegex/addressRegex.js"></script>
+	
+<script>
+$(function(){
+	$("#telInput").focusout(function() {
+		var telInput = $('#telInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/seller/telCheckProcess.do?s_tel=' + telInput,
+			data: {tel: telInput},
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#telSmg").text("사용중인 전화번호입니다.");
+					$("#nextPage").attr("disabled", true);
+				} else {
+					$("#telSmg").text("");
+					$("#nextPage").attr("disabled", false);
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+
+$(function(){
+	$("#taxidInput").focusout(function() {
+		var taxidInput = $('#taxidInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/seller/businessnumCheckProcess.do?s_businessnum=' + taxidInput,
+			data: {text: taxidInput},
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#taxidMsg").text("사용중인 사업자번호입니다.");
+					$("#middlePage").attr("disabled", true);
+				} else {
+					$("#taxidMsg").text("");
+					$("#middlePage").attr("disabled", false);
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+
+$(function(){
+	$("#emailInput").focusout(function() {
+		var emailInput = $('#emailInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/seller/emailCheckProcess.do?s_email=' + emailInput,
+			data: {email: emailInput},
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#emailMsg").text("사용중인 이메일입니다.");
+					$("#joinSubmit").attr("disabled", true);
+				} else {
+					$("#emailMsg").text("");
+					$("#joinSubmit").attr("disabled", false);
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
+	
 </head>
 
 <body>
@@ -84,8 +162,8 @@
 
 					<div id="joinPage1" class="m_sellerJoin_page1">
 						<div class="m_sellerJoin_telRegion" id="telRegion">
-							<label> <input type="tel" name="s_tel"
-								class="m_sellerJoin_telInput" id="telInput" maxlength="13">
+							<label>
+								<input type="tel" name="s_tel" class="m_sellerJoin_telInput" id="telInput" maxlength="13">
 								<div class="m_sellerJoin_teltitle" id="telTitle">전화번호</div>
 							</label>
 							<div class="m_sellerJoin_telMsg" id="telSmg"></div>
@@ -110,8 +188,8 @@
 							<div class="m_sellerJoin_btn1Region" id="nextPageBtn">
 								<label>
 									<div class="m_sellerJoin_next1">
-										다음 <input type="button" class="m_sellerJoin_btn" id="nextPage"
-											disabled="disabled">
+										다음
+										<input type="button" class="m_sellerJoin_btn" id="nextPage" disabled="disabled">
 									</div>
 								</label>
 							</div>
@@ -125,8 +203,8 @@
 					<div id="joinPage2" class="m_sellerJoin_page2">
 						<div class="m_sellerJoin_nameRegion">
 							<div class="m_sellerJoin_regionFirstName" id="firstNameRegion">
-								<label> <input type="text" name="s_firstname"
-									class="m_sellerJoin_firstNameInput" id="firstNameInput">
+								<label>
+								<input type="text" name="s_firstname" class="m_sellerJoin_firstNameInput" id="firstNameInput">
 									<div class="m_sellerJoin_firstNametitle" id="firstNametitle">성</div>
 								</label>
 								<div class="m_sellerJoin_nameMsg" id="firstNameMsg"></div>
@@ -135,8 +213,8 @@
 							<div class="m_sellerJoin_updatename_region_hr" id="active"></div>
 
 							<div class="m_sellerJoin_regionFirstName" id="lastNameRegion">
-								<label> <input type="text" name="s_lastname"
-									class="m_sellerJoin_firstNameInput" id="lastNameInput">
+								<label>
+									<input type="text" name="s_lastname" class="m_sellerJoin_firstNameInput" id="lastNameInput">
 									<div class="m_sellerJoin_firstNametitle" id="lastNametitle">이름</div>
 								</label>
 								<div class="m_sellerJoin_nameMsg" id="lastNameMsg"></div>
@@ -145,8 +223,8 @@
 
 						<div class="m_sellerJoin_updatename_region_taxid">
 							<div class="m_sellerJoin_taxidRegion" id="taxidRegion">
-								<label> <input type="text" name="s_businessnum"
-									class="m_sellerJoin_taxidInput" id="taxidInput" maxlength="12">
+								<label>
+									<input type="text" name="s_businessnum" class="m_sellerJoin_taxidInput" id="taxidInput" maxlength="12">
 									<div class="m_sellerJoin_taxidTitle" id="taxidTitle">사업자번호</div>
 								</label>
 								<div class="m_sellerJoin_taxidMsg" id="taxidMsg"></div>
@@ -155,11 +233,10 @@
 
 						<div class="m_sellerJoin_updatename_region_inbday">
 							<div class="m_sellerJoin_birthdayRegion" id="yyyyregion">
-								<label> <input type="text" name="s_birth"
-									class="m_sellerJoin_birthdayInput" id="yyyyinput" maxlength="8">
+								<label>
+									<input type="text" name="s_birth" class="m_sellerJoin_birthdayInput" id="yyyyinput" maxlength="8">
 									<div class="m_sellerJoin_birthdayText" id="yyyytext">생년월일</div>
-									<div id="result" class="m_sellerJoin_birthdayResult">yyyy년mm월
-										dd일</div>
+									<div id="result" class="m_sellerJoin_birthdayResult">yyyy년mm월dd일</div>
 								</label>
 								<div class="m_sellerJoin_birthdayMsg" id="resultmsg"></div>
 							</div>
@@ -168,8 +245,8 @@
 							<div class="m_sellerJoin_btn1Region" id="middlePageBtn">
 								<label>
 									<div class="m_sellerJoin_next1">
-										다음 <input type="button" class="m_sellerJoin_btn"
-											id="middlePage" disabled="disabled"></input>
+										다음
+										<input type="button" class="m_sellerJoin_btn" id="middlePage" disabled="disabled"></input>
 									</div>
 								</label>
 							</div>
@@ -180,25 +257,24 @@
 					<!-- #region 페이지4 -->
 					<div id="joinPage4" class="m_sellerJoin_page4">
 						<div class="m_sellerJoin_emailRegion" id="emailRegion">
-							<label> <input type="email" name="s_email"
-								class="m_sellerJoin_emailInput" id="emailInput">
+							<label>
+								<input type="email" name="s_email" class="m_sellerJoin_emailInput" id="emailInput">
 								<div class="m_sellerJoin_emailTitle" id="emailTitle">name@example.com</div>
 							</label>
 							<div class="m_sellerJoin_emailMsg" id="emailMsg"></div>
 							<div id="active"></div>
 						</div>
 						<div class="m_sellerJoin_passwordRegion" id="newPwRegion">
-							<label> <input type="password" name="s_pw"
-								class="m_sellerJoin_passwordInput" id="newPwInput">
+							<label>
+								<input type="password" name="s_pw" class="m_sellerJoin_passwordInput" id="newPwInput">
 								<div class="m_sellerJoin_passwordTitle" id="passwordTitle">암호</div>
 							</label>
 							<div class="m_sellerJoin_passwordMsg" id="newPwMsg"></div>
 						</div>
 						<div class="m_sellerJoin_checkPasswordRegion" id="ckeckPwRegion">
-							<label> <input type="password"
-								class="m_sellerJoin_checkPasswordInput" id="ckeckPwInput">
-								<div class="m_sellerJoin_checkPasswordTitle"
-									id="checkPasswordTitle">암호 확인</div>
+							<label>
+								<input type="password" class="m_sellerJoin_checkPasswordInput" id="ckeckPwInput">
+								<div class="m_sellerJoin_checkPasswordTitle" id="checkPasswordTitle">암호 확인</div>
 							</label>
 							<div class="m_sellerJoin_checkPasswordMsg" id="ckeckPwMsg"></div>
 						</div>
@@ -206,8 +282,8 @@
 							<div class="m_sellerJoin_btn1Region" id="joinSubmitBtn">
 								<label>
 									<div class="m_sellerJoin_next1">
-										가입하기 <input type="submit" class="m_sellerJoin_btn"
-											id="joinSubmit" disabled="disabled"></input>
+										가입하기
+										<input type="submit" class="m_sellerJoin_btn" id="joinSubmit" disabled="disabled"></input>
 									</div>
 								</label>
 							</div>

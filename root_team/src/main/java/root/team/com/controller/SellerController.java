@@ -8,11 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
-import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -20,7 +21,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel;
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -156,6 +157,24 @@ public class SellerController {
 	@GetMapping("/sellerFindPw.do")
 	public String sellerFindPw() {
 		return "seller/user/sellerFindPw";
+	}
+	
+	@PostMapping("/telCheckProcess.do")
+	@ResponseBody
+	public int telCheckProcess(@RequestParam("s_tel") String s_tel) {
+		return sCheck.telCheck(s_tel);
+	}
+	
+	@PostMapping("/businessnumCheckProcess.do")
+	@ResponseBody
+	public int businessnumCheckProcess(@RequestParam("s_businessnum") String s_businessnum) {
+		return sCheck.businessnumCheck(s_businessnum);
+	}
+	
+	@PostMapping("/emailCheckProcess.do")
+	@ResponseBody
+	public int emailCheckProcess(@RequestParam("s_email") String s_email) {
+		return sCheck.emailCheck(s_email);
 	}
 
 	///////////////////////////////////////////////////////////////
