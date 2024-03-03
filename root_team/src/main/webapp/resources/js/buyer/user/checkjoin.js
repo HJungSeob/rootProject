@@ -13,7 +13,7 @@ function globaldisable() {
         lastPage.disabled = true
         $('#lastPageBtn').css("background-color", "#80befb")
     }
-    if(emailValid && newPwValid&&ckeckPwValid){
+    if(emailValid && newPwValid&&ckeckPwValid && emailCheckValid){
         joinSubmit.disabled = false
         $('#joinSubmitBtn').css("background-color", "#0071e3")
     } else {
