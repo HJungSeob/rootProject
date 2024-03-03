@@ -27,32 +27,33 @@
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/terms.js"></script>
 
 <script>
+let emailCheckValid = false;
 $(function(){
-	$("#emailInput").focusout(function() {
+	$("#emailInput").change(function() {
 		var emailInput = $('#emailInput').val();
-		
-		$.ajax({
-			type: 'post',
-			url: '${pageContext.request.contextPath}/buyer/emailCheckProcess.do?b_email=' + emailInput,
-			data: {email: emailInput}, // 데이터 전송 방식 수정
-			dataType: "text",
-			success: function(data) {	
-				if (data == 1) {
-					$("#emailMsg").text("사용중인 이메일입니다.");
-					$("#joinSubmit").attr("disabled", true);
-				} else {
-					// 중복이 아닌 경우 초기화 작업 수행
-					$("#emailMsg").text(""); // 메시지 초기화
-					$("#joinSubmit").attr("disabled", false); // 버튼 활성화
-				}
-			},
-			error: function() {
-				console.log("실패");
-			}
-		});
-	});
+        $.ajax({
+            type: 'post',
+            url: '${pageContext.request.contextPath}/buyer/emailCheckProcess.do?b_email=' + emailInput,
+            data: {email: emailInput}, // 데이터 전송 방식 수정
+            dataType: "text",
+            success: function(data) {	
+                if (data == 1) {
+                    $("#emailMsg").text("사용중인 이메일입니다.");
+                    $('#emailRegion').css("border", "1px solid #F74848")
+                    emailCheckValid = false
+                } else {
+                    // 중복이 아닌 경우 초기화 작업 수행
+                    $("#emailMsg").text(""); // 메시지 초기화
+                    $('#emailRegion').css("border", "1px solid #858585")
+                    emailCheckValid = true
+                }
+            },
+            error: function() {
+                console.log("실패");
+            }
+        });
+    })
 });
-
 </script>
 </head>
 
