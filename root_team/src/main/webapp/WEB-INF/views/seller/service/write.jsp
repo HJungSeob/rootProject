@@ -47,7 +47,7 @@
 
                     // 새로운 파일 입력란 생성
                     var newInput = $('<input type="file" id="' + newInputId + '"name="i_img' +
-                    	counter + '" class="imgfile">');
+                        counter + '" class="imgfile">');
                     $(".wrap section form").append(newInput);
 
                     // 새로운 레이블과 미리보기 이미지 생성
@@ -187,11 +187,12 @@
                     }
                     var newOption = "<div class='itemoption" + selectCount + "'>" +
                         "<h4></h4>" +
-                        "<select>" +
-                        "<option value='0' selected disabled hidden>===== 선택 =====</option>" +
-                        "<option class='thisitmeoption0'></option>" +
-                        "<option class='thisitmeoption1'></option>" +
-                        "</select>" +
+                        "<input type='radio' class='thisitmeoption0' id='thisradio" + selectCount + "0' name ='itemoption" +
+                        selectCount + "'>" +
+                        "<label for='thisradio" + selectCount + "0'><span></span></label>" +
+                        "<input type='radio' class='thisitmeoption1' id='thisradio" + selectCount + "1' name ='itemoption" +
+                        selectCount + "'>" +
+                        "<label for='thisradio" + selectCount + "1'><span></span></label>" +
                         "</div>";
                     var newButtons = "<div class='itemoption itemoption" + selectCount + "'>" +
                         "<div class='itemoptioninfo'>" +
@@ -238,9 +239,13 @@
                 var parentClass = 'itemoption' + parentIndex;
                 // 해당 클래스명과 같은 클래스를 가지고 있는 hiddenoptions 내의 셀렉트 박스에 옵션 추가
                 if (parentOptionCounts[parentIndex] < 5) {
-                    $(".hiddenoptions ." + parentClass + " select").append(
-                        "<option class='thisitmeoption" +
-                        parentOptionCounts[parentIndex] + "'></option>");
+                    $(".hiddenoptions ." + parentClass).append(
+                        "<input type='radio' class='thisitmeoption" +
+                        parentOptionCounts[parentIndex] + "' id='thisradio"+ parentIndex +
+                        parentOptionCounts[parentIndex] + "' name='" + parentClass + "'>" +
+                        "<label for='thisradio"+ parentIndex + parentOptionCounts[parentIndex] +
+                        "'><span></span></label>"
+                    );
                     $(this).parent().children(".itemoptioninfo").append(
                         "<input type='text' class='thisitmeoption" +
                         parentOptionCounts[parentIndex] + "' placeholder='세부옵션을 입력해 주세요.'>")
@@ -257,8 +262,14 @@
                 if (parentOptionCounts[parentIndex] > 2) {
                     parentOptionCounts[parentIndex]--; // 해당 부모 요소의 optionCount를 감소                   
                     // 해당 클래스명을 가진 hiddenoptions 내의 셀렉트 박스에서 마지막 옵션을 제거
-                    $(".hiddenoptions ." + parentClass + " select .thisitmeoption" + parentOptionCounts[
-                        parentIndex]).remove();
+                    $(".hiddenoptions ." + parentClass + " input[type='radio'].thisitmeoption" +
+                        parentOptionCounts[
+                            parentIndex]).remove().each(function () {
+                        ;
+                        var radioId = $(this).attr('id');
+                        $(".hiddenoptions ." + parentClass + " label[for='" + radioId + "']")
+                            .remove();
+                    });
                     // 해당 클래스명을 가진 itemoptioninfo 내의 텍스트 입력 필드를 제거
                     parent.children(".itemoptioninfo").children(".thisitmeoption" + parentOptionCounts[
                         parentIndex]).remove();
@@ -293,9 +304,14 @@
                 var parentDivClass = filteredClasses.join(' '); // 필터링된 클래스명
 
                 // 부모의 부모 div와 같은 클래스명을 가진 div 내에서 현재 input 요소와 동일한 클래스명을 가진 option 태그를 찾아서 값 설정
-                var option = $("div." + parentDivClass + " option." + $(this).attr('class'));
+                var option = $("div." + parentDivClass + " input[type='radio']." + $(this).attr(
+                    'class'));
                 option.val(inputValue); // option 태그의 값 변경
-                option.text(inputValue); // option 태그의 텍스트 변경
+                option.each(function () {
+                    var radioId = $(this).attr('id');
+                    console.log(radioId);
+                    $("div." + parentDivClass + " label[for='" + radioId + "']").text(inputValue);
+                });
             });
 
 
@@ -344,7 +360,7 @@
                 var editerHTML = editor.getHTML();
                 $('.hiddenoptions div').each(function () {
                     var divId = $(this).attr('class');
-                    $('#' + divId).val($(this).html());               
+                    $('#' + divId).val($(this).html());
                 });
                 document.getElementById('itemexplain').value = editerHTML;
             });
@@ -375,10 +391,14 @@
         }
 
         form input[type="text"] {
-            display: block;
+            display: inline-block;
             margin-bottom: 10px;
             padding: 5px 10px;
             border: 0;
+            font-weight: bold;
+        }
+
+        form span {
             font-weight: bold;
         }
 
@@ -672,10 +692,10 @@
             <form method="post" action="writeProcess.do" enctype="multipart/form-data">
                 <input type="hidden" name="c_idx" id="categoryidx">
                 <input type="hidden" name="s_idx" id="categoryidx" value="${seller.s_idx}">
-                <input type="hidden" name="i_explain" id="itemexplain">              
+                <input type="hidden" name="i_explain" id="itemexplain">
                 <input type="text" name="i_name" class="itemtitle" placeholder="상품명을 입력해 주세요.">
-                <input type="text" name="i_price" class="itemprice" placeholder="가격을 입력해 주세요.">
-                <input type="text" name="i_count" class="itemprice" placeholder="상품 수량을 입력해 주세요.">
+                <input type="text" name="i_price" class="itemprice" placeholder="가격을 입력해 주세요."><span> 원(₩)</span><br>
+                <input type="text" name="i_count" class="itemprice" placeholder="상품 수량을 입력해 주세요."><span> 개</span><br>
                 <input type="submit" id="item_submit_btn">
             </form>
             <!-- --------------------------------------------------------------------------------------- -->
@@ -721,8 +741,8 @@
         </section>
     </div>
     <footer>
-            <%@ include file="../../buyer/common/global_footer.jsp" %>
-        </footer>
+        <%@ include file="../../buyer/common/global_footer.jsp" %>
+    </footer>
 
 </body>
 
