@@ -1,5 +1,5 @@
 function globaldisable() {
-    if (telValid && termsValid){
+    if (telValid && termsValid && telCheckValid){
         nextPage.disabled = false
         $('#nextPageBtn').css("background-color", "#0071e3")
     } else {

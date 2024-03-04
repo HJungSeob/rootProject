@@ -9,7 +9,7 @@ public interface BuyerService {
 		return 0;
 	}
 
-	default int infoState(String b_emaill) {
+	default int infoState(BuyerVO buyerVO) {
 		return 0;
 	}
 

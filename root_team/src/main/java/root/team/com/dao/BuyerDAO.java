@@ -19,9 +19,9 @@ public class BuyerDAO {
 		return sqlSession.insert(MAPPER + ".join", vo);
 	}
 
-	public int getB_idx(String b_email) throws SQLException {
-		return sqlSession.selectOne(MAPPER + ".getB_idx", b_email);
-	}
+//	public int getB_idx(String b_email) throws SQLException {
+//		return sqlSession.selectOne(MAPPER + ".getB_idx", b_email);
+//	}
 
 	public int info(int b_idx) throws SQLException {
 		return sqlSession.insert(MAPPER + ".info", b_idx);

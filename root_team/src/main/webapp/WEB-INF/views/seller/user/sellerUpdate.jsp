@@ -64,6 +64,30 @@
 					});
 		});
 		
+		$(function(){
+			$("#telInput").focusout(function() {
+				var telInput = $('#telInput').val();
+				
+				$.ajax({
+					type: 'post',
+					url: '${pageContext.request.contextPath}/seller/telCheckProcess.do?s_tel=' + telInput,
+					data: {tel: telInput},
+					dataType: "text",
+					success: function(data) {	
+						if (data == 1) {
+							$("#telSmg").text("사용중인 전화번호입니다.");
+							$("#nextPage").attr("disabled", true);
+						} else {
+							$("#telSmg").text("");
+							$("#nextPage").attr("disabled", false);
+						}
+					},
+					error: function() {
+						console.log("실패");
+					}
+				});
+			});
+		});
 	</script>
 </head>
 
@@ -170,7 +194,7 @@
 							<div class="Msg" id="lastNameMsg"></div>
 						</div>
 						<div class="displayF">
-							<div class="allTitleText">핸드폰</div>
+							<div class="allTitleText">전화번호</div>
 							<input type="tel" class="inputBoxCss" maxlength="13" id="telInput" name="s_tel" value="${seller.s_tel}" placeholder="전화번호를 입력해주세요.">
 							<div class="Msg" id="telSmg"></div>
 						</div>

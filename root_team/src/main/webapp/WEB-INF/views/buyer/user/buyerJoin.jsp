@@ -27,8 +27,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/terms.js"></script>
 
 <script>
+let emailCheckValid = false;
+let telCheckValid = false;
+
 $(function(){
-	$("#emailInput").focusout(function() {
+	$("#emailInput").change(function() {
 		var emailInput = $('#emailInput').val();
 		
 		$.ajax({
@@ -39,22 +42,28 @@ $(function(){
 			success: function(data) {	
 				if (data == 1) {
 					$("#emailMsg").text("사용중인 이메일입니다.");
-					$("#joinSubmit").attr("disabled", true);
+					$('#emailRegion').css("border", "1px solid #F74848");
+				    emailCheckValid = false;
 				} else {
 					// 중복이 아닌 경우 초기화 작업 수행
 					$("#emailMsg").text(""); // 메시지 초기화
-					$("#joinSubmit").attr("disabled", false); // 버튼 활성화
+					$('#emailRegion').css("border", "1px solid #858585");
+					emailCheckValid = true;
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		
+		try {
+            globaldisable();
+        } catch (Exception) {}
 	});
 });
 
 $(function(){
-	$("#telInput").focusout(function() {
+	$("#telInput").change(function() {
 		var telInput = $('#telInput').val();
 		
 		$.ajax({
@@ -65,17 +74,23 @@ $(function(){
 			success: function(data) {	
 				if (data == 1) {
 					$("#telSmg").text("사용중인 전화번호입니다.");
-					$("#nextPage").attr("disabled", true);
+					$('#telRegion').css("border", "1px solid #F74848");
+					telCheckValid = false;
 				} else {
 					// 중복이 아닌 경우 초기화 작업 수행
 					$("#telSmg").text(""); // 메시지 초기화
-					$("#nextPage").attr("disabled", false); // 버튼 활성화
+					$('#telRegion').css("border", "1px solid #858585");
+					telCheckValid = true;
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		
+		try {
+            globaldisable();
+        } catch (Exception) {}
 	});
 });
 
