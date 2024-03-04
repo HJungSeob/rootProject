@@ -93,7 +93,7 @@
 	
 	            <div class="m_userLogin_2seletatag">
 	                <a href="${pageContext.request.contextPath}/seller/sellerLogin.do" class="m_userLogin_2entuser">기업 회원입니다.</a>
-	                <a href="${pageContext.request.contextPath}/buyer/buyerFindPw.do" class="m_userLogin_2pwblive">암호를 잊으셨나요?</a>
+	                <a href="${pageContext.request.contextPath}/buyer/findPw.do" class="m_userLogin_2pwblive">암호를 잊으셨나요?</a>
 	            </div>
 	        </div>
 	        <!-- #endregion -->
