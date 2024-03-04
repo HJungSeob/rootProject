@@ -39,7 +39,7 @@ public class SellerController {
 		String viewPage = "seller/user/sellerJoin";
 
 		if (sJoin.join(sellerVO) == 1) {
-			if (sJoin.infoState(sJoin.getS_idx(sellerVO.getS_businessnum())) == 1) {
+			if (sJoin.infoState(sellerVO) == 1) {
 				viewPage = "redirect:/index.do";
 			}
 		}

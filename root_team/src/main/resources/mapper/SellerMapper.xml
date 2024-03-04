@@ -8,13 +8,11 @@
 	<insert id="join" parameterType="sellerVO">
 		insert into tb_seller (s_businessnum, s_pw, s_firstname, s_lastname, s_email, s_tel, s_birth, s_zipcode, s_address, s_restaddress)
 			values(#{s_businessnum}, #{s_pw}, #{s_firstname}, #{s_lastname}, #{s_email}, #{s_tel}, #{s_birth}, #{s_zipcode}, #{s_address}, #{s_restaddress})
+			
+		<selectKey keyProperty="s_idx" order="AFTER" resultType="int">
+        	SELECT LAST_INSERT_ID()
+	    </selectKey>
 	</insert>
-	
-	<select id="getS_idx" parameterType="string" resultType="_int">
-		select s_idx
-			from tb_seller
-			where s_businessnum = #{s_businessnum}
-	</select>
 	
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
