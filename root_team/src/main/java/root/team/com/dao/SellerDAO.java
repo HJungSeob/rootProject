@@ -19,10 +19,6 @@ public class SellerDAO {
 		return sqlSession.insert(MAPPER + ".join", vo);
 	}
 
-	public int getS_idx(String s_businessnum) throws SQLException {
-		return sqlSession.selectOne(MAPPER + ".getS_idx", s_businessnum);
-	}
-
 	public int info(int s_idx) throws SQLException {
 		return sqlSession.insert(MAPPER + ".info", s_idx);
 	}

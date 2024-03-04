@@ -7,12 +7,8 @@ public interface SellerService {
 	default int join(SellerVO sellerVO) {
 		return 0;
 	}
-	
-	default int getS_idx(String s_businessnum) {
-		return 0;
-	}
 
-	default int infoState(int s_idx) {
+	default int infoState(SellerVO sellerVO) {
 		return 0;
 	}
 

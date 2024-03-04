@@ -14,13 +14,6 @@
 	    </selectKey>
 	</insert>
 
-	<!-- <select id="getB_idx" parameterType="string" resultType="_int">
-		select
-		b_idx
-		from tb_buyer
-		where b_email = #{b_email}
-	</select> -->
-
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_buyer_info (b_idx, b_profile, b_nickname)
 			VALUES (#{b_idx}, '기본프로필.png', CONCAT('rootuser', #{b_idx}))
@@ -31,9 +24,9 @@
 			VALUES (#{b_idx})
 	</insert>
 
-	<select id="getPassword" parameterType="string"
-		resultType="string">
-		select b_pw from tb_buyer where b_email = #{b_email}
+	<select id="getPassword" parameterType="string" resultType="string">
+		select b_pw from tb_buyer
+			where b_email = #{b_email}
 	</select>
 
 	<select id="login" parameterType="string" resultType="buyerVO">

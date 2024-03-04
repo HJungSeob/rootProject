@@ -33,23 +33,11 @@ public class SellerJoinService implements SellerService {
 		return result;
 	}
 
-	public int getS_idx(String s_businessnum) {
-		int s_idx = 0;
-
-		try {
-			s_idx = dao.getS_idx(s_businessnum);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return s_idx;
-	}
-
-	public int infoState(int s_idx) {
+	public int infoState(SellerVO sellerVO) {
 		int result = 0;
 
 		try {
-			if (dao.info(s_idx) == 1 && dao.state(s_idx) == 1) {
+			if (dao.info(sellerVO.getS_idx()) == 1 && dao.state(sellerVO.getS_idx()) == 1) {
 				result = 1;
 			}
 

@@ -19,10 +19,6 @@ public class BuyerDAO {
 		return sqlSession.insert(MAPPER + ".join", vo);
 	}
 
-//	public int getB_idx(String b_email) throws SQLException {
-//		return sqlSession.selectOne(MAPPER + ".getB_idx", b_email);
-//	}
-
 	public int info(int b_idx) throws SQLException {
 		return sqlSession.insert(MAPPER + ".info", b_idx);
 	}
@@ -45,7 +41,7 @@ public class BuyerDAO {
 
 	public BuyerVO updateBuyer(BuyerVO vo) throws SQLException {
 		BuyerVO newVO = null;
-		if (sqlSession.update(MAPPER + ".updateBuyer", vo) == 1) {// 회원정보 업데이트 성공
+		if (sqlSession.update(MAPPER + ".updateBuyer", vo) == 1) {
 			newVO = getBuyer(vo.getB_idx());
 		}
 		return newVO;
