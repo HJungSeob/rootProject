@@ -122,51 +122,13 @@
             <h1 class="gallery_name">Root의 소식. <span>따끈따끈한 새 이벤트들.</span></h1>
             <div class="gallery_box">
                 <ul class="gallery active">
+                <c:forEach var="index" begin="0" end="8">
                     <li class="gallery_li">
-                        <div>
+                        <a>
                             <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
+                        </a>
                     </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                </c:forEach>                   
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
@@ -176,53 +138,15 @@
             <h1 class="gallery_name">디지털/가전</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <li class="gallery_li">
-                        <div>
-                            <h2>삼성전자 네오QLED KQ75QNC85AFXKR (스탠드)</h2>
-                            <img src="${pageContext.request.contextPath}/resources/test/19095704_1.webp" alt="">
-                            <span>₩ 1,410,000</span>
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                	<c:forEach var="index" begin="0" end="8">
+                       <li class="gallery_li">
+	                       <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listA[index].i_idx}">	                        
+                            <h2>${listA[index].i_name}</h2>
+                            <img src="${pageContext.request.contextPath}/resources/uploads/${listA[index].i_saveimg0}" alt="">
+                            <span>${listA[index].i_price}</span>
+	                       </a>
+                    	</li>
+                    </c:forEach>                
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
@@ -233,53 +157,15 @@
             <h1 class="gallery_name">인테리어</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <li class="gallery_li">
-                        <div>
-                            <h2>삼성전자 네오QLED KQ75QNC85AFXKR (스탠드)</h2>
-                            <img src="${pageContext.request.contextPath}/resources/test/19095704_1.webp" alt="">
-                            <span>₩ 1,410,000</span>
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                    <c:forEach var="index" begin="0" end="8">
+                       <li class="gallery_li">
+	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listB[index].i_idx}">
+	                            <h2>${listB[index].i_name}</h2>
+	                            <img src="${pageContext.request.contextPath}/resources/uploads/${listB[index].i_saveimg0}" alt="">
+	                            <span>${listB[index].i_price}</span>
+	                        </a>
+                    	</li>
+                    </c:forEach>
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
@@ -290,53 +176,15 @@
             <h1 class="gallery_name">식품</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <li class="gallery_li">
-                        <div>
-                            <h2>삼성전자 네오QLED KQ75QNC85AFXKR (스탠드)</h2>
-                            <img src="${pageContext.request.contextPath}/resources/test/19095704_1.webp" alt="">
-                            <span>₩ 1,410,000</span>
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                    <c:forEach var="index" begin="0" end="8">
+                       <li class="gallery_li">
+	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listC[index].i_idx}">
+	                            <h2>${listC[index].i_name}</h2>
+	                            <img src="${pageContext.request.contextPath}/resources/uploads/${listC[index].i_saveimg0}" alt="">
+	                            <span>${listC[index].i_price}</span>
+	                        </a>
+                    	</li>
+                    </c:forEach>
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
@@ -347,53 +195,15 @@
             <h1 class="gallery_name">의류</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <li class="gallery_li">
-                        <div>
-                            <h2>삼성전자 네오QLED KQ75QNC85AFXKR (스탠드)</h2>
-                            <img src="${pageContext.request.contextPath}/resources/test/19095704_1.webp" alt="">
-                            <span>₩ 1,410,000</span>
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                    <c:forEach var="index" begin="0" end="8">
+                       <li class="gallery_li">
+	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listD[index].i_idx}">
+	                            <h2>${listD[index].i_name}</h2>
+	                            <img src="${pageContext.request.contextPath}/resources/uploads/${listD[index].i_saveimg0}" alt="">
+	                            <span>${listD[index].i_price}</span>
+	                        </a>
+                    	</li>
+                    </c:forEach>
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
@@ -404,53 +214,15 @@
             <h1 class="gallery_name">생활</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <li class="gallery_li">
-                        <div>
-                            <h2>삼성전자 네오QLED KQ75QNC85AFXKR (스탠드)</h2>
-                            <img src="${pageContext.request.contextPath}/resources/test/19095704_1.webp" alt="">
-                            <span>₩ 1,410,000</span>
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_02.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
-                    <li class="gallery_li">
-                        <div>
-                            <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_03.jpg" alt="">
-                        </div>
-                    </li>
+                    <c:forEach var="index" begin="0" end="8">
+                       <li class="gallery_li">
+	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listE[index].i_idx}">
+	                            <h2>${listE[index].i_name}</h2>
+	                            <img src="${pageContext.request.contextPath}/resources/uploads/${listE[index].i_saveimg0}" alt="">
+	                            <span>${listE[index].i_price}</span>
+	                        </a>
+                    	</li>
+                    </c:forEach>
                 </ul>
                 <div class="gallery_btns">
                     <button class="prev arrow_big active"></button>
