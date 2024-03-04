@@ -33,12 +33,11 @@ public class BuyerJoinService implements BuyerService {
 		return result;
 	}
 
-	public int infoState(String b_email) {
+	public int infoState(BuyerVO buyerVO) {
 		int result = 0;
 		
 		try {
-			int b_idx = dao.getB_idx(b_email);
-			if (dao.info(b_idx) == 1 && dao.state(b_idx) == 1) {
+			if (dao.info(buyerVO.getB_idx()) == 1 && dao.state(buyerVO.getB_idx()) == 1) {
 				result = 1;
 			}
 		} catch (Exception e) {

@@ -37,9 +37,9 @@ public class BuyerController {
 	@PostMapping("/buyerJoinProcess.do")
 	public String buyerJoinProcess(BuyerVO buyerVO) {
 		String viewPage = "buyer/user/buyerJoin";
-
+		
 		if (bJoin.join(buyerVO) == 1) {
-			if (bJoin.infoState(buyerVO.getB_email()) == 1) {
+			if (bJoin.infoState(buyerVO) == 1) {
 				viewPage = "redirect:/index.do";
 			}
 		}

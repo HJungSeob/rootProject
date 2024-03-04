@@ -31,6 +31,35 @@
 	src="${pageContext.request.contextPath}/resources/js/buyer/user/telAutoHyphen.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerUpdatePage2.js"></script>
+	
+<script>
+$(function(){
+	$("#telInput").focusout(function() {
+		var telInput = $('#telInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/buyer/telCheckProcess.do?b_tel=' + telInput,
+			data: {tel: telInput}, // 데이터 전송 방식 수정
+			dataType: "text",
+			success: function(data) {	
+				if (data == 1) {
+					$("#telSmg").text("사용중인 전화번호입니다.");
+					$("#nextPage").attr("disabled", true);
+				} else {
+					// 중복이 아닌 경우 초기화 작업 수행
+					$("#telSmg").text(""); // 메시지 초기화
+					$("#nextPage").attr("disabled", false); // 버튼 활성화
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
+
 </head>
 
 <body>
@@ -63,20 +92,15 @@
 			<!-- #endregion -->
 
 			<!-- #region 이메일 암호 수정 박스 -->
-			<div class="m_userinfosclo_updatename_region_buer"
-				id="m_userinfosclo_updatename_region_buer"></div>
-			<div class="m_userinfosclo_updatename_region"
-				id="m_userinfosclo_updatename_region_name">
+			<div class="m_userinfosclo_updatename_region_buer" id="m_userinfosclo_updatename_region_buer"></div>
+			<div class="m_userinfosclo_updatename_region" id="m_userinfosclo_updatename_region_name">
 				<div class="m_userinfosclo_updatename_region_name">전화번호</div>
-				<form name="buyerUpdate" method="post"
-					action="buyerUpdateProcess.do">
+				<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
 					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 					<div class="m_userinfosclo_updatename_region_fname" id="telRegion">
-						<label> <input type="tel"
-							class="m_userinfosclo_updatename_region_infname" name="b_tel"
-							id="telInput" maxlength="13">
-							<div class="m_userinfosclo_updatename_region_plfname"
-								id="telTitle">전화번호</div>
+						<label>
+							<input type="tel" class="m_userinfosclo_updatename_region_infname" name="b_tel" id="telInput" maxlength="13">
+							<div class="m_userinfosclo_updatename_region_plfname" id="telTitle">전화번호</div>
 						</label>
 						<div class="m_userinfo_updatename_region_reuslt" id="telSmg"></div>
 					</div>
@@ -84,10 +108,8 @@
 						class="m_userinfosclo_updatename_region_submit m_userinfosclo_updatename_region_hr2"
 						id="edsubmit1">
 						<label>
-							<div class="m_userinfosclo_updatename_region_submited">수정</div> <input
-							type="submit" disabled="disabled"
-							class="m_userinfosclo_updatename_region_submit1"
-							id="emailsubmit1">
+							<div class="m_userinfosclo_updatename_region_submited">수정</div>
+							<input type="submit" disabled="disabled" class="m_userinfosclo_updatename_region_submit1" id="emailsubmit1">
 						</label>
 					</div>
 				</form>
