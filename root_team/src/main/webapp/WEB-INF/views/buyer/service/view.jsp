@@ -52,9 +52,9 @@
                     // 다음 옵션 박스로 이동합니다.
                     $('.m_l_view_itemoption_box').animate({
                         scrollTop: scrollTop
-                    }, 500);                    
+                    }, 500);
                 }
-                $(".m_l_view_firstoption").prop('disabled', false);                   
+                $(".m_l_view_firstoption").prop('disabled', false);
                 $(".m_l_view_firstoption").removeClass("hide");
             });
 
@@ -93,9 +93,9 @@
                     scrollTop: $(".m_l_view_itemsellerinfo").offset().top - 50
                 }, 300);
             });
-            
+
             var boxOffsetTop = $('.m_l_view_btn_box').offset().top;
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > boxOffsetTop) {
                     $('.m_l_view_btn_box').addClass('fixed');
@@ -103,7 +103,7 @@
                     $('.m_l_view_btn_box').removeClass('fixed');
                 }
             });
-            
+
         });
 
         $(window).scroll(function () {
@@ -115,8 +115,6 @@
                 }
             });
         }).scroll();
-        
-        
     </script>
 
     <style>
@@ -124,7 +122,11 @@
             box-sizing: border-box;
             width: 1000px;
             margin: 0 auto;
-            padding: 20px;          
+            padding: 20px;
+        }
+        
+        .m_l_view_stick{
+        	color: lightgray;
         }
 
         .arrow_small {
@@ -148,7 +150,7 @@
         }
 
         .m_l_view_star_box {
-        display:inline-block;
+            display: inline-block;
             margin: 10px 0 5px;
             height: 17px;
             width: 89px;
@@ -175,13 +177,13 @@
             opacity: 0.5;
         }
 
-        label[for="m_l_view_btn_review"]{
+        label[for="m_l_view_btn_review"] {
             box-sizing: border-box;
             display: inline-block;
             font-size: 10px;
             border: 0;
             background-color: transparent;
-            padding: 9px 0;                   
+            padding: 9px 0;
             vertical-align: bottom;
             cursor: pointer;
         }
@@ -199,6 +201,7 @@
 
         .m_l_view_itemsimpleinfo {
             display: flex;
+            justify-content: space-between;
             margin-top: 10px;
         }
 
@@ -233,14 +236,14 @@
             border: 2px solid #F9F9F9;
             border-radius: 10px;
             margin: 0 5px;
-            cursor:pointer;
+            cursor: pointer;
             overflow: hidden;
             transition: border 0.3s;
         }
 
         .m_l_view_itemimg_btn button img {
             width: 100%;
-            height: 100%;                   
+            height: 100%;
         }
 
         .m_l_view_itemoption {
@@ -252,49 +255,49 @@
         .m_l_view_itemprice_box {
             box-sizing: border-box;
             height: 45px;
-            border-bottom: 1px solid gray;        
+            border-bottom: 1px solid gray;
         }
-        
+
         .m_l_view_itemprice {
             font-size: 28px;
         }
-        
-		.m_l_view_firstoption{
-			position:relative;
-			width: 320px;
+
+        .m_l_view_firstoption {
+            position: relative;
+            width: 320px;
             height: 50px;
-            z-index: 5;           
+            z-index: 5;
             border: 1px solid lightgray;
             border-top: 0;
             background-color: white;
             transition: opacity 0.3s;
-            cursor: pointer;                           
-		}
-		
-		.m_l_view_checkedoption{
-		 	color: black;
-			font-size: 16px;
-		}
-		
-		.m_l_view_firstoption .reset{
-			color: gray;
-			font-size: 10px;
-		}
-		
-		.m_l_view_firstoption.hide{
-			opacity: 0;
-			cursor: default;
-		}
-		
+            cursor: pointer;
+        }
+
+        .m_l_view_checkedoption {
+            color: black;
+            font-size: 16px;
+        }
+
+        .m_l_view_firstoption .reset {
+            color: gray;
+            font-size: 10px;
+        }
+
+        .m_l_view_firstoption.hide {
+            opacity: 0;
+            cursor: default;
+        }
+
         .m_l_view_itemoption_box {
-        	position:relative;
+            position: relative;
             width: 320px;
             height: 515px;
             padding: 20px 0;
             overflow: hidden;
-            margin-top: -50px;  
+            margin-top: -50px;
         }
-        
+
         .m_l_view_option {
             height: 515px;
             display: flex;
@@ -329,40 +332,40 @@
         }
 
         .m_l_view_option input[type="radio"]:checked+label {
-        	color: black;
+            color: black;
             border: 1px solid #0071E3;
             outline: 1px solid #0071E3;
         }
-        
-        .m_l_view_getitem_box{
-        	width: 100%;
-        	height: 315px;
-        	position: absolute;
-        	left:0;
-        	background-color: #E7E7E7;
-        }
-        
-        .m_l_view_getitem{
-        	box-sizing: border-box;
-        	position: absolute;
-        	padding: 42px 0;
-        	width: 960px;
-        	height: 315px;
+
+        .m_l_view_getitem_box {
+            width: 100%;
+            height: 315px;
+            position: absolute;
+            left: 0;
+            background-color: #E7E7E7;
         }
 
-        .m_l_view_getitem_itemname{
-            font-size: 20px;          
+        .m_l_view_getitem {
+            box-sizing: border-box;
+            position: absolute;
+            padding: 42px 0;
+            width: 960px;
+            height: 315px;
         }
 
-        .m_l_view_getitem_itemprice{
-        	display: block;
+        .m_l_view_getitem_itemname {
+            font-size: 20px;
+        }
+
+        .m_l_view_getitem_itemprice {
+            display: block;
             font-size: 20px;
             font-weight: bold;
             margin: 20px 0 45px;
         }
 
-        .m_l_view_getitem_cart{
-        	margin-top:-22px;
+        .m_l_view_getitem_cart {
+            margin-top: -22px;
             font-size: 14px;
             display: block;
             width: 160px;
@@ -374,11 +377,11 @@
             float: right;
         }
 
-        .m_l_view_getitem_cart span{          
+        .m_l_view_getitem_cart span {
             line-height: 40px;
         }
 
-        .m_l_view_getitem_save{
+        .m_l_view_getitem_save {
             border: 0;
             background-color: transparent;
             cursor: pointer;
@@ -386,114 +389,124 @@
             margin-bottom: 20px;
         }
 
-        .m_l_view_getitem_span{
+        .m_l_view_getitem_span {
             display: block;
             font-size: 14px;
             margin: 0 0 10px;
         }
-        
-        .m_l_view_dummy{
-        	height: 365px;
-        }              
-        .m_l_view_btn{
-        	height: 50px       
+
+        .m_l_view_dummy {
+            height: 365px;
         }
-        .m_l_view_btn_box {       	
-            width: 960px;
+
+        .m_l_view_itemdetail {
+            margin-left: -20px;
+        }
+
+        .m_l_view_btn {
+            height: 50px
+        }
+
+        .m_l_view_btn_box {
+            width: 1000px;
             height: 50px;
-            font-size: 0;          
+            font-size: 0;
             display: flex;
             justify-content: center;
             background-color: white;
             top: 0;
             z-index: 10;
         }
-        
-		.m_l_view_btn_box.fixed{
-			position: fixed;
-		}
+
+        .m_l_view_btn_box.fixed {
+            position: fixed;
+        }
 
         .m_l_view_btn_box button {
             box-sizing: border-box;
-            width: 240px;
+            width: 250px;
             height: 50px;
             vertical-align: top;
             background-color: #f9f9f9;
             border: 0;
-            border-bottom: 1px solid lightgray;         
-            font-weight: bold;            
+            border-bottom: 1px solid lightgray;
+            font-weight: bold;
             transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
         }
 
-        .m_l_view_btn_box button.active{
-        	background-color: white;
-            border:1px solid lightgray;
-            border-bottom:0;
+        .m_l_view_btn_box button.active {
+            background-color: white;
+            border: 1px solid lightgray;
+            border-bottom: 0;
         }
 
-        .m_l_view_itemexplain{
-        	box-sizing: border-box;
-        	padding: 20px 10px;
-        	background-color: white;
-        	border-left:1px solid lightgray;
-        	border-right:1px solid lightgray;         
-        	width: 960px;
+        .page-section {
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: white;
+            width: 1000px;
         }
-        
-        .m_l_view_itemexplain img{
-            width: 100%;   
+
+        .m_l_view_itemexplain {
+            border-left: 1px solid lightgray;
+            border-right: 1px solid lightgray;
+
+        }
+
+        .m_l_view_itemexplain img {
+            width: 100%;
         }
 
         .m_l_view_itemreview {
             height: 1200px;
-            border-left:1px solid lightgray;
-        	border-right:1px solid lightgray;
-        	background-color: white;
-        }
-        
-        .m_l_view_itemreview h2{
-        	padding: 20px 0 20px 20px;  
+            border-left: 1px solid lightgray;
+            border-right: 1px solid lightgray;
+            background-color: white;
         }
 
-        .m_l_view_simplereview{
+        .m_l_view_itemreview h2 {
+            padding: 20px 0 20px;
+        }
+
+        .m_l_view_simplereview {
             display: flex;
             text-align: center;
-            margin: 0 20px 20px; 
+            margin: 0 0 20px;
             border-top: 1px solid lightgray;
             border-bottom: 1px solid lightgray;
         }
-        
-        
-		.m_l_view_simple_stars{
-			box-sizing:border-box;
-			width: 400px;
-			height: 200px;
-			margin: 20px 0;
-			padding:30px;
-			border-right: 1px solid lightgray;
-		}
-		
-		.m_l_view_simple_stars h3{
-			margin-bottom: 10px;
-		}
-		
-		.m_l_view_simple_stars h1{
-			font-size: 35px;
-			margin-bottom: 10px;
-		}
-		
+
+        .m_l_view_simple_stars {
+            box-sizing: border-box;
+            width: 400px;
+            height: 200px;
+            margin: 20px 0;
+            padding: 30px;
+            border-right: 1px solid lightgray;
+        }
+
+        .m_l_view_simple_stars h3 {
+            margin-bottom: 10px;
+        }
+
+        .m_l_view_simple_stars h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
         .m_l_view_simple_star_box {
-            display:block;
+            display: block;
             margin: 0 auto 10px;
             height: 30px;
-            width: 166px;           
+            width: 166px;
         }
 
         .m_l_view_simple_star {
             position: relative;
             display: block;
             height: 100%;
-            background-repeat: no-repeat;    
+            background-repeat: no-repeat;
         }
 
         .m_l_view_simple_star.full {
@@ -510,58 +523,124 @@
             opacity: 0.5;
         }
 
-        .m_l_view_simple_statistics{
-        	box-sizing:border-box;
+        .m_l_view_simple_statistics {
+            box-sizing: border-box;
             flex: 1;
             margin: 20px 0;
         }
-		
-		.m_l_view_simple_statistics li{
-			display: block;
-			padding: 18px 0 0;
-		}
-		
-		.m_l_view_simple_statistics li .num{
+
+        .m_l_view_simple_statistics li {
+            display: block;
+            padding: 18px 0 0;
+        }
+
+        .m_l_view_simple_statistics li .num {
             color: gray;
             font-size: 14px;
-		}
-		
-        .m_l_view_simple_statistics li div{
+        }
+
+        .m_l_view_simple_statistics li div {
             display: inline-block;
             width: 250px;
-            height: 18px;           
+            height: 18px;
             border-radius: 9px;
             background-color: rgba(211, 211, 211, 0.3);
             vertical-align: top;
             text-align: left;
         }
-        
-        .m_l_view_simple_statistics li div>span{
-        	display: inline-block;
-        	width: 50%;
-        	height: 18px;
-        	border-radius: 9px;
-        	background-color: #0071E399;
+
+        .m_l_view_simple_statistics li div>span {
+            display: inline-block;
+            width: 50%;
+            height: 18px;
+            border-radius: 9px;
+            background-color: #0071E399;
         }
 
-        .m_l_view_simple_statistics li .percent{
+        .m_l_view_simple_statistics li .percent {
             color: #0071E3;
             font-size: 14px;
         }
+        
+        .m_l_view_review_search{
+        	padding: 30px;
+        	border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+        }
+		.m_l_view_review_search input[type="radio"]{
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 3px;
+		}
+		
+		.m_l_view_review_search span{
+			font-size: 14px;
+		}
+		
+        .m_l_view_review_search label{
+            display: inline-block;
+            margin: 0 10px 10px;
+            height: 17px;          
+            vertical-align: top;
+        }
+        
+        .m_l_view_review_search input[type="submit"]{
+        	display: none;        	
+        }
+        
+        label[for="search_submit"] .search{
+        	filter: invert(0%) sepia(100%) saturate(5%) hue-rotate(145deg) brightness(0%) contrast(100%);
+        }
+        
+        .m_l_view_review_search input[type="text"]{
+        	margin: 0 10px 10px;        	
+        }
+        
+        
+
+        .m_l_view_starorder{
+            position: relative;
+            display: inline-block;
+            height: 17px;
+            background-repeat: no-repeat;
+            background-image: url(../resources/css/img/star.png);
+            background-position: 0 -245px;
+        }
+        
+        label[for="star5"] .m_l_view_starorder {
+            width: 88px;           
+        }
+        
+        label[for="star4"] .m_l_view_starorder{
+        	width: 71px;
+        }
+        
+        label[for="star3"] .m_l_view_starorder{
+        	width: 52px;
+        }
+        
+        label[for="star2"] .m_l_view_starorder{
+        	width: 34px;
+        }
+        
+        label[for="star1"] .m_l_view_starorder{
+        	width: 17px;
+        }
+        
 
         .m_l_view_itemQandA {
             height: 1200px;
-            border-left:1px solid lightgray;
-        	border-right:1px solid lightgray;
+            border-left: 1px solid lightgray;
+            border-right: 1px solid lightgray;
             background-color: rgb(67, 142, 255);
         }
 
         .m_l_view_itemsellerinfo {
             height: 1200px;
-            border:1px solid lightgray;
-        	border-top:0 solid lightgray;        	
+            border: 1px solid lightgray;
+            border-top: 0 solid lightgray;
             background-color: rgb(255, 176, 103);
-        }     
+        }
 
 
         /* ---------------------------------------------- */
@@ -599,10 +678,10 @@
             <div class="m_l_view_star_box">
                 <span class="m_l_view_star empty"></span>
                 <span class="m_l_view_star full"></span>
-            </div>         
+            </div>
             <label for="m_l_view_btn_review">
                 <span>(10)</span>
-            </label>         
+            </label>
             <span class="m_l_view_item_title">${item.i_name}</span>
             <span class="m_l_view_storename">${seller.s_storename}</span>
             <div class="m_l_view_itemsimpleinfo">
@@ -640,13 +719,13 @@
                     <div class="m_l_view_itemprice_box">
                         <span class="m_l_view_itemprice">
                             <fmt:formatNumber value="${item.i_price}" type="currency" currencySymbol="₩" />
-                        </span>                                             
+                        </span>
                     </div>
                     <button class="m_l_view_firstoption hide">
-                    	<span class="m_l_view_checkedoption"></span><br>
-                    	<span class="reset">다시선택</span>
+                        <span class="m_l_view_checkedoption"></span><br>
+                        <span class="reset">다시선택</span>
                     </button>
-                    <div class="m_l_view_itemoption_box">                       
+                    <div class="m_l_view_itemoption_box">
                         <c:forEach var="index" begin="0" end="4">
                             <c:if test="${optionArr[index] ne null}">
                                 <div class="m_l_view_option">
@@ -657,81 +736,141 @@
                     </div>
                 </div>
             </div>
-			<div class="m_l_view_getitem_box">			
-			</div>
-			<div class="m_l_view_getitem">
-				<span class="m_l_view_getitem_itemname">${item.i_name}</span>
-				<span class="m_l_view_getitem_itemprice">
+            <div class="m_l_view_getitem_box">
+            </div>
+            <div class="m_l_view_getitem">
+                <span class="m_l_view_getitem_itemname">${item.i_name}</span>
+                <span class="m_l_view_getitem_itemprice">
                     <fmt:formatNumber value="${item.i_price}" type="currency" currencySymbol="₩" />
                 </span>
                 <a href="#" class="m_l_view_getitem_cart"><span>장바구니</span></a>
                 <span class="m_l_view_getitem_span">시간이 좀 더 필요하신가요?</span>
                 <span class="m_l_view_getitem_span">선택한 상품을 목록에 모두 저장해두고 언제든 살펴보세요.</span>
-                <button class="m_l_view_getitem_save"><span class="m_l_view_getitem_span">나중을 위한 저장</span></button>            
+                <button class="m_l_view_getitem_save"><span class="m_l_view_getitem_span">나중을 위한 저장</span></button>
                 <span class="m_l_view_getitem_span">배송에 관한 자세한 정보는 '결제'단계에서 볼 수 있습니다.</span>
-			</div>
-			<div class="m_l_view_dummy"></div>
-			<div class="m_l_view_btn">
-				<div class="m_l_view_btn_box">
-	                <button class="m_l_view_btn_itemexplain active"><span>상품정보</span></button>
-	                <button class="m_l_view_btn_review" id="m_l_view_btn_review"><span>리뷰</span></button>
-	                <button class="m_l_view_btn_QandA"><span>Q&A</span></button>
-	                <button class="m_l_view_btn_sellerinfo"><span>판매자정보</span></button>
-	            </div>
-			</div>			
-			<div class="m_l_view_itemexplain page-section">
-				<c:out value="${item.i_explain}" escapeXml="false" />
-			</div>
-            <div class="m_l_view_itemreview page-section">
-            	<h2>상품리뷰</h2>
-	            <div class="m_l_view_simplereview">
-	                <div class="m_l_view_simple_stars">
-	                    <h3>구매만족도</h3>
-	                    <h1>2.5</h1>
-	                    <div class="m_l_view_simple_star_box">
-	                        <span class="m_l_view_simple_star empty"></span>
-	                        <span class="m_l_view_simple_star full"></span>
-	                    </div>
-	                    <span>10건</span>
-	                </div>
-	                <div class="m_l_view_simple_statistics">
-						<ul>
-							<li class="points5">
-                                <span class="num">5점</span>
-                                <div><span></span></div>
-                                <span class="percent">50%</span>
-                            </li>
-                            <li class="points4">
-                                <span class="num">4점</span>
-                                <div><span></span></div>
-                                <span class="percent">10%</span>
-                            </li>
-                            <li class="points3">
-                                <span class="num">3점</span>
-                                <div><span></span></div>
-                                <span class="percent">10%</span>
-                            </li>
-                            <li class="points2">
-                                <span class="num">2점</span>
-                                <div><span></span></div>
-                                <span class="percent">10%</span>
-                            </li>
-                            <li class="points1">
-                                <span class="num">1점</span>
-                                <div><span></span></div>
-                                <span class="percent">10%</span>
-                            </li>
-						</ul>
-	                </div>
-	            </div>
-	            <h2>전체리뷰</h2>	
             </div>
-            <div class="m_l_view_itemQandA page-section">
-            Q&A입니다     
+            <div class="m_l_view_dummy"></div>
+            <div class="m_l_view_itemdetail">
+                <div class="m_l_view_btn">
+                    <div class="m_l_view_btn_box">
+                        <button class="m_l_view_btn_itemexplain active"><span>상품정보</span></button>
+                        <button class="m_l_view_btn_review" id="m_l_view_btn_review"><span>리뷰</span></button>
+                        <button class="m_l_view_btn_QandA"><span>Q&A</span></button>
+                        <button class="m_l_view_btn_sellerinfo"><span>판매자정보</span></button>
+                    </div>
+                </div>
+                <div class="m_l_view_itemexplain page-section">
+                    <c:out value="${item.i_explain}" escapeXml="false" />
+                </div>
+                <div class="m_l_view_itemreview page-section">
+                    <h2>상품리뷰</h2>
+                    <div class="m_l_view_simplereview">
+                        <div class="m_l_view_simple_stars">
+                            <h3>구매만족도</h3>
+                            <h1>2.5</h1>
+                            <div class="m_l_view_simple_star_box">
+                                <span class="m_l_view_simple_star empty"></span>
+                                <span class="m_l_view_simple_star full"></span>
+                            </div>
+                            <span>10건</span>
+                        </div>
+                        <div class="m_l_view_simple_statistics">
+                            <ul>
+                                <li class="points5">
+                                    <span class="num">5점</span>
+                                    <div><span></span></div>
+                                    <span class="percent">50%</span>
+                                </li>
+                                <li class="points4">
+                                    <span class="num">4점</span>
+                                    <div><span></span></div>
+                                    <span class="percent">10%</span>
+                                </li>
+                                <li class="points3">
+                                    <span class="num">3점</span>
+                                    <div><span></span></div>
+                                    <span class="percent">10%</span>
+                                </li>
+                                <li class="points2">
+                                    <span class="num">2점</span>
+                                    <div><span></span></div>
+                                    <span class="percent">10%</span>
+                                </li>
+                                <li class="points1">
+                                    <span class="num">1점</span>
+                                    <div><span></span></div>
+                                    <span class="percent">10%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>전체리뷰</h2>
+                    <div class="m_l_view_detailreview">                   	                     
+                        <ul class="m_l_view_review_search">
+                            <li>
+                                <label for="starall">
+                                	<input type="radio" name="starorder" id="starall">
+                                    <span>전체</span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="star5">
+                                	<input type="radio" name="starorder" id="star5">
+                                    <span class="m_l_view_starorder"></span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="star4">
+                                	<input type="radio" name="starorder" id="star4">
+                                    <span class="m_l_view_starorder"></span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="star3">
+                                	<input type="radio" name="starorder" id="star3">
+                                    <span class="m_l_view_starorder"></span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="star2">
+                                 	<input type="radio" name="starorder" id="star2">
+                                    <span class="m_l_view_starorder"></span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="star1">
+                                	<input type="radio" name="starorder" id="star1">
+                                    <span class="m_l_view_starorder"></span>
+                                </label>
+                            </li>
+                            <li>
+                            	<label for="recommend">
+                            	<input type="radio" name="vieworder" id="recommend">
+                            	<span>추천순</span>
+                            	</label>
+                            	<span class="m_l_view_stick">|</span>
+                            	<label for="latest">
+                            	<input type="radio" name="vieworder" id="latest">
+                            	<span>최신순</span>                               
+                                </label>
+                            </li>
+                            <li>
+                            	<input type="submit" id="search_submit">
+                            	<label for="search_submit">
+                            		<span class="search"></span>
+                            	</label>
+                                <input type="text" placeholder="옵션 검색">                         
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m_l_view_itemQandA page-section">
+                    Q&A입니다
+                </div>
+                <div class="m_l_view_itemsellerinfo page-section">
+                    판매자정보입니다
+                </div>
             </div>
-            <div class="m_l_view_itemsellerinfo page-section">
-            판매자정보입니다    
-            </div>         
         </section>
     </div>
     <footer>

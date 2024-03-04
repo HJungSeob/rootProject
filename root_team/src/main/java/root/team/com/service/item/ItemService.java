@@ -1,6 +1,9 @@
 package root.team.com.service.item;
 
+import java.util.List;
+
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.SearchVO;
 
 public interface ItemService {
 
@@ -9,6 +12,10 @@ public interface ItemService {
 	}
 
 	default ItemVO view(int i_idx) {
+		return null;
+	}
+
+	default List<ItemVO> getItems(SearchVO vo) {
 		return null;
 	}
 

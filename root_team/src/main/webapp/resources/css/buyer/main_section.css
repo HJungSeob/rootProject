@@ -197,14 +197,16 @@ section {
     opacity: 0;
     text-align: center;
     transform: translateY(20px);
+    cursor: pointer;
 }
 
 .gallery.active .gallery_li {
     animation: fadeInUp 0.5s ease-in-out forwards;
 }
 
-.gallery_li div {
+.gallery_li a {
     position: absolute;
+    display: block;
     box-sizing: border-box;
     border-radius: 20px;
     width: 380px;
@@ -216,7 +218,7 @@ section {
     text-align: left;
 }
 
-.gallery_li div h2 {
+.gallery_li a h2 {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
@@ -225,28 +227,9 @@ section {
     z-index: 5;
 }
 
-.gallery_li div span {
+.gallery_li a span {
     display: inline-block;
     font-size: 16px;
-}
-
-.gallery_li div a {
-    float: right;
-    display: block;
-    position: relative;
-    bottom: 5px;
-    width: 88px;
-    line-height: 30px;
-    background-color: #0071E3;
-    border-radius: 17px;
-    text-align: center;
-}
-
-.gallery_li div a span {
-    vertical-align: middle;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 14px;
 }
 
 .gallery_li img {
@@ -257,16 +240,8 @@ section {
     transition: 0.5s;
 }
 
-.gallery_li:hover div {
-    margin: -2.5px 0 0 -2.5px;
-    box-shadow: 2px 4px 12px rgba(0, 0, 0, .5);
-    width: 385px;
-    height: 480px;
-}
-
-.gallery_li:hover img {
-    width: 345px;
-    height: 335px;
+.gallery_li:hover a {
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, .5); 
 }
 
 .gallery_btns {
@@ -296,6 +271,7 @@ section {
     opacity: 0;
     z-index: -1;
     transition: .5s, opacity .5s, z-index .8s;
+    cursor: pointer;
 }
 
 .gallery_btns button.prev{
