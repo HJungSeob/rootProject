@@ -243,4 +243,10 @@ public class BuyerController {
 	public void findPwProcess(@ModelAttribute BuyerVO buyerVO, HttpServletResponse response) throws Exception{
 		bFind.findPw(response, buyerVO);
 	}
+	
+	@PostMapping("/passwordCheckProcess.do")
+	@ResponseBody
+	public int passwordCheckProcess(@RequestParam("b_idx") int b_idx, @RequestParam("b_pw") String b_pw) {
+		return bCheck.passwordCheck(b_idx, b_pw);
+	}
 }

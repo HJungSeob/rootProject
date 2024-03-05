@@ -100,4 +100,8 @@ public class BuyerDAO {
 	public int matchTelEmail(BuyerVO vo) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".matchTelEmail", vo);
 	}
+	
+	public String getPw(int b_idx) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getPw", b_idx);
+	}
 }

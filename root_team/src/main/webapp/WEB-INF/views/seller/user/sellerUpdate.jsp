@@ -88,6 +88,40 @@
 				});
 			});
 		});
+		
+		$(function(){
+		    $("#existingPwInput").change(function() {
+		    	var s_idx = $('#hiddenS_idx').val();
+		        var existingPwInput = $('#existingPwInput').val();
+
+		        $.ajax({
+		            type: 'post',
+		            url: '${pageContext.request.contextPath}/seller/passwordCheckProcess.do',
+		            data: {
+		            	s_pw: existingPwInput,
+		            	s_idx: s_idx},
+		            success: function(data) {    
+		                if (data == 1) {
+		                    $("#existingPwMsg").text("기존 비밀번호가 일치합니다.");
+		                    // 기존 비밀번호가 일치할 경우 새로운 비밀번호 입력란 활성화
+		                    $('#newPwInput').prop('disabled', false);
+		                    $('#ckeckPwInput').prop('disabled', false);
+		                    $('#upPwSubmit').prop('disabled', false);
+		                } else {
+		                    $("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
+		                    // 기존 비밀번호가 일치하지 않을 경우 새로운 비밀번호 입력란 비활성화
+		                    $('#newPwInput').prop('disabled', true);
+		                    $('#ckeckPwInput').prop('disabled', true);
+		                    $('#upPwSubmit').prop('disabled', true);
+		                }
+		            },
+		            error: function() {
+		                console.log("실패");
+		            }
+		        });
+		    });
+		});
+
 	</script>
 </head>
 
@@ -141,23 +175,27 @@
 							</label>
 						</div>
 					</form>
-
-					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
-						<input type="hidden" name="s_idx" value="${seller.s_idx}">
-						<div class="hr"></div>
-						<div class="m_sellerUpdateService_mainTitle">암호 수정</div>
-						<hr>
-						<div class="displayF">
-							<div class="allTitleText">암호</div>
-							<div class="Msg pointer" id="updatePwBtn">변경 하기</div>
-							<div class="Msg disnone pointer" id="cancelPwBtn">취소 하기</div>
+					
+					<div class="hr"></div>
+					<div class="m_sellerUpdateService_mainTitle">암호 수정</div>
+					<hr>
+					<div class="displayF">
+						<div class="allTitleText">암호</div>
+						<div class="Msg pointer" id="updatePwBtn">변경 하기</div>
+						<div class="Msg disnone pointer" id="cancelPwBtn">취소 하기</div>
+					</div>
+					
+					<div class="disnone" id="updatePwPage">
+					
+						<div class="displayF" id="existingPw">
+							<input type="hidden" id="hiddenS_idx" name="s_idx" value="${seller.s_idx}">
+							<div class="allTitleText">현재 암호</div>
+							<input type="password" class="inputBoxCss" name="s_pw" id="existingPwInput">
+							<div class="Msg" id="existingPwMsg"></div>
 						</div>
-						<div class="disnone" id="updatePwPage">
-							<div class="displayF">
-								<div class="allTitleText">기존 암호</div>
-								<input type="password" class="inputBoxCss">
-								<div class="Msg"></div>
-							</div>
+						
+						<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
+							<input type="hidden" name="s_idx" value="${seller.s_idx}">
 							<div class="displayF">
 								<div class="allTitleText">새로운 암호</div>
 								<input type="password" name="s_pw" class="inputBoxCss" id="newPwInput">
@@ -170,13 +208,14 @@
 							</div>
 							<div class="m_sellerUpdateService_submitRegion">
 								<label>
-									<div class="m_sellerUpdateService_submitTitle pointer">수정</div> <input type="submit"
-										class="upSubmit" id="upPwSubmit" disabled="disabled">
+									<div class="m_sellerUpdateService_submitTitle pointer">수정</div>
+									<input type="submit" class="upSubmit" id="upPwSubmit" disabled="disabled">
 								</label>
 							</div>
-						</div>
-						<hr>
-					</form>
+						</form>
+					</div>
+					<hr>
+					
 
 					<form name="sellerUpdate" method="post" action="sellerUpdateProcess.do">
 						<input type="hidden" name="s_idx" value="${seller.s_idx}">

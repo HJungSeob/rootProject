@@ -119,4 +119,16 @@
 		AND s.s_businessnum = #{s_businessnum}
 		AND s.s_email = #{s_email}
 	</select>
+	
+	<select id="passwordCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller
+		where s_pw = #{s_pw}
+	</select>
+	
+	<select id="getPw" parameterType="_int" resultType="string">
+		select s_pw
+			from tb_seller
+			where s_idx = #{s_idx}
+	</select>
 </mapper>

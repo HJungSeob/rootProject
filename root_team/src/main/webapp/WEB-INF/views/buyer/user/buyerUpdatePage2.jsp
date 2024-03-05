@@ -35,6 +35,7 @@
 <script>
 $(function(){
 	$("#telInput").focusout(function() {
+		console.log("우와");
 		var telInput = $('#telInput').val();
 		
 		$.ajax({
@@ -57,6 +58,38 @@ $(function(){
 			}
 		});
 	});
+});
+
+$(function(){
+    $("#existingPwInput").change(function() {
+    	 console.log("우와");
+    	var b_idx = $('#hiddenB_idx').val();
+        var existingPwInput = $('#existingPwInput').val();
+
+        $.ajax({
+            type: 'post',
+            url: '${pageContext.request.contextPath}/buyer/passwordCheckProcess.do',
+            data: {
+            	b_pw: existingPwInput,
+            	b_idx: b_idx},
+                success: function(data) {    
+                    if (data == 1) {
+                        $("#existingPwMsg").text("기존 비밀번호가 일치합니다.");
+                        $('#newPwInput').prop('disabled', false);
+                        $('#ckeckPwInput').prop('disabled', false);
+                        $('#pwSubmit').prop('disabled', false);
+                    } else {
+                        $("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
+                        $('#newPwInput').prop('disabled', true);
+                        $('#ckeckPwInput').prop('disabled', true);
+                        $('#pwSubmit').prop('disabled', true);
+                    }
+                },
+                error: function() {
+                    console.log("실패");
+                } 
+        });
+    });
 });
 </script>
 
@@ -114,63 +147,52 @@ $(function(){
 					</div>
 				</form>
 			</div>
-			<div class="m_userinfosclo_updatename_region"
-				id="m_userinfosclo_updatename_region_bday">
+			<div class="m_userinfosclo_updatename_region" id="m_userinfosclo_updatename_region_bday">
 				<div class="m_userinfosclo_updatename_region_bdaytitle">암호 변경</div>
-				<div class="m_userinfosclo_content_namesub1">최근 업데이트:
-					${pwmodifydate}</div>
-				<form name="buyerUpdate" method="post"
-					action="buyerUpdateProcess.do">
-					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
-					<div class="m_userinfosclo_updatename_region_inbday">
-						<div class="m_userinfosclo_updatename_region_inyyyy"
-							id="exPwRegion">
-							<label> <input type="password"
-								class="m_userinfosclo_updatename_region_inputyyyy"
-								id="exPwInput">
-								<div class="m_userinfosclo_updatename_region_subyyyy"
-									id="exPwTitle">현재 암호</div>
-							</label>
-							<div class="m_userinfosclo_pwMsg" id="exPwMsg"></div>
-						</div>
-						<div class="m_userinfosclo_updatename_region_inyyyy"
-							id="newPwRegion">
-							<label> <input type="password"
-								class="m_userinfosclo_updatename_region_inputyyyy"
-								id="newPwInput" name="b_pw">
-								<div class="m_userinfosclo_updatename_region_subyyyy"
-									id="newPwTitle">새로운 암호</div>
+				<div class="m_userinfosclo_content_namesub1">최근 업데이트: ${pwmodifydate}</div>
+			
+				<div class="m_userinfosclo_updatename_region_inbday">
+				
+					<div class="m_userinfosclo_updatename_region_inyyyy" id="exPwRegion">
+						<input type="hidden" id="hiddenB_idx" name="b_idx" value="${buyer.b_idx}">
+						<label>
+							<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="existingPwInput">
+							<div class="m_userinfosclo_updatename_region_subyyyy" name="b_pw" id="exPwTitle">현재 암호</div>
+						</label>
+						<div class="m_userinfosclo_pwMsg" id="existingPwMsg"></div>
+					</div>
+					
+					<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
+						<input type="hidden" name="b_idx" value="${buyer.b_idx}">
+						<div class="m_userinfosclo_updatename_region_inyyyy" id="newPwRegion">
+							<label>
+								<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="newPwInput" name="b_pw">
+								<div class="m_userinfosclo_updatename_region_subyyyy" id="newPwTitle">새로운 암호</div>
 							</label>
 							<div class="m_userinfosclo_pwMsg" id="newPwMsg"></div>
 						</div>
-						<div class="m_userinfosclo_updatename_region_inyyyy"
-							id="ckeckPwRegion">
-							<label> <input type="password"
-								class="m_userinfosclo_updatename_region_inputyyyy"
-								id="ckeckPwInput">
-								<div class="m_userinfosclo_updatename_region_subyyyy"
-									id="ckeckPwTitle">새 암호 확인</div>
+						<div class="m_userinfosclo_updatename_region_inyyyy" id="ckeckPwRegion">
+							<label>
+								<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="ckeckPwInput">
+								<div class="m_userinfosclo_updatename_region_subyyyy" id="ckeckPwTitle">새 암호 확인</div>
 							</label>
 							<div class="m_userinfosclo_pwMsg" id="ckeckPwMsg"></div>
 						</div>
-						<div
-							class="m_userinfosclo_updatename_region_submit m_userinfosclo_updatename_region_hr2"
-							id="ckeckSubmit">
+						<div class="m_userinfosclo_updatename_region_submit m_userinfosclo_updatename_region_hr2" id="ckeckSubmit">
 							<label>
 								<div class="m_userinfosclo_updatename_region_submited">수정</div>
-								<input type="submit" id="pwSubmit" disabled="disabled"
-								class="m_userinfosclo_updatename_region_submit1">
+								<input type="submit" id="pwSubmit" disabled="disabled" class="m_userinfosclo_updatename_region_submit1">
 							</label>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
-
 		</section>
 	</div>
-			<footer>
-			<%@ include file="../common/global_footer.jsp"%>
-		</footer>
+	
+	<footer>
+		<%@ include file="../common/global_footer.jsp"%>
+	</footer>
 	<!-- #endregion -->
 </body>
 

@@ -52,4 +52,8 @@ public interface BuyerService {
 
 	default void findPw(HttpServletResponse response, BuyerVO buyerVO) throws Exception {
 	}
+	
+	default int passwordCheck(int b_idx, String b_pw) {
+		return 0;
+	}
 }

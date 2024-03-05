@@ -48,4 +48,8 @@ public interface SellerService {
 
 	default void findPw(HttpServletResponse response, SellerVO sellerVO) throws Exception {
 	}
+	
+	default int passwordCheck(int s_idx, String s_pw) {
+		return 0;
+	}
 }
