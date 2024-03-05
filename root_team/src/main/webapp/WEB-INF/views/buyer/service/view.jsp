@@ -683,7 +683,7 @@
                 <span>(10)</span>
             </label>
             <span class="m_l_view_item_title">${item.i_name}</span>
-            <span class="m_l_view_storename">${seller.s_storename}</span>
+            <span class="m_l_view_storename">${item.s_storename}</span>
             <div class="m_l_view_itemsimpleinfo">
                 <div class="m_l_view_itemimg">
                     <c:choose>

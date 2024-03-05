@@ -8,10 +8,15 @@ import lombok.Data;
 
 @Data	
 public class ItemVO {
-	private int i_idx;
 	private int c_idx;
 	private String c_name;
+	
 	private int s_idx;
+	private String s_profile;
+	private String s_storename;
+	private String s_storeintro;
+	
+	private int i_idx;
 	private String i_name;
 	private String i_price;
 	private String i_explain;
@@ -27,7 +32,6 @@ public class ItemVO {
 	private String i_saveimg3;
 	private String i_saveimg4;
 	private String i_thumbnail;
-	
 	private Date i_regdate;
 	private Date i_modifydate;
 	

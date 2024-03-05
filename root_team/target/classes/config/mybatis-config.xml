@@ -12,6 +12,7 @@
 		<typeAlias alias="buyerVO" type="root.team.com.vo.BuyerVO"/>		
 		<typeAlias alias="addressVO" type="root.team.com.vo.AddressVO"/>
 		<typeAlias alias="itemVO" type="root.team.com.vo.ItemVO"/>
+		<typeAlias alias="searchVO" type="root.team.com.vo.SearchVO"/>
 
 	</typeAliases>
 
