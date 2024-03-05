@@ -73,23 +73,31 @@ public class BuyerDAO {
 
 	public BuyerVO infoUpdate(BuyerVO vo) throws SQLException {
 		BuyerVO newVO = null;
-		
+
 		if (sqlSession.update(MAPPER + ".infoUpdate", vo) == 2) {
 			newVO = getBuyer(vo.getB_idx());
 		}
-		
+
 		return newVO;
 	}
 
 	public int cancel(int b_idx) throws SQLException {
 		return sqlSession.update(MAPPER + ".cancel", b_idx);
 	}
-	
+
 	public int emailCheck(String b_email) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".emailCheck", b_email);
 	}
-	
+
 	public int telCheck(String b_tel) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".telCheck", b_tel);
+	}
+
+	public int updatePassword(BuyerVO vo) throws Exception {
+		return sqlSession.update(MAPPER + ".updatePassword", vo);
+	}
+	
+	public BuyerVO selectBuyer(String b_email) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".selectBuyer", b_email);
 	}
 }

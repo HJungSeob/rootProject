@@ -1,12 +1,14 @@
 package root.team.com.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +26,7 @@ import root.team.com.vo.BuyerVO;
 public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bCheck;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bCheck, bFind;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -219,11 +221,6 @@ public class BuyerController {
 		return viewPage;
 	}
 
-	@GetMapping("/buyerFindPw.do")
-	public String buyerFindPw() {
-		return "buyer/user/buyerFindPw";
-	}
-
 	@PostMapping("/emailCheckProcess.do")
 	@ResponseBody
 	public int emailCheckProcess(@RequestParam("b_email") String b_email) {
@@ -234,5 +231,18 @@ public class BuyerController {
 	@ResponseBody
 	public int telCheckProcess(@RequestParam("b_tel") String b_tel) {
 		return bCheck.telCheck(b_tel);
+	}
+	
+	@GetMapping("/findPw.do")
+	public String findPw() {
+		return "buyer/user/buyerFindPw";
+	}
+	
+	@PostMapping("/findPwProcess.do")
+	@ResponseBody
+	public void findPwProcess(@ModelAttribute BuyerVO buyerVO, HttpServletResponse response) throws Exception{
+		System.out.println(buyerVO.getB_email());
+		System.out.println(buyerVO.getB_tel());
+		bFind.findPw(response, buyerVO);
 	}
 }

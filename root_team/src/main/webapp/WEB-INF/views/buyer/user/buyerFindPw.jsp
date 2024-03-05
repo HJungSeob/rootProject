@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -14,6 +14,43 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/telAutoHyphen.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerFindPw.js"></script>
+
+<!-- 	<script>
+		$(function(){
+			$("#findBtn").click(function(){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/buyer/findPwProcess.do",
+					type : "POST",
+					data : {tel : $("#b_tel").val(), email : $("#b_email").val()},
+					success : function(result) {
+						alert(result);
+					},
+				})
+			});
+		})
+	</script> -->
+	
+	<script>
+	    $(function(){
+	        $("#findBtn").click(function(e){
+	            // 폼 데이터를 직렬화하여 변수에 저장
+	            var formData = $("form[name='buyerFindPW']").serialize();
+	
+	            // Ajax 요청
+	            $.ajax({
+	                url: "${pageContext.request.contextPath}/buyer/findPwProcess.do",
+	                type: "POST",
+	                data: formData,
+	                success: function(result) {
+	                    alert(result);
+	                },
+	            });
+	
+	            // 기본 폼 제출 동작을 막음
+	            e.preventDefault();
+	        });
+	    });
+	</script>
 </head>
 
 <body>
@@ -24,19 +61,17 @@
         <section>
             <div class="m_buyerFindPw_header1">
                 <div class="m_buyerFindPw_header">
-                    <div class="m_buyerFindPw_header_acc">
-                        Root ID
-                    </div>
+                    <div class="m_buyerFindPw_header_acc">Root ID</div>
                     <div class="m_buyerFindPw_loar">
-                        <a href="${pageContext.request.contextPath}/buyer/buyerLogout.do"
-                            class="m_buyerFindPw_logout">로그아웃
+                        <a href="${pageContext.request.contextPath}/buyer/buyerLogin.do" class="m_buyerFindPw_logout">
+                        	로그인
                             <div class="arrow_small a12"></div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="_hr"></div>
-            <form action="">
+            <form name="buyerFindPW" method="post" action="findPwProcess.do">
                 <div class="m_buyerFindPw_findPage1" id="findPage1">
                     <div class="m_buyerFindPw_findPwTitle">암호 재설정</div>
                     <div class="m_buyerFindPw_findPwSubTitle">계속하려면 계정에서 사용하는 전화번호를 입력하십시오.</div>
@@ -63,7 +98,7 @@
                         <div class="m_buyerFindPw_returnBtn" id="returnBtn">취소</div>
                         <label>
                             <div class="m_buyerFindPw_submitBtn">확인</div>
-                            <input type="submit" class="m_buyerFindPw_submit">
+                            <input type="submit" class="m_buyerFindPw_submit" id="findBtn">
                         </label>
                     </div>
                 </div>
