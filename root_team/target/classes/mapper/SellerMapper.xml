@@ -6,19 +6,17 @@
 <mapper namespace="root.team.com.SellerMapper">
 
 	<insert id="join" parameterType="sellerVO">
-		insert into tb_seller (s_businessnum, s_pw, s_firstname, s_lastname, s_email, s_tel, s_birth)
-			values(#{s_businessnum}, #{s_pw}, #{s_firstname}, #{s_lastname}, #{s_email}, #{s_tel}, #{s_birth})
+		insert into tb_seller (s_businessnum, s_pw, s_firstname, s_lastname, s_email, s_tel, s_birth, s_zipcode, s_address, s_restaddress)
+			values(#{s_businessnum}, #{s_pw}, #{s_firstname}, #{s_lastname}, #{s_email}, #{s_tel}, #{s_birth}, #{s_zipcode}, #{s_address}, #{s_restaddress})
+			
+		<selectKey keyProperty="s_idx" order="AFTER" resultType="int">
+        	SELECT LAST_INSERT_ID()
+	    </selectKey>
 	</insert>
-	
-	<select id="getS_idx" parameterType="string" resultType="_int">
-		select s_idx
-			from tb_seller
-			where s_businessnum = #{s_businessnum}
-	</select>
 	
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
-			VALUES (#{s_idx}, '기본@!프로필.jpg', CONCAT('rootstore', #{s_idx}))
+			VALUES (#{s_idx}, '기본프로필.png', CONCAT('rootstore', #{s_idx}))
 	</insert>
 	
 	<insert id="state" parameterType="_int">
@@ -37,7 +35,8 @@
 			from tb_seller s, tb_seller_state ss, tb_seller_info si
 			where s.s_idx = ss.s_idx
 			and s.s_idx = si.s_idx 
-			and s_businessnum = #{s_businessnum}		
+			and s_businessnum = #{s_businessnum}
+			and ss.s_cancel = 'N'		
 	</select>
 	
 	<update id="lastLoginDate" parameterType="_int">
@@ -51,11 +50,25 @@
 			<when test="s_pw != null">
 				s_pw = #{s_pw}, s_modifydate = now(), s_pwmodifydate = now()		
 			</when>
-			<when test="s_firstname != null and s_lastname != null and s_tel != null and s_birth != null">
-				s_firstname = #{s_firstname}, s_lastname = #{s_lastname}, s_tel = #{s_tel}, s_birth = #{s_birth}, s_modifydate = now()
+			<when test="s_firstname != null and s_lastname != null and s_tel != null and s_birth != null and s_zipcode != null and s_address != null">
+				s_firstname = #{s_firstname}, s_lastname = #{s_lastname}, s_tel = #{s_tel}, s_birth = #{s_birth}, s_zipcode = #{s_zipcode}, s_address = #{s_address}, s_restaddress = #{s_restaddress}, s_modifydate = now()
 			</when>
 		</choose>
 		where s_idx = #{s_idx}
+	</update>
+	
+	<update id="infoUpdate" parameterType="sellerVO">
+		UPDATE tb_seller_info si
+		JOIN tb_seller s ON si.s_idx = s.s_idx
+		<choose>
+			<when test="s_profile != null">
+				SET si.s_profile = #{s_profile}, si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+			</when>
+			<otherwise>
+				SET si.s_profile = "기본프로필.png", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+			</otherwise>
+		</choose>
+		WHERE s.s_idx = #{s_idx};
 	</update>
 	
 	<select id="getSeller" parameterType="_int" resultType="sellerVO">
@@ -64,5 +77,58 @@
 			where s.s_idx = ss.s_idx
 			and s.s_idx = si.s_idx 
 			and s.s_idx = #{s_idx}
+	</select>
+	
+	<update id="cancel" parameterType="_int">
+		UPDATE tb_seller_state ss
+		JOIN tb_seller s ON ss.s_idx = s.s_idx
+		SET ss.s_cancel = 'Y',
+		s.s_modifydate = NOW()
+		WHERE s.s_idx = #{s_idx};
+	</update>
+	
+	<select id="telCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller
+		where s_tel = #{s_tel}
+	</select>
+	
+	<select id="businessnumCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller
+		where s_businessnum = #{s_businessnum}
+	</select>
+	
+	<select id="emailCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller
+		where s_email = #{s_email}
+	</select>
+	
+	<update id="updatePassword" parameterType="buyerVO">
+		update tb_seller
+			set s_pw = #{s_pw}
+			where s_businessnum = #{s_businessnum}
+	</update>
+	
+	<select id="matchBusinessnumEmail" parameterType="buyerVO" resultType="_int">
+		SELECT count(*)
+		FROM tb_seller s, tb_seller_state ss, tb_seller_info si
+		WHERE s.s_idx = ss.s_idx
+		AND s.s_idx = si.s_idx
+		AND s.s_businessnum = #{s_businessnum}
+		AND s.s_email = #{s_email}
+	</select>
+	
+	<select id="passwordCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller
+		where s_pw = #{s_pw}
+	</select>
+	
+	<select id="getPw" parameterType="_int" resultType="string">
+		select s_pw
+			from tb_seller
+			where s_idx = #{s_idx}
 	</select>
 </mapper>

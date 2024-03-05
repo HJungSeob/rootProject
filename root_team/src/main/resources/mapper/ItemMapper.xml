@@ -29,20 +29,22 @@
     </insert>
     
     <select id="getItem" parameterType="_int" resultType="itemVO">
-		select * from tb_category c, tb_item i, tb_item_option io, tb_item_thumbnail it, tb_item_img ii
+		select * from tb_category c, tb_item i, tb_item_option io, tb_item_thumbnail it, tb_item_img ii, tb_seller_info si
 		where i.i_idx = io.i_idx
 		AND i.i_idx = it.i_idx
 		AND i.i_idx = ii.i_idx
 		AND i.c_idx = c.c_idx
+		AND i.s_idx = si.s_idx
 		AND i.i_idx = #{i_idx}
 	</select>
 	
 	<select id="getItems" parameterType="searchVO" resultType="itemVO">
-					select * from tb_category c, tb_item i, tb_item_option io, tb_item_thumbnail it, tb_item_img ii
+					select * from tb_category c, tb_item i, tb_item_option io, tb_item_thumbnail it, tb_item_img ii, tb_seller_info si
 						where i.i_idx = io.i_idx
 						AND i.i_idx = it.i_idx
 						AND i.i_idx = ii.i_idx
 						AND i.c_idx = c.c_idx
+						AND i.s_idx = si.s_idx
 	<choose>
 		<when test="c_idx != null">
 						AND i.c_idx = #{c_idx}

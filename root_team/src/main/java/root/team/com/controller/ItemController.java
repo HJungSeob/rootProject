@@ -22,9 +22,6 @@ public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
 	ItemService iInsert, iView;
-	
-	@Setter(onMethod_ = { @Autowired })
-	SellerService sGet;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gFileNameUpdate, gDateUpdate;
@@ -63,14 +60,12 @@ public class ItemController {
 		ItemVO item = iView.view(i_idx);
 		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
 		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
-		SellerVO seller = sGet.getSeller(item.getS_idx());
 		
 		String[] imgArr = {item.getI_saveimg0(), item.getI_saveimg1(),item.getI_saveimg2(),item.getI_saveimg3(), item.getI_saveimg4()};
 		String[] optionArr = {item.getI_option0(), item.getI_option1(), item.getI_option2(), item.getI_option3(), item.getI_option4()};
 		model.addAttribute("imgArr", imgArr);
 		model.addAttribute("optionArr", optionArr);
 		model.addAttribute("item", item);
-		model.addAttribute("seller", seller);
 		
 		return "buyer/service/view";
 	}

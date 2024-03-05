@@ -27,10 +27,6 @@ public interface SellerService {
 		return 0;
 	}
 	
-	default SellerVO getSeller(int S_idx){
-		return null;
-	}
-	
 	default int telCheck(String s_tel) {
 		return 0;
 	}
