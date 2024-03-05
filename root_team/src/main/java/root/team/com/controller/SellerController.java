@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
-import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -184,6 +183,12 @@ public class SellerController {
 	@ResponseBody
 	public void findPwProcess(@ModelAttribute SellerVO sellerVO, HttpServletResponse response) throws Exception{
 		sFind.findPw(response, sellerVO);
+	}
+	
+	@PostMapping("/passwordCheckProcess.do")
+	@ResponseBody
+	public int passwordCheckProcess(@RequestParam("s_idx") int s_idx, @RequestParam("s_pw") String s_pw) {
+		return sCheck.passwordCheck(s_idx, s_pw);
 	}
 	
 	///////////////////////////////////////////////////////////////

@@ -86,4 +86,12 @@ public class SellerDAO {
 	public int matchBusinessnumEmail(SellerVO vo) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".matchBusinessnumEmail", vo);
 	}
+	
+	public int passwordCheck(String s_pw) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".passwordCheck", s_pw);
+	}
+	
+	public String getPw(int s_idx) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".getPw", s_idx);
+	}
 }

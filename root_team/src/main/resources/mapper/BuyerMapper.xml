@@ -165,4 +165,9 @@
 		AND b.b_tel = #{b_tel}
 	</select>
 
+	<select id="getPw" parameterType="_int" resultType="string">
+		select b_pw
+			from tb_buyer
+			where b_idx = #{b_idx}
+	</select>
 </mapper>
