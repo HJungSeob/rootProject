@@ -62,15 +62,15 @@
                 </div>
                 <div class="global_nav_lists">
                     <div class="global_nav_listBox">
-                        <div class="global_nav_list">
+                         <div class="global_nav_list">
                             <div class="global_nav_categories">
                                 <span>디지털/가전 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/write.do">휴대폰</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/view.do?i_idx=2">영상가전</a></li>
-                                    <li><a href="">PC/게임</a></li>
-                                    <li><a href="">음향가전</a></li>
-                                    <li><a href="">생활가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">휴대폰</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">영상가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">PC/게임</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">음향가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">생활가전</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -85,11 +85,11 @@
                             <div class="global_nav_categories">
                                 <span>인테리어 살펴보기</span>
                                 <ul>
-                                    <li><a href="">수납</a></li>
-                                    <li><a href="">홈</a></li>
-                                    <li><a href="">거실</a></li>
-                                    <li><a href="">침구</a></li>
-                                    <li><a href="">침실가구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">수납</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">홈</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">거실</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">침구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">침실가구</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -104,11 +104,11 @@
                             <div class="global_nav_categories">
                                 <span>식품 살펴보기</span>
                                 <ul>
-                                    <li><a href="">농수산물</a></li>
-                                    <li><a href="">가공식품</a></li>
-                                    <li><a href="">제과제빵</a></li>
-                                    <li><a href="">음료</a></li>
-                                    <li><a href="">건강식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">농수산물</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">가공식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">제과제빵</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">건강식품</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -123,11 +123,11 @@
                             <div class="global_nav_categories">
                                 <span>의류 살펴보기</span>
                                 <ul>
-                                    <li><a href="">상의</a></li>
-                                    <li><a href="">하의</a></li>
-                                    <li><a href="">아우터</a></li>
-                                    <li><a href="">신발</a></li>
-                                    <li><a href="">이너웨어</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">상의</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">하의</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">아우터</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">신발</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">이너웨어</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -142,11 +142,11 @@
                             <div class="global_nav_categories">
                                 <span>생활 살펴보기</span>
                                 <ul>
-                                    <li><a href="">취미</a></li>
-                                    <li><a href="">잡화</a></li>
-                                    <li><a href="">주방</a></li>
-                                    <li><a href="">사무</a></li>
-                                    <li><a href="">공구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">취미</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">잡화</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">주방</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">사무</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do">공구</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
