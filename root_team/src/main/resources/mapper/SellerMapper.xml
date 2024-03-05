@@ -104,4 +104,19 @@
 		from tb_seller
 		where s_email = #{s_email}
 	</select>
+	
+	<update id="updatePassword" parameterType="buyerVO">
+		update tb_seller
+			set s_pw = #{s_pw}
+			where s_businessnum = #{s_businessnum}
+	</update>
+	
+	<select id="matchBusinessnumEmail" parameterType="buyerVO" resultType="_int">
+		SELECT count(*)
+		FROM tb_seller s, tb_seller_state ss, tb_seller_info si
+		WHERE s.s_idx = ss.s_idx
+		AND s.s_idx = si.s_idx
+		AND s.s_businessnum = #{s_businessnum}
+		AND s.s_email = #{s_email}
+	</select>
 </mapper>

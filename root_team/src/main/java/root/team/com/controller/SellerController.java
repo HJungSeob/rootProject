@@ -1,11 +1,13 @@
 package root.team.com.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
+import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -21,7 +24,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck;
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -154,11 +157,6 @@ public class SellerController {
 		return viewPage;
 	}
 	
-	@GetMapping("/sellerFindPw.do")
-	public String sellerFindPw() {
-		return "seller/user/sellerFindPw";
-	}
-	
 	@PostMapping("/telCheckProcess.do")
 	@ResponseBody
 	public int telCheckProcess(@RequestParam("s_tel") String s_tel) {
@@ -177,6 +175,17 @@ public class SellerController {
 		return sCheck.emailCheck(s_email);
 	}
 
+	@GetMapping("/findPw.do")
+	public String findPw() {
+		return "seller/user/sellerFindPw";
+	}
+	
+	@PostMapping("/findPwProcess.do")
+	@ResponseBody
+	public void findPwProcess(@ModelAttribute SellerVO sellerVO, HttpServletResponse response) throws Exception{
+		sFind.findPw(response, sellerVO);
+	}
+	
 	///////////////////////////////////////////////////////////////
 
 	@GetMapping("/dashBoard.do")
