@@ -1,5 +1,8 @@
 package root.team.com.service.seller;
 
+import javax.servlet.http.HttpServletResponse;
+
+import root.team.com.vo.BuyerVO;
 import root.team.com.vo.SellerVO;
 
 public interface SellerService {
@@ -38,5 +41,11 @@ public interface SellerService {
 	
 	default int emailCheck(String s_email) {
 		return 0;
+	}
+	
+	default void sendEmail(SellerVO sellerVO, String div) throws Exception {
+	}
+
+	default void findPw(HttpServletResponse response, SellerVO sellerVO) throws Exception {
 	}
 }

@@ -241,8 +241,6 @@ public class BuyerController {
 	@PostMapping("/findPwProcess.do")
 	@ResponseBody
 	public void findPwProcess(@ModelAttribute BuyerVO buyerVO, HttpServletResponse response) throws Exception{
-		System.out.println(buyerVO.getB_email());
-		System.out.println(buyerVO.getB_tel());
 		bFind.findPw(response, buyerVO);
 	}
 }

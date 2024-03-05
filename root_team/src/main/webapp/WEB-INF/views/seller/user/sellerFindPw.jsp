@@ -14,6 +14,25 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/user/taxidAutoHyphen.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/user/sellerFindPw.js"></script>
+    
+    <script>
+	    $(function(){
+	        $("#findBtn").click(function(e){
+	            var formData = $("form[name='sellerFindPW']").serialize();
+	
+	            $.ajax({
+	                url: "${pageContext.request.contextPath}/seller/findPwProcess.do",
+	                type: "POST",
+	                data: formData,
+	                success: function(result) {
+	                    alert(result);
+	                },
+	            });
+	
+	            e.preventDefault();
+	        });
+	    });
+	</script>
 </head>
 
 <body>
@@ -28,22 +47,22 @@
                         Root ID
                     </div>
                     <div class="m_sellerFindPw_loar">
-                        <a href="${pageContext.request.contextPath}/buyer/buyerLogout.do"
-                            class="m_sellerFindPw_logout">로그아웃
+                        <a href="${pageContext.request.contextPath}/seller/sellerLogin.do"
+                            class="m_sellerFindPw_logout">로그인
                             <div class="arrow_small a12"></div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="_hr"></div>
-            <form action="">
+            <form name="sellerFindPW" method="post" action="findPwProcess.do">
                 <div class="m_sellerFindPw_findPage1" id="findPage1">
                     <div class="m_sellerFindPw_findPwTitle">암호 재설정</div>
                     <div class="m_sellerFindPw_findPwSubTitle">계속하려면 계정에서 사용하는 사업자 번호를 입력하십시오.</div>
                     <div class="m_sellerFindPw_updatename_region_taxid">
                         <div class="m_sellerFindPw_taxidRegion" id="taxidRegion">
                             <label>
-                                <input type="text" name="taxid" class="m_sellerFindPw_taxidInput" id="taxidInput" maxlength="12">
+                                <input type="text" name="s_businessnum" class="m_sellerFindPw_taxidInput" id="taxidInput" maxlength="12">
                                 <div class="m_sellerFindPw_taxidTitle" id="taxidTitle">사업자 번호</div>
                             </label>
                         </div>
@@ -57,7 +76,7 @@
                     <div class="m_sellerFindPw_findPwTitle">이메일를 입력해 주세요</div>
                     <div class="m_sellerFindPw_emailRegion" id="emailRegion">
                         <label>
-                            <input type="email" name="email" class="m_sellerFindPw_emailInput" id="emailInput">
+                            <input type="email" name="s_email" class="m_sellerFindPw_emailInput" id="emailInput">
                             <div class="m_sellerFindPw_emailTitle" id="emailTitle">이메일 주소</div>
                         </label>
                     </div>
@@ -65,7 +84,7 @@
                         <div class="m_sellerFindPw_returnBtn" id="returnBtn">취소</div>
                         <label>
                             <div class="m_sellerFindPw_submitBtn">확인</div>
-                            <input type="submit" class="m_sellerFindPw_submit">
+                            <input type="submit" class="m_sellerFindPw_submit" id="findBtn">
                         </label>
                     </div>
                 </div>

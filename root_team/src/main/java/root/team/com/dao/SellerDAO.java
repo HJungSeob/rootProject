@@ -78,4 +78,12 @@ public class SellerDAO {
 	public int emailCheck(String s_email) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".emailCheck", s_email);
 	}
+	
+	public int updatePassword(SellerVO vo) throws Exception {
+		return sqlSession.update(MAPPER + ".updatePassword", vo);
+	}
+	
+	public int matchBusinessnumEmail(SellerVO vo) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".matchBusinessnumEmail", vo);
+	}
 }

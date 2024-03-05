@@ -14,29 +14,12 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/telAutoHyphen.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerFindPw.js"></script>
-
-<!-- 	<script>
-		$(function(){
-			$("#findBtn").click(function(){
-				$.ajax({
-					url : "${pageContext.request.contextPath}/buyer/findPwProcess.do",
-					type : "POST",
-					data : {tel : $("#b_tel").val(), email : $("#b_email").val()},
-					success : function(result) {
-						alert(result);
-					},
-				})
-			});
-		})
-	</script> -->
 	
 	<script>
 	    $(function(){
 	        $("#findBtn").click(function(e){
-	            // 폼 데이터를 직렬화하여 변수에 저장
 	            var formData = $("form[name='buyerFindPW']").serialize();
 	
-	            // Ajax 요청
 	            $.ajax({
 	                url: "${pageContext.request.contextPath}/buyer/findPwProcess.do",
 	                type: "POST",
@@ -46,7 +29,6 @@
 	                },
 	            });
 	
-	            // 기본 폼 제출 동작을 막음
 	            e.preventDefault();
 	        });
 	    });

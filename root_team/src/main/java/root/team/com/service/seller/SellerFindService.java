@@ -1,4 +1,4 @@
-package root.team.com.service.buyer;
+package root.team.com.service.seller;
 
 import java.io.PrintWriter;
 import java.util.Random;
@@ -11,19 +11,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
-import root.team.com.dao.BuyerDAO;
+import root.team.com.dao.SellerDAO;
 import root.team.com.vo.BuyerVO;
+import root.team.com.vo.SellerVO;
 
-@Service("bFind")
+@Service("sFind")
 @AllArgsConstructor
-public class BuyerFindService implements BuyerService {
+public class SellerFindService implements SellerService {
 	private JavaMailSenderImpl mailSender;
-	private BuyerDAO dao;
+	private SellerDAO dao;
 	private BCryptPasswordEncoder cryptPasswordEncoder;
 
-	public void sendEmail(BuyerVO vo, String div) throws Exception {
+	public void sendEmail(SellerVO vo, String div) throws Exception {
 		String fromEmail = "hgssgh123@gmail.com";
-		String toEmail = vo.getB_email();
+		String toEmail = vo.getS_email();
 		String subject = "";
 		String msg = "";
 
@@ -31,7 +32,7 @@ public class BuyerFindService implements BuyerService {
 			subject = "[ROOT] 임시 비밀번호 발급 메일입니다.";
 			msg += "임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.";
 			msg += "임시 비밀번호: ";
-			msg += vo.getB_pw();
+			msg += vo.getS_pw();
 		}
 
 		// SimpleMailMessage 생성
@@ -44,23 +45,25 @@ public class BuyerFindService implements BuyerService {
 		try {
 			mailSender.send(message);
 
-			String encryptedPassword = cryptPasswordEncoder.encode(vo.getB_pw());
-			vo.setB_pw(encryptedPassword);
+			// 이메일 전송 후에 암호화된 비밀번호로 업데이트
+			String encryptedPassword = cryptPasswordEncoder.encode(vo.getS_pw());
+			vo.setS_pw(encryptedPassword);
 			dao.updatePassword(vo);
-			
 		} catch (Exception e) {
 			System.out.println("메일발송 실패 : " + e);
 		}
 	}
 
-	public void findPw(HttpServletResponse response, BuyerVO vo) throws Exception {
+	public void findPw(HttpServletResponse response, SellerVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 
-		if (dao.matchTelEmail(vo) == 1) {
-			String newB_pw = generateRandomPassword();
+		// 가입된 아이디가 없으면
+		if (dao.matchBusinessnumEmail(vo) == 1) {
+			// 새로운 비밀번호 생성
+			String newS_pw = generateRandomPassword();
 
-			vo.setB_pw(newB_pw);
+			vo.setS_pw(newS_pw);
 			dao.updatePassword(vo);
 
 			sendEmail(vo, "findpw");

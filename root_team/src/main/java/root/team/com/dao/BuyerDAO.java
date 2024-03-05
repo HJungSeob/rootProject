@@ -97,7 +97,7 @@ public class BuyerDAO {
 		return sqlSession.update(MAPPER + ".updatePassword", vo);
 	}
 	
-	public BuyerVO selectBuyer(String b_email) throws SQLException {
-		return sqlSession.selectOne(MAPPER + ".selectBuyer", b_email);
+	public int matchTelEmail(BuyerVO vo) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".matchTelEmail", vo);
 	}
 }

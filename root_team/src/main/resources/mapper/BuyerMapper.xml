@@ -155,13 +155,14 @@
 			set b_pw = #{b_pw}
 			where b_email = #{b_email}
 	</update>
-
-	<select id="selectBuyer" parameterType="string" resultType="buyerVO">
-		SELECT *
+	
+	<select id="matchTelEmail" parameterType="buyerVO" resultType="_int">
+		SELECT count(*)
 		FROM tb_buyer b, tb_buyer_state bs, tb_buyer_info bi
 		WHERE b.b_idx = bs.b_idx
 		AND b.b_idx = bi.b_idx
 		AND b.b_email = #{b_email}
+		AND b.b_tel = #{b_tel}
 	</select>
 
 </mapper>
