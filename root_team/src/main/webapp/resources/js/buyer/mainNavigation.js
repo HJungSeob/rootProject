@@ -1,4 +1,5 @@
 function navigation() {
+    const categoryAs = document.querySelectorAll('.global_nav_btns a');
     const categoryButtons = document.querySelectorAll('.global_nav_btns button');
     const allCategories = document.querySelectorAll('.global_nav_list');
     const navigation = document.querySelector('nav');
@@ -13,7 +14,7 @@ function navigation() {
     function navBar() {
         const scrollY = window.scrollY;
         const boxTop = navigation.getBoundingClientRect().top;
- 
+
         if (boxTop < 0) {
             navigation.classList.add('fixed');
         } else if (scrollY < (boxTop + 95)) {
@@ -25,9 +26,9 @@ function navigation() {
 
     //#region -------- 대분류 호버 이벤트 ---------------------------------------------------------------------------
 
-    categoryButtons.forEach((btn, index) => {
+    categoryAs.forEach((a, index) => {
         if (index < 5) {
-            btn.addEventListener('mouseover', () => {
+            a.addEventListener('mouseover', () => {
                 btnHover = setTimeout(() => {
                     allCategories.forEach(cg => {
                         cg.classList.remove('active');
@@ -38,22 +39,24 @@ function navigation() {
                     thisSection.classList.add('blur');
                 }, 200);
             });
-            btn.addEventListener('mouseout', () => {
+            a.addEventListener('mouseout', () => {
                 clearTimeout(btnHover);
             });
-        } else {
-            btn.addEventListener('click', () => {
-                allCategories.forEach(cg => {
-                    cg.classList.remove('active');
-                });
-                const selectedCategory = allCategories[index];
-                selectedCategory.classList.add('active');
-                navigation.classList.add('active');
-                thisSection.classList.add('blur');
-            });
         }
-
     });
+
+    categoryButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            allCategories.forEach(cg => {
+                cg.classList.remove('active');
+            });
+            const selectedCategory = allCategories[index + 5];
+            selectedCategory.classList.add('active');
+            navigation.classList.add('active');
+            thisSection.classList.add('blur');
+        });
+    })
+
 
     navigation.addEventListener('mouseleave', () => {
         allCategories.forEach(cg => {
@@ -110,6 +113,4 @@ function navigation() {
     }, 3000);
 
     //#endregion -------- 실시간 검색어 슬라이드 이벤트 --------------------------------------------------------------
-
-}
-
+};

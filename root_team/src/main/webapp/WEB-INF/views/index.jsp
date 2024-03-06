@@ -229,7 +229,6 @@
                     <button class="next arrow_big active"></button>
                 </div>
             </div>
-
         </section>
     </div>
     <footer>

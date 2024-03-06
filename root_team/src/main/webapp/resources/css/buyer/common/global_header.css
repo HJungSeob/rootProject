@@ -29,11 +29,11 @@ nav {
     height: 48px;
 }
 
-.global_nav_bar a {
+.global_nav_infoBtn, .global_nav_mainBtn {
     vertical-align: top;
 }
 
-.global_nav_bar a span {
+.global_nav_infoBtn span, .global_nav_mainBtn span {
     display: inline-block;
     padding: 15px 20px;
     height: 18px;
@@ -45,6 +45,21 @@ nav {
     flex: 1;
     display: flex;
     justify-content: space-between;
+}
+
+.global_nav_btns .global_nav_btn {
+	box-sizing: border-box;
+	display: inline-block;
+	width: auto;
+    height: 48px;
+    padding: 17px 0;
+    margin: 0 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: center;
+    border: 0;
 }
 
 .global_nav_btns button {
