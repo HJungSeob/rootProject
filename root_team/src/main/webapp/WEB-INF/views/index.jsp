@@ -122,7 +122,7 @@
             <h1 class="gallery_name">Root의 소식. <span>따끈따끈한 새 이벤트들.</span></h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                <c:forEach var="index" begin="0" end="8">
+                <c:forEach var="index" begin="0" end="7">
                     <li class="gallery_li">
                         <a>
                             <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
@@ -138,7 +138,7 @@
             <h1 class="gallery_name">디지털/가전</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                	<c:forEach var="index" begin="0" end="8">
+                	<c:forEach var="index" begin="0" end="7">
                        <li class="gallery_li">
 	                       <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listA[index].i_idx}">	                        
                             <h2>${listA[index].i_name}</h2>
@@ -157,7 +157,7 @@
             <h1 class="gallery_name">인테리어</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <c:forEach var="index" begin="0" end="8">
+                    <c:forEach var="index" begin="0" end="7">
                        <li class="gallery_li">
 	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listB[index].i_idx}">
 	                            <h2>${listB[index].i_name}</h2>
@@ -176,7 +176,7 @@
             <h1 class="gallery_name">식품</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <c:forEach var="index" begin="0" end="8">
+                    <c:forEach var="index" begin="0" end="7">
                        <li class="gallery_li">
 	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listC[index].i_idx}">
 	                            <h2>${listC[index].i_name}</h2>
@@ -195,7 +195,7 @@
             <h1 class="gallery_name">의류</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <c:forEach var="index" begin="0" end="8">
+                    <c:forEach var="index" begin="0" end="7">
                        <li class="gallery_li">
 	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listD[index].i_idx}">
 	                            <h2>${listD[index].i_name}</h2>
@@ -214,7 +214,7 @@
             <h1 class="gallery_name">생활</h1>
             <div class="gallery_box">
                 <ul class="gallery active">
-                    <c:forEach var="index" begin="0" end="8">
+                    <c:forEach var="index" begin="0" end="7">
                        <li class="gallery_li">
 	                        <a href="${pageContext.request.contextPath}/item/view.do?i_idx=${listE[index].i_idx}">
 	                            <h2>${listE[index].i_name}</h2>
