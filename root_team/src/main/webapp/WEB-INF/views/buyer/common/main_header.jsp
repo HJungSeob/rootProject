@@ -16,21 +16,21 @@
 
                     <div class="global_nav_btns">
                         <div>
-                            <button>
-                                <span>디지털/가전</span>
-                            </button>
-                            <button>
+                            <a href="#" class="global_nav_btn">
+                            	<span>디지털/가전</span>
+                            </a>                         
+                            <a href="#" class="global_nav_btn">
                                 <span>인테리어</span>
-                            </button>
-                            <button>
+                            </a>                         
+                            <a href="#" class="global_nav_btn">
                                 <span>식품</span>
-                            </button>
-                            <button>
+                            </a>                         
+                            <a href="#" class="global_nav_btn">
                                 <span>의류</span>
-                            </button>
-                            <button>
+                            </a>                         
+                            <a href="#" class="global_nav_btn">
                                 <span>생활</span>
-                            </button>
+                            </a>
                         </div>
 
                         <div class="global_nav_keywords"></div>

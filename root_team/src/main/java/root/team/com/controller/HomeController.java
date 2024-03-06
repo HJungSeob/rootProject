@@ -33,12 +33,12 @@ public class HomeController {
 		categoryD.setP_idx("4");
 		categoryE.setP_idx("5");
 
-		List<ItemVO> listA = iList.getItems(categoryA);
-		List<ItemVO> listB = iList.getItems(categoryB);
-		List<ItemVO> listC = iList.getItems(categoryC);
-		List<ItemVO> listD = iList.getItems(categoryD);
-		List<ItemVO> listE = iList.getItems(categoryE);
-
+		List<ItemVO> listA = iList.indexGetItems(categoryA);
+		List<ItemVO> listB = iList.indexGetItems(categoryB);
+		List<ItemVO> listC = iList.indexGetItems(categoryC);
+		List<ItemVO> listD = iList.indexGetItems(categoryD);
+		List<ItemVO> listE = iList.indexGetItems(categoryE);
+		
 		model.addAttribute("listA", listA);
 		model.addAttribute("listB", listB);
 		model.addAttribute("listC", listC);
@@ -63,12 +63,12 @@ public class HomeController {
 		categoryD.setP_idx("4");
 		categoryE.setP_idx("5");
 
-		List<ItemVO> listA = iList.getItems(categoryA);
-		List<ItemVO> listB = iList.getItems(categoryB);
-		List<ItemVO> listC = iList.getItems(categoryC);
-		List<ItemVO> listD = iList.getItems(categoryD);
-		List<ItemVO> listE = iList.getItems(categoryE);
-
+		List<ItemVO> listA = iList.indexGetItems(categoryA);
+		List<ItemVO> listB = iList.indexGetItems(categoryB);
+		List<ItemVO> listC = iList.indexGetItems(categoryC);
+		List<ItemVO> listD = iList.indexGetItems(categoryD);
+		List<ItemVO> listE = iList.indexGetItems(categoryE);		
+		
 		model.addAttribute("listA", listA);
 		model.addAttribute("listB", listB);
 		model.addAttribute("listC", listC);

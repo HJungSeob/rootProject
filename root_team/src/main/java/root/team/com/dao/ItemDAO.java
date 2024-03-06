@@ -38,5 +38,9 @@ public class ItemDAO {
 	public List<ItemVO> getItems(SearchVO vo){
 		return sqlSession.selectList(MAPPER + ".getItems", vo);
 	}
+
+	public int getTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getTotalCount", vo);
+	}
 	
 }

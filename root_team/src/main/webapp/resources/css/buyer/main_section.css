@@ -13,8 +13,8 @@
 
 section {
     transition: filter 0.5s, opacity 0.5s;
+    margin-bottom: 100px;
 }
-
 
 
 /* #region start of main_banner */

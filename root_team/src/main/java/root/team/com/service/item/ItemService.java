@@ -18,5 +18,13 @@ public interface ItemService {
 	default List<ItemVO> getItems(SearchVO vo) {
 		return null;
 	}
+	
+	default List<ItemVO> indexGetItems(SearchVO vo) {
+		return null;
+	}
+
+	default int getTotalCount(SearchVO vo){
+		return 0;
+	}
 
 }

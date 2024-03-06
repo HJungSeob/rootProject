@@ -14,7 +14,12 @@ import root.team.com.vo.SearchVO;
 public class ItemListService implements ItemService {
 	private ItemDAO dao;
 	
-	public List<ItemVO> getItems(SearchVO vo) {	
+	public List<ItemVO> getItems(SearchVO vo) {
+		vo.setStartIdx((vo.getPageNum()-1)*vo.getViewNum());
+		return dao.getItems(vo);		
+	}
+	
+	public List<ItemVO> indexGetItems(SearchVO vo) {
 		return dao.getItems(vo);		
 	}
 }

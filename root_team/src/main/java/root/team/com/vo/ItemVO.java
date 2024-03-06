@@ -35,6 +35,9 @@ public class ItemVO {
 	private Date i_regdate;
 	private Date i_modifydate;
 	
+	private double avg_star;
+	private int comment_count;
+	
 	private MultipartFile i_img0;
 	private MultipartFile i_img1;
 	private MultipartFile i_img2;

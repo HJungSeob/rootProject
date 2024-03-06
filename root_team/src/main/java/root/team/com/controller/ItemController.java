@@ -1,30 +1,36 @@
 package root.team.com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.Setter;
+import root.team.com.common.PageNav;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.item.ItemService;
-import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
-import root.team.com.vo.SellerVO;
+import root.team.com.vo.SearchVO;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
-	ItemService iInsert, iView;
+	ItemService iInsert, iView, iList, iTotalCount;
 
 	@Setter(onMethod_ = { @Autowired })
-	GlobalService gFileNameUpdate, gDateUpdate;
+	GlobalService gFileNameUpdate, gDateUpdate, gPage;
+	
+	@Setter(onMethod_={ @Autowired })
+	PageNav pageNav;
 
 	@GetMapping("/write.do")
 	public String write() {
@@ -53,7 +59,32 @@ public class ItemController {
 		}
 		return viewPage;
 	}
-
+	
+	@GetMapping("/list.do")
+	public String list(@ModelAttribute("sVO") SearchVO searchVO, Model model) {
+		
+		if(searchVO.getPageNum() == 0) {
+			searchVO.setPageNum(1);
+		}
+		
+		if(searchVO.getViewNum() == 0) {
+			searchVO.setViewNum(9);
+		}
+		
+		if(searchVO.getOrderByType() == null) {
+			searchVO.setOrderByType("pop");
+		}
+		
+		List<ItemVO> itemList = iList.getItems(searchVO);
+		model.addAttribute("itemList", itemList);
+		
+		pageNav.setTotalRows(iTotalCount.getTotalCount(searchVO));
+		pageNav = gPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock(), searchVO.getViewNum());
+		model.addAttribute("pageNav", pageNav);
+		
+		return "buyer/service/list";
+	}
+	
 	@GetMapping("/view.do")
 	public String view(int i_idx, Model model) {
 
@@ -69,5 +100,6 @@ public class ItemController {
 		
 		return "buyer/service/view";
 	}
+	
 
 }
