@@ -198,23 +198,21 @@
                         "<div class='itemoptioninfo'>" +
                         "<div class='input-option'>" +
                         "<input type='text' class='itemoptionname' id='itemoptionname" + selectCount + "' placeholder=' '>" +
-                        "<span>옵션1</span>" +
+                        "<span>옵션" + selectCount + "</span>" +
                         "</div>" +
                         "<div class='input-option'>" +
                         "<input type='text' class='thisitmeoption0' placeholder=' '>" +
-                        "<span>세부옵션1</span>" +
+                        "<span>세부옵션0</span>" +
                         "</div>" +
                         "<div class='input-option'>" +
                         "<input type='text' class='thisitmeoption1' placeholder=' '>" +
-                        "<span>세부옵션2</span>" +
+                        "<span>세부옵션1</span>" +
                         "</div>" +
                         "</div>" +
                         "<input type='button' class='btn-removeOption remove' value='-'>" +
                         "<input type='button' class='btn-addOption add' value='+'>" +
                         "</div>";
-                    var newInput = $("<input type='hidden' id='itemoption" + selectCount +
-                        "' name='i_option" +
-                        selectCount + "'>");
+                    var newInput = $("<input type='hidden' id='itemoption" + selectCount + "' name='i_option" + selectCount + "'>");
                     $(".wrap section form").append(newInput);
                     $('.hiddenoptions').append(newOption);
                     $(".wrap section .itemoptionsinput").append(newButtons);
@@ -385,7 +383,7 @@
             box-sizing: border-box;
             width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 20px 100px;
             background-color: #F2F2F2;
         }
 
@@ -447,8 +445,8 @@
         }
 
         .input-container input:focus{
-            border: 1px solid #0071E3;
-            box-shadow: 0 0 0 3px #0071E350;
+            border: 1px solid #00CD08;
+            box-shadow: 0 0 0 3px #00CD0850;
         }
 
         .input-container input:focus + span,
@@ -577,12 +575,12 @@
 
         input[type="button"].add:hover {
             color: white;
-            background-color: #a1c2e2;
+            background-color: #00CD0899;
         }
 
         input[type="button"].remove:hover {
             color: white;
-            background-color: #ffb1b1;
+            background-color: #FF606099;
         }
 
         .itemoptions {
@@ -679,8 +677,8 @@
         }
         
         .itemoptioninfo .input-option input[type="text"]:focus{
-        	box-shadow: 0 0 0 3px #0071E350;
-        	border: 1px solid #0071E3;
+        	box-shadow: 0 0 0 3px #00CD0850;
+        	border: 1px solid #00CD08;
         }
         
         .itemoptioninfo .input-option input + span {
@@ -694,11 +692,6 @@
             color: #999;
             font-weight: bold;
             transition: all 0.15s ease;
-        }
-
-         .itemoptioninfo.input-option input:focus{
-            border: 1px solid #0071E3;
-            box-shadow: 0 0 0 3px #0071E350;
         }
 
         .itemoptioninfo .input-option input:focus + span,
@@ -734,7 +727,7 @@
         }
 
         label[for="item_submit_btn"] span:hover {
-            background-color: #0071E3;
+            background-color: #00CD0899;
             color: white;
         }
 
@@ -753,8 +746,7 @@
 
         #item_reset_btn:hover,
         #item_cancel_btn:hover {
-            background-color: #444444;
-            color: #C3C3C3;
+            background-color: #44444499;
             cursor: pointer;
         }
     </style>
