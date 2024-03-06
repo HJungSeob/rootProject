@@ -243,6 +243,7 @@
                 }
             });
 
+            
 
             $(document).on("click", ".btn-addOption", function () {
                 var parent = $(this).parent(); // 각 버튼의 부모 요소를 찾음
