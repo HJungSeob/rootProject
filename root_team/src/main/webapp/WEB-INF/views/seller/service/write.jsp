@@ -196,12 +196,18 @@
                         "</div>";
                     var newButtons = "<div class='itemoption itemoption" + selectCount + "'>" +
                         "<div class='itemoptioninfo'>" +
-                        "<input type='text' class='itemoptionname' id='itemoptionname" + selectCount +
-                        "' placeholder='옵션명을 입력해 주세요.'>" +
-                        "<input type='text' class='thisitmeoption0" +
-                        "' placeholder='세부옵션을 입력해 주세요.'>" +
-                        "<input type='text' class='thisitmeoption1" +
-                        "' placeholder='세부옵션을 입력해 주세요.'>" +
+                        "<div class='input-option'>" +
+                        "<input type='text' class='itemoptionname' id='itemoptionname" + selectCount + "' placeholder=' '>" +
+                        "<span>옵션1</span>" +
+                        "</div>" +
+                        "<div class='input-option'>" +
+                        "<input type='text' class='thisitmeoption0' placeholder=' '>" +
+                        "<span>세부옵션1</span>" +
+                        "</div>" +
+                        "<div class='input-option'>" +
+                        "<input type='text' class='thisitmeoption1' placeholder=' '>" +
+                        "<span>세부옵션2</span>" +
+                        "</div>" +
                         "</div>" +
                         "<input type='button' class='btn-removeOption remove' value='-'>" +
                         "<input type='button' class='btn-addOption add' value='+'>" +
@@ -212,6 +218,7 @@
                     $(".wrap section form").append(newInput);
                     $('.hiddenoptions').append(newOption);
                     $(".wrap section .itemoptionsinput").append(newButtons);
+                    $(".itemoption" + selectCount).hide().fadeIn();
                     selectCount++;
                 } else {
                     alert("옵션은 최대 5개까지 추가할 수 있습니다.")
@@ -220,9 +227,13 @@
 
             $("#btn-removeSelect").click(function () {
                 if (selectCount > 0) {
-                    var lastOptiontClass = "itemoption" + (selectCount - 1);
-                    $("." + lastOptiontClass).remove();
-                    $("#" + lastOptiontClass).remove();
+                    var lastOptiontClass = "itemoption" + (selectCount - 1);                  
+                    $("." + lastOptiontClass).animate({
+                    	  opacity: 0
+                    	}, 150, function() {
+                    	  $(this).remove();
+                    	});
+                    $("#" + lastOptiontClass).fadeOut().remove();
                     if (parentOptionCounts[(selectCount - 1)]) {
                         parentOptionCounts[(selectCount - 1)] = 2;
                     }
@@ -232,6 +243,7 @@
                 }
             });
 
+            
 
             $(document).on("click", ".btn-addOption", function () {
                 var parent = $(this).parent(); // 각 버튼의 부모 요소를 찾음
@@ -246,9 +258,11 @@
                         "<label for='thisradio"+ parentIndex + parentOptionCounts[parentIndex] +
                         "'><span></span></label>"
                     );
-                    $(this).parent().children(".itemoptioninfo").append(
-                        "<input type='text' class='thisitmeoption" +
-                        parentOptionCounts[parentIndex] + "' placeholder='세부옵션을 입력해 주세요.'>")
+                    parent.children(".itemoptioninfo").append(
+                    	"<div class='input-option'>" +
+                        "<input type='text' class='thisitmeoption" + parentOptionCounts[parentIndex] + "' placeholder=' '>" +
+                        "<span>세부옵션"+ parentOptionCounts[parentIndex] +"</span>" +
+                        "</div>");   
                     parentOptionCounts[parentIndex]++;
                 } else {
                     alert("세부옵션은 최대 5개까지 추가할 수 있습니다.")
@@ -271,8 +285,7 @@
                             .remove();
                     });
                     // 해당 클래스명을 가진 itemoptioninfo 내의 텍스트 입력 필드를 제거
-                    parent.children(".itemoptioninfo").children(".thisitmeoption" + parentOptionCounts[
-                        parentIndex]).remove();
+                    parent.children(".itemoptioninfo").children(".input-option").last().remove();
                 } else {
                     alert("최소 2개의 세부옵션이 필요합니다.")
                 }
@@ -281,7 +294,7 @@
             $(document).on("input", ".itemoptionname", function () {
                 var inputValue = $(this).val(); // 입력받은 값
                 // 부모의 부모 div 요소의 클래스 리스트
-                var parentDivClasses = $(this).parent().parent().attr('class').split(' ');
+                var parentDivClasses = $(this).parent().parent().parent().attr('class').split(' ');
                 // itemoption 클래스를 제외한 클래스명 가져오기
                 var filteredClasses = parentDivClasses.filter(function (className) {
                     return className !== 'itemoption';
@@ -294,7 +307,7 @@
 
             $(document).on("input", "input:not(.itemoptionname)", function () {
                 var inputValue = $(this).val(); // 입력받은 값
-                var parentDivClasses = $(this).parent().parent().attr('class').split(' ');
+                var parentDivClasses = $(this).parent().parent().parent().attr('class').split(' ');
                 // 부모의 부모 div 요소의 클래스 리스트
 
                 // itemoption 클래스를 제외한 클래스명 가져오기
@@ -381,8 +394,9 @@
             width: 150px;
             font-size: 16px;
             margin-bottom: 10px;
-            border: 0;
             padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-weight: bold;
         }
 
@@ -390,29 +404,71 @@
             font-weight: bold;
         }
 
-        form input[type="text"] {
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 5px 10px;
-            border: 0;
-            font-weight: bold;
+        .input-container{
+            position: relative;
+            display: inline-block; 
         }
 
-        form span {
-            font-weight: bold;
-        }
-
-        .itemtitle {
+        .input-container input[type="text"] {
             box-sizing: border-box;
+            display: inline-block;        
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.15s ease;
+        }
+
+        .input-container .itemtitle {
             width: 960px;
-            font-size: 32px;
+            font-size: 28px;
+            padding: 30px 10px 10px;
+            margin-bottom: 10px;
         }
 
-        .itemprice {
+        .input-container .itemprice {
             box-sizing: border-box;
-            width: 400px;
+            width: 295px;
             font-size: 16px;
+            padding: 20px 10px 10px;
+            margin:0 5px 10px 0;
         }
+
+        .input-container input + span {
+            box-sizing: border-box;
+            position: absolute;
+            line-height: 50px;
+            font-size: 14px;
+            top: 0px;
+            left: 10px;
+            pointer-events: none;
+            color: #999;
+            font-weight: bold;
+            transition: all 0.15s ease;
+        }
+
+        .input-container input:focus{
+            border: 1px solid #0071E3;
+            box-shadow: 0 0 0 3px #0071E350;
+        }
+
+        .input-container input:focus + span,
+        .input-container input:not(:placeholder-shown) + span {
+            top: 5px;
+            line-height: 20px;          
+            font-size: 10px;
+        }
+
+        .input-container .itemtitle + span {
+            line-height: 74.55px;
+            font-size: 28px;
+        }
+
+        .input-container .itemtitle:focus + span,
+        .input-container .itemtitle:not(:placeholder-shown) + span {
+            top: 5px;
+            line-height: 30px;
+            font-size: 20px;
+        }     
 
         .arrow_small {
             width: 18px;
@@ -546,6 +602,7 @@
 
         .itemoptionsbox::-webkit-scrollbar {
             width: 10px;
+            display:none;
         }
 
         .itemoptionsbox::-webkit-scrollbar-thumb {
@@ -603,19 +660,52 @@
             cursor: pointer;
             transition: background-color 0.5s, color 0.2s;
         }
-
-
-        .itemoptioninfo>input[type="text"] {
+		.itemoptioninfo .input-option{
+			box-sizing: border-box;
+			position: relative;
+			width: 330px;
+			margin: 5px auto;
+		}
+        .itemoptioninfo .input-option input[type="text"] {
             box-sizing: border-box;
-            width: 350px;
+            width: 100%;
+            height: 50px;
             font-size: 16px;
-            border: 0;
+            border: 1px solid #ccc;
             font-weight: bold;
-            padding: 10px;
+            padding: 20px 10px 10px;
+            border-radius: 5px;
+            transition: all 0.15s ease;
+        }
+        
+        .itemoptioninfo .input-option input[type="text"]:focus{
+        	box-shadow: 0 0 0 3px #0071E350;
+        	border: 1px solid #0071E3;
+        }
+        
+        .itemoptioninfo .input-option input + span {
+            box-sizing: border-box;
+            position: absolute;
+            line-height: 50px;
+            font-size: 14px;
+            top: 0px;
+            left: 10px;
+            pointer-events: none;
+            color: #999;
+            font-weight: bold;
+            transition: all 0.15s ease;
         }
 
-        .itemoptioninfo>.itemoptionname {
-            margin-bottom: 10px;
+         .itemoptioninfo.input-option input:focus{
+            border: 1px solid #0071E3;
+            box-shadow: 0 0 0 3px #0071E350;
+        }
+
+        .itemoptioninfo .input-option input:focus + span,
+        .itemoptioninfo .input-option input:not(:placeholder-shown) + span {
+            top: 5px;
+            line-height: 20px;          
+            font-size: 10px;
         }
 
         .editer_box {
@@ -693,9 +783,18 @@
                 <input type="hidden" name="c_idx" id="categoryidx">
                 <input type="hidden" name="s_idx" id="categoryidx" value="${seller.s_idx}">
                 <input type="hidden" name="i_explain" id="itemexplain">
-                <input type="text" name="i_name" class="itemtitle" placeholder="상품명을 입력해 주세요.">
-                <input type="text" name="i_price" class="itemprice" placeholder="가격을 입력해 주세요."><span> 원(₩)</span><br>
-                <input type="text" name="i_count" class="itemprice" placeholder="상품 수량을 입력해 주세요."><span> 개</span><br>
+                <div class="input-container">
+                    <input type="text" name="i_name" class="itemtitle" placeholder=" ">
+                    <span>상품명</span>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="i_price" class="itemprice" placeholder=" ">
+                    <span>가격</span>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="i_count" class="itemprice" placeholder=" ">
+                    <span>수량</span>
+                </div>
                 <input type="submit" id="item_submit_btn">
             </form>
             <!-- --------------------------------------------------------------------------------------- -->
