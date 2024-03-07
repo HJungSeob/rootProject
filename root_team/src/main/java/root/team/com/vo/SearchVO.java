@@ -8,8 +8,8 @@ public class SearchVO {
 	private String searchWord;
 	private String searchField;
 	private String orderByType;
-	private String p_idx;
-	private String c_idx;
+	private int p_idx;
+	private int c_idx;
 	
 	
 	private int viewNum;

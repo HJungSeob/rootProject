@@ -27,11 +27,11 @@ public class HomeController {
 		SearchVO categoryD = new SearchVO();
 		SearchVO categoryE = new SearchVO();
 
-		categoryA.setP_idx("1");
-		categoryB.setP_idx("2");
-		categoryC.setP_idx("3");
-		categoryD.setP_idx("4");
-		categoryE.setP_idx("5");
+		categoryA.setP_idx(1);
+		categoryB.setP_idx(2);
+		categoryC.setP_idx(3);
+		categoryD.setP_idx(4);
+		categoryE.setP_idx(5);
 
 		List<ItemVO> listA = iList.indexGetItems(categoryA);
 		List<ItemVO> listB = iList.indexGetItems(categoryB);
@@ -57,11 +57,11 @@ public class HomeController {
 		SearchVO categoryD = new SearchVO();
 		SearchVO categoryE = new SearchVO();
 
-		categoryA.setP_idx("1");
-		categoryB.setP_idx("2");
-		categoryC.setP_idx("3");
-		categoryD.setP_idx("4");
-		categoryE.setP_idx("5");
+		categoryA.setP_idx(1);
+		categoryB.setP_idx(2);
+		categoryC.setP_idx(3);
+		categoryD.setP_idx(4);
+		categoryE.setP_idx(5);
 
 		List<ItemVO> listA = iList.indexGetItems(categoryA);
 		List<ItemVO> listB = iList.indexGetItems(categoryB);
