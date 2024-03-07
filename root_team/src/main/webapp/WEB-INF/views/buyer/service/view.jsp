@@ -16,6 +16,87 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script>
         $(function () {
+            
+            	var m_l_view_option_count = $('.m_l_view_option').length;         
+                var i_idx = $("#i_idx").val();
+                var i_price = $("#i_price").val();
+                var i_option;
+                var b_idx;
+                
+               $("#getCart").click(function () {
+
+                i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
+
+                if ($("#b_idx").val() != "") {
+                    var b_idx = $("#b_idx").val();
+                }else{
+                    alert("로그인이 필요한 서비스 입니다.");
+                    return false;
+                }
+ 
+                if (m_l_view_option_count !== i_option.split(',').length) {
+                    alert('모든 옵션을 선택해 주세요.');
+                    return false;
+                }
+                
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/buyer2/cart.do",
+                    data: {
+                        b_idx: b_idx,
+                        i_idx: i_idx,
+                        i_option: i_option,
+                        i_price: i_price
+                    },
+                    success: function (data) {
+                    	var result = confirm("장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?");
+                        if(result){
+                        	window.location.href = "${pageContext.request.contextPath}";
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("장바구니에 상품을 추가하는데 실패했습니다.");
+                    }
+                });
+            });
+
+            $("#getLikeItem").click(function () {
+
+                i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
+
+                if ($("#b_idx").val() != "") {
+                    var b_idx = $("#b_idx").val();
+                }else{
+                    alert("로그인이 필요한 서비스 입니다.");
+                    return false;
+                }
+ 
+                if (m_l_view_option_count !== i_option.split(',').length) {
+                    alert('모든 옵션을 선택해 주세요.');
+                    return false;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/buyer2/likeItem.do",
+                    data: {
+                        b_idx: b_idx,
+                        i_idx: i_idx,
+                        i_option: i_option,
+                        i_price: i_price
+                    },
+                    success: function (data) {
+                        alert("관심목록에 상품이 추가되었습니다.");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("관심목록에 상품을 추가하는데 실패했습니다.");
+                    }
+                });
+            });
+        });
+
+
+        $(function () {
 
             $('.m_l_view_itemimg_btn button').click(function () {
 
@@ -64,7 +145,7 @@
                 $('.m_l_view_itemoption_box').animate({
                     scrollTop: 0
                 }, 500);
-
+                $(".m_l_view_checkedoption").text("");
                 $(".m_l_view_firstoption").addClass("hide");
             });
 
@@ -124,9 +205,9 @@
             margin: 0 auto;
             padding: 20px;
         }
-        
-        .m_l_view_stick{
-        	color: lightgray;
+
+        .m_l_view_stick {
+            color: lightgray;
         }
 
         .arrow_small {
@@ -352,6 +433,11 @@
             width: 960px;
             height: 315px;
         }
+        
+        .m_l_view_getitem .m_l_view_checkedoption{
+        	font-size:12px;
+        	color: gray;
+        }
 
         .m_l_view_getitem_itemname {
             font-size: 20px;
@@ -371,6 +457,7 @@
             width: 160px;
             height: 40px;
             color: white;
+            border: 0;
             background-color: #0071E3;
             text-align: center;
             border-radius: 10px;
@@ -561,44 +648,45 @@
             color: #0071E3;
             font-size: 14px;
         }
-        
-        .m_l_view_review_search{
-        	padding: 30px;
-        	border-top: 1px solid lightgray;
+
+        .m_l_view_review_search {
+            padding: 30px;
+            border-top: 1px solid lightgray;
             border-bottom: 1px solid lightgray;
         }
-		.m_l_view_review_search input[type="radio"]{
-			display: inline-block;
-			vertical-align: top;
-			margin-top: 3px;
-		}
-		
-		.m_l_view_review_search span{
-			font-size: 14px;
-		}
-		
-        .m_l_view_review_search label{
+
+        .m_l_view_review_search input[type="radio"] {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 3px;
+        }
+
+        .m_l_view_review_search span {
+            font-size: 14px;
+        }
+
+        .m_l_view_review_search label {
             display: inline-block;
             margin: 0 10px 10px;
-            height: 17px;          
+            height: 17px;
             vertical-align: top;
         }
-        
-        .m_l_view_review_search input[type="submit"]{
-        	display: none;        	
-        }
-        
-        label[for="search_submit"] .search{
-        	filter: invert(0%) sepia(100%) saturate(5%) hue-rotate(145deg) brightness(0%) contrast(100%);
-        }
-        
-        .m_l_view_review_search input[type="text"]{
-        	margin: 0 10px 10px;        	
-        }
-        
-        
 
-        .m_l_view_starorder{
+        .m_l_view_review_search input[type="submit"] {
+            display: none;
+        }
+
+        label[for="search_submit"] .search {
+            filter: invert(0%) sepia(100%) saturate(5%) hue-rotate(145deg) brightness(0%) contrast(100%);
+        }
+
+        .m_l_view_review_search input[type="text"] {
+            margin: 0 10px 10px;
+        }
+
+
+
+        .m_l_view_starorder {
             position: relative;
             display: inline-block;
             height: 17px;
@@ -606,27 +694,27 @@
             background-image: url(../resources/css/img/star.png);
             background-position: 0 -245px;
         }
-        
+
         label[for="star5"] .m_l_view_starorder {
-            width: 88px;           
+            width: 88px;
         }
-        
-        label[for="star4"] .m_l_view_starorder{
-        	width: 71px;
+
+        label[for="star4"] .m_l_view_starorder {
+            width: 71px;
         }
-        
-        label[for="star3"] .m_l_view_starorder{
-        	width: 52px;
+
+        label[for="star3"] .m_l_view_starorder {
+            width: 52px;
         }
-        
-        label[for="star2"] .m_l_view_starorder{
-        	width: 34px;
+
+        label[for="star2"] .m_l_view_starorder {
+            width: 34px;
         }
-        
-        label[for="star1"] .m_l_view_starorder{
-        	width: 17px;
+
+        label[for="star1"] .m_l_view_starorder {
+            width: 17px;
         }
-        
+
 
         .m_l_view_itemQandA {
             height: 1200px;
@@ -652,6 +740,9 @@
             <%@ include file="../common/global_header.jsp"%>
         </header>
         <section>
+            <input type="hidden" id="i_idx" value="${item.i_idx}">
+            <input type="hidden" id="b_idx" value="${buyer.b_idx}">
+            <input type="hidden" id="i_price" value="${item.i_price}">
             <a href="" class="m_l_view_category_link">
                 <c:choose>
                     <c:when test="${item.c_idx le 5}">
@@ -738,14 +829,15 @@
             <div class="m_l_view_getitem_box">
             </div>
             <div class="m_l_view_getitem">
-                <span class="m_l_view_getitem_itemname">${item.i_name}</span>
+                <span class="m_l_view_getitem_itemname">${item.i_name}</span><br>
+                <span class="m_l_view_checkedoption"></span>
                 <span class="m_l_view_getitem_itemprice">
                     <fmt:formatNumber value="${item.i_price}" type="currency" currencySymbol="₩" />
                 </span>
-                <a href="#" class="m_l_view_getitem_cart"><span>장바구니</span></a>
+                <button class="m_l_view_getitem_cart" id="getCart"><span>장바구니</span></button>
                 <span class="m_l_view_getitem_span">시간이 좀 더 필요하신가요?</span>
                 <span class="m_l_view_getitem_span">선택한 상품을 목록에 모두 저장해두고 언제든 살펴보세요.</span>
-                <button class="m_l_view_getitem_save"><span class="m_l_view_getitem_span">나중을 위한 저장</span></button>
+                <button class="m_l_view_getitem_save" id="getLikeItem"><span class="m_l_view_getitem_span">나중을 위한 저장</span></button>
                 <span class="m_l_view_getitem_span">배송에 관한 자세한 정보는 '결제'단계에서 볼 수 있습니다.</span>
             </div>
             <div class="m_l_view_dummy"></div>
@@ -804,56 +896,56 @@
                         </div>
                     </div>
                     <h2>전체리뷰</h2>
-                    <div class="m_l_view_detailreview">                   	                     
+                    <div class="m_l_view_detailreview">
                         <ul class="m_l_view_review_search">
                             <li>
                                 <label for="starall">
-                                	<input type="radio" name="starorder" id="starall">
+                                    <input type="radio" name="starorder" id="starall">
                                     <span>전체</span>
                                 </label>
                                 <span class="m_l_view_stick">|</span>
                                 <label for="star5">
-                                	<input type="radio" name="starorder" id="star5">
+                                    <input type="radio" name="starorder" id="star5">
                                     <span class="m_l_view_starorder"></span>
                                 </label>
                                 <span class="m_l_view_stick">|</span>
                                 <label for="star4">
-                                	<input type="radio" name="starorder" id="star4">
+                                    <input type="radio" name="starorder" id="star4">
                                     <span class="m_l_view_starorder"></span>
                                 </label>
                                 <span class="m_l_view_stick">|</span>
                                 <label for="star3">
-                                	<input type="radio" name="starorder" id="star3">
+                                    <input type="radio" name="starorder" id="star3">
                                     <span class="m_l_view_starorder"></span>
                                 </label>
                                 <span class="m_l_view_stick">|</span>
                                 <label for="star2">
-                                 	<input type="radio" name="starorder" id="star2">
+                                    <input type="radio" name="starorder" id="star2">
                                     <span class="m_l_view_starorder"></span>
                                 </label>
                                 <span class="m_l_view_stick">|</span>
                                 <label for="star1">
-                                	<input type="radio" name="starorder" id="star1">
+                                    <input type="radio" name="starorder" id="star1">
                                     <span class="m_l_view_starorder"></span>
                                 </label>
                             </li>
                             <li>
-                            	<label for="recommend">
-                            	<input type="radio" name="vieworder" id="recommend">
-                            	<span>추천순</span>
-                            	</label>
-                            	<span class="m_l_view_stick">|</span>
-                            	<label for="latest">
-                            	<input type="radio" name="vieworder" id="latest">
-                            	<span>최신순</span>                               
+                                <label for="recommend">
+                                    <input type="radio" name="vieworder" id="recommend">
+                                    <span>추천순</span>
+                                </label>
+                                <span class="m_l_view_stick">|</span>
+                                <label for="latest">
+                                    <input type="radio" name="vieworder" id="latest">
+                                    <span>최신순</span>
                                 </label>
                             </li>
                             <li>
-                            	<input type="submit" id="search_submit">
-                            	<label for="search_submit">
-                            		<span class="search"></span>
-                            	</label>
-                                <input type="text" placeholder="옵션 검색">                         
+                                <input type="submit" id="search_submit">
+                                <label for="search_submit">
+                                    <span class="search"></span>
+                                </label>
+                                <input type="text" placeholder="옵션 검색">
                             </li>
                         </ul>
                         <ul>

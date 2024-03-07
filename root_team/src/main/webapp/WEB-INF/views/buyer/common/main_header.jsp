@@ -16,19 +16,19 @@
 
                     <div class="global_nav_btns">
                         <div>
-                            <a href="#" class="global_nav_btn">
+                            <a href="${pageContext.request.contextPath}/item/list.do?p_idx=1" class="global_nav_btn">
                             	<span>디지털/가전</span>
                             </a>                         
-                            <a href="#" class="global_nav_btn">
+                            <a href="${pageContext.request.contextPath}/item/list.do?p_idx=2" class="global_nav_btn">
                                 <span>인테리어</span>
                             </a>                         
-                            <a href="#" class="global_nav_btn">
+                            <a href="${pageContext.request.contextPath}/item/list.do?p_idx=3" class="global_nav_btn">
                                 <span>식품</span>
                             </a>                         
-                            <a href="#" class="global_nav_btn">
+                            <a href="${pageContext.request.contextPath}/item/list.do?p_idx=4" class="global_nav_btn">
                                 <span>의류</span>
                             </a>                         
-                            <a href="#" class="global_nav_btn">
+                            <a href="${pageContext.request.contextPath}/item/list.do?p_idx=5" class="global_nav_btn">
                                 <span>생활</span>
                             </a>
                         </div>
@@ -66,11 +66,11 @@
                             <div class="global_nav_categories">
                                 <span>디지털/가전 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">휴대폰</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">영상가전</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">PC/게임</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">음향가전</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">생활가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=1">휴대폰</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=2">영상가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=3">PC/게임</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=4">음향가전</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=5">생활가전</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -85,11 +85,11 @@
                             <div class="global_nav_categories">
                                 <span>인테리어 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">수납</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">홈</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">거실</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">침구</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">침실가구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=6">수납</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=7">홈</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=8">거실</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=9">침구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=10">침실가구</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -104,11 +104,11 @@
                             <div class="global_nav_categories">
                                 <span>식품 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">농수산물</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">가공식품</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">제과제빵</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">음료</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">건강식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=11">농수산물</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=12">가공식품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=13">제과제빵</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=14">음료</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=15">건강식품</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -123,11 +123,11 @@
                             <div class="global_nav_categories">
                                 <span>의류 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">상의</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">하의</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">아우터</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">신발</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">이너웨어</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=16">상의</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=17">하의</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=18">아우터</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=19">신발</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=20">이너웨어</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">
@@ -142,11 +142,11 @@
                             <div class="global_nav_categories">
                                 <span>생활 살펴보기</span>
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">취미</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">잡화</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">주방</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">사무</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/item/list.do">공구</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=21">취미</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=22">잡화</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=23">주방</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=24">사무</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/item/list.do?c_idx=25">공구</a></li>
                                 </ul>
                             </div>
                             <div class="global_nav_categorieImg">

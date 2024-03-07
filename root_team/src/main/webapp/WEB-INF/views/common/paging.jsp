@@ -10,19 +10,17 @@
 <c:set var="viewNum" value="${sVO.viewNum}" />
 
 <c:url value="list.do?" var="listUrl">
-    <c:if test="${not empty searchWord}">
+    <c:if test="${'' ne searchWord and not empty searchWord}">
     	<c:param name="searchWord" value="${searchWord}" />
-    </c:if>
-    <c:if test="${not empty searchField}">
     	<c:param name="searchField" value="${searchField}" />
     </c:if>
     <c:if test="${not empty orderByType}">
     	<c:param name="orderByType" value="${orderByType}" />
     </c:if>
-    <c:if test="${not empty p_idx}">
+    <c:if test="${0 ne p_idx}">
     	<c:param name="p_idx" value="${p_idx}" />
     </c:if>
-    <c:if test="${not empty c_idx}">
+    <c:if test="${0 ne c_idx}">
     	<c:param name="c_idx" value="${c_idx}" />
     </c:if>
     <c:if test="${not empty viewNum}">

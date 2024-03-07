@@ -73,7 +73,7 @@ public class ItemController {
 		
 		if(searchVO.getOrderByType() == null) {
 			searchVO.setOrderByType("pop");
-		}
+		}		
 		
 		List<ItemVO> itemList = iList.getItems(searchVO);
 		model.addAttribute("itemList", itemList);

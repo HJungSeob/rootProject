@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.AddressVO;
 import root.team.com.vo.BuyerVO;
+import root.team.com.vo.CartVO;
 
 @Repository
 @RequiredArgsConstructor
@@ -103,5 +104,9 @@ public class BuyerDAO {
 	
 	public String getPw(int b_idx) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".getPw", b_idx);
+	}
+
+	public int insertCart(CartVO vo) {
+	    return sqlSession.insert(MAPPER + ".insertCart", vo);
 	}
 }

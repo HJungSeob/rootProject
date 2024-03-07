@@ -15,7 +15,7 @@ public class ItemVO {
 	private String s_profile;
 	private String s_storename;
 	private String s_storeintro;
-	
+	 
 	private int i_idx;
 	private String i_name;
 	private String i_price;
