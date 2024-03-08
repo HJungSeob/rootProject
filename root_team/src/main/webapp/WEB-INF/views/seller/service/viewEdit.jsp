@@ -113,7 +113,8 @@
                                 <th>재고상태</th>
                                 <th>판매가</th>
                             </tr>
-                            <!-- 나중에 데이터 받아올 때 for문으로 처리(게시판 참고) -->
+                            <!-- 나중에 데이터 받아올 때 for문으로 처리(게시판 참고)
+                            	이거를 싹 다 긁어서 -->
                             <tr>
                                 <td><span>(1)</span></td>
                                 <td class="seller_view_edit_contents_table_edit_btn"><a href=""><span>수정</span></a></td>

@@ -144,4 +144,10 @@
 		FROM tb_seller
 		WHERE s_email = #{s_email}
 	</select>
+	
+	<select id="getItems" parameterType="_int" resultType="itemVO">
+	SELECT *
+		from vw_item
+		where s_idx = #{s_idx}
+	</select>
 </mapper>

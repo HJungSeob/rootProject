@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="root.team.com.vo.SellerVO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,9 +16,49 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/seller/service/main_section.css">
 
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/service/main.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/service/mainSection.js"></script>
 
+	<script>
+		function getItems() {
+			var s_idx = ${seller.s_idx};
+			
+			$.ajax({
+				type: 'post',
+				url: '${pageContext.request.contextPath}/seller/getItemsProcess.do',
+				data: {
+					s_idx: s_idx
+				},
+				success: function (data) {
+					let sellingItems = 0;
+					let waitingItems = 0;
+					let soldOutItems = 0;
+					
+					for(let i = 0; i<data.length; i++){
+						if(data[i].i_state = 1){
+							sellingItems++;
+						} else if(data[i].i_state = 2){
+							waitingItems++;
+						}else if(data[i].i_state = 0){
+							soldOutItems++;
+						}
+					}
+					$("#selling").text(sellingItems);
+					$("#waiting").text(waitingItems);
+					$("#soldOut").text(soldOutItems);
+				},
+				error: function () {
+					console.log("실패");
+				}
+			});
+		}
+	
+		$(function () {
+			// 페이지 로드 시 자동으로 실행
+			getItems();
+		});
+	</script>
 </head>
 
 <body>
@@ -177,9 +218,9 @@
                                 <div class="seller_main_contents_bottom_summary_box_items">
                                     <div><span>상품</span></div>
                                     <div class="seller_main_contents_bottom_summary_box_item">
-                                        <div><span>판매중</span><span><a href="">(0)</a> 건</span></div>
-                                        <div><span>판매 대기</span><span><a href="">(0)</a> 건</span></div>
-                                        <div><span>품절</span><span><a href="">(0)</a> 건</span></div>
+                                        <div><span>판매중</span><span><a href="" id="selling"></a> 건</span></div>
+                                        <div><span>판매 대기</span><span><a href="" id="waiting"></a> 건</span></div>
+                                        <div><span>품절</span><span><a href="" id="soldOut"></a> 건</span></div>
                                     </div>
                                 </div>
                                 <div class="seller_main_contents_bottom_summary_box_items top">
