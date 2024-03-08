@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="root.team.com.CartMapper">
+
+	<select id="searchCart" parameterType="cartVO" resultType="_int">
+		SELECT count(*)
+		FROM tb_buyer_cart
+		WHERE b_idx = #{b_idx}
+		AND i_option = #{i_option}
+	    AND b_idx = #{b_idx}
+	</select>
+
+	<insert id="insertCart" parameterType="cartVO">
+		INSERT INTO tb_buyer_cart (b_idx, i_idx, i_name, i_option, i_price, i_img)
+		VALUES (#{b_idx}, #{i_idx}, #{i_name}, #{i_option}, #{i_price}, #{i_img})
+	</insert>
+
+	<select id="getCarts" parameterType="_int" resultType="cartVO">
+		SELECT *
+		FROM tb_buyer_cart
+		WHERE b_idx = #{b_idx}
+	</select>
+
+	<delete id="deleteCart" parameterType="cartVO">
+	    DELETE FROM tb_buyer_cart
+	    WHERE i_idx = #{i_idx}
+	    AND i_option = #{i_option}
+	    AND b_idx = #{b_idx}
+	</delete>
+
+</mapper>

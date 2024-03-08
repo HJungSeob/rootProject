@@ -1,3 +1,7 @@
+section{
+	margin-bottom: 254px;
+}
+
 .m_buyerItemCart_bagRegion {
     width: 1200px;
     margin: 0 auto;
@@ -58,6 +62,10 @@
     font-size: 26px;
     width: 400px;
     height: 100px;
+}
+.m_buyerItemCart_itemsTitle span{
+	font-size: 16px;
+	color: gray;
 }
 
 .m_buyerItemCart_itemsTitle a {
