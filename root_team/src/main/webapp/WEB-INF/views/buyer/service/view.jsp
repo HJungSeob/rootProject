@@ -19,18 +19,23 @@
             
             	var m_l_view_option_count = $('.m_l_view_option').length;         
                 var i_idx = $("#i_idx").val();
-                var i_price = $("#i_price").val();
+                var i_name = $("#i_name").text();
+                var i_img = $("#i_img").val();
+                var i_price;
                 var i_option;
                 var b_idx;
                 
                $("#getCart").click(function () {
 
                 i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
-
+                i_price = $("#i_price").val();
+                
                 if ($("#b_idx").val() != "") {
                     var b_idx = $("#b_idx").val();
                 }else{
-                    alert("로그인이 필요한 서비스 입니다.");
+                    if(confirm("로그인이 필요한 서비스 입니다. 로그인 페이지로 이동하시겠습니까?")){
+                    	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
+                    }
                     return false;
                 }
  
@@ -41,18 +46,23 @@
                 
                 $.ajax({
                     type: "POST",
-                    url: "${pageContext.request.contextPath}/buyer2/cart.do",
+                    url: "${pageContext.request.contextPath}/cart/insertCart.do",
                     data: {
                         b_idx: b_idx,
                         i_idx: i_idx,
+                        i_name: i_name,
+                        i_img: i_img,
                         i_option: i_option,
                         i_price: i_price
                     },
                     success: function (data) {
-                    	var result = confirm("장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?");
-                        if(result){
-                        	window.location.href = "${pageContext.request.contextPath}";
-                        }
+                    	if(data == 0){
+                    		alert("장바구니에 동일한 상품이 존재합니다.");
+                    	}else{
+	                        if(confirm("장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?")){
+	                        	window.location.href = "${pageContext.request.contextPath}/cart/cart.do?b_idx=" + b_idx;
+	                        }
+                    	}
                     },
                     error: function (xhr, status, error) {
                         alert("장바구니에 상품을 추가하는데 실패했습니다.");
@@ -63,11 +73,15 @@
             $("#getLikeItem").click(function () {
 
                 i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
-
+                i_price = $("#i_price").val();
+                
+                
                 if ($("#b_idx").val() != "") {
                     var b_idx = $("#b_idx").val();
                 }else{
-                    alert("로그인이 필요한 서비스 입니다.");
+                	if(confirm("로그인이 필요한 서비스 입니다. 로그인 페이지로 이동하시겠습니까?")){
+                    	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
+                    }
                     return false;
                 }
  
@@ -80,8 +94,10 @@
                     type: "POST",
                     url: "${pageContext.request.contextPath}/buyer2/likeItem.do",
                     data: {
-                        b_idx: b_idx,
+                    	b_idx: b_idx,
                         i_idx: i_idx,
+                        i_name: i_name,
+                        i_img: i_img,
                         i_option: i_option,
                         i_price: i_price
                     },
@@ -743,6 +759,7 @@
             <input type="hidden" id="i_idx" value="${item.i_idx}">
             <input type="hidden" id="b_idx" value="${buyer.b_idx}">
             <input type="hidden" id="i_price" value="${item.i_price}">
+            <input type="hidden" id="i_img" value="${item.i_saveimg0}">
             <a href="" class="m_l_view_category_link">
                 <c:choose>
                     <c:when test="${item.c_idx le 5}">
@@ -772,7 +789,7 @@
             <label for="m_l_view_btn_review">
                 <span>(10)</span>
             </label>
-            <span class="m_l_view_item_title">${item.i_name}</span>
+            <span class="m_l_view_item_title" id="i_name">${item.i_name}</span>
             <span class="m_l_view_storename">${item.s_storename}</span>
             <div class="m_l_view_itemsimpleinfo">
                 <div class="m_l_view_itemimg">

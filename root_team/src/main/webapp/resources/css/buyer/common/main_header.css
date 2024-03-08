@@ -266,6 +266,7 @@ nav {
 
 .global_nav_cartList {
     flex: 1;
+    height: 280px;
 }
 
 .global_nav_cartList h1 {
@@ -277,7 +278,8 @@ nav {
 }
 
 .global_nav_cartItem a {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     width: 590px;
 }
 
@@ -287,16 +289,32 @@ nav {
     height: 64px;
 }
 
-.global_nav_cartItem span {
+.global_nav_cartItem a div{
     width: 500px;
-    display: inline-block;
-    font-size: 12px;
-    vertical-align: top;
-    margin: 25px 0 0 20px;
+}
+
+.global_nav_cartItem .global_nav_itemName {
+    width: 500px;
+    display: block;
+    font-size: 14px;
     font-weight: bold;
+    margin-top:5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.global_nav_cartItem .global_nav_itemOption{
+    display: block;
+    color: gray;
+    margin-top:5px;
+    font-size: 10px;
+}
+
+.global_nav_cartItem .global_nav_itemPrice{
+    display: block;
+    margin-top:5px;
+    font-size: 14px;
 }
 
 .global_nav_cartView a {
@@ -318,6 +336,18 @@ nav {
     font-size: 12px;
     float: right;
     color: #848484;
+}
+
+.global_nav_cartItem .global_nav_login{
+	display:inline-block;	
+	color:#0071E3;
+	width: auto;
+	text-decoration: underline;
+}
+
+.global_nav_notLogin{	
+	font-size: 12px;
+	color: gray;
 }
 
 nav.fixed {

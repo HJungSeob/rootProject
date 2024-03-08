@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.AddressVO;
 import root.team.com.vo.BuyerVO;
-import root.team.com.vo.CartVO;
 
 @Repository
 @RequiredArgsConstructor
