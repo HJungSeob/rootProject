@@ -171,11 +171,6 @@
 			where b_idx = #{b_idx}
 	</select>
 	
-	<insert id="insertCart" parameterType="cartVO">
-	    INSERT INTO tb_buyer_cart (b_idx, i_idx, i_option, i_price)
-	    	VALUES (#{b_idx}, #{i_idx}, #{i_option}, #{i_price})
-	</insert>
-	
 	<update id="verifyEmail" parameterType="_int">
 		update
 		tb_buyer_state set b_check = 'Y'

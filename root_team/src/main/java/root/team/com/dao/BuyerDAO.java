@@ -105,10 +105,6 @@ public class BuyerDAO {
 	public String getPw(int b_idx) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".getPw", b_idx);
 	}
-
-	public int insertCart(CartVO vo) {
-	    return sqlSession.insert(MAPPER + ".insertCart", vo);
-	}
 	
 	public int verifyEmail(int b_idx) {
 		return sqlSession.update(MAPPER + ".verifyEmail", b_idx);
