@@ -21,6 +21,7 @@ public class ItemVO {
 	private String i_price;
 	private String i_explain;
 	private String i_count;
+	private String i_state;
 	private String i_option0;
 	private String i_option1;
 	private String i_option2;

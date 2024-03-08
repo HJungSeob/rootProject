@@ -1,12 +1,13 @@
 package root.team.com.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
-import root.team.com.vo.BuyerVO;
+import root.team.com.vo.ItemVO;
 import root.team.com.vo.SellerVO;
 
 @Repository
@@ -101,5 +102,10 @@ public class SellerDAO {
 	
 	public int getS_idx(String s_email) {
 		return sqlSession.selectOne(MAPPER + ".getS_idx", s_email);
+	}
+	
+	public List<ItemVO> getItems(int s_idx){
+		System.out.println(sqlSession.selectList(MAPPER + ".getItems", s_idx));
+		return sqlSession.selectList(MAPPER + ".getItems", s_idx);
 	}
 }

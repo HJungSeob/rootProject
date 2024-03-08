@@ -1,8 +1,10 @@
 package root.team.com.service.seller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
-import root.team.com.vo.BuyerVO;
+import root.team.com.vo.ItemVO;
 import root.team.com.vo.SellerVO;
 
 public interface SellerService {
@@ -55,5 +57,9 @@ public interface SellerService {
 	
 	default int verifyEmail(String s_email) {
 		return 0;
+	}
+	
+	default List<ItemVO> getItems(int s_idx) {
+		return null;
 	}
 }

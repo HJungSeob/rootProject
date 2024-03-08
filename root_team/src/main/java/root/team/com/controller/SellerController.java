@@ -1,14 +1,18 @@
 package root.team.com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.Setter;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
+import root.team.com.vo.ItemVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -23,7 +28,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind, sJoinEmail;
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind, sJoinEmail, sGet;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -208,6 +213,16 @@ public class SellerController {
 	@ResponseBody
 	public int sellerVerifyEmailProcess(String s_email) {
 		return sUpdate.verifyEmail(s_email); 
+	}
+	
+	@PostMapping("/getItemsProcess.do")
+	@ResponseBody
+	public List<ItemVO> getItemsProcess(Model model, int s_idx) {
+		List<ItemVO> newVO = sGet.getItems(s_idx);
+		System.out.println(s_idx);
+		model.addAttribute("item", newVO);
+		
+		return newVO;
 	}
 	
 	///////////////////////////////////////////////////////////////
