@@ -131,4 +131,17 @@
 			from tb_seller
 			where s_idx = #{s_idx}
 	</select>
+	
+	<update id="verifyEmail" parameterType="_int">
+		update
+		tb_seller_state set s_check = 'Y'
+		where s_check = 'N'
+		and s_idx = #{s_idx}
+	</update>
+	
+	<select id="getS_idx" parameterType="String" resultType="_int">
+	SELECT s_idx
+		FROM tb_seller
+		WHERE s_email = #{s_email}
+	</select>
 </mapper>

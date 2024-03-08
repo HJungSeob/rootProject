@@ -56,4 +56,12 @@ public interface BuyerService {
 	default int passwordCheck(int b_idx, String b_pw) {
 		return 0;
 	}
+	
+	default String joinEmail(String b_email){
+		return null;
+	}
+	
+	default int verifyEmail(String b_email) {
+		return 0;
+	}
 }

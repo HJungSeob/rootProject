@@ -30,4 +30,12 @@ public class SellerUpdateService implements SellerService {
 		
 		return newVO;
 	}
+	
+	public int verifyEmail(String s_email) {
+		int result = 0;
+
+			result = dao.verifyEmail(dao.getS_idx(s_email));
+			
+		return result;
+	}
 }
