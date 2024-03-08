@@ -26,7 +26,8 @@ import root.team.com.vo.BuyerVO;
 public class BuyerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bCheck, bFind;
+	BuyerService bJoin, bLogin, bUpdate, bGetAddress, bInsertAddress, bInsertContact, bInfoUpdate, bCancel, bCheck,
+			bFind, bJoinEmail;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -37,15 +38,18 @@ public class BuyerController {
 	}
 
 	@PostMapping("/buyerJoinProcess.do")
-	public String buyerJoinProcess(BuyerVO buyerVO) {
+	public String buyerJoinProcess(HttpServletRequest request, BuyerVO buyerVO) {
 		String viewPage = "buyer/user/buyerJoin";
-		
+
 		if (bJoin.join(buyerVO) == 1) {
 			if (bJoin.infoState(buyerVO) == 1) {
-				viewPage = "redirect:/index.do";
+				
+				viewPage = "redirect:/buyer/buyerVerifyEmail.do";
+				HttpSession session = request.getSession();
+				session.setAttribute("b_email", buyerVO.getB_email());
 			}
 		}
-
+			
 		return viewPage;
 	}
 
@@ -232,21 +236,39 @@ public class BuyerController {
 	public int telCheckProcess(@RequestParam("b_tel") String b_tel) {
 		return bCheck.telCheck(b_tel);
 	}
-	
+
 	@GetMapping("/findPw.do")
 	public String findPw() {
 		return "buyer/user/buyerFindPw";
 	}
-	
+
 	@PostMapping("/findPwProcess.do")
 	@ResponseBody
-	public void findPwProcess(@ModelAttribute BuyerVO buyerVO, HttpServletResponse response) throws Exception{
+	public void findPwProcess(@ModelAttribute BuyerVO buyerVO, HttpServletResponse response) throws Exception {
 		bFind.findPw(response, buyerVO);
 	}
-	
+
 	@PostMapping("/passwordCheckProcess.do")
 	@ResponseBody
 	public int passwordCheckProcess(@RequestParam("b_idx") int b_idx, @RequestParam("b_pw") String b_pw) {
 		return bCheck.passwordCheck(b_idx, b_pw);
 	}
+
+	@PostMapping("/joinEmailProcess.do")
+	@ResponseBody
+	public String joinEmailProcess(String b_email) {
+		return bJoinEmail.joinEmail(b_email);
+	}
+
+	@GetMapping("/buyerVerifyEmail.do")
+	public String buyerVerifyEmail() {
+		return "buyer/user/buyerVerifyEmail";
+	}
+	
+	@PostMapping("/buyerVerifyEmailProcess.do")
+	@ResponseBody
+	public int buyerVerifyEmailProcess(@RequestParam("b_email") String b_email) {
+		return bUpdate.verifyEmail(b_email); 
+	}
+
 }

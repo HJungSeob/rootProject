@@ -23,7 +23,7 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind;
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind, sJoinEmail;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -37,12 +37,14 @@ public class SellerController {
 	}
 
 	@PostMapping("/sellerJoinProcess.do")
-	public String sellerJoinProcess(SellerVO sellerVO) {
+	public String sellerJoinProcess(HttpServletRequest request, SellerVO sellerVO) {
 		String viewPage = "seller/user/sellerJoin";
 
 		if (sJoin.join(sellerVO) == 1) {
 			if (sJoin.infoState(sellerVO) == 1) {
-				viewPage = "redirect:/index.do";
+				viewPage = "redirect:/seller/sellerVerifyEmail.do";
+				HttpSession session = request.getSession();
+				session.setAttribute("s_email", sellerVO.getS_email());
 			}
 		}
 
@@ -187,8 +189,25 @@ public class SellerController {
 	
 	@PostMapping("/passwordCheckProcess.do")
 	@ResponseBody
-	public int passwordCheckProcess(@RequestParam("s_idx") int s_idx, @RequestParam("s_pw") String s_pw) {
+	public int passwordCheckProcess(int s_idx, String s_pw) {
 		return sCheck.passwordCheck(s_idx, s_pw);
+	}
+	
+	@PostMapping("/joinEmailProcess.do")
+	@ResponseBody
+	public String joinEmailProcess(String s_email) {
+		return sJoinEmail.joinEmail(s_email);
+	}
+
+	@GetMapping("/sellerVerifyEmail.do")
+	public String sellerVerifyEmail() {
+		return "seller/user/sellerVerifyEmail";
+	}
+	
+	@PostMapping("/sellerVerifyEmailProcess.do")
+	@ResponseBody
+	public int sellerVerifyEmailProcess(String s_email) {
+		return sUpdate.verifyEmail(s_email); 
 	}
 	
 	///////////////////////////////////////////////////////////////

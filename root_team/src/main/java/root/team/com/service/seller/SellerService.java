@@ -48,4 +48,12 @@ public interface SellerService {
 	default int passwordCheck(int s_idx, String s_pw) {
 		return 0;
 	}
+	
+	default String joinEmail(String s_email){
+		return null;
+	}
+	
+	default int verifyEmail(String s_email) {
+		return 0;
+	}
 }

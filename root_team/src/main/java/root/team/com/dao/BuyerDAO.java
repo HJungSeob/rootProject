@@ -109,4 +109,12 @@ public class BuyerDAO {
 	public int insertCart(CartVO vo) {
 	    return sqlSession.insert(MAPPER + ".insertCart", vo);
 	}
+	
+	public int verifyEmail(int b_idx) {
+		return sqlSession.update(MAPPER + ".verifyEmail", b_idx);
+	}
+	
+	public int getB_idx(String b_email) {
+		return sqlSession.selectOne(MAPPER + ".getB_idx", b_email);
+	}
 }

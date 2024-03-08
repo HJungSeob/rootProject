@@ -18,7 +18,7 @@ public class BuyerUpdateService implements BuyerService {
 	public BuyerVO update(BuyerVO buyerVO) {
 		BuyerVO newVO = null;// 회원가입 실패시 결과값
 		try {
-			if (buyerVO.getB_pw() != null) {		
+			if (buyerVO.getB_pw() != null) {
 				buyerVO.setB_pw(cryptPasswordEncoder.encode(buyerVO.getB_pw()));
 			}
 			newVO = dao.updateBuyer(buyerVO);
@@ -26,6 +26,14 @@ public class BuyerUpdateService implements BuyerService {
 			e.printStackTrace();
 		}
 		return newVO;
+	}
+
+	public int verifyEmail(String b_email) {
+		int result = 0;
+
+			result = dao.verifyEmail(dao.getB_idx(b_email));
+			
+		return result;
 	}
 
 }

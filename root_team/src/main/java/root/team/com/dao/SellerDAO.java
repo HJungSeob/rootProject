@@ -94,4 +94,12 @@ public class SellerDAO {
 	public String getPw(int s_idx) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".getPw", s_idx);
 	}
+	
+	public int verifyEmail(int s_idx) {
+		return sqlSession.update(MAPPER + ".verifyEmail", s_idx);
+	}
+	
+	public int getS_idx(String s_email) {
+		return sqlSession.selectOne(MAPPER + ".getS_idx", s_email);
+	}
 }

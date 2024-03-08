@@ -176,4 +176,16 @@
 	    	VALUES (#{b_idx}, #{i_idx}, #{i_option}, #{i_price})
 	</insert>
 	
+	<update id="verifyEmail" parameterType="_int">
+		update
+		tb_buyer_state set b_check = 'Y'
+		where b_check = 'N'
+		and b_idx = #{b_idx}
+	</update>
+	
+	<select id="getB_idx" parameterType="String" resultType="_int">
+	SELECT b_idx
+		FROM tb_buyer
+		WHERE b_email = #{b_email}
+	</select>
 </mapper>
