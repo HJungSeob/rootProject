@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/user/verifyEmail.css">
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
 
 	<script>
@@ -81,13 +82,27 @@
 
 <body>
 	<div class="warp">
+	<header>
+			<%@ include file="../../buyer/common/global_header.jsp"%>
+        </header>
+        <section>
+            <div class="mainRegion">
+                <div class="mainRegionTitle">이메일을 확인해 주세요.</div>
+                <div class="mainRegionSubTitle">${buyer.b_email}</div>
 		<form name="buyerVerifyEmail" method="post" action="buyerVerifyEmailProcess.do">
 			<input type="hidden" id="b_email" value="${b_email}">
-			<input type="text" id="auth_num_input" placeholder="인증번호 6자리를 입력해주세요." maxlength="6">
-			<input type="button" id="confirm_email_btn" value="인증확인">
-			<input type="button" id="re_email_btn" value="재전송">
+			<div>
+			<input type="text" id="auth_num_input" placeholder="인증번호 6자리를 입력해주세요." maxlength="6" class="emailNemberInput">
+			 </div>
+			<input type="button" id="confirm_email_btn" value="인증확인" class="emailCheckBtn">
+			<input type="button" id="re_email_btn" value="재전송" class="reEmailBtn">
 		</form>
-	</div>
+		</div>
+	</section>
+    </div>
+    <footer>
+		<%@ include file="../../buyer/common/global_footer.jsp"%>
+    </footer>
 </body>
 
 </html>
