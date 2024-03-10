@@ -92,7 +92,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "${pageContext.request.contextPath}/buyer2/likeItem.do",
+                    url: "${pageContext.request.contextPath}/cart/likeItem.do",
                     data: {
                     	b_idx: b_idx,
                         i_idx: i_idx,
@@ -131,22 +131,22 @@
             });
 
             $(".m_l_view_option input[type='radio']").change(function () {
-                // 선택된 옵션 값을 담을 배열을 초기화합니다.
+                
                 var selectedValues = [];
-                // 각 옵션마다 선택된 값을 배열에 추가합니다.
+                
                 $(".m_l_view_option input[type='radio']:checked").each(function () {
                     selectedValues.push($(this).val());
                 });
-                // 배열에 있는 값을 쉼표로 구분하여 버튼에 표시합니다.
+                
                 $(".m_l_view_checkedoption").text(selectedValues.join(", "));
-                // 현재 선택된 m_l_view_option 박스의 다음 형제 요소를 찾습니다.
+                
                 var nextOptionBox = $(this).closest(".m_l_view_option").next(".m_l_view_option");
-                // 다음 옵션 박스가 있는 경우
+                
                 if (nextOptionBox.length > 0) {
-                    // 현재 스크롤 위치에서 다음 옵션 박스의 상대적 위치를 계산합니다.
+                    
                     var scrollTop = $('.m_l_view_itemoption_box').scrollTop() + nextOptionBox.position()
                         .top;
-                    // 다음 옵션 박스로 이동합니다.
+                   
                     $('.m_l_view_itemoption_box').animate({
                         scrollTop: scrollTop
                     }, 500);

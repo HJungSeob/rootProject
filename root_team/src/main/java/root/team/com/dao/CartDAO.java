@@ -30,4 +30,13 @@ public class CartDAO {
         return sqlSession.delete(MAPPER + ".deleteCart", vo);
     }
 
+	public int searchLike(CartVO cartVO) {
+		return 0;
+	}
+
+	public int likeItem(CartVO cartVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
