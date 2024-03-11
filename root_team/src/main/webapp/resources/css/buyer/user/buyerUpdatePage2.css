@@ -300,6 +300,7 @@ body {
     border: 1px solid #858585;
     padding: 20px;
     padding-bottom: 0px;
+    background-color:#ffffff00;
 }
 
 ._inputRegion input+span{

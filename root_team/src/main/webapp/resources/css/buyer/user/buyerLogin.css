@@ -229,7 +229,7 @@ body{
     padding: 20px;
     padding-bottom: 0px;
     transition: all 0.15s ease;
-    
+    background-color:#ffffff00;
 }
 
 ._inputRegion input:focus{
@@ -270,6 +270,7 @@ body{
     padding: 20px;
     padding-bottom: 0px;
     transition: all 0.15s ease;
+    background-color:#ffffff00;
 }
 
 ._inputRegion1 input:focus{

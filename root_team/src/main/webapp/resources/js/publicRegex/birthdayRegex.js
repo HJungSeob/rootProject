@@ -14,21 +14,21 @@ $('#yyyyinput').blur(function () {
         if (birLength(this.value) === false) {
             birdayValid = false
             $(function () {
-                $('#yyyyregion').css("border", "1px solid #F74848")
+                $('#yyyyinput').css("border", "1px solid #F74848")
                 $('#resultmsg').text("생년월일이 유효하지 않습니다.")
                 $('#edsubmit').css("background-color", "#80befb")
             });
         } else if (checkBir(this.value) === false) {
             birdayValid = false
             $(function () {
-                $('#yyyyregion').css("border", "1px solid #F74848")
+                $('#yyyyinput').css("border", "1px solid #F74848")
                 $('#resultmsg').text("생년월일이 유효하지 않습니다.")
                 $('#edsubmit').css("background-color", "#80befb")
             });
         } else if (birLength(this.value) && checkBir(this.value)) {
             birdayValid = true
             $(function () {
-                $('#yyyyregion').css("border", "1px solid #858585")
+                $('#yyyyinput').css("border", "1px solid #858585")
                 $('#resultmsg').text("")
                 $('#edsubmit').css("background-color", "#0071e3")
             });
@@ -36,7 +36,7 @@ $('#yyyyinput').blur(function () {
     } else {
         birdayValid = false
         $(function () {
-            $('#yyyyregion').css("border", "1px solid #F74848")
+            $('#yyyyinput').css("border", "1px solid #F74848")
             $('#resultmsg').text("생년월일이 유효하지 않습니다.")
             $('#edsubmit').css("background-color", "#80befb")
         });
