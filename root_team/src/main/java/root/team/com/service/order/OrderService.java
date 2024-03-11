@@ -1,78 +1,18 @@
 package root.team.com.service.order;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-
-import root.team.com.vo.AddressVO;
-import root.team.com.vo.BuyerVO;
-import root.team.com.vo.CartVO;
+import root.team.com.vo.OrderVO;
 
 public interface OrderService {
 
-	default int join(BuyerVO buyerVO) {
+	default int insertOrder(OrderVO orderVO) {
 		return 0;
 	}
 
-	default int infoState(BuyerVO buyerVO) {
+	default int deleteOrder(int bo_idx){
 		return 0;
 	}
 
-	default BuyerVO login(String b_email, String b_pw) {
-		return null;
-	}
-
-	default BuyerVO update(BuyerVO buyerVO) {
-		return null;
-	}
-
-	default AddressVO getAddress(int b_idx) {
-		return null;
-	}
-
-	default int insertAddress(AddressVO addressVO) {
+	default int successOrder(int b_idx){
 		return 0;
-	}
-
-	default AddressVO insertContact(AddressVO addressVO) {
-		return null;
-	}
-
-	default int cancel(int b_idx) {
-		return 0;
-	}
-
-	default int emailCheck(String b_email) {
-		return 0;
-	}
-
-	default int telCheck(String b_tel) {
-		return 0;
-	}
-
-	default void sendEmail(BuyerVO buyerVO, String div) throws Exception {
-	}
-
-	default void findPw(HttpServletResponse response, BuyerVO buyerVO) throws Exception {
-	}
-	
-	default int passwordCheck(int b_idx, String b_pw) {
-		return 0;
-	}
-	
-	default String joinEmail(String b_email){
-		return null;
-	}
-	
-	default int verifyEmail(String b_email) {
-		return 0;
-	}
-	
-	default int cart(CartVO cartVO) {
-		return 0;
-	}
-
-	default List<CartVO> cartList(int b_idx) {
-		return null;
 	}
 }

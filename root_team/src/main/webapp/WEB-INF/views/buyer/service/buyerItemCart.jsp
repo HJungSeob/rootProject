@@ -79,7 +79,12 @@
             	if($(".m_buyerItemCart_items").length == 0){
                     alert("결제할 상품이 없습니다.");
                     return false;
-                }         
+                }else{
+                	var itemCountArray = $(".m_buyerItemCart_itemsCount").map(function() {
+                		  return parseInt($(this).val(), 10);
+                	}).get();
+                	$("#i_count").val(itemCountArray);
+                }        
             });
         });
     </script>
@@ -92,7 +97,7 @@
         </header>
         <section>
             <div class="m_buyerItemCart_bagRegion">
-                <form method="post" action="order.do">	                
+                <form method="post" action="${pageContext.request.contextPath}/order/order.do">	                
 	  				<input type="hidden" name="b_idx" value="${buyer.b_idx}">                       
                     <div class="m_buyerItemCart_bagMainTotalPrice"></div>
                     <div style="text-align: center; margin-top: 20px;">선택된 상품의 개수: ${cartList.size()}</div>
@@ -100,6 +105,7 @@
                     <label for="payment">
                         <div class="m_buyerItemCart_bagSubmitBtn">결제</div>
                     </label>
+                    <input type="hidden" name="i_count" id="i_count">                 
                     <div class="m_buyerItemCart_hrTag"></div>
                 </form>
                 <c:choose>
