@@ -67,20 +67,16 @@
 	            <div class="m_userLogin_2loginre">
 	                <form name="buyerLogin" method="post" action="buyerLoginProcess.do">
 	                    <div class="m_userLogin_buyerEmailRegion">
-	                        <div class="m_userLogin_emailRegion" id="emailRegion">
-	                            <label>
-	                                <input type="email" name="b_email" class="m_userLogin_emailInput" id="emailInput">
-	                                <div class="m_userLogin_emailTitle" id="emailTitle">이메일</div>
-	                            </label>
+	                        <div class="_inputRegion" id="emailRegion">
+	                                <input placeholder=" " type="email" name="b_email" class="" id="emailInput">
+	                                <span class="" id="emailTitle">이메일</span>
 	                            <div class="arrow_small" id="emailArrowSmall"></div>
 	                        </div>
 	                    </div>
 	                    
-	                    <div class="m_userLogin_pwRegion" id="pwRegion">
-	                        <label>
-	                            <input type="password" name="b_pw" class="m_userLogin_pwInput" id="pwInput">
-	                            <div class="m_userLogin_pwTitle" id="pwTitle">암호</div>
-	                        </label>
+	                    <div class="_inputRegion1" id="pwRegion">
+	                            <input placeholder=" " type="password" name="b_pw" class="" id="pwInput">
+	                            <span class="" id="pwTitle">암호</span>
 	                        <label>
 	                            <div class="arrow_small" id="pwArrowSmall"></div>
 	                            <input type="submit" class="m_userLogin_submit" id="loginSubmit" disabled="disabled">
