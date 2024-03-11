@@ -41,6 +41,15 @@
 		WHERE
 			i_idx = #{i_idx}
 	</select>
+	
+	<select id="getReviews" parameterType="_int" resultType="reviewVO">
+		SELECT 
+		    *		    
+		FROM 
+		   tb_buyer_review br, tb_buyer_info bi
+		WHERE br.b_idx = bi.b_idx
+		AND i_idx = #{i_idx}		
+	</select>
 
 	<select id="getItems" parameterType="searchVO" resultType="itemVO">
 		SELECT 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 
 @Repository
@@ -41,6 +42,10 @@ public class ItemDAO {
 
 	public int getTotalCount(SearchVO vo) {	
 		return sqlSession.selectOne(MAPPER + ".getTotalCount", vo);
+	}
+
+	public List<ReviewVO> getReview(int i_idx) {
+		return sqlSession.selectList(MAPPER + ".getReviews", i_idx);
 	}
 	
 }

@@ -3,6 +3,7 @@ package root.team.com.service.item;
 import java.util.List;
 
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 
 public interface ItemService {
@@ -25,6 +26,10 @@ public interface ItemService {
 
 	default int getTotalCount(SearchVO vo){
 		return 0;
+	}
+	
+	default List<ReviewVO> review(int i_idx) {		
+		return null;
 	}
 
 }

@@ -16,6 +16,7 @@
 		<typeAlias alias="searchVO" type="root.team.com.vo.SearchVO"/>		
 		<typeAlias alias="orderVO" type="root.team.com.vo.OrderVO"/>
 		<typeAlias alias="orderStateVO" type="root.team.com.vo.OrderStateVO"/>
+		<typeAlias alias="reviewVO" type="root.team.com.vo.ReviewVO"/>
 
 	</typeAliases>
 

@@ -67,4 +67,6 @@ public class OrderController {
 	public int successOrder(int b_idx) {	
 		return oSuccess.successOrder(b_idx);	
 	}
+	
+	
 }

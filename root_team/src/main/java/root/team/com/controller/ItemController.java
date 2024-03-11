@@ -17,6 +17,7 @@ import root.team.com.common.PageNav;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.item.ItemService;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 
 @Controller
@@ -24,12 +25,12 @@ import root.team.com.vo.SearchVO;
 public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
-	ItemService iInsert, iView, iList, iTotalCount;
+	ItemService iInsert, iView, iList, iTotalCount, iReview;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gFileNameUpdate, gDateUpdate, gPage;
-	
-	@Setter(onMethod_={ @Autowired })
+
+	@Setter(onMethod_ = { @Autowired })
 	PageNav pageNav;
 
 	@GetMapping("/write.do")
@@ -59,47 +60,73 @@ public class ItemController {
 		}
 		return viewPage;
 	}
-	
+
 	@GetMapping("/list.do")
 	public String list(@ModelAttribute("sVO") SearchVO searchVO, Model model) {
-		
-		if(searchVO.getPageNum() == 0) {
+
+		if (searchVO.getPageNum() == 0) {
 			searchVO.setPageNum(1);
 		}
-		
-		if(searchVO.getViewNum() == 0) {
+
+		if (searchVO.getViewNum() == 0) {
 			searchVO.setViewNum(9);
 		}
-		
-		if(searchVO.getOrderByType() == null) {
+
+		if (searchVO.getOrderByType() == null) {
 			searchVO.setOrderByType("pop");
-		}		
-		
+		}
+
 		List<ItemVO> itemList = iList.getItems(searchVO);
 		model.addAttribute("itemList", itemList);
-		
+
 		pageNav.setTotalRows(iTotalCount.getTotalCount(searchVO));
 		pageNav = gPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock(), searchVO.getViewNum());
 		model.addAttribute("pageNav", pageNav);
-		
+
 		return "buyer/service/list";
 	}
-	
+
 	@GetMapping("/view.do")
 	public String view(int i_idx, Model model) {
 
 		ItemVO item = iView.view(i_idx);
+		List<ReviewVO> reviewList = iReview.review(i_idx);
+		int point5 = 0;
+		int point4 = 0;
+		int point3 = 0;
+		int point2 = 0;
+		int point1 = 0;
+		if (reviewList != null) {
+			for (int i = 0; i < reviewList.size(); i++) {
+				switch (reviewList.get(i).getBr_star()) {
+				case "5.0": point5++;		
+					break;
+				case "4.0": point4++;
+					break;
+				case "3.0": point3++;
+					break;
+				case "2.0": point2++;
+					break;
+				case "1.0": point1++;
+					break;
+				}
+			}
+		}
+		
 		item.setI_modifydate(gDateUpdate.dateUpdate(item.getI_modifydate()));
 		item.setI_regdate(gDateUpdate.dateUpdate(item.getI_regdate()));
-		
-		String[] imgArr = {item.getI_saveimg0(), item.getI_saveimg1(),item.getI_saveimg2(),item.getI_saveimg3(), item.getI_saveimg4()};
-		String[] optionArr = {item.getI_option0(), item.getI_option1(), item.getI_option2(), item.getI_option3(), item.getI_option4()};
+		String[] imgArr = { item.getI_saveimg0(), item.getI_saveimg1(), item.getI_saveimg2(), item.getI_saveimg3(),
+				item.getI_saveimg4() };
+		String[] optionArr = { item.getI_option0(), item.getI_option1(), item.getI_option2(), item.getI_option3(),
+				item.getI_option4() };
+		int[] starArr = { point5, point4, point3, point2, point1};
 		model.addAttribute("imgArr", imgArr);
 		model.addAttribute("optionArr", optionArr);
 		model.addAttribute("item", item);
-		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("starArr", starArr);
+
 		return "buyer/service/view";
 	}
-	
 
 }
