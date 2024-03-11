@@ -35,6 +35,7 @@
 <script>
 let duplicatePhone = false;
 $(function(){
+	console.log("nahida")
 	$("#telInput").focusout(function() {
 		var telInput = $('#telInput').val();
 		
