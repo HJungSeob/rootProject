@@ -124,7 +124,7 @@
                 <ul class="gallery active">
                 <c:forEach var="index" begin="0" end="7">
                     <li class="gallery_li">
-                        <a>
+                        <a href="${pageContext.request.contextPath}/order/orderList.do">
                             <img src="${pageContext.request.contextPath}/resources/css/img/banner2/banner2_01.jpg" alt="">
                         </a>
                     </li>

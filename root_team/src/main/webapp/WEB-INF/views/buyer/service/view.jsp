@@ -562,7 +562,6 @@
         }
 
         .m_l_view_itemreview {
-            height: 1200px;
             border-left: 1px solid lightgray;
             border-right: 1px solid lightgray;
             background-color: white;
@@ -668,7 +667,7 @@
         .m_l_view_review_search {
             padding: 30px;
             border-top: 1px solid lightgray;
-            border-bottom: 1px solid lightgray;
+            font-size: 0;         
         }
 
         .m_l_view_review_search input[type="radio"] {
@@ -683,7 +682,7 @@
 
         .m_l_view_review_search label {
             display: inline-block;
-            margin: 0 10px 10px;
+            margin: 0 10px 25px;
             height: 17px;
             vertical-align: top;
         }
@@ -692,15 +691,22 @@
             display: none;
         }
 
+		label[for="search_submit"] {
+			margin: 0 5px 0 10px;
+		}
+
         label[for="search_submit"] .search {
+        	width: 20px;
+        	height: 20px;
+        	background-size: 20px;     
             filter: invert(0%) sepia(100%) saturate(5%) hue-rotate(145deg) brightness(0%) contrast(100%);
         }
 
-        .m_l_view_review_search input[type="text"] {
-            margin: 0 10px 10px;
+        .m_l_view_review_search input[type="text"] {         
+            width: 300px;
+        	font-size: 20px;
+        	border: 0;        
         }
-
-
 
         .m_l_view_starorder {
             position: relative;
@@ -729,8 +735,55 @@
 
         label[for="star1"] .m_l_view_starorder {
             width: 17px;
+        }        
+
+		.m_l_view_review{
+			font-size: 0;
+			display: flex;
+			flex-direction: column;
+			padding: 20px 0;
+			border-top: 1px solid lightgray; 
+		}
+
+        .m_l_view_reviewImg{
+        	display: inline-block;      	
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
         }
 
+        .m_l_view_reviewNickname{
+            font-size: 17px;
+            line-height: 52px;
+            vertical-align: top;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .m_l_view_reviewModifydate{
+        	color:gray;
+            font-size: 13px;
+            line-height: 52px;
+            vertical-align: top;
+            float: right;
+        }
+        
+        .m_l_view_reviewOption{
+        	color:gray;
+        	display: block;
+        	margin: 10px 0 0 62px;
+        	font-size: 15px;
+        }
+        
+        .m_l_view_review .m_l_view_star_box{
+        	margin-left: 62px;
+        }
+        
+        .m_l_view_reviewContent{
+        	display: block;
+        	margin: 10px 0 0 62px;
+            font-size: 15px;
+        }
 
         .m_l_view_itemQandA {
             height: 1200px;
@@ -784,10 +837,10 @@
             <span class="arrow_small"></span><br>
             <div class="m_l_view_star_box">
                 <span class="m_l_view_star empty"></span>
-                <span class="m_l_view_star full"></span>
+                <span class="m_l_view_star full" style='width: ${(item.avg_star / 5) * 100}%'></span>
             </div>
             <label for="m_l_view_btn_review">
-                <span>(10)</span>
+                <span>(${item.comment_count})</span>
             </label>
             <span class="m_l_view_item_title" id="i_name">${item.i_name}</span>
             <span class="m_l_view_storename">${item.s_storename}</span>
@@ -875,39 +928,49 @@
                     <div class="m_l_view_simplereview">
                         <div class="m_l_view_simple_stars">
                             <h3>구매만족도</h3>
-                            <h1>2.5</h1>
+                            <h1>${item.avg_star}</h1>
                             <div class="m_l_view_simple_star_box">
                                 <span class="m_l_view_simple_star empty"></span>
-                                <span class="m_l_view_simple_star full"></span>
+                                <span class="m_l_view_simple_star full" style='width: ${(item.avg_star / 5) * 100}%'></span>
                             </div>
-                            <span>10건</span>
+                            <span>${item.comment_count}건</span>
                         </div>
                         <div class="m_l_view_simple_statistics">
                             <ul>
                                 <li class="points5">
                                     <span class="num">5점</span>
-                                    <div><span></span></div>
-                                    <span class="percent">50%</span>
+                                    <div><span style="width: ${starArr[0] / reviewList.size() * 100}%;"></span></div>
+                                    <span class="percent">
+                                    	<fmt:formatNumber value="${starArr[0] / reviewList.size() * 100}" pattern="#,##0" />%
+                                    </span>
                                 </li>
                                 <li class="points4">
                                     <span class="num">4점</span>
-                                    <div><span></span></div>
-                                    <span class="percent">10%</span>
+                                    <div><span style="width: ${starArr[1] / reviewList.size() * 100}%;"></span></div>
+                                    <span class="percent">
+                                    	<fmt:formatNumber value="${starArr[1] / reviewList.size() * 100}" pattern="#,##0" />%
+									</span>
                                 </li>
                                 <li class="points3">
                                     <span class="num">3점</span>
-                                    <div><span></span></div>
-                                    <span class="percent">10%</span>
+                                    <div><span style="width: ${starArr[2] / reviewList.size() * 100}%;"></span></div>
+                                    <span class="percent">
+                                    	<fmt:formatNumber value="${starArr[2] / reviewList.size() * 100}" pattern="#,##0" />%
+									</span>
                                 </li>
                                 <li class="points2">
                                     <span class="num">2점</span>
-                                    <div><span></span></div>
-                                    <span class="percent">10%</span>
+                                    <div><span style="width: ${starArr[3] / reviewList.size() * 100}%;"></span></div>
+                                    <span class="percent">
+                                    	<fmt:formatNumber value="${starArr[3] / reviewList.size() * 100}" pattern="#,##0" />%
+									</span>
                                 </li>
                                 <li class="points1">
                                     <span class="num">1점</span>
-                                    <div><span></span></div>
-                                    <span class="percent">10%</span>
+                                    <div><span style="width: ${starArr[4] / reviewList.size() * 100}%;"></span></div>
+                                    <span class="percent">
+                                    	<fmt:formatNumber value="${starArr[4] / reviewList.size() * 100}" pattern="#,##0" />%
+									</span>
                                 </li>
                             </ul>
                         </div>
@@ -962,13 +1025,61 @@
                                 <label for="search_submit">
                                     <span class="search"></span>
                                 </label>
-                                <input type="text" placeholder="옵션 검색">
+                                <input type="text" class="m_l_view_searchReview" placeholder="옵션 검색">
                             </li>
                         </ul>
-                        <ul>
-                            <li>
-
-                            </li>
+                        <ul class="m_l_view_reviews">
+                        	<c:forEach var="review" items="${reviewList}" >
+	                            <c:if test="${not empty review}">
+		                            <li class="m_l_view_review">
+										<div>
+											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${review.b_profile}">
+											<span class="m_l_view_reviewNickname">${review.b_nickname}</span>
+											<span class="m_l_view_reviewModifydate">${review.br_modifydate}</span>
+										</div>
+										<div>
+											<span class="m_l_view_reviewOption">선택 옵션</span>											
+										</div>
+										<div class="m_l_view_star_box">
+							                <span class="m_l_view_star empty"></span>
+							                <span class="m_l_view_star full" style='width: ${(review.br_star / 5) * 100}%'></span>
+							            </div>
+										<div>
+											<span class="m_l_view_reviewContent">${review.br_content}</span>
+										</div>
+		                            </li>
+                            	</c:if>
+                            </c:forEach>
+	                        <!-- <c:choose>
+	                        	<c:when test="${empty review}">
+		                            <li>
+		                                <div>
+		                                	<span>등록된 리뷰가 없습니다.</span>	                                
+		                                </div>
+		                            <li>
+		                        </c:when>
+		                        <c:otherwise>
+	                            	<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">
+			                            <c:if test="${not empty reviewList[vs.count-1]}">
+				                            <li>
+												<div>
+													<img alt="" src="${pageContext.request.contextPath}/resources/uploads/${reviewList[vs.count-1].b_profile}">
+													<span></span>
+													<span></span>
+												</div>
+												<div>
+													<span></span>
+													<span></span>
+												</div>
+												<div></div>
+												<div>
+													<span></span>
+												</div>
+				                            </li>
+		                            	</c:if>
+		                            </c:forEach>
+		                        </c:otherwise>
+		                    </c:choose> -->
                         </ul>
                     </div>
                 </div>
