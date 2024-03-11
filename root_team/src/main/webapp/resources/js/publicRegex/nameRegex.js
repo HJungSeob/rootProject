@@ -21,21 +21,21 @@ $('#firstNameInput').blur(function () {
     if (this.value.length !== 0) {
         if (firstNameLength(this.value) === false) {
             $(function () {
-                $('#firstNameRegion').css("border", "1px solid #F74848")
+                $('#firstNameInput').css("border", "1px solid #F74848")
                 $('#firstNameMsg').text("길이가 너무 깁니다.")
                 $('#active').css("height", "10px").delay(0.2)
             });
             firstNameValid = false
         } else if (firstNameva(this.value) === false) {
             $(function () {
-                $('#firstNameRegion').css("border", "1px solid #F74848")
+                $('#firstNameInput').css("border", "1px solid #F74848")
                 $('#firstNameMsg').text("한글만 입력이 가능합니다.")
                 $('#active').css("height", "10px").delay(0.2)
             });
             firstNameValid = false
         } else if (firstNameLength(this.value) && firstNameva(this.value)) {
             $(function () {
-                $('#firstNameRegion').css("border", "1px solid #858585")
+                $('#firstNameInput').css("border", "1px solid #858585")
                 $('#firstNameMsg').text("")
                 $('#active').css("height", "0px").delay(0.2)
             });
@@ -43,7 +43,7 @@ $('#firstNameInput').blur(function () {
         }
     } else {
         $(function () {
-            $('#firstNameRegion').css("border", "1px solid #F74848")
+            $('#firstNameInput').css("border", "1px solid #F74848")
             $('#firstNameMsg').text("입력 되어 있지 않습니다.")
             $('#active').css("height", "10px").delay(0.2)
         });
@@ -62,26 +62,26 @@ $('#lastNameInput').blur(function () {
     if (this.value.length !== 0) {
         if (lastNameLength(this.value) === false) {
             $(function () {
-                $('#lastNameRegion').css("border", "1px solid #F74848")
+                $('#lastNameInput').css("border", "1px solid #F74848")
                 $('#lastNameMsg').text("길이가 너무 깁니다.")
             });
             lastNameValid = false
         } else if (lastNameva(this.value) === false) {
             $(function () {
-                $('#lastNameRegion').css("border", "1px solid #F74848")
+                $('#lastNameInput').css("border", "1px solid #F74848")
                 $('#lastNameMsg').text("한글만 입력이 가능합니다.")
             });
             lastNameValid = false
         } else if (lastNameLength(this.value) && lastNameva(this.value)) {
             $(function () {
-                $('#lastNameRegion').css("border", "1px solid #858585")
+                $('#lastNameInput').css("border", "1px solid #858585")
                 $('#lastNameMsg').text("")
             });
             lastNameValid = true
         }
     } else {
         $(function () {
-            $('#lastNameRegion').css("border", "1px solid #F74848")
+            $('#lastNameInput').css("border", "1px solid #F74848")
             $('#lastNameMsg').text("입력 되어 있지 않습니다.")
         });
         lastNameValid = false
