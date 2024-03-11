@@ -1,16 +1,16 @@
 $(function () {
     $('#emailArrowSmall').click(function () {
         if ($('#taxidInput').val().trim() !== '') {
-            $('#pwRegion').css("opacity", "1");
-            $('#emailRegion').css("borderRadius", "10px 10px 0px 0px");
+            $('#pwRegion').css("visibility","visible");
+            $('#taxidInput').css("borderRadius", "10px 10px 0px 0px");
         }
     });
 
     $('#taxidInput').on('input', function () {
         if ($(this).val().trim() === '') {
-            $('#pwRegion').css("opacity", "0");
-            $('#emailRegion').css("borderRadius", "10px");
-            $('#pwInput').val(null);
+            $('#pwRegion').css("visibility","");
+            $('#taxidInput').css("borderRadius", "10px");
+            $('#pwInput').val('');
         }
     });
 

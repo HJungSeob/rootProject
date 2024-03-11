@@ -66,20 +66,16 @@
 				<div class="m_sellerLogin_2loginre">
 					<form name="sellerLogin" method="post" action="sellerLoginProcess.do">
 						<div class="m_sellerLogin_buyerEmailRegion">
-							<div class="m_sellerLogin_emailRegion" id="emailRegion">
-								<label>
-									<input type="text" name="s_businessnum" class="m_sellerLogin_emailInput" id="taxidInput" maxlength="12">
-									<div class="m_sellerLogin_emailTitle" id="emailTitle">사업자번호</div>
-								</label>
+							<div class="_inputRegion" id="taxidRegion">
+									<input placeholder=" " type="text" name="s_businessnum" class="" id="taxidInput" maxlength="12">
+									<span class="" id="taxidTitle">사업자번호</span>
 								<div class="arrow_small" id="emailArrowSmall"></div>
 							</div>
 						</div>
 						
-						<div class="m_sellerLogin_pwRegion" id="pwRegion">
-							<label>
-								<input type="password" name="s_pw" class="m_sellerLogin_pwInput" id="pwInput">
-								<div class="m_sellerLogin_pwTitle" id="pwTitle">암호</div>
-							</label>
+						<div class="_inputRegion1" id="pwRegion">
+								<input placeholder=" " type="password" name="s_pw" class="" id="pwInput">
+								<span class="" id="pwTitle">암호</span>
 							<label>
 								<div class="arrow_small" id="pwArrowSmall"></div>
 								<input type="submit" class="m_sellerLogin_submit" id="loginSubmit" disabled="disabled">

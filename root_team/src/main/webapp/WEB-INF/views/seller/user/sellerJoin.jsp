@@ -54,8 +54,11 @@
 	src="${pageContext.request.contextPath}/resources/js/publicRegex/addressRegex.js"></script>
 	
 <script>
+let emailCheckValid = false;
+let telCheckValid = false;
+let taxidCheckValid = false;
 $(function(){
-	$("#telInput").focusout(function() {
+	$("#telInput").keyup(function() {
 		var telInput = $('#telInput').val();
 		
 		$.ajax({
@@ -66,21 +69,26 @@ $(function(){
 			success: function(data) {	
 				if (data == 1) {
 					$("#telSmg").text("사용중인 전화번호입니다.");
-					$("#nextPage").attr("disabled", true);
+					$('#telInput').css("border",
+					"1px solid #F74848");
+					telCheckValid = false;
 				} else {
-					$("#telSmg").text("");
-					$("#nextPage").attr("disabled", false);
+					telCheckValid = true;
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		try {
+			globaldisable();
+		} catch (Exception) {
+		}
 	});
 });
 
 $(function(){
-	$("#taxidInput").focusout(function() {
+	$("#taxidInput").keyup(function() {
 		var taxidInput = $('#taxidInput').val();
 		
 		$.ajax({
@@ -91,21 +99,26 @@ $(function(){
 			success: function(data) {	
 				if (data == 1) {
 					$("#taxidMsg").text("사용중인 사업자번호입니다.");
-					$("#middlePage").attr("disabled", true);
+					$('#taxidInput').css("border",
+					"1px solid #F74848");
+					taxidCheckValid = false;
 				} else {
-					$("#taxidMsg").text("");
-					$("#middlePage").attr("disabled", false);
+					taxidCheckValid = true;
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		try {
+			globaldisable();
+		} catch (Exception) {
+		}
 	});
 });
 
 $(function(){
-	$("#emailInput").focusout(function() {
+	$("#emailInput").keyup(function() {
 		var emailInput = $('#emailInput').val();
 		
 		$.ajax({
@@ -116,16 +129,21 @@ $(function(){
 			success: function(data) {	
 				if (data == 1) {
 					$("#emailMsg").text("사용중인 이메일입니다.");
-					$("#joinSubmit").attr("disabled", true);
+					$('#emailInput').css("border",
+					"1px solid #F74848");
+					emailCheckValid = false;
 				} else {
-					$("#emailMsg").text("");
-					$("#joinSubmit").attr("disabled", false);
+					emailCheckValid = true;
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		try {
+			globaldisable();
+		} catch (Exception) {
+		}
 	});
 });
 </script>
@@ -161,11 +179,9 @@ $(function(){
 						서비스를 이용할 수 있습니다.</div>
 
 					<div id="joinPage1" class="m_sellerJoin_page1">
-						<div class="m_sellerJoin_telRegion" id="telRegion">
-							<label>
-								<input type="tel" name="s_tel" class="m_sellerJoin_telInput" id="telInput" maxlength="13">
-								<div class="m_sellerJoin_teltitle" id="telTitle">전화번호</div>
-							</label>
+						<div class="_inputRegion" id="telRegion">
+								<input placeholder=" " type="tel" name="s_tel" class="" id="telInput" maxlength="13">
+								<span class="" id="telTitle">전화번호</span>
 							<div class="m_sellerJoin_telMsg" id="telSmg"></div>
 						</div>
 
@@ -202,42 +218,38 @@ $(function(){
 					<!--  #region 페이지2 -->
 					<div id="joinPage2" class="m_sellerJoin_page2">
 						<div class="m_sellerJoin_nameRegion">
-							<div class="m_sellerJoin_regionFirstName" id="firstNameRegion">
-								<label>
-								<input type="text" name="s_firstname" class="m_sellerJoin_firstNameInput" id="firstNameInput">
-									<div class="m_sellerJoin_firstNametitle" id="firstNametitle">성</div>
-								</label>
+							<div class="_inputRegionName" id="firstNameRegion">
+								<input placeholder=" " type="text" name="s_firstname" class="" id="firstNameInput">
+									<span class="" id="firstNametitle">성</span>
 								<div class="m_sellerJoin_nameMsg" id="firstNameMsg"></div>
 							</div>
 
 							<div class="m_sellerJoin_updatename_region_hr" id="active"></div>
 
-							<div class="m_sellerJoin_regionFirstName" id="lastNameRegion">
-								<label>
-									<input type="text" name="s_lastname" class="m_sellerJoin_firstNameInput" id="lastNameInput">
-									<div class="m_sellerJoin_firstNametitle" id="lastNametitle">이름</div>
-								</label>
+							<div class="_inputRegionName" id="lastNameRegion">
+									<input placeholder=" " type="text" name="s_lastname" class="" id="lastNameInput">
+									<span class="" id="lastNametitle">이름</span>
 								<div class="m_sellerJoin_nameMsg" id="lastNameMsg"></div>
 							</div>
 						</div>
 
 						<div class="m_sellerJoin_updatename_region_taxid">
-							<div class="m_sellerJoin_taxidRegion" id="taxidRegion">
-								<label>
-									<input type="text" name="s_businessnum" class="m_sellerJoin_taxidInput" id="taxidInput" maxlength="12">
-									<div class="m_sellerJoin_taxidTitle" id="taxidTitle">사업자번호</div>
-								</label>
+							<div class="_inputRegion" id="taxidRegion">
+									<input placeholder=" " type="text" name="s_businessnum" class="" id="taxidInput" maxlength="12">
+									<span class="" id="taxidTitle">사업자번호</span>
 								<div class="m_sellerJoin_taxidMsg" id="taxidMsg"></div>
 							</div>
 						</div>
 
-						<div class="m_sellerJoin_updatename_region_inbday">
-							<div class="m_sellerJoin_birthdayRegion" id="yyyyregion">
-								<label>
-									<input type="text" name="s_birth" class="m_sellerJoin_birthdayInput" id="yyyyinput" maxlength="8">
-									<div class="m_sellerJoin_birthdayText" id="yyyytext">생년월일</div>
-									<div id="result" class="m_sellerJoin_birthdayResult">yyyy년mm월dd일</div>
-								</label>
+						<div class="m_userinfo_updatename_region_inbday">
+							<div class="_inputRegionBir" id="yyyyregion">
+							<label>
+								<input placeholder=" " type="text" name="s_birth"
+									class="" id="yyyyinput" maxlength="8">
+									<span class="" id="yyyytext">생년월일</span>
+									<div id="result" class="m_sellerJoin_birthdayResult">yyyy년
+										mm월 dd일</div>
+										</label>
 								<div class="m_sellerJoin_birthdayMsg" id="resultmsg"></div>
 							</div>
 						</div>
@@ -256,26 +268,20 @@ $(function(){
 
 					<!-- #region 페이지4 -->
 					<div id="joinPage4" class="m_sellerJoin_page4">
-						<div class="m_sellerJoin_emailRegion" id="emailRegion">
-							<label>
-								<input type="email" name="s_email" class="m_sellerJoin_emailInput" id="emailInput">
-								<div class="m_sellerJoin_emailTitle" id="emailTitle">name@example.com</div>
-							</label>
+						<div class="_inputRegion" id="emailRegion">
+								<input placeholder=" " type="email" name="s_email" class="" id="emailInput">
+								<span class="" id="emailTitle">name@example.com</span>
 							<div class="m_sellerJoin_emailMsg" id="emailMsg"></div>
 							<div id="active"></div>
 						</div>
-						<div class="m_sellerJoin_passwordRegion" id="newPwRegion">
-							<label>
-								<input type="password" name="s_pw" class="m_sellerJoin_passwordInput" id="newPwInput">
-								<div class="m_sellerJoin_passwordTitle" id="passwordTitle">암호</div>
-							</label>
+						<div class="_inputRegion" id="newPwRegion">
+								<input placeholder=" " type="password" name="s_pw" class="" id="newPwInput">
+								<span class="" id="passwordTitle">암호</span>
 							<div class="m_sellerJoin_passwordMsg" id="newPwMsg"></div>
 						</div>
-						<div class="m_sellerJoin_checkPasswordRegion" id="ckeckPwRegion">
-							<label>
-								<input type="password" class="m_sellerJoin_checkPasswordInput" id="ckeckPwInput">
-								<div class="m_sellerJoin_checkPasswordTitle" id="checkPasswordTitle">암호 확인</div>
-							</label>
+						<div class="_inputRegion" id="ckeckPwRegion">
+								<input placeholder=" " type="password" class="" id="ckeckPwInput">
+								<span class="" id="checkPasswordTitle">암호 확인</span>
 							<div class="m_sellerJoin_checkPasswordMsg" id="ckeckPwMsg"></div>
 						</div>
 						<div class="m_sellerJoin_pagebtn1">
@@ -293,26 +299,23 @@ $(function(){
 
 					<!-- #region 페이지3 -->
 					<div id="joinPage3" class="m_sellerJoin_page3">
-						<div class="m_sellerJoin_zonecodeRegion" id="zonecodeRegion">
-							<label> <input type="number" name="s_zipcode"
-								class="m_sellerJoin_zonecodeInput" id="zonecodeInput">
-								<div class="m_sellerJoin_zonecodeTitle" id="zonecodetitle">우편번호</div>
-							</label>
+						<div class="_inputRegion" id="zonecodeRegion">
+							<input placeholder=" " type="text" name="s_zipcode"
+								class="" id="zonecodeInput">
+								<span class="" id="zonecodetitle">우편번호</span>
 							<div class="m_sellerJoin_zonecodeMsg" id="zonecodeMsg"></div>
 						</div>
-						<div class="m_sellerJoin_addressRegion" id="addressRegion">
-							<label> <input type="text" name="s_address"
-								class="m_sellerJoin_addressInput" id="addressInput">
-								<div class="m_sellerJoin_addressTitle" id="addresstitle">주소</div>
-							</label>
+						<div class="_inputRegion" id="addressRegion">
+							<input placeholder=" " type="text" name="s_address"
+								class="" id="addressInput">
+								<span class="" id="addresstitle">주소</span>
 							<div class="m_sellerJoin_addressMsg" id="addressMsg"></div>
 						</div>
-						<div class="m_sellerJoin_addAddressRegion" id="addAddressRegion">
-							<label> <input type="text" name="s_restaddress"
-								class="m_sellerJoin_addAddressInput" id="addAddressInput">
-								<div class="m_sellerJoin_addAddressTitle" id="addAddresstitle">상세
-									주소</div>
-							</label>
+						<div class="_inputRegion" id="addAddressRegion">
+							<input placeholder=" " type="text" name="s_restaddress"
+								class="" id="addAddressInput">
+								<span class="" id="addAddresstitle">상세
+									주소</span>
 							<div class="m_sellerJoin_addAddressMsg" id="addAddressMsg"></div>
 						</div>
 						<div class="m_sellerJoin_pagebtn1">

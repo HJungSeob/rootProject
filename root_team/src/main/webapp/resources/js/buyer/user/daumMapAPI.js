@@ -1,9 +1,9 @@
     $(function () {
-        $('#zonecodetitle').click(function () {
+        $('#zonecodeInput').click(function () {
             execDaumPostcode()
         });
 
-        $('#addresstitle').click(function () {
+        $('#addressInput').click(function () {
             execDaumPostcode()
         });
     });

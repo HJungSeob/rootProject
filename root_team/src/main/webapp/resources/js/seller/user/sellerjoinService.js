@@ -1,291 +1,134 @@
 $(function(){
     $('#telInput').blur(function(){
-        $('#telRegion').css("border", "1px solid #858585")
-        $('#telRegion').css("boxShadow", "none")
-        $('#telTitle').css("bottom", "28px")
-        $('#telTitle').css("fontSize", "20px")
-        updateTelStyle()
+    	if(telCheckValid && telValid){
+        $('#telInput').css("border", "1px solid #858585")
+        $('#telInput').css("boxShadow", "none")
+        }else{
+        $('#telInput').css("border", "1px solid #F74848");
+        $('#telInput').css("boxShadow", "none")
+        }
     });
 
-    let telTitle = document.getElementById('telTitle')
-    let telInput = document.getElementById('telInput')
-
-    function updateTelStyle() {
-        if (telInput.value.trim() !== '') {
-            telTitle.style.bottom = '50px';
-            telTitle.style.fontSize = '16px';
-        }
-    }
     $('#telInput').focus(function(){
-        $('#telRegion').css("border", "1px solid #0071E3")
-        $('#telRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#telTitle').css("bottom", "50px")
-        $('#telTitle').css("fontSize", "16px")
+        $('#telInput').css("border", "1px solid #0071E3")
+        $('#telInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#firstNameInput').blur(function(){
-        $('#firstNameRegion').css("border", "1px solid #858585")
-        $('#firstNameRegion').css("boxShadow", "none")
-        $('#firstNametitle').css("bottom", "28px")
-        $('#firstNametitle').css("fontSize", "20px")
-        updateFirstNameStyle()
+        $('#firstNameInput').css("border", "1px solid #858585")
+        $('#firstNameInput').css("boxShadow", "none")
     });
-
-    let firstNameInput = document.getElementById('firstNameInput')
-    let firstNametitle = document.getElementById('firstNametitle')
-
-    function updateFirstNameStyle() {
-        if (firstNameInput.value.trim() !== '') {
-            firstNametitle.style.bottom = '50px';
-            firstNametitle.style.fontSize = '16px';
-        }
-    }
     $('#firstNameInput').focus(function(){
-        $('#firstNameRegion').css("border", "1px solid #0071E3")
-        $('#firstNameRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#firstNametitle').css("bottom", "50px")
-        $('#firstNametitle').css("fontSize", "16px")
+        $('#firstNameInput').css("border", "1px solid #0071E3")
+        $('#firstNameInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#lastNameInput').blur(function(){
-        $('#lastNameRegion').css("border", "1px solid #858585")
-        $('#lastNameRegion').css("boxShadow", "none")
-        $('#lastNametitle').css("bottom", "28px")
-        $('#lastNametitle').css("fontSize", "20px")
-        updateLastNameStyle()
+        $('#lastNameInput').css("border", "1px solid #858585")
+        $('#lastNameInput').css("boxShadow", "none")
     });
 
-    let lastNameInput = document.getElementById('lastNameInput')
-    let lastNametitle = document.getElementById('lastNametitle')
-
-    function updateLastNameStyle() {
-        if (lastNameInput.value.trim() !== '') {
-            lastNametitle.style.bottom = '50px';
-            lastNametitle.style.fontSize = '16px';
-        }
-    }
     $('#lastNameInput').focus(function(){
-        $('#lastNameRegion').css("border", "1px solid #0071E3")
-        $('#lastNameRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#lastNametitle').css("bottom", "50px")
-        $('#lastNametitle').css("fontSize", "16px")
+        $('#lastNameInput').css("border", "1px solid #0071E3")
+        $('#lastNameInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#taxidInput').blur(function(){
-        $('#taxidRegion').css("border", "1px solid #858585")
-        $('#taxidRegion').css("boxShadow", "none")
-        $('#taxidTitle').css("bottom", "28px")
-        $('#taxidTitle').css("fontSize", "20px")
-        updateTaxidStyle()
+        if(taxidCheckValid && taxidValid){
+        $('#taxidInput').css("border", "1px solid #858585")
+        $('#taxidInput').css("boxShadow", "none")
+        }else{
+        $('#taxidInput').css("border", "1px solid #F74848");
+        $('#taxidInput').css("boxShadow", "none")
+        }
     });
 
-    let taxidInput = document.getElementById('taxidInput');
-    let taxidTitle = document.getElementById('taxidTitle');
-
-    function updateTaxidStyle() {
-        if (taxidInput.value.trim() !== '') {
-            taxidTitle.style.bottom = '50px';
-            taxidTitle.style.fontSize = '16px';
-        }
-    }
     $('#taxidInput').focus(function(){
-        $('#taxidRegion').css("border", "1px solid #0071E3")
-        $('#taxidRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#taxidTitle').css("bottom", "50px")
-        $('#taxidTitle').css("fontSize", "16px")
+        $('#taxidInput').css("border", "1px solid #0071E3")
+        $('#taxidInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#yyyyinput').blur(function(){
-        $('#yyyyregion').css("border", "1px solid #858585")
-        $('#yyyyregion').css("boxShadow", "none")
-        $('#yyyytext').css("bottom", "28px")
-        $('#yyyytext').css("fontSize", "20px")
+        $('#yyyyinput').css("border", "1px solid #858585")
+        $('#yyyyinput').css("boxShadow", "none")
         $('#result').css("opacity", "0")
         updateBirthdayStyle()
     });
 
     let yyyyinput = document.getElementById('yyyyinput');
-    let yyyytext = document.getElementById('yyyytext');
     let result = document.getElementById('result')
 
     function updateBirthdayStyle() {
         if (yyyyinput.value.trim() !== '') {
-            yyyytext.style.bottom = '50px';
-            yyyytext.style.fontSize = '16px';
             result.style.opacity = '1'
         }
     }
     $('#yyyyinput').focus(function(){
-        $('#yyyyregion').css("border", "1px solid #0071E3")
-        $('#yyyyregion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#yyyytext').css("bottom", "50px")
-        $('#yyyytext').css("fontSize", "16px")
+        $('#yyyyinput').css("border", "1px solid #0071E3")
+        $('#yyyyinput').css("boxShadow", "0px 0px 4px 0px #0071e3")
         $('#result').css("opacity", "1")
     });
 
     $('#emailInput').blur(function(){
-        $('#emailRegion').css("border","1px solid #858585")
-        $('#emailRegion').css("boxShadow","none")
-        $('#emailTitle').css("bottom", "28px")
-        $('#emailTitle').css("fontSize", "20px")
-        updateEmailStyle()
+        if(emailCheckValid && emailValid){
+        $('#emailInput').css("border", "1px solid #858585")
+        $('#emailInput').css("boxShadow", "none")
+        }else{
+        $('#emailInput').css("border", "1px solid #F74848");
+        $('#emailInput').css("boxShadow", "none")
+        }
     });
 
-    let emailTitle = document.getElementById('emailTitle')
-    let emailInput = document.getElementById('emailInput')
-
-    function updateEmailStyle() {
-        if (emailInput.value.trim() !== '') {
-            emailTitle.style.bottom = '50px';
-            emailTitle.style.fontSize = '16px';
-        }
-    }
     $('#emailInput').focus(function(){
-        $('#emailTitle').css("bottom", "50px")
-        $('#emailTitle').css("fontSize", "16px")
-        $('#emailRegion').css("border","1px solid #0071E3")
-        $('#emailRegion').css("boxShadow","0px 0px 4px 0px #0071e3")
+        $('#emailInput').css("border","1px solid #0071E3")
+        $('#emailInput').css("boxShadow","0px 0px 4px 0px #0071e3")
     });
 
     $('#newPwInput').blur(function(){
-        $('#newPwRegion').css("border","1px solid #858585")
-        $('#newPwRegion').css("boxShadow","none")
-        $('#passwordTitle').css("bottom", "28px")
-        $('#passwordTitle').css("fontSize", "20px")
-        updatePasswordStyle()
+        $('#newPwInput').css("border","1px solid #858585")
+        $('#newPwInput').css("boxShadow","none")
     });
-
-    let passwordTitle = document.getElementById('passwordTitle')
-    let newPwInput = document.getElementById('newPwInput')
-
-    function updatePasswordStyle() {
-        if (newPwInput.value.trim() !== '') {
-            passwordTitle.style.bottom = '50px';
-            passwordTitle.style.fontSize = '16px';
-        }
-    }
     $('#newPwInput').focus(function(){
-        $('#passwordTitle').css("bottom", "50px")
-        $('#passwordTitle').css("fontSize", "16px")
-        $('#newPwRegion').css("border","1px solid #0071E3")
-        $('#newPwRegion').css("boxShadow","0px 0px 4px 0px #0071e3")
+        $('#newPwInput').css("border","1px solid #0071E3")
+        $('#newPwInput').css("boxShadow","0px 0px 4px 0px #0071e3")
     });
 
     $('#ckeckPwInput').blur(function(){
-        $('#ckeckPwRegion').css("border","1px solid #858585")
-        $('#ckeckPwRegion').css("boxShadow","none")
-        $('#checkPasswordTitle').css("bottom", "28px")
-        $('#checkPasswordTitle').css("fontSize", "20px")
-        updateCheckPasswordStyle()
+        $('#ckeckPwInput').css("border","1px solid #858585")
+        $('#ckeckPwInput').css("boxShadow","none")
     });
 
-    let checkPasswordTitle = document.getElementById('checkPasswordTitle')
-    let ckeckPwInput = document.getElementById('ckeckPwInput')
-
-    function updateCheckPasswordStyle() {
-        if (ckeckPwInput.value.trim() !== '') {
-            checkPasswordTitle.style.bottom = '50px';
-            checkPasswordTitle.style.fontSize = '16px';
-        }
-    }
     $('#ckeckPwInput').focus(function(){
-        $('#checkPasswordTitle').css("bottom", "50px")
-        $('#checkPasswordTitle').css("fontSize", "16px")
-        $('#ckeckPwRegion').css("border","1px solid #0071E3")
-        $('#ckeckPwRegion').css("boxShadow","0px 0px 4px 0px #0071e3")
+        $('#ckeckPwInput').css("border","1px solid #0071E3")
+        $('#ckeckPwInput').css("boxShadow","0px 0px 4px 0px #0071e3")
     });
     
      $('#zonecodeInput').blur(function () {
-        $('#zonecodeRegion').css("border", "1px solid #858585")
-        $('#zonecodeRegion').css("boxShadow", "none")
-        $('#zonecodetitle').css("bottom", "28px")
-        $('#zonecodetitle').css("fontSize", "20px")
-        $('#addressRegion').css("border", "1px solid #858585")
-        $('#addressRegion').css("boxShadow", "none")
-        $('#addresstitle').css("bottom", "28px")
-        $('#addresstitle').css("fontSize", "20px")
-        updatezonecodeStyle()
-        updateaddressStyle()
+        $('#zonecodeInput').css("border", "1px solid #858585")
+        $('#zonecodeInput').css("boxShadow", "none")
     });
-
-    let zonecodetitle = document.getElementById('zonecodetitle')
-    let zonecodeInput = document.getElementById('zonecodeInput')
-    $('#zonecodeInput').on('propertychange change keyup paste input', updatezonecodeStyle);
-
-    function updatezonecodeStyle() {
-        if (zonecodeInput.value.trim() !== '') {
-            zonecodetitle.style.bottom = '50px';
-            zonecodetitle.style.fontSize = '16px';
-        } else {
-            zonecodetitle.style.bottom = '28px';
-            zonecodetitle.style.fontSize = '20px';
-        }
-    }
+    
     $('#zonecodeInput').focus(function () {
-        $('#zonecodeRegion').css("border", "1px solid #0071E3")
-        $('#zonecodeRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#zonecodetitle').css("bottom", "50px")
-        $('#zonecodetitle').css("fontSize", "16px")
-        $('#addresstitle').css("bottom", "50px")
-        $('#addresstitle').css("fontSize", "16px")
+        $('#zonecodeInput').css("border", "1px solid #0071E3")
+        $('#zonecodeInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#addressInput').blur(function () {
-        $('#zonecodeRegion').css("border", "1px solid #858585")
-        $('#zonecodeRegion').css("boxShadow", "none")
-        $('#zonecodetitle').css("bottom", "28px")
-        $('#zonecodetitle').css("fontSize", "20px")
-        $('#addressRegion').css("border", "1px solid #858585")
-        $('#addressRegion').css("boxShadow", "none")
-        $('#addresstitle').css("bottom", "28px")
-        $('#addresstitle').css("fontSize", "20px")
-        updatezonecodeStyle()
-        updateaddressStyle()
+        $('#addressInput').css("border", "1px solid #858585")
+        $('#addressInput').css("boxShadow", "none")
     });
-
-    let addresstitle = document.getElementById('addresstitle')
-    let addressInput = document.getElementById('addressInput')
-    $('#addressInput').on('propertychange change keyup paste input', updateaddressStyle);
-
-    function updateaddressStyle() {
-        if (addressInput.value.trim() !== '') {
-            addresstitle.style.bottom = '50px';
-            addresstitle.style.fontSize = '16px';
-        } else {
-            addresstitle.style.bottom = '28px';
-            addresstitle.style.fontSize = '20px';
-        }
-    }
     $('#addressInput').focus(function () {
-        $('#addressRegion').css("border", "1px solid #0071E3")
-        $('#addressRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#zonecodetitle').css("bottom", "50px")
-        $('#zonecodetitle').css("fontSize", "16px")
-        $('#addresstitle').css("bottom", "50px")
-        $('#addresstitle').css("fontSize", "16px")
+        $('#addressInput').css("border", "1px solid #0071E3")
+        $('#addressInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#addAddressInput').blur(function () {
-        $('#addAddressRegion').css("border", "1px solid #858585")
-        $('#addAddressRegion').css("boxShadow", "none")
-        $('#addAddresstitle').css("bottom", "28px")
-        $('#addAddresstitle').css("fontSize", "20px")
-        updateaviewddressStyle()
+        $('#addAddressInput').css("border", "1px solid #858585")
+        $('#addAddressInput').css("boxShadow", "none")
     });
 
-    let addAddresstitle = document.getElementById('addAddresstitle')
-    let addAddressInput = document.getElementById('addAddressInput')
-
-    function updateaviewddressStyle() {
-        if (addAddressInput.value.trim() !== '') {
-            addAddresstitle.style.bottom = '50px';
-            addAddresstitle.style.fontSize = '16px';
-        }
-    }
     $('#addAddressInput').focus(function () {
-        $('#addAddressRegion').css("border", "1px solid #0071E3")
-        $('#addAddressRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#addAddresstitle').css("bottom", "50px")
-        $('#addAddresstitle').css("fontSize", "16px")
+        $('#addAddressInput').css("border", "1px solid #0071E3")
+        $('#addAddressInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 });
