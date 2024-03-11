@@ -1,18 +1,20 @@
 $(function () {
-    $('#emailArrowSmall').click(function () {
-        if ($('#emailInput').val().trim() !== '') {
-            $('#pwRegion').css("opacity", "1");
-            $('#emailRegion').css("borderRadius", "10px 10px 0px 0px");
-        }
-    });
+$('#emailArrowSmall').click(function () {
+    if ($('#emailInput').val().trim() !== '') {
+        $('#pwRegion').css("visibility","visible");
+        $('#emailInput').css("borderRadius", "10px 10px 0px 0px");
+    }
+});
 
-    $('#emailInput').on('input', function () {
-        if ($(this).val().trim() === '') {
-            $('#pwRegion').css("opacity", "0");
-            $('#emailRegion').css("borderRadius", "10px");
-            $('#pwInput').val('');
-        }
-    });
+$('#emailInput').on('input', function () {
+    if ($(this).val().trim() === '') {
+    	$('#pwRegion').css("visibility","");
+        $('#emailInput').css("borderRadius", "10px");
+        $('#pwInput').val('');
+    }
+});
+
+});
 
     $(function () {
         $('#emailInput, #pwInput').on('input', function () {
@@ -26,4 +28,3 @@ $(function () {
             }
         });
     });
-});

@@ -277,3 +277,34 @@ body {
     font-size: 16px;
     color: #0071e3;
 }
+
+._inputRegion{
+    width: 360px;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+._inputRegion input{
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #858585;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+._inputRegion input+span{
+    position: absolute;
+    pointer-events: none;
+    color: #858585;
+    transition: all 0.3s ease;
+    left: 20px;
+    top: 24px;
+}
+
+._inputRegion input:focus + span,
+._inputRegion input:not(:placeholder-shown) + span{
+    top: 10px;
+    font-size: 14px;
+}

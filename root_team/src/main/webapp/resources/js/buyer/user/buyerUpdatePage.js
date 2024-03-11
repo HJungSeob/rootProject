@@ -6,39 +6,33 @@ $(function () {
     })
 
     $('#cancelBtn').click(function(){
-        $('#backBlur').fadeOut(400)
-        $('#profileUpRegion').fadeOut(400)
+        $('#backBlur').fadeOut(150)
+        $('#profileUpRegion').fadeOut(150)
     })
 
     $('#nickNamebox').click(function(){
-        $('#backBlur').fadeIn(400)
-        $('#nickNameRegion').fadeIn(400)
+        $('#backBlur').fadeIn(150)
+        $('#nickNameRegion').fadeIn(150)
     })
 
     $('#nickNamecancelBtn').click(function(){
-        $('#backBlur').fadeOut(400)
-        $('#nickNameRegion').fadeOut(400)
-    })
-
-    $('#nickNameInput').focus(function(){
-        $('#nickNameTitle').css({"font-size":"12px", "margin-top": "-46px"})
+        $('#backBlur').fadeOut(150)
+        $('#nickNameRegion').fadeOut(150)
     })
 
     $('#nickNameInput').blur(function(){
-        $('#nickNameTitle').css({"font-size":"18px", "margin-top": "-36px"})
         nickNamevalue()
     })
 });
 
 function nickNamevalue(){
     if($('#nickNameInput').val() !== ''){
-        $('#nickNameTitle').css({"font-size":"12px", "margin-top": "-46px"})
-        $('#nickNameInputRegion').css("border", "1px solid #848484")
+        $('#nickNameInput').css("border", "1px solid #848484")
         $('#nickNameMsg').text("")
         $('#nickNamesubmitBtn').prop('disabled', false);
     }else{
         $('#nickNameMsg').text("입력 되어 있지 않습니다.")
-        $('#nickNameInputRegion').css("border", "1px solid #F74848")
+        $('#nickNameInput').css("border", "1px solid #F74848")
         $('#nickNamesubmitBtn').prop('disabled', true);
     }
 }

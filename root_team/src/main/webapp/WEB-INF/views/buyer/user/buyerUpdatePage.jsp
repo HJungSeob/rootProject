@@ -82,12 +82,11 @@
 			<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 				<div class="m_buyerUpdatePage4_nickNameRegion" id="nickNameRegion">
 					<div class="m_buyerUpdatePage4_nickNameUpTitle">닉네임</div>
-					<div class="m_buyerUpdatePage4_nickNameInputRegion"
+					<div class="_inputRegion"
 						id="nickNameInputRegion">
-						<label> <input type="text" name="b_nickname" class="m_buyerUpdatePage4_nickNameInput" id="nickNameInput">
-							<div class="m_buyerUpdatePage4_nickNameTitle" id="nickNameTitle">닉네임</div>
+						<input placeholder=" " type="text" name="b_nickname" class="" id="nickNameInput">
+							<span class="" id="nickNameTitle">닉네임</span>
 							<div class="m_buyerUpdatePage4_nickNameMsg" id="nickNameMsg"></div>
-						</label>
 					</div>
 					<div class="m_buyerUpdatePage4_flax1">
 						<div class="m_buyerUpdatePage4_submitBtnRegion">
