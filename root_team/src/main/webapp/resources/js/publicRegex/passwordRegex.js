@@ -14,26 +14,26 @@ $(function () {
         if (this.value.length !== 0) {
             if (checkPwLength(this.value) === false) {
                 $(function () {
-                    $('#newPwRegion').css("border", "1px solid #F74848")
+                    $('#newPwInput').css("border", "1px solid #F74848")
                     $('#newPwMsg').text("암호 길이는 최소 8자 이상입니다.")
                 });
                 newPwValid = false
             } else if (checkpwva(this.value) === false) {
                 $(function () {
-                    $('#newPwRegion').css("border", "1px solid #F74848")
+                    $('#newPwInput').css("border", "1px solid #F74848")
                     $('#newPwMsg').text("암호는 대소문자,숫자,특수문자 포함입니다.")
                 });
                 newPwValid = false
             } else if (checkPwLength(this.value) && checkpwva(this.value)) {
                 $(function () {
-                    $('#newPwRegion').css("border", "1px solid #858585")
+                    $('#newPwInput').css("border", "1px solid #858585")
                     $('#newPwMsg').text("")
                 });
                 newPwValid = true
             }
         } else {
             $(function () {
-                $('#newPwRegion').css("border", "1px solid #F74848")
+                $('#newPwInput').css("border", "1px solid #F74848")
                 $('#newPwMsg').text("입력 되어 있지 않습니다.")
             });
             newPwValid = false
@@ -50,20 +50,20 @@ $(function () {
         if (this.value.length !== 0) {
             if ($('#newPwInput').val() !== $('#ckeckPwInput').val()) {
                 $(function () {
-                    $('#ckeckPwRegion').css("border", "1px solid #F74848")
+                    $('#ckeckPwInput').css("border", "1px solid #F74848")
                     $('#ckeckPwMsg').text("암호가 일치하지 않습니다.")
                 });
                 ckeckPwValid = false
             } else {
                 $(function () {
-                    $('#ckeckPwRegion').css("border", "1px solid #858585")
+                    $('#ckeckPwInput').css("border", "1px solid #858585")
                     $('#ckeckPwMsg').text("")
                 });
                 ckeckPwValid = true
             }
         } else {
             $(function () {
-                $('#ckeckPwRegion').css("border", "1px solid #F74848")
+                $('#ckeckPwInput').css("border", "1px solid #F74848")
                 $('#ckeckPwMsg').text("입력 되어 있지 않습니다.")
             });
             ckeckPwValid = false

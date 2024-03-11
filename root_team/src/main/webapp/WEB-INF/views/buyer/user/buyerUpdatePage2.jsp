@@ -33,9 +33,9 @@
 	src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerUpdatePage2.js"></script>
 	
 <script>
+let duplicatePhone = false;
 $(function(){
 	$("#telInput").focusout(function() {
-		console.log("우와");
 		var telInput = $('#telInput').val();
 		
 		$.ajax({
@@ -45,24 +45,24 @@ $(function(){
 			dataType: "text",
 			success: function(data) {	
 				if (data == 1) {
+					$('#telInput').css("border", "1px solid #F74848")
 					$("#telSmg").text("사용중인 전화번호입니다.");
-					$("#nextPage").attr("disabled", true);
+					duplicatePhone = false
 				} else {
-					// 중복이 아닌 경우 초기화 작업 수행
-					$("#telSmg").text(""); // 메시지 초기화
-					$("#nextPage").attr("disabled", false); // 버튼 활성화
+					// 중복이 아닌 경우 초기화 작업 
+					duplicatePhone = true
 				}
 			},
 			error: function() {
 				console.log("실패");
 			}
 		});
+		try {
+            globaldisable();
+        } catch (Exception) {}
 	});
-});
-
-$(function(){
+	
     $("#existingPwInput").change(function() {
-    	 console.log("우와");
     	var b_idx = $('#hiddenB_idx').val();
         var existingPwInput = $('#existingPwInput').val();
 
@@ -74,15 +74,17 @@ $(function(){
             	b_idx: b_idx},
                 success: function(data) {    
                     if (data == 1) {
-                        $("#existingPwMsg").text("기존 비밀번호가 일치합니다.");
                         $('#newPwInput').prop('disabled', false);
                         $('#ckeckPwInput').prop('disabled', false);
                         $('#pwSubmit').prop('disabled', false);
+                        $('#existingPwInput').css("border", "1px solid #848484")
+                        $("#existingPwMsg").text("");
                     } else {
                         $("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
                         $('#newPwInput').prop('disabled', true);
                         $('#ckeckPwInput').prop('disabled', true);
                         $('#pwSubmit').prop('disabled', true);
+                        $('#existingPwInput').css("border", "1px solid #F74848")
                     }
                 },
                 error: function() {
@@ -130,12 +132,10 @@ $(function(){
 				<div class="m_userinfosclo_updatename_region_name">전화번호</div>
 				<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
 					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
-					<div class="m_userinfosclo_updatename_region_fname" id="telRegion">
-						<label>
-							<input type="tel" class="m_userinfosclo_updatename_region_infname" name="b_tel" id="telInput" maxlength="13">
-							<div class="m_userinfosclo_updatename_region_plfname" id="telTitle">전화번호</div>
-						</label>
-						<div class="m_userinfo_updatename_region_reuslt" id="telSmg"></div>
+					<div class="_inputRegion" id="telRegion">
+							<input placeholder=" " type="tel" class="" name="b_tel" id="telInput" maxlength="13">
+							<span class="" id="telTitle">전화번호</span>
+						<div class="m_userinfosclo_pwMsg" id="telSmg">waefwaef</div>
 					</div>
 					<div
 						class="m_userinfosclo_updatename_region_submit m_userinfosclo_updatename_region_hr2"
@@ -153,28 +153,23 @@ $(function(){
 			
 				<div class="m_userinfosclo_updatename_region_inbday">
 				
-					<div class="m_userinfosclo_updatename_region_inyyyy" id="exPwRegion">
+					<div class="_inputRegion" id="exPwRegion">
 						<input type="hidden" id="hiddenB_idx" name="b_idx" value="${buyer.b_idx}">
-						<label>
-							<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="existingPwInput">
-							<div class="m_userinfosclo_updatename_region_subyyyy" name="b_pw" id="exPwTitle">현재 암호</div>
-						</label>
+							<input placeholder=" " type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="existingPwInput">
+							<span class="m_userinfosclo_updatename_region_subyyyy" name="b_pw" id="exPwTitle">현재 암호</span>
 						<div class="m_userinfosclo_pwMsg" id="existingPwMsg"></div>
 					</div>
 					
 					<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
 						<input type="hidden" name="b_idx" value="${buyer.b_idx}">
-						<div class="m_userinfosclo_updatename_region_inyyyy" id="newPwRegion">
-							<label>
-								<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="newPwInput" name="b_pw">
-								<div class="m_userinfosclo_updatename_region_subyyyy" id="newPwTitle">새로운 암호</div>
-							</label>
+						<div class="_inputRegion" id="newPwRegion">
+								<input placeholder=" " type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="newPwInput" name="b_pw">
+								<span class="m_userinfosclo_updatename_region_subyyyy" id="newPwTitle">새로운 암호</span>
 							<div class="m_userinfosclo_pwMsg" id="newPwMsg"></div>
 						</div>
-						<div class="m_userinfosclo_updatename_region_inyyyy" id="ckeckPwRegion">
-							<label>
-								<input type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="ckeckPwInput">
-								<div class="m_userinfosclo_updatename_region_subyyyy" id="ckeckPwTitle">새 암호 확인</div>
+						<div class="_inputRegion" id="ckeckPwRegion">
+								<input placeholder=" " type="password" class="m_userinfosclo_updatename_region_inputyyyy" id="ckeckPwInput">
+								<span class="m_userinfosclo_updatename_region_subyyyy" id="ckeckPwTitle">새 암호 확인</span>
 							</label>
 							<div class="m_userinfosclo_pwMsg" id="ckeckPwMsg"></div>
 						</div>
