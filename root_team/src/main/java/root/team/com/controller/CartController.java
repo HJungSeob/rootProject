@@ -20,7 +20,7 @@ import root.team.com.vo.CartVO;
 public class CartController {
 
 	@Setter(onMethod_ = { @Autowired })
-	CartService cInsert, cList, cDelete;
+	CartService cInsert, cList, cDelete, clike;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -29,6 +29,12 @@ public class CartController {
 	@ResponseBody
 	public int insertCart(CartVO cartVO) {			
 		return cInsert.insertCart(cartVO);
+	}
+	
+	@PostMapping("/likeItem.do")
+	@ResponseBody
+	public int likeItem(CartVO cartVO) {			
+		return clike.likeItem(cartVO);
 	}
 	
 	@PostMapping("/cartList.do")
@@ -52,8 +58,4 @@ public class CartController {
 		return cDelete.deleteCart(cartVO);
 	}
 	
-	@GetMapping("/order.do")
-	public String order() {
-		return "buyer/service/buyerShippingPage";
-	}
 }

@@ -18,5 +18,10 @@ public interface CartService {
 		return 0;
 	}
 
+	default int likeItem(CartVO cartVO) {
+		return 0;
+	}
+
+
 }
  

@@ -1,10 +1,10 @@
-.m_buyerShipping_header1 {
+.m_buyerShopping_header1 {
     width: 100%;
     height: 60px;
     background-color: #ffffff;
 }
 
-.m_buyerShipping_header {
+.m_buyerShopping_header {
     margin: 0 auto;
     width: 1200px;
     height: 60px;
@@ -14,42 +14,42 @@
     background-color: #ffffff;
 }
 
-.m_buyerShipping_header_acc {
+.m_buyerShopping_header_acc {
     font-size: 20px;
     font-family: 'NEXONLv1GothicBold';
     margin-left: 20px;
 }
 
-.m_buyerShipping_loar{
+.m_buyerShopping_loar{
     font-size: 14px;
     margin-right: 20px;
 }
 
-.m_buyerShipping_hrTag {
+.m_buyerShopping_hrTag {
     border: 1px solid #e0e0e0;
     width: 1160px;
     margin: 0 auto;
 }
 
-.m_buyerShipping_payRegion{
+.m_buyerShopping_payRegion{
     width: 1160px;
     min-height: 200px;
     padding: 20px;
     margin: 0 auto;
 }
 
-.m_buyerShipping_Title{
+.m_buyerShopping_Title{
     font-size: 34px;
     font-family: 'NEXONLv1GothicBold';
     margin: 40px 0px;
 }
 
-.m_buyerShipping_subTitle{
+.m_buyerShopping_subTitle{
     font-size: 24px;
     font-family: 'NEXONLv1GothicBold';
 }
 
-.m_buyerShipping_defaultAddressRegion{
+.m_buyerShopping_defaultAddressRegion{
     margin-top: 20px;
     width: 500px;
     border: 1px solid #848484;
@@ -61,32 +61,32 @@
     height: 88px;
 }
 
-.m_buyerShipping_name{
+.m_buyerShopping_name{
     font-family: 'NEXONLv1GothicBold';
     font-size: 16px;
     margin-left: 20px;
     margin-top: 20px;
 }
 
-.m_buyerShipping_address{
+.m_buyerShopping_address{
     font-size: 16px;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.m_buyerShipping_addressDefault{
+.m_buyerShopping_addressDefault{
     margin-right: 20px;
     align-items: center;
     display: grid;
 }
-.m_buyerShipping_newAddress{
+.m_buyerShopping_newAddress{
     margin-left: 20px;
     align-items: center;
     display: grid;
     font-family: 'NEXONLv1GothicBold';
     font-size: 16px;
 }
-.m_buyerShipping_newAddressFirstBox{
+.m_buyerShopping_newAddressFirstBox{
     width: 500px;
     height: 60px;
     border-radius: 10px;
@@ -97,7 +97,7 @@
     align-items: center;
     display: grid;
 }
-.m_buyerShipping_newAddressBox{
+.m_buyerShopping_newAddressBox{
     width: 500px;
     height: 60px;
     border-radius: 10px;
@@ -109,7 +109,7 @@
     display: grid;
 }
 
-.m_buyerShipping_newAddressLastBox{
+.m_buyerShopping_newAddressLastBox{
     width: 500px;
     height: 60px;
     border-radius: 10px;
@@ -121,12 +121,12 @@
     align-items: center;
     display: grid;
 }
-.m_buyerShipping_newAddressTitle{
+.m_buyerShopping_newAddressTitle{
     margin-left: 20px;
     transition: 0.4s;
 }
 
-.m_buyerShipping_newAddressInput{
+.m_buyerShopping_newAddressInput{
     width: 460px;
     margin-left: 20px;
     position: absolute;
@@ -137,14 +137,14 @@
     border: none;
     outline: none;
 }
-.m_buyerShipping_errorMsg{
+.m_buyerShopping_errorMsg{
     font-size: 10px;
     margin-left: 20px;
     color: #F74848;
     margin-top: 6px;
     text-align: left;
 }
-.m_buyerShipping_InputNewAddress{
+.m_buyerShopping_InputNewAddress{
     display: none;
 }
 
@@ -154,7 +154,7 @@
     margin-bottom: 20px;
 }
 
-.m_buyerShipping_submitRegion{
+.m_buyerShopping_submitRegion{
     background-color: #0e7ff0;
     width: 500px;
     height: 40px;
@@ -162,7 +162,7 @@
     margin-top: 40px;
 }
 
-.m_buyerShipping_submitTitle{
+.m_buyerShopping_submitTitle{
     font-size: 16px;
     color: #ffffff;
     text-align: center;
@@ -172,6 +172,6 @@
     height: 40px;
 }
 
-.m_buyerShipping_submitInput{
+.m_buyerShopping_submitInput{
     display: none;
 }
