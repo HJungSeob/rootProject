@@ -1,35 +1,28 @@
 $(function () {
     $('#taxidInput').blur(function () {
-        $('#emailRegion').css("border", "1px solid #858585")
-        $('#emailRegion').css("boxShadow", "none")
-        $('#emailTitle').css("bottom", "20px")
-        $('#emailTitle').css("fontSize", "16px")
-        $('#emailArrowSmall').css("margin-top", "18px")
+        $('#taxidInput').css("border", "1px solid #858585")
+        $('#taxidInput').css("boxShadow", "none")
+        $('#emailArrowSmall').css("top", "")
         $('#emailArrowSmall').css("filter",
             "invert(61%) sepia(0%) saturate(1%) hue-rotate(158deg) brightness(85%) contrast(87%)"
             )
         updateIdStyle()
     });
     let taxidInput = document.getElementById('taxidInput')
-    let emailTitle = document.getElementById('emailTitle')
     let emailArrowSmall = document.getElementById('emailArrowSmall')
 
     function updateIdStyle() {
         if (taxidInput.value.trim() !== '') {
-            emailTitle.style.bottom = '34px';
-            emailTitle.style.fontSize = '10px';
-            emailArrowSmall.style.marginTop = '28px';
+            emailArrowSmall.style.top = '30px';
             emailArrowSmall.style.filter =
                 'invert(28%) sepia(98%) saturate(1518%) hue-rotate(194deg) brightness(94%) contrast(106%)';
         }
     }
 
     $('#taxidInput').focus(function () {
-        $('#emailRegion').css("border", "1px solid #0071E3'")
-        $('#emailRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#emailTitle').css("bottom", "34px")
-        $('#emailTitle').css("fontSize", "10px")
-        $('#emailArrowSmall').css("margin-top", "28px")
+        $('#taxidInput').css("border", "1px solid #0071E3'")
+        $('#taxidInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
+        $('#emailArrowSmall').css("top", "30px")
     });
 
     $('#taxidInput').on('input', function () {
@@ -43,36 +36,29 @@ $(function () {
     });
 
     $('#pwInput').blur(function () {
-        $('#pwRegion').css("border", "1px solid #858585")
-        $('#pwRegion').css("boxShadow", "none")
-        $('#pwTitle').css("bottom", "20px")
-        $('#pwTitle').css("fontSize", "16px")
-        $('#pwArrowSmall').css("margin-top", "18px")
+        $('#pwInput').css("border", "1px solid #858585")
+        $('#pwInput').css("boxShadow", "none")
+        $('#pwArrowSmall').css("top", "")
         $('#pwArrowSmall').css("filter",
             "invert(61%) sepia(0%) saturate(1%) hue-rotate(158deg) brightness(85%) contrast(87%)"
             )
         updateCodeStyle()
     });
     let pwInput = document.getElementById('pwInput')
-    let pwTitle = document.getElementById('pwTitle')
     let pwArrowSmall = document.getElementById('pwArrowSmall')
 
     function updateCodeStyle() {
         if (pwInput.value.trim() !== '') {
-            pwTitle.style.bottom = '34px';
-            pwTitle.style.fontSize = '10px';
-            pwArrowSmall.style.marginTop = '28px';
+            pwArrowSmall.style.top = '30px';
             pwArrowSmall.style.filter =
                 'invert(28%) sepia(98%) saturate(1518%) hue-rotate(194deg) brightness(94%) contrast(106%)';
         }
     }
 
     $('#pwInput').focus(function () {
-        $('#pwRegion').css("border", "1px solid #0071E3'")
-        $('#pwRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#pwTitle').css("bottom", "34px")
-        $('#pwTitle').css("fontSize", "10px")
-        $('#pwArrowSmall').css("margin-top", "28px")
+        $('#pwInput').css("border", "1px solid #0071E3'")
+        $('#pwInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
+        $('#pwArrowSmall').css("top", "30px")
     });
 
     $('#pwInput').on('input', function () {
