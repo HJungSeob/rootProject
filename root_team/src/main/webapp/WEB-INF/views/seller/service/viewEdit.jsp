@@ -40,26 +40,31 @@
                     <div class="seller_view_edit_contents_search">
                         <form>
                         	<input type="hidden" name="s_idx" value="${seller.s_idx}">
+                        	<input type="hidden" id="smallCategorys" value="${sVO.smallCategory}">
                             <div class="seller_view_edit_contents_search_box">
                                 <div class="seller_view_edit_contents_search_items">
                                     <span class="seller_view_edit_contents_search_title">검색어</span>
                                     <div class="seller_view_edit_contents_search_item1">
-                                        <span>상품번호<input type="text" name="itemNum" autocomplete='off'
-                                                placeholder="상품번호를 입력하세요."></span>
-                                        <span>상품명<input type="text" name="itemName" autocomplete='off'
-                                                placeholder="상품명을 입력하세요."></span>
+                                        <span>
+                                        	상품번호
+                                        	<input type="text" name="itemNum" autocomplete='off' placeholder="상품번호를 입력하세요." value="${sVO.itemNum}">
+                                        </span>
+                                        <span>
+                                        	상품명
+                                        	<input type="text" name="itemName" autocomplete='off' placeholder="상품명을 입력하세요." value="${sVO.itemName}">
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="seller_view_edit_contents_search_items">
                                     <span class="seller_view_edit_contents_search_title">판매상태</span>
                                     <div class="seller_view_edit_contents_search_item2">
-                                        <input type="radio" id="all" name="itemState" value="0" checked>
+                                        <input type="radio" id="all" name="itemState" value="0" ${sVO.itemState eq 0 and sVO.itemState eq '' ? 'checked' : '' }>
                                         <label for="all"><span>전체</span></label>
-                                        <input type="radio" id="sale" class="restCheckBox" name="itemState" value="1">
+                                        <input type="radio" id="sale" class="restCheckBox" name="itemState" value="1" ${sVO.itemState eq 1 ? 'checked' : '' }>
                                         <label for="sale"><span>판매중</span></label>
-                                        <input type="radio" id="waitSale" class="restCheckBox" name="itemState" value="2">
+                                        <input type="radio" id="waitSale" class="restCheckBox" name="itemState" value="2" ${sVO.itemState eq 2 ? 'checked' : '' }>
                                         <label for="waitSale"><span>판매대기</span></label>
-                                        <input type="radio" id="stock" class="restCheckBox" name="itemState" value="3">
+                                        <input type="radio" id="stock" class="restCheckBox" name="itemState" value="3" ${sVO.itemState eq 3 ? 'checked' : '' }>
                                         <label for="stock"><span>품절</span></label>
                                     </div>
                                 </div>
@@ -67,25 +72,24 @@
                                     <span class="seller_view_edit_contents_search_title">카테고리</span>
                                     <div class="seller_view_edit_contents_search_item3">
                                         <select id="largeCategory" name="largeCategory">
-                                            <option value="" selected>대분류</option>
-                                            <option value="0">전체</option>
-                                            <option value="a">디지털/가전</option>
-                                            <option value="b">인테리어</option>
-                                            <option value="c">식품</option>
-                                            <option value="d">의류</option>
-                                            <option value="e">생활</option>
+                                            <option value="0" ${sVO.largeCategory eq 0 ? 'selected' : '' }>전체</option>
+                                            <option value="1" ${sVO.largeCategory eq 1 ? 'selected' : '' }>디지털/가전</option>
+                                            <option value="2" ${sVO.largeCategory eq 2 ? 'selected' : '' }>인테리어</option>
+                                            <option value="3" ${sVO.largeCategory eq 3 ? 'selected' : '' }>식품</option>
+                                            <option value="4" ${sVO.largeCategory eq 4 ? 'selected' : '' }>의류</option>
+                                            <option value="5" ${sVO.largeCategory eq 5 ? 'selected' : '' }>생활</option>
                                         </select>
                                         <select id="smallCategory" name="smallCategory">
-                                            <option value="0" selected>중분류</option>
+                                            <option value="0" selected>전체</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="seller_view_edit_contents_search_items">
                                     <span class="seller_view_edit_contents_search_title">등록기간</span>
                                     <div class="seller_view_edit_contents_search_item4">
-                                        <input type="date" id="startDate" name="sDate">
+                                        <input type="date" id="startDate" name="sDate" value="${param.sDate}">
                                         <span> ~ </span>
-                                        <input type="date" id="endDate" name="eDate" >
+                                        <input type="date" id="endDate" name="eDate" value="${param.eDate}">
                                     </div>
                                 </div>
                             </div>

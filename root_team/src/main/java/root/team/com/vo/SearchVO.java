@@ -10,7 +10,7 @@ public class SearchVO {
 	private String itemNum;
 	private String itemName;
 	private int itemState;
-	private String largeCategory;
+	private int largeCategory;
 	private int smallCategory;
 	private Date startDate;
 	private Date endDate;
