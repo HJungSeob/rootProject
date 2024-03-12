@@ -12,7 +12,7 @@ public interface OrderService {
 		return 0;
 	}
 
-	default int successOrder(int b_idx){
+	default int successOrder(OrderVO orderVO){
 		return 0;
 	}
 }

@@ -10,8 +10,7 @@ public class SearchVO {
 	private String orderByType;
 	private int p_idx;
 	private int c_idx;
-	
-	
+		
 	private int viewNum;
 	private int pageNum;
 	private int pageBlock;

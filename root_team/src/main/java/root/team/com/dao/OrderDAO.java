@@ -33,6 +33,11 @@ public class OrderDAO {
 		return sqlSession.delete(MAPPER + ".successOrder", b_idx);
 	}
 
-	
+
+	public int removeItemCount(OrderStateVO orderStateVO) {	
+		return sqlSession.update(MAPPER + ".removeItemCount", orderStateVO);	
+	}
+
+
 
 }
