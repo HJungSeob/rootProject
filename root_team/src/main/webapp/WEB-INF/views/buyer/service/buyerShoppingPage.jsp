@@ -137,7 +137,8 @@
                                 	$.ajax({
                                         type: "POST",
                                         url: "${pageContext.request.contextPath}/order/successOrder.do",
-                                        data: {b_idx: b_idx},                                       
+                                        data: JSON.stringify(order),
+                                        contentType: "application/json;charset=utf-8;",
                                         success: function (data) {
                                         	alert("결제가 성공적으로 완료되었습니다.");
                                         	window.location.href = "${pageContext.request.contextPath}/index.do";

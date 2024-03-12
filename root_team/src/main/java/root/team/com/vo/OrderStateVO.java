@@ -10,8 +10,8 @@ public class OrderStateVO {
 	private int i_idx;
 	private String bos_option;
 	private String bos_price;
-	private String bos_count;
+	private int bos_count;
 	private String bos_sattle;
 	private String bos_state;
-	private Date bos_postdate;	
+	private Date bos_postdate;
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.Setter;
@@ -64,8 +65,8 @@ public class OrderController {
 	
 	@PostMapping("/successOrder.do")
 	@ResponseBody
-	public int successOrder(int b_idx) {	
-		return oSuccess.successOrder(b_idx);	
+	public int successOrder(@RequestBody OrderVO orderVO) {
+		return oSuccess.successOrder(orderVO);	
 	}
 	
 	
