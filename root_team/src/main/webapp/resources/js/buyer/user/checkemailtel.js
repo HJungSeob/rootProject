@@ -1,5 +1,5 @@
 function globaldisable() {
-    if (telValid && duplicatePhone) {
+    if (telValid && telCheckValid) {
         emailsubmit1.disabled = false
         $(function () {
             $('#edsubmit1').css("background-color", "#0071e3")

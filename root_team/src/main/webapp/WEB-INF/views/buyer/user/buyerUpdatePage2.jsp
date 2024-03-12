@@ -33,10 +33,11 @@
 	src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerUpdatePage2.js"></script>
 	
 <script>
-let duplicatePhone = false;
+let telCheckValid = false;
+let duplicatePw = false;
 $(function(){
 	console.log("nahida")
-	$("#telInput").focusout(function() {
+	$("#telInput").keyup(function() {
 		var telInput = $('#telInput').val();
 		
 		$.ajax({
@@ -48,10 +49,10 @@ $(function(){
 				if (data == 1) {
 					$('#telInput').css("border", "1px solid #F74848")
 					$("#telSmg").text("사용중인 전화번호입니다.");
-					duplicatePhone = false
+					telCheckValid = false
 				} else {
 					// 중복이 아닌 경우 초기화 작업 
-					duplicatePhone = true
+					telCheckValid = true
 				}
 			},
 			error: function() {
@@ -63,7 +64,7 @@ $(function(){
         } catch (Exception) {}
 	});
 	
-    $("#existingPwInput").change(function() {
+    $("#existingPwInput").keyup(function() {
     	var b_idx = $('#hiddenB_idx').val();
         var existingPwInput = $('#existingPwInput').val();
 
@@ -75,12 +76,14 @@ $(function(){
             	b_idx: b_idx},
                 success: function(data) {    
                     if (data == 1) {
+                    	duplicatePw = true;
                         $('#newPwInput').prop('disabled', false);
                         $('#ckeckPwInput').prop('disabled', false);
                         $('#pwSubmit').prop('disabled', false);
                         $('#existingPwInput').css("border", "1px solid #848484")
                         $("#existingPwMsg").text("");
                     } else {
+                    	duplicatePw = false;
                         $("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
                         $('#newPwInput').prop('disabled', true);
                         $('#ckeckPwInput').prop('disabled', true);
@@ -92,6 +95,9 @@ $(function(){
                     console.log("실패");
                 } 
         });
+        try {
+            globaldisable();
+        } catch (Exception) {}
     });
 });
 </script>
@@ -136,7 +142,7 @@ $(function(){
 					<div class="_inputRegion" id="telRegion">
 							<input placeholder=" " type="tel" class="" name="b_tel" id="telInput" maxlength="13">
 							<span class="" id="telTitle">전화번호</span>
-						<div class="m_userinfosclo_pwMsg" id="telSmg">waefwaef</div>
+						<div class="m_userinfosclo_pwMsg" id="telSmg"></div>
 					</div>
 					<div
 						class="m_userinfosclo_updatename_region_submit m_userinfosclo_updatename_region_hr2"
