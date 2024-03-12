@@ -25,7 +25,7 @@
                 var i_option;
                 var b_idx;
                 
-               $("#getCart").click(function () {
+                $("#getCart").click(function () {
 
                 i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
                 i_price = $("#i_price").val();
@@ -653,7 +653,6 @@
 
         .m_l_view_simple_statistics li div>span {
             display: inline-block;
-            width: 50%;
             height: 18px;
             border-radius: 9px;
             background-color: #0071E399;
