@@ -6,6 +6,10 @@ import lombok.Data;
 
 @Data	
 public class OrderStateVO {
+	private String b_nickname;
+	private String i_name;
+	private Date bo_orderdate;
+	
 	private int bo_idx;
 	private int i_idx;
 	private String bos_option;
