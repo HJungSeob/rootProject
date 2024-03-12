@@ -17,8 +17,13 @@ $(function () {
     });
 
     $('#firstNameInput').blur(function () {
+        if(firstNameValid){
         $('#firstNameInput').css("border", "1px solid #858585")
         $('#firstNameInput').css("boxShadow", "none")
+        }else{
+        $('#firstNameInput').css("border", "1px solid #F74848");
+        $('#firstNameInput').css("boxShadow", "none")
+        }
     });
 
     $('#firstNameInput').focus(function () {
@@ -27,8 +32,13 @@ $(function () {
     });
 
     $('#lastNameInput').blur(function () {
+        if(lastNameValid){
         $('#lastNameInput').css("border", "1px solid #858585")
         $('#lastNameInput').css("boxShadow", "none")
+        }else{
+        $('#lastNameInput').css("border", "1px solid #F74848");
+        $('#lastNameInput').css("boxShadow", "none")
+        }
     });
 
     $('#lastNameInput').focus(function () {
@@ -37,8 +47,13 @@ $(function () {
     });
 
     $('#yyyyinput').blur(function(){
+        if(birdayValid){
         $('#yyyyinput').css("border", "1px solid #858585")
         $('#yyyyinput').css("boxShadow", "none")
+        }else{
+        $('#yyyyinput').css("border", "1px solid #F74848");
+        $('#yyyyinput').css("boxShadow", "none")
+        }
         $('#result').css("opacity", "0")
         updateBirthdayStyle()
     });

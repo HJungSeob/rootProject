@@ -10,7 +10,28 @@ function checkpwva(str) {
     return /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/.test(str)
 }
 $(function () {
-    $('#newPwInput').blur(function () {
+try {
+$('#existingPwInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#existingPwInput').css("border", "1px solid #F74848")
+        $('#existingPwMsg').text("입력 되어 있지 않습니다.")
+        duplicatePw = false
+	}
+	});
+} catch (Exception) {}
+
+$('#newPwInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#newPwInput').css("border", "1px solid #F74848")
+        $('#newPwMsg').text("입력 되어 있지 않습니다.")
+        newPwValid = false
+	}
+	 try {
+            globaldisable();
+        } catch (Exception) {}
+});
+
+    $('#newPwInput').keyup(function () {
         if (this.value.length !== 0) {
             if (checkPwLength(this.value) === false) {
                 $(function () {
@@ -25,11 +46,9 @@ $(function () {
                 });
                 newPwValid = false
             } else if (checkPwLength(this.value) && checkpwva(this.value)) {
-                $(function () {
-                    $('#newPwInput').css("border", "1px solid #858585")
-                    $('#newPwMsg').text("")
-                });
                 newPwValid = true
+                $('#newPwInput').css("border", "1px solid #848484")
+                    $('#newPwMsg').text("")
             }
         } else {
             $(function () {
@@ -46,7 +65,18 @@ $(function () {
         } catch (Exception) {}
     });
 
-    $('#ckeckPwInput').blur(function () {
+$('#ckeckPwInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#ckeckPwInput').css("border", "1px solid #F74848")
+        $('#ckeckPwMsg').text("입력 되어 있지 않습니다.")
+        ckeckPwValid = false
+	}
+	 try {
+            globaldisable();
+        } catch (Exception) {}
+});
+
+    $('#ckeckPwInput').keyup(function () {
         if (this.value.length !== 0) {
             if ($('#newPwInput').val() !== $('#ckeckPwInput').val()) {
                 $(function () {
@@ -55,11 +85,9 @@ $(function () {
                 });
                 ckeckPwValid = false
             } else {
-                $(function () {
-                    $('#ckeckPwInput').css("border", "1px solid #858585")
-                    $('#ckeckPwMsg').text("")
-                });
                 ckeckPwValid = true
+                $('#ckeckPwInput').css("border", "1px solid #848484")
+                    $('#ckeckPwMsg').text("")
             }
         } else {
             $(function () {

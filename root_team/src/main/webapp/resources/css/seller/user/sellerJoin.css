@@ -621,7 +621,6 @@
 ._inputRegionName{
     width: 340px;
     position: relative;
-    margin: 0 auto;
     margin-bottom: 20px;
 }
 ._inputRegionName input{

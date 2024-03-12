@@ -16,6 +16,8 @@
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdatePage3.css">
+	<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>

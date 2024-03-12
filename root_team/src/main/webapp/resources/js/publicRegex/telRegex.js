@@ -5,7 +5,17 @@ function telLength(value) {
 }
 
 $(function () {
-    $('#telInput').blur(function () {
+$('#telInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#telInput').css("border", "1px solid #F74848")
+        $('#telSmg').text("입력 되어 있지 않습니다.")
+        telValid = false
+        try {
+		telCheckValid = false
+        } catch (Exception) {}
+	}
+	});
+    $('#telInput').keyup(function () {
         if (this.value.length !== 0) {
             if (telLength(this.value) === false) {
                     $('#telInput').css("border", "1px solid #F74848")

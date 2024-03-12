@@ -17,7 +17,15 @@ function lastNameva(str) {
     return /^[가-힣]+$/.test(str)
 }
 $(function(){
+
 $('#firstNameInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#firstNameInput').css("border", "1px solid #F74848")
+        $('#firstNameMsg').text("입력 되어 있지 않습니다.")
+        firstNameValid = false
+	}
+	})
+$('#firstNameInput').keyup(function () {
     if (this.value.length !== 0) {
         if (firstNameLength(this.value) === false) {
             $(function () {
@@ -59,6 +67,14 @@ $('#firstNameInput').blur(function () {
 });
 $(function(){
 $('#lastNameInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#lastNameInput').css("border", "1px solid #F74848")
+        $('#lastNameMsg').text("입력 되어 있지 않습니다.")
+        lastNameValid = false
+	}
+	})
+
+$('#lastNameInput').keyup(function () {
     if (this.value.length !== 0) {
         if (lastNameLength(this.value) === false) {
             $(function () {

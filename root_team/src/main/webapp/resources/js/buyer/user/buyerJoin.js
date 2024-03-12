@@ -67,22 +67,33 @@ $(function(){
         $('#emailInput').css("boxShadow","0px 0px 4px 0px #0071e3")
     });
 
-    $('#newPwInput').blur(function(){
-        $('#newPwInput').css("border","1px solid #858585")
-        $('#newPwInput').css("boxShadow","none")
-    });
-    $('#newPwInput').focus(function(){
-        $('#newPwInput').css("border","1px solid #0071E3")
-        $('#newPwInput').css("boxShadow","0px 0px 4px 0px #0071e3")
-    });
-
-    $('#ckeckPwInput').blur(function(){
-        $('#ckeckPwInput').css("border","1px solid #858585")
-        $('#ckeckPwInput').css("boxShadow","none")
+    $('#newPwInput').blur(function () {
+        if(newPwValid){
+        $('#newPwInput').css("border", "1px solid #858585")
+        $('#newPwInput').css("boxShadow", "none")
+        }else{
+        $('#newPwInput').css("border", "1px solid #F74848");
+        $('#newPwInput').css("boxShadow", "none")
+        }
     });
 
-    $('#ckeckPwInput').focus(function(){
-        $('#ckeckPwInput').css("border","1px solid #0071E3")
-        $('#ckeckPwInput').css("boxShadow","0px 0px 4px 0px #0071e3")
+    $('#newPwInput').focus(function () {
+        $('#newPwInput').css("border", "1px solid #0071E3'")
+        $('#newPwInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
+    });
+    
+    $('#ckeckPwInput').blur(function () {
+        if(ckeckPwValid){
+        $('#ckeckPwInput').css("border", "1px solid #858585")
+        $('#ckeckPwInput').css("boxShadow", "none")
+        }else{
+        $('#ckeckPwInput').css("border", "1px solid #F74848");
+        $('#ckeckPwInput').css("boxShadow", "none")
+        }
+    });
+
+    $('#ckeckPwInput').focus(function () {
+        $('#ckeckPwInput').css("border", "1px solid #0071E3'")
+        $('#ckeckPwInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 });

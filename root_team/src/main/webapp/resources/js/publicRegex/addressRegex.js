@@ -2,6 +2,20 @@ let zonecodeValid = false;
 let addressValid = false;
 
 $(function () {
+$('#zonecodeInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#zonecodeInput').css("border", "1px solid #F74848")
+        $('#zonecodeMsg').text("입력 되어 있지 않습니다.")
+        zonecodeValid = false
+	}
+	})
+$('#zonecodeInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#zonecodeInput').css("border", "1px solid #F74848")
+        $('#zonecodeMsg').text("입력 되어 있지 않습니다.")
+        zonecodeValid = false
+	}
+	})
     $('#zonecodeInput').blur(function () {
         if (this.value.length !== 0) {
             $(function () {
@@ -24,6 +38,14 @@ $(function () {
             globaldisable();
         } catch (Exception) {}
     });
+    
+    $('#addressInput').blur(function () {
+	if (this.value.length === 0) {
+		$('#addressInput').css("border", "1px solid #F74848")
+        $('#addressMsg').text("입력 되어 있지 않습니다.")
+        addressValid = false
+	}
+	})
     $('#addressInput').blur(function () {
         if (this.value.length !== 0) {
             $(function () {

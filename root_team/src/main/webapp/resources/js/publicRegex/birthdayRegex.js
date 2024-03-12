@@ -10,6 +10,13 @@ function checkBir(str) {
 
 $(function(){
 $('#yyyyinput').blur(function () {
+	if (this.value.length === 0) {
+		$('#yyyyinput').css("border", "1px solid #F74848")
+        $('#resultmsg').text("입력 되어 있지 않습니다.")
+        birdayValid = false
+	}
+	})
+$('#yyyyinput').keyup(function () {
     if (this.value.length !== 0) {
         if (birLength(this.value) === false) {
             birdayValid = false
