@@ -227,20 +227,6 @@
 	text-decoration: underline;
 }
 
-.seller_sales_contents_table_pasing {
-	text-align: center;
-	font-size: 12px;
-}
-
-.seller_sales_contents_table_pasing a {
-	margin: 0px 5px;
-}
-
-.seller_sales_contents_table_pasing a:hover {
-	color: #00CD08;
-	font-weight: bold;
-}
-
 .seller_sales_option_box {
 	display: none;
 	border: 1px solid #00CD08;

@@ -135,3 +135,24 @@
 .seller_global_category_list a {
     color: black;
 }
+
+/* ------------------------------ footer ------------------------------ */
+
+.seller_contents_table_pasing {
+    text-align: center;
+    font-size: 12px;
+}
+
+.selle_contents_table_pasing span {
+    margin: 0px 5px;
+}
+
+.seller_contents_table_pasing span:hover {
+    color: #00CD08;
+    font-weight: bold;
+}
+
+.seller_contents_table_pasing .active{
+    color: #00CD08;
+    font-weight: bold;
+}

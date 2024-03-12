@@ -228,17 +228,3 @@
 .seller_review_contents_table_product_name a:hover {
     text-decoration: underline;
 }
-
-.seller_review_contents_table_pasing {
-    text-align: center;
-    font-size: 12px;
-}
-
-.seller_review_contents_table_pasing a {
-    margin: 0px 5px;
-}
-
-.seller_review_contents_table_pasing a:hover {
-    color: #00CD08;
-    font-weight: bold;
-}

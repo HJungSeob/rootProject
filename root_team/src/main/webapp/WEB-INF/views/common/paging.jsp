@@ -1,6 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="itemNum" value="${sVO.itemNum}" />
+<c:set var="itemName" value="${sVO.itemName}" />
+<c:set var="itemState" value="${sVO.itemState}" />
+<c:set var="largeCategory" value="${sVO.largeCategory}" />
+<c:set var="smallCategory" value="${sVO.smallCategory}" />
+<c:set var="startDate" value="${sVO.startDate}" />
+<c:set var="endDate" value="${sVO.endDate}" />
+<c:set var="s_idx" value="${sVO.s_idx}" />
 
 <c:set var="searchField" value="${sVO.searchField}" />
 <c:set var="searchWord" value="${sVO.searchWord}" />
@@ -9,24 +17,60 @@
 <c:set var="c_idx" value="${sVO.c_idx}" />
 <c:set var="viewNum" value="${sVO.viewNum}" />
 
-<c:url value="list.do?" var="listUrl">
-    <c:if test="${'' ne searchWord and not empty searchWord}">
-    	<c:param name="searchWord" value="${searchWord}" />
-    	<c:param name="searchField" value="${searchField}" />
-    </c:if>
-    <c:if test="${not empty orderByType}">
-    	<c:param name="orderByType" value="${orderByType}" />
-    </c:if>
-    <c:if test="${0 ne p_idx}">
-    	<c:param name="p_idx" value="${p_idx}" />
-    </c:if>
-    <c:if test="${0 ne c_idx}">
-    	<c:param name="c_idx" value="${c_idx}" />
-    </c:if>
-    <c:if test="${not empty viewNum}">
-    	<c:param name="viewNum" value="${viewNum}" />
-    </c:if>
-</c:url>
+<c:set var="url" value="${pageContext.request.requestURL}"/>
+<c:set var="lastSlashIndex" value="${url.lastIndexOf('/')}"/>
+<c:set var="jspPage" value="${url.substring(lastSlashIndex + 1)}"/>
+
+<c:choose>
+	<c:when test="${jspPage eq 'viewEdit.jsp'}">
+		<c:url value="viewEdit.do?" var="listUrl" >
+		    <c:if test="${'' ne itemNum}">
+		    	<c:param name="itemNum" value="${itemNum}" />
+		    </c:if>
+		    <c:if test="${'' ne itemName}">
+		    	<c:param name="itemName" value="${itemName}" />
+		    </c:if>
+		    <c:if test="${0 ne itemState}">
+		    	<c:param name="itemState" value="${itemState}" />
+		    </c:if>
+		    <c:if test="${not empty largeCategory}">
+		    	<c:param name="largeCategory" value="${largeCategory}" />
+		    </c:if>
+		    <c:if test="${not empty smallCategory}">
+		    	<c:param name="smallCategory" value="${smallCategory}" />
+		    </c:if>
+		    <c:if test="${null ne startDate}">
+		    	<c:param name="startDate" value="${startDate}" />
+		    </c:if>
+		    <c:if test="${null ne endDate}">
+		    	<c:param name="endDate" value="${endDate}" />
+		    </c:if>
+		    <c:if test="${0 ne s_idx}">
+		    	<c:param name="s_idx" value="${s_idx}" />
+		    </c:if>
+		</c:url>
+	</c:when>
+	<c:when test="${jspPage eq 'list.jsp'}">
+		<c:url value="list.do?" var="listUrl" >
+		    <c:if test="${'' ne searchWord and not empty searchWord}">
+		    	<c:param name="searchWord" value="${searchWord}" />
+		    	<c:param name="searchField" value="${searchField}" />
+		    </c:if>
+		    <c:if test="${not empty orderByType}">
+		    	<c:param name="orderByType" value="${orderByType}" />
+		    </c:if>
+		    <c:if test="${0 ne p_idx}">
+		    	<c:param name="p_idx" value="${p_idx}" />
+		    </c:if>
+		    <c:if test="${0 ne c_idx}">
+		    	<c:param name="c_idx" value="${c_idx}" />
+		    </c:if>
+		    <c:if test="${not empty viewNum}">
+		    	<c:param name="viewNum" value="${viewNum}" />
+		    </c:if>
+		</c:url>
+	</c:when>
+</c:choose>
 
 <c:if test="${pageNav.pageNum > pageNav.pages_pageBlock}">
 	<a href="${listUrl}pageNum=1&pageBlock=1">&lt;&lt;</a>&nbsp;
