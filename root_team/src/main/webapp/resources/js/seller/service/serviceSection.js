@@ -31,43 +31,42 @@
 
  // #region 카테고리 분류
  // 대분류 선택 시 실행되는 함수
- function classification() {
-     document.getElementById('largeCategory').addEventListener('change', function () {
-         var largeCategorySelect = document.getElementById('largeCategory');
-         var smallCategorySelect = document.getElementById('smallCategory');
+ 
+function classification() {
+    document.getElementById('largeCategory').addEventListener('change', function () {
+        var largeCategorySelect = document.getElementById('largeCategory');
+        var smallCategorySelect = document.getElementById('smallCategory');
 
-         var a = ['전체', '휴대폰', '영상가전', 'PC', '음향가전', '생활가전'];
-         var b = ['전체', '수납', '홈', '거실', '침구', '침실가구'];
-         var c = ['전체', '농수산물', '가공식품', '제과제빵', '음료', '건강식품'];
-         var d = ['전체', '상의', '하의', '아우터', '신발', '이너웨어'];
-         var e = ['전체', '취미', '잡화', '주방', '사무', '공구'];
-         var z = ['전체'];
+        // 대분류에 따른 중분류 매핑
+        var categoryMap = {
+            "a": { "전체": 0, "휴대폰": 1, "영상가전": 2, "PC": 3, "음향가전": 4, "생활가전": 5 },
+            "b": { "전체": 0, "수납": 6, "홈": 7, "거실": 8, "침구": 9, "침실가구": 10 },
+            "c": { "전체": 0, "농수산물": 11, "가공식품": 12, "제과제빵": 13, "음료": 14, "건강식품": 15 },
+            "d": { "전체": 0, "상의": 16, "하의": 17, "아우터": 18, "신발": 19, "이너웨어": 20 },
+            "e": { "전체": 0, "취미": 21, "잡화": 22, "주방": 23, "사무": 24, "공구": 25 }
+        };
 
-         if (largeCategorySelect.value == "a") var f = a;
-         else if (largeCategorySelect.value == "b") var f = b;
-         else if (largeCategorySelect.value == "c") var f = c;
-         else if (largeCategorySelect.value == "d") var f = d;
-         else if (largeCategorySelect.value == "e") var f = e;
-         else if (largeCategorySelect.value == "z") var f = z;
+        var selectedCategory = largeCategorySelect.value;
+        var f = categoryMap[selectedCategory] || { "전체": 0 };
 
-         smallCategorySelect.options.length = 0;
+        smallCategorySelect.options.length = 0;
 
-         // "선택하세요" 옵션 추가
-         var defaultOption = document.createElement("option");
-         defaultOption.value = "0";
-         defaultOption.selected = true;
-         defaultOption.disabled = true;
-         defaultOption.hidden = true;
-         defaultOption.innerHTML = "분류를 선택하세요.";
-         smallCategorySelect.appendChild(defaultOption);
+        // "분류를 선택하세요." 옵션 추가
+        var defaultOption = document.createElement("option");
+        defaultOption.value = "0";
+        defaultOption.selected = true;
+        defaultOption.disabled = true;
+        defaultOption.hidden = true;
+        defaultOption.innerHTML = "분류를 선택하세요.";
+        smallCategorySelect.appendChild(defaultOption);
 
-         for (x in f) {
-             var opt = document.createElement("option");
-             opt.value = f[x];
-             opt.innerHTML = f[x];
-             smallCategorySelect.appendChild(opt);
-         }
-     });
-     
- }
+        for (var categoryName in f) {
+            var categoryId = f[categoryName];
+            var opt = document.createElement("option");
+            opt.value = categoryId;
+            opt.innerHTML = categoryName;
+            smallCategorySelect.appendChild(opt);
+        }
+    });
+}
  // #endregion

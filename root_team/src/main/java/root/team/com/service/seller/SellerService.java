@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import root.team.com.common.PageNav;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
 public interface SellerService {
@@ -59,7 +61,19 @@ public interface SellerService {
 		return 0;
 	}
 	
-	default List<ItemVO> getItems(int s_idx) {
+	default List<ItemVO> getItem(int s_idx) {
+		return null;
+	}
+	
+	default List<ItemVO> getItems(SearchVO vo) {
+		return null;
+	}
+	
+	default int getTotalCount(SearchVO vo){
+		return 0;
+	}
+	
+	default PageNav setPageNav(PageNav pageNav, int pageNum, int pageBlock) {
 		return null;
 	}
 }

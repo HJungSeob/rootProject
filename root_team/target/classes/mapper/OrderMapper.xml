@@ -27,5 +27,11 @@
 	    DELETE FROM tb_buyer_cart
 	    WHERE b_idx = #{b_idx}
 	</delete>
+	
+	<update id="removeItemCount" parameterType="orderStateVO">
+		update tb_item set
+		i_count = i_count - #{bos_count}
+		where i_idx = #{i_idx}
+	</update>
 
 </mapper>
