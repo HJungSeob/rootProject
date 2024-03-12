@@ -87,22 +87,19 @@
 				<form name="buyerUpdate" method="post"
 					action="buyerUpdateProcess.do">
 					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
-					<div class="m_userinfo_updatename_region_fname"
+					<div class="_inputRegion"
 						id="firstNameRegion">
-						<label> <input type="text" name="b_firstname"
-							class="m_userinfo_updatename_region_infname" id="firstNameInput">
-							<div class="m_userinfo_updatename_region_plfname"
-								id="firstNametitle">성</div>
-						</label>
+						<input type="text" name="b_firstname" placeholder=" "
+							class="" id="firstNameInput">
+							<span class=""
+								id="firstNametitle">성</span>
 						<div class="m_userinfo_updatename_region_reuslt" id="firstNameMsg"></div>
 					</div>
-					<div class="m_userinfo_updatename_region_hr" id="active"></div>
-					<div class="m_userinfo_updatename_region_fname" id="lastNameRegion">
-						<label> <input type="text" name="b_lastname"
-							class="m_userinfo_updatename_region_infname" id="lastNameInput">
-							<div class="m_userinfo_updatename_region_plfname"
-								id="lastNametitle">이름</div>
-						</label>
+					<div class="_inputRegion" id="lastNameRegion">
+						<input type="text" name="b_lastname" placeholder=" "
+							class="" id="lastNameInput">
+							<span class=""
+								id="lastNametitle">이름</span>
 						<div class="m_userinfo_updatename_region_reuslt" id="lastNameMsg"></div>
 					</div>
 					<div
@@ -124,11 +121,11 @@
 				<form name="buyerUpdate" method="post" action="buyerUpdateProcess.do">
 					<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 					<div class="m_userinfo_updatename_region_inbday">
-						<div class="m_userinfo_updatename_region_inyyyy" id="yyyyregion">
-							<label> <input type="text" name="b_birth"
-								class="m_userinfo_updatename_region_inputyyyy" id="yyyyinput"
+						<div class="_inputRegionBir" id="yyyyregion">
+							<label> <input type="text" name="b_birth" placeholder=" "
+								class="" id="yyyyinput"
 								maxlength="8">
-								<div class="m_userinfo_updatename_region_subyyyy" id="yyyytext">생년월일</div>
+								<span class="" id="yyyytext">생년월일</span>
 								<div id="result" class="m_userinfo_updatename_region_resultyyyy">yyyy년
 									mm월 dd일</div>
 							</label>

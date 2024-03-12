@@ -17,82 +17,43 @@ $(function () {
     });
 
     $('#firstNameInput').blur(function () {
-        $('#firstNameRegion').css("border", "1px solid #858585")
-        $('#firstNameRegion').css("boxShadow", "none")
-        $('#firstNametitle').css("bottom", "20px")
-        $('#firstNametitle').css("fontSize", "16px")
-        updateNameStyle()
+        $('#firstNameInput').css("border", "1px solid #858585")
+        $('#firstNameInput').css("boxShadow", "none")
     });
-    let firstNameInput = document.getElementById('firstNameInput')
-    let firstNametitle = document.getElementById('firstNametitle')
-
-    function updateNameStyle() {
-        if (firstNameInput.value.trim() !== '') {
-            firstNametitle.style.bottom = '30px';
-            firstNametitle.style.fontSize = '14px';
-        }
-    }
 
     $('#firstNameInput').focus(function () {
-        $('#firstNameRegion').css("border", "1px solid #0071E3'")
-        $('#firstNameRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#firstNametitle').css("bottom", "30px")
-        $('#firstNametitle').css("fontSize", "14px")
+        $('#firstNameInput').css("border", "1px solid #0071E3'")
+        $('#firstNameInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
     $('#lastNameInput').blur(function () {
-        $('#lastNameRegion').css("border", "1px solid #858585")
-        $('#lastNameRegion').css("boxShadow", "none")
-        $('#lastNametitle').css("bottom", "20px")
-        $('#lastNametitle').css("fontSize", "16px")
-        updateLnameStyle()
+        $('#lastNameInput').css("border", "1px solid #858585")
+        $('#lastNameInput').css("boxShadow", "none")
     });
-    let lastNameInput = document.getElementById('lastNameInput')
-    let lastNametitle = document.getElementById('lastNametitle')
-
-    function updateLnameStyle() {
-        if (lastNameInput.value.trim() !== '') {
-            lastNametitle.style.bottom = '30px';
-            lastNametitle.style.fontSize = '14px';
-        }
-    }
 
     $('#lastNameInput').focus(function () {
-        $('#lastNameRegion').css("border", "1px solid #0071E3'")
-        $('#lastNameRegion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#lastNametitle').css("bottom", "30px")
-        $('#lastNametitle').css("fontSize", "14px")
+        $('#lastNameInput').css("border", "1px solid #0071E3'")
+        $('#lastNameInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     });
 
-    $('#yyyyinput').blur(function () {
-        $('#yyyyregion').css("border", "1px solid #858585")
-        $('#yyyyregion').css("boxShadow", "none")
-        $('#yyyytext').css("bottom", "20px")
-        $('#yyyytext').css("fontSize", "16px")
+    $('#yyyyinput').blur(function(){
+        $('#yyyyinput').css("border", "1px solid #858585")
+        $('#yyyyinput').css("boxShadow", "none")
         $('#result').css("opacity", "0")
-        updateYyyyStyle()
-        birdaydisable()
+        updateBirthdayStyle()
     });
 
-    let yinput = document.getElementById('yyyyinput');
-    let ytext = document.getElementById('yyyytext');
+    let result = document.getElementById('result')
 
-    function updateYyyyStyle() {
-        if (yinput.value.trim() !== '') {
-            ytext.style.bottom = '36px';
-            ytext.style.fontSize = '14px';
-            $('#result').css("opacity", "1")
+    function updateBirthdayStyle() {
+        if (yyyyinput.value.trim() !== '') {
+            result.style.opacity = '1'
         }
     }
-
-    $('#yyyyinput').focus(function () {
-        $('#yyyyregion').css("border", "1px solid #0071E3")
-        $('#yyyyregion').css("boxShadow", "0px 0px 4px 0px #0071e3")
-        $('#yyyytext').css("bottom", "36px")
-        $('#yyyytext').css("fontSize", "14px")
+    $('#yyyyinput').focus(function(){
+        $('#yyyyinput').css("border", "1px solid #0071E3")
+        $('#yyyyinput').css("boxShadow", "0px 0px 4px 0px #0071e3")
         $('#result').css("opacity", "1")
-        updateYyyyStyle()
-        birdaydisable()
     });
     
     $('#genderBox').click(function(){
