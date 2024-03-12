@@ -130,9 +130,7 @@
                                                     ${cart.i_name}
                                                 </a><br>
                                                 <span>${cart.i_option}</span>
-                                            </div>
-                                            <div class="m_buyerItemCart_itemsAddress">배송사</div>
-                                            <div class="m_buyerItemCart_itemsAddress"><a href="">배송지 변경</a></div>
+                                            </div>                                         
                                         </div>
                                         <div class="m_buyerItemCart_itemsCountTitle">수량:</div>
                                         <input type="number" class="m_buyerItemCart_itemsCount" value="1">

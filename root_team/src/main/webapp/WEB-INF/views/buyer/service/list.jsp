@@ -17,10 +17,10 @@
         $(function () {
 
             $('#orderByType').change(function () {
-                $(this).closest('form').submit();
+                $("#formBox").submit();
             });
             $('#viewNum').change(function () {
-                $(this).closest('form').submit();
+                $("#formBox").submit();
             });
 
 
@@ -42,16 +42,8 @@
                         $('input[name="p_idx"]').val(otherClasses);
                         $('input[name="c_idx"]').val('0');
                     }
-                }
-                
-                $(".m_list_categoris div").each(function(){
-                    if ($(this).find("h4.active").length > 0) {
-                        $(this).css("height", "225px");
-                    } else {
-                        $(this).css("height", ""); // 높이 값을 초기화합니다.
-                    }
-                });
-                
+                }              
+                $("#formBox").submit();    
             });
 
             var queryString = window.location.search;
@@ -59,12 +51,26 @@
             var c_idxValue = searchParams.get('c_idx');
             var p_idxValue = searchParams.get('p_idx');
             if (c_idxValue > 0) {
-                $('h4.' + c_idxValue).click();
+                $('h4.' + c_idxValue).addClass('active');
+                $('input[name="c_idx"]').val(c_idxValue);
+                $('input[name="p_idx"]').val('0');
             } else if (p_idxValue > 0) {
-                $('h2.' + p_idxValue).click();
+                $('h2.' + p_idxValue).addClass('active');
+                $('input[name="c_idx"]').val('0');
+                $('input[name="p_idx"]').val(p_idxValue);
             } else {
-                $('h2.0').click();
+                $('h2.0').addClass('active');
+                $('input[name="c_idx"]').val('0');
+                $('input[name="p_idx"]').val('0');
             }
+            
+            $(".m_list_categoris div").each(function(){
+                if ($(this).find("h4.active").length > 0) {
+                    $(this).css("height", "225px");
+                } else {
+                    $(this).css("height", ""); // 높이 값을 초기화합니다.
+                }
+            });
 
         });
     </script>
@@ -73,7 +79,7 @@
 
         section {
             background-color: white;
-            transition: filter 0.5s, opacity 0.5s;
+            transition: filter 0.5s, opacity 0.5s;           
         }
 
         section.blur {
@@ -148,6 +154,7 @@
 
         .m_list_search_list {
             width: 1000px;
+            min-height: 730px;
             margin: 0 auto;
             display: flex;
         }
@@ -198,17 +205,24 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        
+        .m_list_notItem{
+        	display: block;
+        	line-height: 300px;
+        	font-size: 20px;
+        	font-weight: bold;   	
+        }
 
         .m_list_item {
             box-sizing: border-box;
             position: relative;
             border-radius: 20px;
-            margin: 20px 0 0 20px;
+            margin: 20px 10px 0 10px;
             padding: 20px;
             width: 240px;
             height: 350px;
             transition: box-shadow 0.5s;
-        }
+        }  
 
         .m_list_item:hover {
             box-shadow: 2px 4px 12px rgba(0, 0, 0, .3);
@@ -278,10 +292,16 @@
         }
 
         #td_paging {
+        	width: 800px;
             height: 50px;
+            margin-top: 50px;
             font: 12px Arial, sans-serif;
             text-align: center;
         }
+        
+        #td_paging .active{
+			color: #0071E3;
+        } 
 
         /* #endregion ------------ end of section ---------------------- */
 
@@ -300,7 +320,7 @@
                 <h1>root.com 검색하기</h1>
                 <span>ROOT에서 원하는 상품을 검색하여 최신 트렌드를 만나보세요.</span>
             </div>
-            <form>
+            <form id="formBox">
                 <input type="hidden" name="c_idx">
                 <input type="hidden" name="p_idx">
                 <div class="m_list_search">
@@ -437,9 +457,7 @@
                 <div class="m_list_items">
                     <c:choose>
                         <c:when test="${empty itemList}">
-                            <tr>
-                                <td colspan="6">등록된 게시물이 없습니다</td>
-                            </tr>
+                                <div class="m_list_notItem">등록된 게시물이 없습니다.</div>
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">

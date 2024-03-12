@@ -97,7 +97,7 @@
                         IMP.request_pay({
                                 pg: "kcp",
                                 pay_method: "card",
-                                merchant_uid: "RSTORE" + bo_idx,
+                                merchant_uid: bo_idx,
                                 name: bo_item_name,
                                 amount: bo_totalprice,
                                 buyer_name: b_name,
