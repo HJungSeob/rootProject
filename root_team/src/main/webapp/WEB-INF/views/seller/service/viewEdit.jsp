@@ -159,8 +159,8 @@
                     </div>
                     
 					<c:if test="${not empty itemList}">
-                        <div id="td_paging">
-                        	<%@ include file="../../common/paging.jsp" %>
+                        <div class="seller_contents_table_pasing" id="td_paging">
+                        	<span><%@ include file="../../common/paging.jsp" %></span>
                         </div>
                     </c:if>
                     
