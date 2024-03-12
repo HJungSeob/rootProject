@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>판매관리 페이지</title>
+    <title>주문관리 페이지</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
@@ -33,7 +33,7 @@
                 
                 <div class="seller_sales_contents">
                     <div class="seller_sales_contents_title">
-                        <span>메인 > 판매관리</span>
+                        <span>메인 > 주문관리</span>
                     </div>
 
                     <div class="seller_sales_contents_search">
@@ -56,14 +56,24 @@
                                 <div class="seller_sales_contents_search_items">
                                     <span class="seller_sales_contents_search_title">주문상태</span>
                                     <div class="seller_sales_contents_search_item2">
-                                    	<input type="radio" id="all" name="orderState" value="0" ${sVO.orderState eq 0 and sVO.orderState eq '' ? 'checked' : '' }>
-                                        <label for="all"><span>전체</span></label>
-                                        <input type="radio" id="sale" class="restCheckBox" name="orderState" value="1" ${sVO.orderState eq 1 ? 'checked' : '' }>
-                                        <label for="sale"><span>환불</span></label>
-                                        <input type="radio" id="waitSale" class="restCheckBox" name="orderState" value="2" ${sVO.orderState eq 2 ? 'checked' : '' }>
-                                        <label for="waitSale"><span>교환</span></label>
-                                        <input type="radio" id="stock" class="restCheckBox" name="orderState" value="3" ${sVO.orderState eq 3 ? 'checked' : '' }>
-                                        <label for="stock"><span>반품</span></label>
+                                    	<input type="radio" id="0" name="orderState" value="0" ${sVO.orderState eq 0 and sVO.orderState eq '' ? 'checked' : '' }>
+                                        <label for="0"><span>전체</span></label>
+                                        <input type="radio" id="1" class="restCheckBox" name="orderState" value="1" ${sVO.orderState eq 1 ? 'checked' : '' }>
+                                        <label for="1"><span>결제완료</span></label>
+                                        <input type="radio" id="2"  class="restCheckBox" name="orderState" value="2" ${sVO.orderState eq 2 ? 'checked' : '' }>
+                                        <label for="2"><span>배송준비</span></label>
+                                        <input type="radio" id="3"  class="restCheckBox" name="orderState" value="3" ${sVO.orderState eq 3 ? 'checked' : '' }>
+                                        <label for="3"><span>배송중</span></label>
+                                        <input type="radio" id="4" class="restCheckBox" name="orderState" value="4" ${sVO.orderState eq 4 ? 'checked' : '' }>
+                                        <label for="4"><span>배송완료</span></label>
+                                        <input type="radio" id="5" class="restCheckBox" name="orderState" value="5" ${sVO.orderState eq 5 ? 'checked' : '' }>
+                                        <label for="5"><span>주문취소</span></label>
+                                        <input type="radio" id="6" class="restCheckBox" name="orderState" value="6" ${sVO.orderState eq 6 ? 'checked' : '' }>
+                                        <label for="6"><span>환불</span></label>
+                                        <input type="radio" id="7" class="restCheckBox" name="orderState" value="7" ${sVO.orderState eq 7 ? 'checked' : '' }>
+                                        <label for="7"><span>교환</span></label>
+                                        <input type="radio" id="8" class="restCheckBox" name="orderState" value="8" ${sVO.orderState eq 8 ? 'checked' : '' }>
+                                        <label for="8"><span>반품</span></label>
                                     </div>
                                 </div>
                                 <div class="seller_sales_contents_search_items">
@@ -118,9 +128,9 @@
 											
 											<tr>
 				                                <td><span>${i}</span></td>
-				                                <td class="seller_view_edit_contents_table_edit_btn"><a href=""><span>수정</span></a></td>
+				                                <td class="seller_sales_contents_table_edit_btn"><a href=""><span>수정</span></a></td>
 				                                <td><span>${orderList[vs.count-1].b_nickname}</span></td>
-				                                <td class="seller_view_edit_contents_table_product_name">
+				                                <td class="seller_sales_contents_table_product_name">
 				                                	<a href=""><span>${orderList[vs.count-1].i_name}</span></a>
 				                                </td>
 				                                <td><span>${orderList[vs.count-1].bos_option}</span></td>
@@ -130,12 +140,17 @@
 				                                <c:set var="orderState" value="${orderList[vs.count-1].bos_state}" />
 												<td><span>
 												    <c:choose>
+												        <c:when test="${orderState eq 1}">결제완료</c:when>
+												        <c:when test="${orderState eq 2}">배송대기</c:when>
+												    	<c:when test="${orderState eq 3}">배송중</c:when>
+												        <c:when test="${orderState eq 4}">배송완료</c:when>
+												        <c:when test="${orderState eq 5}">주문취소</c:when>
 												        <c:when test="${orderState eq 6}">환불</c:when>
 												        <c:when test="${orderState eq 7}">교환</c:when>
 												        <c:when test="${orderState eq 8}">반품</c:when>
 												    </c:choose>
 												</span></td>
-				                                <td><span><fmt:formatNumber type="number" pattern="#,###" value="${orderList[vs.count-1].bos_price}" />원</span></td>
+				                                <td><span><fmt:formatNumber type="number" pattern="#,###" value="${orderList[vs.count-1].bos_price * orderList[vs.count-1].bos_count}" />원</span></td>
 				                            </tr>
 										</c:if>
 									</c:forEach>
@@ -188,6 +203,9 @@
 		});
 	</script> -->
 
+	<footer>
+		<%@include file="../../buyer/common/global_footer.jsp"%>
+	</footer>
 </body>
 
 </html>

@@ -24,18 +24,13 @@
 					<a href="${pageContext.request.contextPath}/seller/viewEdit.do?s_idx=${seller.s_idx}">상품 조회/수정</a>
 				</li>
 				<li class="seller_global_category_list">
-					<a href="${pageContext.request.contextPath}/item/write.do?s_idx=${seller.s_idx}">상품 등록</a>
+					<a href="${pageContext.request.contextPath}/item/write.do">상품 등록</a>
 				</li>
 			</ul>
 		</div>
 		<div>
-			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/sales.do">
-				<span class="">판매관리</span>
-			</a>
-		</div>
-		<div>
-			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/delivery.do">
-				<span class="">배송관리</span>
+			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/sales.do?s_idx=${seller.s_idx}">
+				<span class="">주문관리</span>
 			</a>
 		</div>
 		<div>

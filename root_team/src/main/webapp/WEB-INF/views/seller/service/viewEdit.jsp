@@ -168,6 +168,9 @@
         </section>
     </div>
 
+	<footer>
+		<%@include file="../../buyer/common/global_footer.jsp"%>
+	</footer>
 </body>
 
 </html>

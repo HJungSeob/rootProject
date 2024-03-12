@@ -256,7 +256,7 @@
 		</choose>
 	</select>
 	
-	<select id="getTotalCount" parameterType="searchVO"	 resultType="_int">
+	<select id="getItemTotalCount" parameterType="searchVO"	 resultType="_int">
 		<choose>
 			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != 0 or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
 				select count(*)
@@ -352,6 +352,147 @@
 				select count(*)
 				from vw_item 
 				where s_idx = #{s_idx}
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getOrders" parameterType="searchVO" resultType="orderStateVO">
+		<choose>
+			<when test="orderNum != '' or orderNickname != '' or orderState != 0 or startDate != null or endDate != null">
+				SELECT *
+				FROM tb_buyer_order_state bos
+				INNER JOIN tb_buyer_order bo ON bos.bo_idx = bo.bo_idx 
+				INNER JOIN tb_buyer_info bi ON bi.b_idx = bo.b_idx
+				INNER JOIN tb_item i ON bos.i_idx = i.i_idx
+				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
+				WHERE s.s_idx = #{s_idx}
+				<if test="orderNum != ''">
+					and bo_idx = #{orderNum}
+				</if>
+				<if test="orderNickname != ''">
+					and b_nickname like CONCAT('%', #{orderNickname}, '%')
+				</if>
+				<if test="orderState != 0">
+					<choose>
+						<when test="orderState == 1">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 2">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 3">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 4">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 5">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 6">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 7">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 8">
+							and i_state = #{orderState}
+						</when>
+					</choose>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and bo_orderdate >= #{startDate}
+					 ]]>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and bo_orderdate <= #{endDate}
+					 ]]>
+				</if>
+				
+				order by bos.bo_idx desc
+				limit 7 offset #{startIdx}
+			</when>
+	
+			<otherwise>
+				SELECT *
+				FROM tb_buyer_order_state bos
+				INNER JOIN tb_buyer_order bo ON bos.bo_idx = bo.bo_idx 
+				INNER JOIN tb_buyer_info bi ON bi.b_idx = bo.b_idx
+				INNER JOIN tb_item i ON bos.i_idx = i.i_idx
+				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
+				WHERE s.s_idx = #{s_idx}
+				order by bos.bo_idx desc
+				limit 7 offset #{startIdx}
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getOrderTotalCount" parameterType="searchVO" resultType="_int">
+		<choose>
+			<when test="orderNum != '' or orderNickname != '' or orderState != 0 or startDate != null or endDate != null">
+				SELECT count(*)
+				FROM tb_buyer_order_state bos
+				INNER JOIN tb_buyer_order bo ON bos.bo_idx = bo.bo_idx 
+				INNER JOIN tb_buyer_info bi ON bi.b_idx = bo.b_idx
+				INNER JOIN tb_item i ON bos.i_idx = i.i_idx
+				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
+				WHERE s.s_idx = #{s_idx}
+				<if test="orderNum != ''">
+					and bo_idx = #{orderNum}
+				</if>
+				<if test="orderNickname != ''">
+					and b_nickname like CONCAT('%', #{orderNickname}, '%')
+				</if>
+				<if test="orderState != 0">
+					<choose>
+						<when test="orderState == 1">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 2">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 3">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 4">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 5">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 6">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 7">
+							and i_state = #{orderState}
+						</when>
+						<when test="orderState == 8">
+							and i_state = #{orderState}
+						</when>
+					</choose>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and bo_orderdate >= #{startDate}
+					 ]]>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and bo_orderdate <= #{endDate}
+					 ]]>
+				</if>
+			</when>
+	
+			<otherwise>
+				SELECT count(*)
+				FROM tb_buyer_order_state bos
+				INNER JOIN tb_buyer_order bo ON bos.bo_idx = bo.bo_idx 
+				INNER JOIN tb_buyer_info bi ON bi.b_idx = bo.b_idx
+				INNER JOIN tb_item i ON bos.i_idx = i.i_idx
+				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
+				WHERE s.s_idx = #{s_idx}
 			</otherwise>
 		</choose>
 	</select>

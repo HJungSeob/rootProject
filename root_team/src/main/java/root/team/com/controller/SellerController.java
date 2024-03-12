@@ -24,7 +24,7 @@ import root.team.com.common.PageNav;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
-import root.team.com.vo.OrderVO;
+import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -274,7 +274,7 @@ public class SellerController {
 		List<ItemVO> itemList = sList.getItems(searchVO);
 		model.addAttribute("itemList", itemList);
 
-		pageNav.setTotalRows(sTotalCount.getTotalCount(searchVO));
+		pageNav.setTotalRows(sTotalCount.getItemTotalCount(searchVO));
 		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
 		model.addAttribute("pageNav", pageNav);
 
@@ -309,10 +309,10 @@ public class SellerController {
 			}
 		}
 		
-		List<ItemVO> itemList = sList.getItems(searchVO);
-		model.addAttribute("itemList", itemList);
+		List<OrderStateVO> orderList = sList.getOrders(searchVO);
+		model.addAttribute("orderList", orderList);
 
-		pageNav.setTotalRows(sTotalCount.getTotalCount(searchVO));
+		pageNav.setTotalRows(sTotalCount.getOrderTotalCount(searchVO));
 		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
 		model.addAttribute("pageNav", pageNav);
 		
