@@ -22,5 +22,6 @@ public class SellerListService implements SellerService {
 		vo.setStartIdx((vo.getPageNum() - 1) * 6);
 		
 		return dao.getItems(vo);
+		
 	}
 }
