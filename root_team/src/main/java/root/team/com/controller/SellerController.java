@@ -286,9 +286,6 @@ public class SellerController {
 			searchVO.setItemName("");
 		}
 
-		if (searchVO.getLargeCategory() == null) {
-			searchVO.setLargeCategory("");
-		}
 
 		if (sDate != null && eDate != null) { // 시작일자와 마침일자에 날짜값이 입력된 경우
 			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");

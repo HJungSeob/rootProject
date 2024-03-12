@@ -153,7 +153,7 @@
 	
 	<select id="getItems" parameterType="searchVO" resultType="itemVO">
 		<choose>
-			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != '' or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
+			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != 0 or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
 				select *
 				from vw_item 
 				where s_idx = #{s_idx}
@@ -165,9 +165,6 @@
 				</if>
 				<if test="itemState != 0">
 					<choose>
-						<!-- <when test='itemState == 0'>
-							and i_state between 1 and 3
-						</when> -->
 						<when test="itemState == 1">
 							and i_state = #{itemState}
 						</when>
@@ -179,12 +176,9 @@
 						</when>
 					</choose>
 				</if>
-				<if test="largeCategory != ''">
+				<if test="largeCategory != 0">
 					<choose>
-						<when test="largeCategory == '0'">
-							AND c_idx BETWEEN 1 AND 25
-						</when>
-						<when test="largeCategory == 'a'">
+						<when test='largeCategory == 1'>
 							<choose>
 								<when test="smallCategory == 0">
 									and c_idx BETWEEN 1 AND 5
@@ -194,7 +188,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'b'">
+						<when test='largeCategory == 2'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 6 AND 10
@@ -204,7 +198,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'c'">
+						<when test='largeCategory == 3'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 11 AND 15
@@ -214,7 +208,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'd'">
+						<when test='largeCategory == 4'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 16 AND 20
@@ -224,7 +218,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'e'">
+						<when test='largeCategory == 5'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 21 AND 25
@@ -264,7 +258,7 @@
 	
 	<select id="getTotalCount" parameterType="searchVO"	 resultType="_int">
 		<choose>
-			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != '' or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
+			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != 0 or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
 				select count(*)
 				from vw_item 
 				where s_idx = #{s_idx}
@@ -276,9 +270,6 @@
 				</if>
 				<if test="itemState != 0">
 					<choose>
-						<!-- <when test='itemState == 0'>
-							and i_state between 1 and 3
-						</when> -->
 						<when test="itemState == 1">
 							and i_state = #{itemState}
 						</when>
@@ -290,12 +281,9 @@
 						</when>
 					</choose>
 				</if>
-				<if test="largeCategory != ''">
+				<if test="largeCategory != 0">
 					<choose>
-						<when test="largeCategory == '0'">
-							AND c_idx BETWEEN 1 AND 25
-						</when>
-						<when test="largeCategory == 'a'">
+						<when test='largeCategory == 1'>
 							<choose>
 								<when test="smallCategory == 0">
 									and c_idx BETWEEN 1 AND 5
@@ -305,7 +293,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'b'">
+						<when test='largeCategory == 2'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 6 AND 10
@@ -315,7 +303,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'c'">
+						<when test='largeCategory == 3'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 11 AND 15
@@ -325,7 +313,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'd'">
+						<when test='largeCategory == 4'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 16 AND 20
@@ -335,7 +323,7 @@
 								</otherwise>
 							</choose>
 						</when>
-						<when test="largeCategory == 'e'">
+						<when test='largeCategory == 5'>
 							<choose>
 								<when test="smallCategory == 0">
 									AND c_idx BETWEEN 21 AND 25
