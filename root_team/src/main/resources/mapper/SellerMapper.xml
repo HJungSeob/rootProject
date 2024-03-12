@@ -145,9 +145,226 @@
 		WHERE s_email = #{s_email}
 	</select>
 	
-	<select id="getItems" parameterType="_int" resultType="itemVO">
+	<select id="getItem" parameterType="_int" resultType="itemVO">
 	SELECT *
 		from vw_item
 		where s_idx = #{s_idx}
+	</select>
+	
+	<select id="getItems" parameterType="searchVO" resultType="itemVO">
+		<choose>
+			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != '' or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
+				select *
+				from vw_item 
+				where s_idx = #{s_idx}
+				<if test="itemNum != ''">
+					and i_idx = #{itemNum}
+				</if>
+				<if test="itemName != ''">
+					and i_name like CONCAT('%', #{itemName}, '%')
+				</if>
+				<if test="itemState != 0">
+					<choose>
+						<!-- <when test='itemState == 0'>
+							and i_state between 1 and 3
+						</when> -->
+						<when test="itemState == 1">
+							and i_state = #{itemState}
+						</when>
+						<when test="itemState == 2">
+							and i_state = #{itemState}
+						</when>
+						<when test="itemState == 3">
+							and i_state = #{itemState}
+						</when>
+					</choose>
+				</if>
+				<if test="largeCategory != ''">
+					<choose>
+						<when test="largeCategory == '0'">
+							AND c_idx BETWEEN 1 AND 25
+						</when>
+						<when test="largeCategory == 'a'">
+							<choose>
+								<when test="smallCategory == 0">
+									and c_idx BETWEEN 1 AND 5
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'b'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 6 AND 10
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'c'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 11 AND 15
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'd'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 16 AND 20
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'e'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 21 AND 25
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+					</choose>
+				</if>
+				
+				<if test="startDate != null">
+					<![CDATA[
+						and i_modifydate >= #{startDate}
+					 ]]>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and i_modifydate <= #{endDate}
+					 ]]>
+				</if>
+				
+				order by i_idx desc
+				limit 6 offset #{startIdx}
+			</when>
+	
+			<otherwise> <!-- 검색 조건이 없는 경우 -->
+				select *
+				from vw_item 
+				where s_idx = #{s_idx}
+				order by i_idx desc
+				limit 6 offset #{startIdx}
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getTotalCount" parameterType="searchVO"	 resultType="_int">
+		<choose>
+			<when test="itemNum != '' or itemName != '' or itemState != 0 or largeCategory != '' or smallCategory != 0 or startDate != null or endDate != null"> <!-- 검색 조건이 있는 경우 -->
+				select count(*)
+				from vw_item 
+				where s_idx = #{s_idx}
+				<if test="itemNum != ''">
+					and i_idx = #{itemNum}
+				</if>
+				<if test="itemName != ''">
+					and i_name like CONCAT('%', #{itemName}, '%')
+				</if>
+				<if test="itemState != 0">
+					<choose>
+						<!-- <when test='itemState == 0'>
+							and i_state between 1 and 3
+						</when> -->
+						<when test="itemState == 1">
+							and i_state = #{itemState}
+						</when>
+						<when test="itemState == 2">
+							and i_state = #{itemState}
+						</when>
+						<when test="itemState == 3">
+							and i_state = #{itemState}
+						</when>
+					</choose>
+				</if>
+				<if test="largeCategory != ''">
+					<choose>
+						<when test="largeCategory == '0'">
+							AND c_idx BETWEEN 1 AND 25
+						</when>
+						<when test="largeCategory == 'a'">
+							<choose>
+								<when test="smallCategory == 0">
+									and c_idx BETWEEN 1 AND 5
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'b'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 6 AND 10
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'c'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 11 AND 15
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'd'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 16 AND 20
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+						<when test="largeCategory == 'e'">
+							<choose>
+								<when test="smallCategory == 0">
+									AND c_idx BETWEEN 21 AND 25
+								</when>
+								<otherwise>
+									and c_idx = #{smallCategory}
+								</otherwise>
+							</choose>
+						</when>
+					</choose>
+				</if>
+				
+				<if test="startDate != null">
+					<![CDATA[
+						and i_modifydate >= #{startDate}
+					 ]]>
+				</if>
+				<if test="startDate != null">
+					<![CDATA[
+						and i_modifydate <= #{endDate}
+					 ]]>
+				</if>
+			</when>
+	
+			<otherwise> <!-- 검색 조건이 없는 경우 -->
+				select count(*)
+				from vw_item 
+				where s_idx = #{s_idx}
+			</otherwise>
+		</choose>
 	</select>
 </mapper>

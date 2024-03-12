@@ -1,5 +1,8 @@
 package root.team.com.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,15 +15,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.Setter;
+import root.team.com.common.PageNav;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
 @Controller
@@ -28,10 +32,13 @@ import root.team.com.vo.SellerVO;
 public class SellerController {
 
 	@Setter(onMethod_ = { @Autowired })
-	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind, sJoinEmail, sGet;
+	SellerService sJoin, sLogin, sUpdate, sInfoUpdate, sCancel, sCheck, sFind, sJoinEmail, sList, sTotalCount, sPage;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
+
+	@Setter(onMethod_ = { @Autowired })
+	PageNav pageNav;
 
 	///////////////////////////////////////////////////////////////
 
@@ -117,20 +124,20 @@ public class SellerController {
 
 		return viewPage;
 	}
-	
+
 	@PostMapping("/sellerInfoUpdateProcess.do")
 	public String sellerInfoUpdateProcess(SellerVO sellerVO, HttpServletRequest request) {
 		String viewPage = "seller/user/sellerUpdate";
 		String saveDirectory = request.getServletContext().getRealPath("resources/uploads/");
-		
+
 		try {
 			sellerVO.setS_profile(gFileNameUpdate.fileNameUpdate(sellerVO.getS_tempprofile(), saveDirectory));
-		
+
 		} catch (NullPointerException e) {
 		}
-		
+
 		SellerVO newVO = sInfoUpdate.update(sellerVO);
-		
+
 		if (newVO != null) {
 			newVO.setS_lastlogindate(gDateUpdate.dateUpdate(newVO.getS_lastlogindate()));
 			newVO.setS_pwmodifydate(gDateUpdate.dateUpdate(newVO.getS_pwmodifydate()));
@@ -143,7 +150,7 @@ public class SellerController {
 
 			viewPage = "redirect:/seller/sellerUpdate.do";
 		}
-		
+
 		return viewPage;
 	}
 
@@ -162,19 +169,19 @@ public class SellerController {
 
 		return viewPage;
 	}
-	
+
 	@PostMapping("/telCheckProcess.do")
 	@ResponseBody
 	public int telCheckProcess(@RequestParam("s_tel") String s_tel) {
 		return sCheck.telCheck(s_tel);
 	}
-	
+
 	@PostMapping("/businessnumCheckProcess.do")
 	@ResponseBody
 	public int businessnumCheckProcess(@RequestParam("s_businessnum") String s_businessnum) {
 		return sCheck.businessnumCheck(s_businessnum);
 	}
-	
+
 	@PostMapping("/emailCheckProcess.do")
 	@ResponseBody
 	public int emailCheckProcess(@RequestParam("s_email") String s_email) {
@@ -185,19 +192,19 @@ public class SellerController {
 	public String findPw() {
 		return "seller/user/sellerFindPw";
 	}
-	
+
 	@PostMapping("/findPwProcess.do")
 	@ResponseBody
-	public void findPwProcess(@ModelAttribute SellerVO sellerVO, HttpServletResponse response) throws Exception{
+	public void findPwProcess(@ModelAttribute SellerVO sellerVO, HttpServletResponse response) throws Exception {
 		sFind.findPw(response, sellerVO);
 	}
-	
+
 	@PostMapping("/passwordCheckProcess.do")
 	@ResponseBody
 	public int passwordCheckProcess(int s_idx, String s_pw) {
 		return sCheck.passwordCheck(s_idx, s_pw);
 	}
-	
+
 	@PostMapping("/joinEmailProcess.do")
 	@ResponseBody
 	public String joinEmailProcess(String s_email) {
@@ -208,23 +215,22 @@ public class SellerController {
 	public String sellerVerifyEmail() {
 		return "seller/user/sellerVerifyEmail";
 	}
-	
+
 	@PostMapping("/sellerVerifyEmailProcess.do")
 	@ResponseBody
 	public int sellerVerifyEmailProcess(String s_email) {
-		return sUpdate.verifyEmail(s_email); 
+		return sUpdate.verifyEmail(s_email);
 	}
-	
+
 	@PostMapping("/getItemsProcess.do")
 	@ResponseBody
 	public List<ItemVO> getItemsProcess(Model model, int s_idx) {
-		List<ItemVO> newVO = sGet.getItems(s_idx);
-		System.out.println(s_idx);
+		List<ItemVO> newVO = sList.getItem(s_idx);
 		model.addAttribute("item", newVO);
-		
+
 		return newVO;
 	}
-	
+
 	///////////////////////////////////////////////////////////////
 
 	@GetMapping("/dashBoard.do")
@@ -263,7 +269,48 @@ public class SellerController {
 	}
 
 	@GetMapping("/viewEdit.do")
-	public String viewEdit() {
+	public String viewEdit(@ModelAttribute("sVO") SearchVO searchVO, String sDate, String eDate, Model model) {
+		if (searchVO.getPageNum() == 0) {
+			searchVO.setPageNum(1);
+		}
+
+		// 상품 조회/수정을 처음 선택한 경우 사용자단에서 넘어오는 값이 없기 때문에
+		// SearchVO 객체에서 Mapper의 조건으로 사용되는 필드 중 String형인 필드의 값을
+		// 빈 문자열로 세팅해줌
+
+		if (searchVO.getItemNum() == null) {
+			searchVO.setItemNum("");
+		}
+
+		if (searchVO.getItemName() == null) {
+			searchVO.setItemName("");
+		}
+
+		if (searchVO.getLargeCategory() == null) {
+			searchVO.setLargeCategory("");
+		}
+
+		if (sDate != null && eDate != null) { // 시작일자와 마침일자에 날짜값이 입력된 경우
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				// 문자열로 넘어온 날짜값을 Date객체로 변환해서 searchVo에 세팅함
+				Date startDate = dtFormat.parse(sDate);
+				Date endDate = dtFormat.parse(eDate);
+
+				searchVO.setStartDate(startDate);
+				searchVO.setEndDate(endDate);
+
+			} catch (ParseException e) {
+			}
+		}
+
+		List<ItemVO> itemList = sList.getItems(searchVO);
+		model.addAttribute("itemList", itemList);
+
+		pageNav.setTotalRows(sTotalCount.getTotalCount(searchVO));
+		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+		model.addAttribute("pageNav", pageNav);
+
 		return "seller/service/viewEdit";
 	}
 

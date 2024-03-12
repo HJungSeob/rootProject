@@ -9,10 +9,14 @@
 	<typeAliases>
 
 		<typeAlias alias="sellerVO" type="root.team.com.vo.SellerVO"/>	
-		<typeAlias alias="buyerVO" type="root.team.com.vo.BuyerVO"/>		
+		<typeAlias alias="buyerVO" type="root.team.com.vo.BuyerVO"/>
+		<typeAlias alias="cartVO" type="root.team.com.vo.CartVO"/>		
 		<typeAlias alias="addressVO" type="root.team.com.vo.AddressVO"/>
 		<typeAlias alias="itemVO" type="root.team.com.vo.ItemVO"/>
-		<typeAlias alias="searchVO" type="root.team.com.vo.SearchVO"/>
+		<typeAlias alias="searchVO" type="root.team.com.vo.SearchVO"/>		
+		<typeAlias alias="orderVO" type="root.team.com.vo.OrderVO"/>
+		<typeAlias alias="orderStateVO" type="root.team.com.vo.OrderStateVO"/>
+		<typeAlias alias="reviewVO" type="root.team.com.vo.ReviewVO"/>
 
 	</typeAliases>
 

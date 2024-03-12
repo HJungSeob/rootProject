@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
 @Repository
@@ -104,8 +105,15 @@ public class SellerDAO {
 		return sqlSession.selectOne(MAPPER + ".getS_idx", s_email);
 	}
 	
-	public List<ItemVO> getItems(int s_idx){
-		System.out.println(sqlSession.selectList(MAPPER + ".getItems", s_idx));
-		return sqlSession.selectList(MAPPER + ".getItems", s_idx);
+	public List<ItemVO> getItem(int s_idx){
+		return sqlSession.selectList(MAPPER + ".getItem", s_idx);
+	}
+	
+	public List<ItemVO> getItems(SearchVO vo) {
+		return sqlSession.selectList(MAPPER + ".getItems", vo);
+	}
+	
+	public int getTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getTotalCount", vo);
 	}
 }
