@@ -375,28 +375,28 @@
 				<if test="orderState != 0">
 					<choose>
 						<when test="orderState == 1">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 2">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 3">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 4">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 5">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 6">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 7">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 8">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 					</choose>
 				</if>
@@ -412,7 +412,7 @@
 				</if>
 				
 				order by bos.bo_idx desc
-				limit 7 offset #{startIdx}
+				limit 6 offset #{startIdx}
 			</when>
 	
 			<otherwise>
@@ -424,7 +424,7 @@
 				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
 				WHERE s.s_idx = #{s_idx}
 				order by bos.bo_idx desc
-				limit 7 offset #{startIdx}
+				limit 6 offset #{startIdx}
 			</otherwise>
 		</choose>
 	</select>
@@ -448,28 +448,28 @@
 				<if test="orderState != 0">
 					<choose>
 						<when test="orderState == 1">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 2">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 3">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 4">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 5">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 6">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 7">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 						<when test="orderState == 8">
-							and i_state = #{orderState}
+							and bos_state = #{orderState}
 						</when>
 					</choose>
 				</if>
