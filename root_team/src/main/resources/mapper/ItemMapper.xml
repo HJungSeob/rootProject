@@ -46,9 +46,11 @@
 		SELECT 
 		    *		    
 		FROM 
-		   tb_buyer_review br, tb_buyer_info bi
-		WHERE br.b_idx = bi.b_idx
-		AND i_idx = #{i_idx}		
+		   tb_buyer_review br, tb_buyer_info bi, tb_buyer_order_state bos, tb_buyer_order bo
+		WHERE br.bo_idx = bos.bo_idx
+		AND bos.bo_idx = bo.bo_idx
+		AND bi.b_idx = bo.b_idx
+		AND i_idx = #{i_idx}
 	</select>
 
 	<select id="getItems" parameterType="searchVO" resultType="itemVO">

@@ -294,13 +294,6 @@
             display: block;
             font-size: 32px;
             font-weight: bold;
-            overflow: hidden;
-		    text-overflow: ellipsis;
-		    -webkit-line-clamp: 2;
-		    -webkit-box-orient: vertical;
-		    word-wrap: break-word;
-		    white-space: normal;
-		    display: -webkit-box;
         }
 
         .m_l_view_itemsimpleinfo {
@@ -713,7 +706,15 @@
         	font-size: 20px;
         	border: 0;        
         }
-
+		
+		.m_l_view_notFoundBuyer {
+			display: block;
+        	line-height: 100px;
+        	font-size: 20px;
+        	font-weight: bold;
+        	text-align: center;
+		}
+		
         .m_l_view_starorder {
             position: relative;
             display: inline-block;
@@ -750,6 +751,14 @@
 			padding: 20px 0;
 			border-top: 1px solid lightgray; 
 		}
+		
+		.m_l_view_notFoundReview{
+			display: block;
+        	line-height: 300px;
+        	font-size: 20px;
+        	font-weight: bold;
+        	text-align: center;
+		}	
 
         .m_l_view_reviewImg{
         	display: inline-block;      	
@@ -794,15 +803,21 @@
         .m_l_view_itemQandA {
             height: 1200px;
             border-left: 1px solid lightgray;
-            border-right: 1px solid lightgray;
-            background-color: rgb(67, 142, 255);
+            border-right: 1px solid lightgray;          
         }
 
         .m_l_view_itemsellerinfo {
             height: 1200px;
             border: 1px solid lightgray;
             border-top: 0 solid lightgray;
-            background-color: rgb(255, 176, 103);
+        }
+        
+        .m_l_view_review textarea{
+        	box-sizing: border-box;
+        	height: 200px;
+        	padding: 20px;
+        	font-size: 20px;
+        	margin-top: 20px;
         }
 
         /* ---------------------------------------------- */
@@ -983,6 +998,32 @@
                     </div>
                     <h2>전체리뷰</h2>
                     <div class="m_l_view_detailreview">
+                    	<ul>
+                    		<c:choose>
+	                        	<c:when test="${empty buyer}">
+		                        	<li class="m_l_view_review">
+		                        		<div>
+		                        			<span class="m_l_view_notFoundBuyer">로그인 후에 작성할 수 있습니다.</span>
+		                        		</div>
+		                        	</li>	
+	                        	</c:when>
+	                    		<c:otherwise>
+	                    			<li class="m_l_view_review">
+		                            	<div>
+											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
+											<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>
+											<select>
+												<option class>asd</option>
+											</select>										
+										</div>
+		                            	<textarea rows="" cols="" placeholder="구매하신 상품에 대해 리뷰를 남겨보세요."></textarea>
+		                            	<div>
+		                            		<button type="button">등록</button> 
+		                            	</div>                           	                         
+		                            </li> 
+	                    		</c:otherwise>
+		                </c:choose>
+                    	</ul>                 	
                         <ul class="m_l_view_review_search">
                             <li>
                                 <label for="starall">
@@ -1034,58 +1075,44 @@
                                 <input type="text" class="m_l_view_searchReview" placeholder="옵션 검색">
                             </li>
                         </ul>
-                        <ul class="m_l_view_reviews">
-                        	<c:forEach var="review" items="${reviewList}" >
-	                            <c:if test="${not empty review}">
-		                            <li class="m_l_view_review">
-										<div>
-											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${review.b_profile}">
-											<span class="m_l_view_reviewNickname">${review.b_nickname}</span>
-											<span class="m_l_view_reviewModifydate">${review.br_modifydate}</span>
-										</div>
-										<div>
-											<span class="m_l_view_reviewOption">선택 옵션</span>											
-										</div>
-										<div class="m_l_view_star_box">
-							                <span class="m_l_view_star empty"></span>
-							                <span class="m_l_view_star full" style='width: ${(review.br_star / 5) * 100}%'></span>
-							            </div>
-										<div>
-											<span class="m_l_view_reviewContent">${review.br_content}</span>
-										</div>
-		                            </li>
-                            	</c:if>
-                            </c:forEach>
-	                        <!-- <c:choose>
+                        <ul class="m_l_view_reviews">                                                             	
+	                        <c:choose>
 	                        	<c:when test="${empty review}">
-		                            <li>
+		                            <li class="m_l_view_review">		                          	
 		                                <div>
-		                                	<span>등록된 리뷰가 없습니다.</span>	                                
+		                                	<span class="m_l_view_notFoundReview">등록된 리뷰가 없습니다.</span>	                                
 		                                </div>
 		                            <li>
 		                        </c:when>
 		                        <c:otherwise>
 	                            	<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">
 			                            <c:if test="${not empty reviewList[vs.count-1]}">
-				                            <li>
+				                            <li class="m_l_view_review">
 												<div>
-													<img alt="" src="${pageContext.request.contextPath}/resources/uploads/${reviewList[vs.count-1].b_profile}">
-													<span></span>
-													<span></span>
+													<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${reviewList[vs.count-1].b_profile}">
+													<span class="m_l_view_reviewNickname">${reviewList[vs.count-1].b_nickname}</span>
+													<span class="m_l_view_reviewModifydate">${reviewList[vs.count-1].br_modifydate}</span>
 												</div>
 												<div>
-													<span></span>
-													<span></span>
+													<span class="m_l_view_reviewOption">선택 옵션</span>											
 												</div>
-												<div></div>
+												<div class="m_l_view_star_box">
+									                <span class="m_l_view_star empty"></span>
+									                <span class="m_l_view_star full" style='width: ${(reviewList[vs.count-1].br_star / 5) * 100}%'></span>
+									            </div>
 												<div>
-													<span></span>
+													<span class="m_l_view_reviewContent">${reviewList[vs.count-1].br_content}</span>
 												</div>
 				                            </li>
 		                            	</c:if>
 		                            </c:forEach>
 		                        </c:otherwise>
-		                    </c:choose> -->
+		                    </c:choose>
+		                    <c:if test="${not empty reviewList}">
+		                        <div id="td_paging">
+		                            <%@ include file="../../common/paging.jsp" %>
+		                        </div>
+		                    </c:if>
                         </ul>
                     </div>
                 </div>

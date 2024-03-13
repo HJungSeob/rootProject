@@ -8,12 +8,12 @@ import lombok.AllArgsConstructor;
 import root.team.com.dao.ItemDAO;
 import root.team.com.vo.ReviewVO;
 
-@Service("iReview")
+@Service("iReviewList")
 @AllArgsConstructor
-public class ItemReviewService implements ItemService {
+public class ItemReviewListService implements ItemService {
 	private ItemDAO dao;
 
-	public List<ReviewVO> review(int i_idx) {		
-		return dao.getReview(i_idx);
+	public List<ReviewVO> reviewList(int i_idx) {		
+		return dao.getReviews(i_idx);
 	}
 }

@@ -25,7 +25,7 @@ import root.team.com.vo.SearchVO;
 public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
-	ItemService iInsert, iView, iList, iTotalCount, iReview;
+	ItemService iInsert, iView, iList, iTotalCount, iReviewList, iReviewInsert, iReviewTotalCount;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gFileNameUpdate, gDateUpdate, gPage;
@@ -87,10 +87,10 @@ public class ItemController {
 	}
 
 	@GetMapping("/view.do")
-	public String view(int i_idx, Model model) {
+	public String view(@ModelAttribute("sVO") SearchVO searchVO, Model model) {
 
-		ItemVO item = iView.view(i_idx);
-		List<ReviewVO> reviewList = iReview.review(i_idx);
+		ItemVO item = iView.view(searchVO.getI_idx());
+		List<ReviewVO> reviewList = iReviewList.reviewList(searchVO.getI_idx());
 		int point5 = 0;
 		int point4 = 0;
 		int point3 = 0;
@@ -123,6 +123,7 @@ public class ItemController {
 		model.addAttribute("imgArr", imgArr);
 		model.addAttribute("optionArr", optionArr);
 		model.addAttribute("item", item);
+				
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("starArr", starArr);
 
