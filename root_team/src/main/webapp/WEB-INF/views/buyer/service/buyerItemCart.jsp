@@ -129,7 +129,7 @@
                                                     href="${pageContext.request.contextPath}/item/view.do?i_idx=${cart.i_idx}">
                                                     ${cart.i_name}
                                                 </a><br>
-                                                <span>${cart.i_option}</span>
+                                                <span class="m_buyerItemCart_itemsOption">옵션: ${cart.i_option}</span>
                                             </div>                                         
                                         </div>
                                         <div class="m_buyerItemCart_itemsCountTitle">수량:</div>
@@ -175,7 +175,7 @@
                     <div class="m_buyerItemCart_InterestMainTitle">관심 제품</div>
                     <div class="m_buyerItemCart_InterestItemList">
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -185,7 +185,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -195,7 +195,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -205,7 +205,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -215,7 +215,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -235,7 +235,7 @@
                     <div class="m_buyerItemCart_InterestMainTitle">추천 제품</div>
                     <div class="m_buyerItemCart_InterestItemList">
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -245,7 +245,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>
@@ -255,7 +255,7 @@
                         </div>
 
                         <div class="m_buyerItemCart_InterestItemRegion">
-                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt=""
+                            <img src="../resources/css/img/2401031346360601151_377.jpg" alt="이미지 없음"
                                 class="m_buyerItemCart_InterestItemImg">
                             <div class="m_buyerItemCart_InterestItemSize">
                                 <div class="m_buyerItemCart_InterestItemTitle">상품 이름</div>

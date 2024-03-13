@@ -219,12 +219,18 @@ section {
 }
 
 .gallery_li a h2 {
-    display: block;
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 20px;
     transition: padding 0.2s;
     z-index: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+    display: -webkit-box;
 }
 
 .gallery_li a span {
