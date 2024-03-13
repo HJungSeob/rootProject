@@ -19,7 +19,6 @@
 	<script src="../resources/js/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/service/service.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/seller/service/serviceSection.js"></script>
-
 </head>
 
 <body>
@@ -126,7 +125,7 @@
 								
 							<c:choose>
 								<c:when test="${empty itemList}">
-									<tr><td colspan="7">등록된 게시물이 없습니다</td></tr>
+									<tr><td colspan="7">등록된 상품이 없습니다.</td></tr>
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs" >
@@ -139,7 +138,7 @@
 				                                	<a href=""><span>${itemList[vs.count-1].i_name}</span></a>
 				                                </td>
 				                                <c:set var="itemNumber" value="${itemList[vs.count-1].i_idx}" />
-				                                <td><span>R<fmt:formatNumber type="custom" pattern="00000000" value="${itemNumber}" /></span></td>
+				                                <td><span>P<fmt:formatNumber type="custom" pattern="00000000" value="${itemNumber}" /></span></td>
 				                                <c:set var="itemState" value="${itemList[vs.count-1].i_state}" />
 												<td><span>
 												    <c:choose>
@@ -169,6 +168,9 @@
         </section>
     </div>
 
+	<footer>
+		<%@include file="../../buyer/common/global_footer.jsp"%>
+	</footer>
 </body>
 
 </html>

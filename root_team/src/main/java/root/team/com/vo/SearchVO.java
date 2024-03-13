@@ -7,6 +7,9 @@ import lombok.Data;
 //list.jsp에서 검색관련 데이터를 저장할 수 있는 DTO
 @Data
 public class SearchVO {
+	private String orderNum;
+	private String orderNickname;
+	private int orderState;
 	private String itemNum;
 	private String itemName;
 	private int itemState;

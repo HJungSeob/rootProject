@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import root.team.com.common.PageNav;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -69,11 +70,19 @@ public interface SellerService {
 		return null;
 	}
 	
-	default int getTotalCount(SearchVO vo){
+	default int getItemTotalCount(SearchVO vo){
 		return 0;
 	}
 	
 	default PageNav setPageNav(PageNav pageNav, int pageNum, int pageBlock) {
 		return null;
+	}
+	
+	default List<OrderStateVO> getOrders(SearchVO vo) {
+		return null;
+	}
+	
+	default int getOrderTotalCount(SearchVO vo){
+		return 0;
 	}
 }
