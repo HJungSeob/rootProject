@@ -294,6 +294,13 @@
             display: block;
             font-size: 32px;
             font-weight: bold;
+            overflow: hidden;
+		    text-overflow: ellipsis;
+		    -webkit-line-clamp: 2;
+		    -webkit-box-orient: vertical;
+		    word-wrap: break-word;
+		    white-space: normal;
+		    display: -webkit-box;
         }
 
         .m_l_view_itemsimpleinfo {
