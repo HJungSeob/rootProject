@@ -246,7 +246,7 @@
                 $(".m_l_view_checkedoption").text("");
                 $(".m_l_view_firstoption").addClass("hide");
             });
-
+ 
             $('.m_l_view_itemimg_btn button:first').trigger('click');
 
             $(".m_l_view_btn_itemexplain").click(function () {
