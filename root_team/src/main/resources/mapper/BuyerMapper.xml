@@ -16,7 +16,7 @@
 
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_buyer_info (b_idx, b_profile, b_nickname)
-			VALUES (#{b_idx}, '기본프로필.png', CONCAT('rootuser', #{b_idx}))
+			VALUES (#{b_idx}, '기본!@프로필.jpg', CONCAT('rootuser', #{b_idx}))
 	</insert>
 
 	<insert id="state" parameterType="_int">
@@ -137,6 +137,12 @@
 		b.b_modifydate = NOW()
 		WHERE b.b_idx = #{b_idx};
 	</update>
+	
+	<select id="nicknameCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_buyer_info
+		where b_nickname = #{b_nickname}
+	</select>
 
 	<select id="emailCheck" parameterType="string" resultType="_int">
 		select count(*)

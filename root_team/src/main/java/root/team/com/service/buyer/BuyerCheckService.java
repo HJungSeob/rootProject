@@ -14,6 +14,19 @@ public class BuyerCheckService implements BuyerService {
 	private BuyerDAO dao;
 	private BCryptPasswordEncoder cryptPasswordEncoder;
 
+	public int nicknameCheck(String b_nickname) {
+		int result = 0;
+
+		try {
+			result = dao.nicknameCheck(b_nickname);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
 	public int emailCheck(String b_email) {
 		int result = 0;
 		
