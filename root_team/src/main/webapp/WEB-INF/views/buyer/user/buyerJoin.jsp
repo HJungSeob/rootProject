@@ -204,7 +204,7 @@
 							<div class="_inputRegionBir" id="yyyyregion">
 							<label>
 								<input placeholder=" " type="text" name="b_birth"
-									class="" id="yyyyinput" maxlength="8">
+									class="" id="yyyyinput" maxlength="8" autocomplete='off'>
 									<span class="" id="yyyytext">생년월일</span>
 									<div id="result" class="m_userLogin_birthdayResult">yyyy년
 										mm월 dd일</div>
