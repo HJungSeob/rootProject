@@ -1,5 +1,9 @@
 package root.team.com.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -36,6 +40,16 @@ public class OrderDAO {
 
 	public int removeItemCount(OrderStateVO orderStateVO) {	
 		return sqlSession.update(MAPPER + ".removeItemCount", orderStateVO);	
+	}
+
+
+	public List<OrderStateVO> findOrder(int b_idx, int i_idx) {
+		
+		Map<String, Integer> params = new HashMap<>();
+	    params.put("b_idx", b_idx);
+	    params.put("i_idx", i_idx);
+			
+		return sqlSession.selectList(MAPPER + ".findOrder", params);
 	}
  
 

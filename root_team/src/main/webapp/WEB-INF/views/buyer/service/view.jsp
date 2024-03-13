@@ -109,6 +109,30 @@
                     }
                 });
             });
+            
+            if ($("#b_idx").val() != "") {
+                var b_idx = $("#b_idx").val();
+    		
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/order/findOrder.do",
+                    data: {
+                        b_idx: b_idx,
+                        i_idx: i_idx
+                    },
+                    success: function (data) {
+                    	for(let i = 0; i< data.length; i++){
+                    		$('.m_l_view_buyerOrder').append($('<option>', {
+                    	        value: data[i].bos_option,
+                    	        text: data[i].bos_option
+                    	    }));
+                    	}
+                    },
+                    error: function (xhr, status, error) {                   
+                    }
+                });
+                         
+            }
         });
 
 
@@ -212,6 +236,9 @@
                 }
             });
         }).scroll();
+        
+        
+        
     </script>
 
     <style>
@@ -710,9 +737,13 @@
 		.m_l_view_notFoundBuyer {
 			display: block;
         	line-height: 100px;
-        	font-size: 20px;
-        	font-weight: bold;
+        	font-size: 16px;
         	text-align: center;
+		}
+		
+		.m_l_view_notFoundBuyer a{
+			color:#0071E3;
+			text-decoration: underline;
 		}
 		
         .m_l_view_starorder {
@@ -818,6 +849,27 @@
         	padding: 20px;
         	font-size: 20px;
         	margin-top: 20px;
+        }
+        
+        .m_l_view_reviewBtn{
+        	position: relative;
+        	bottom: 60px;
+        	right: 10px;
+        	height: 50px;
+        	width: 100px;
+        	border: 0;
+        	background-color: dimgray;
+        	font-weight: bold;
+        	color: white;
+        	float: right;
+        }
+        
+        .m_l_view_buyerOrder{
+        	display:inline-block;
+        	height: 30px;    	
+        	vertical-align: top;
+        	max-width: 500px;
+        	margin: 10px 0 0 20px;
         }
 
         /* ---------------------------------------------- */
@@ -1003,7 +1055,7 @@
 	                        	<c:when test="${empty buyer}">
 		                        	<li class="m_l_view_review">
 		                        		<div>
-		                        			<span class="m_l_view_notFoundBuyer">로그인 후에 작성할 수 있습니다.</span>
+		                        			<span class="m_l_view_notFoundBuyer"><a href="${pageContext.request.contextPath}/buyer/buyerLogin.do">로그인</a> 후에 작성할 수 있습니다.</span>
 		                        		</div>
 		                        	</li>	
 	                        	</c:when>
@@ -1012,17 +1064,17 @@
 		                            	<div>
 											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
 											<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>
-											<select>
-												<option class>asd</option>
-											</select>										
+											<span>구매한 옵션</span>
+											<select class ="m_l_view_buyerOrder">
+											</select>									
 										</div>
 		                            	<textarea rows="" cols="" placeholder="구매하신 상품에 대해 리뷰를 남겨보세요."></textarea>
 		                            	<div>
-		                            		<button type="button">등록</button> 
-		                            	</div>                           	                         
+		                            		<button type="button" class="m_l_view_reviewBtn">등록</button> 
+		                            	</div>                      	                         
 		                            </li> 
 	                    		</c:otherwise>
-		                </c:choose>
+		                	</c:choose>
                     	</ul>                 	
                         <ul class="m_l_view_review_search">
                             <li>
