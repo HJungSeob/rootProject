@@ -14,6 +14,19 @@ public class SellerCheckService implements SellerService {
 	private SellerDAO dao;
 	private BCryptPasswordEncoder cryptPasswordEncoder;
 
+	public int storenameCheck(String s_storename) {
+		int result = 0;
+
+		try {
+			result = dao.storenameCheck(s_storename);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
 	public int telCheck(String s_tel) {
 		int result = 0;
 

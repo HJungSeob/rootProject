@@ -87,6 +87,12 @@
 		WHERE s.s_idx = #{s_idx};
 	</update>
 	
+	<select id="storenameCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller_info
+		where s_storename = #{s_storename}
+	</select>
+	
 	<select id="telCheck" parameterType="string" resultType="_int">
 		select count(*)
 		from tb_seller

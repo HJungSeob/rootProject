@@ -32,6 +32,10 @@ public interface SellerService {
 		return 0;
 	}
 	
+	default int storenameCheck(String s_storename) {
+		return 0;
+	}
+	
 	default int telCheck(String s_tel) {
 		return 0;
 	}
