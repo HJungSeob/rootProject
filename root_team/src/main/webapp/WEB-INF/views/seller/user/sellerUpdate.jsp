@@ -29,6 +29,7 @@
 	<script src="${pageContext.request.contextPath}/resources/js/seller/service/serviceSection.js"></script>
 
 	<script>
+	let telCheckValid = false;
 		$(function () {
 
 					function isImageFile(file) {
@@ -65,7 +66,7 @@
 		});
 		
 		$(function(){
-			$("#telInput").focusout(function() {
+			$("#telInput").keyup(function() {
 				var telInput = $('#telInput').val();
 				
 				$.ajax({
@@ -76,8 +77,11 @@
 						if (data == 1) {
 							$("#telSmg").text("사용중인 전화번호입니다.");
 							$("#nextPage").attr("disabled", true);
+							$('#telInput').css("border", "1px solid #F74848")
+							telCheckValid = false;
 						} else {
 							$("#nextPage").attr("disabled", false);
+							telCheckValid = true;
 						}
 					},
 					error: function() {
@@ -88,7 +92,7 @@
 		});
 		
 		$(function(){
-		    $("#existingPwInput").change(function() {
+		    $("#existingPwInput").keyup(function() {
 		    	var s_idx = $('#hiddenS_idx').val();
 		        var existingPwInput = $('#existingPwInput').val();
 
@@ -101,12 +105,19 @@
 		            success: function(data) {    
 		                if (data == 1) {
 		                    $("#existingPwMsg").text("");
+		                    $('#existingPwInput').css('border',"")
 		                    // 기존 비밀번호가 일치할 경우 새로운 비밀번호 입력란 활성화
 		                    $('#newPwInput').prop('disabled', false);
 		                    $('#ckeckPwInput').prop('disabled', false);
 		                    $('#upPwSubmit').prop('disabled', false);
 		                } else {
-		                    $("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
+	                		if ($("#existingPwInput").val() === "") {
+	                			$('#existingPwInput').css("border", "1px solid #F74848")
+	                	        $('#existingPwMsg').text("입력 되어 있지 않습니다.")
+	                		}else{
+	                			$("#existingPwMsg").text("기존 비밀번호가 일치하지 않습니다.");
+			                    $('#existingPwInput').css("border", "1px solid #F74848")	
+	                		}
 		                    // 기존 비밀번호가 일치하지 않을 경우 새로운 비밀번호 입력란 비활성화
 		                    $('#newPwInput').prop('disabled', true);
 		                    $('#ckeckPwInput').prop('disabled', true);
@@ -121,7 +132,7 @@
 		});
 		
 		$(function(){
-			$("#sellerTitleInput").focusout(function() {
+			$("#sellerTitleInput").keyup(function() {
 				var s_idx = $('#hiddenS_idx').val();
 				var sellerTitleInput = $('#sellerTitleInput').val();
 				
@@ -132,11 +143,17 @@
 						s_storename: sellerTitleInput,
 						s_idx: s_idx
 						},
-					success: function(data) {	
-						if (data == 1) {
+					success: function(data) {
+				        if($('#sellerTitleInput').val() === ""){
+				        	$("#upSellerSubmit").attr("disabled", true);
+				            $('#sellerTitleInput').css("border", "1px solid #F74848")
+				            $('#sellerTitleMsg').text("이름이 있어야 합니다.")
+				        }else if (data == 1) {
 							$("#sellerTitleMsg").text("사용중인 매장이름입니다.");
 							$("#upSellerSubmit").attr("disabled", true);
+							$('#sellerTitleInput').css("border", "1px solid #F74848")
 						} else {
+							$('#sellerTitleInput').css("border", "1px solid #848484")
 							$("#sellerTitleMsg").text("");
 							$("#upSellerSubmit").attr("disabled", false);
 						}
