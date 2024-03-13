@@ -14,9 +14,9 @@ $(function(){
     $('#sellerTitleInput').blur(function(){
         if(this.value.length !== 0){
             sellerTitleValid = true
-            $('#sellerTitleMsg').text("")
         }else{
             sellerTitleValid = false
+            $('#sellerTitleInput').css("border", "1px solid #F74848")
             $('#sellerTitleMsg').text("이름이 있어야 합니다.")
         }
         try {
@@ -104,4 +104,12 @@ $('#returnBtn1').click(function(){
         $('#cancelOrNotRegion').css("box-shadow", "none")
         $('#cancelOrNotRegion').css("border", "none")
     })
+    
+    $('#existingPwInput').keyup(function () {
+	if (this.value.length === 0) {
+		$('#existingPwInput').css("border", "1px solid #F74848")
+        $('#existingPwMsg').text("입력 되어 있지 않습니다.")
+        duplicatePw = false
+	}
+	});
 });

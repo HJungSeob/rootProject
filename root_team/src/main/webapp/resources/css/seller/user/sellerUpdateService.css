@@ -239,4 +239,7 @@
 	margin-bottom: 20px;
 	font-size: 13px;
 	cursor: pointer;
+	width: 100px;
+	height: 20px;
+	margin: 20px auto;
 }
