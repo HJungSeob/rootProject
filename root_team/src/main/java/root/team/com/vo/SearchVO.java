@@ -23,6 +23,7 @@ public class SearchVO {
 	private String searchField;
 	private String orderByType;
 	
+	private int i_idx;
 	private int p_idx;
 	private int c_idx;
 	

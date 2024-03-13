@@ -28,8 +28,12 @@ public interface ItemService {
 		return 0;
 	}
 	
-	default List<ReviewVO> review(int i_idx) {		
+	default List<ReviewVO> reviewList(int i_idx) {		
 		return null;
+	}
+	
+	default int getReviewTotalCount(SearchVO vo) {
+		return 0;
 	}
 
 }

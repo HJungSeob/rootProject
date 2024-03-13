@@ -206,7 +206,7 @@
             flex-wrap: wrap;
         }
         
-        .m_list_notItem{
+        .m_list_notFoundItem{
         	display: block;
         	line-height: 300px;
         	font-size: 20px;
@@ -457,7 +457,7 @@
                 <div class="m_list_items">
                     <c:choose>
                         <c:when test="${empty itemList}">
-                                <div class="m_list_notItem">등록된 게시물이 없습니다.</div>
+                                <div class="m_list_notFoundItem">등록된 게시물이 없습니다.</div>
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">

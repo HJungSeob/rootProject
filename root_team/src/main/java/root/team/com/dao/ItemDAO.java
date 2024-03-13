@@ -44,8 +44,12 @@ public class ItemDAO {
 		return sqlSession.selectOne(MAPPER + ".getTotalCount", vo);
 	}
 
-	public List<ReviewVO> getReview(int i_idx) {
+	public List<ReviewVO> getReviews(int i_idx) {
 		return sqlSession.selectList(MAPPER + ".getReviews", i_idx);
+	}
+
+	public int getReviewTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getReviewTotalCount", vo);
 	}
 	
 }
