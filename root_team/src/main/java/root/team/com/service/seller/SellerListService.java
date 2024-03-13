@@ -25,6 +25,10 @@ public class SellerListService implements SellerService {
 		return dao.getItems(vo);
 	}
 	
+	public List<OrderStateVO> getOrder(int s_idx) {
+		return dao.getOrder(s_idx);
+	}
+	
 	public List<OrderStateVO> getOrders(SearchVO vo) {
 		vo.setStartIdx((vo.getPageNum() - 1) * 6);
 		

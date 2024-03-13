@@ -21,12 +21,12 @@
     <script src="${pageContext.request.contextPath}/resources/js/seller/service/mainSection.js"></script>
 
 	<script>
-		function getItems() {
+		function getItem() {
 			var s_idx = ${seller.s_idx};
 			
 			$.ajax({
 				type: 'post',
-				url: '${pageContext.request.contextPath}/seller/getItemsProcess.do',
+				url: '${pageContext.request.contextPath}/seller/getItemProcess.do',
 				data: {
 					s_idx: s_idx
 				},
@@ -36,11 +36,11 @@
 					let soldOutItems = 0;
 					
 					for(let i = 0; i<data.length; i++){
-						if(data[i].i_state = 1){
+						if(data[i].i_state = 1) {
 							sellingItems++;
 						} else if(data[i].i_state = 2){
 							waitingItems++;
-						}else if(data[i].i_state = 0){
+						} else if(data[i].i_state = 3){
 							soldOutItems++;
 						}
 					}
@@ -53,10 +53,61 @@
 				}
 			});
 		}
+		
+		function getOrder() {
+			var s_idx = ${seller.s_idx};
+			
+			$.ajax({
+				type: 'post',
+				url: '${pageContext.request.contextPath}/seller/getOrderProcess.do',
+				data: {
+					s_idx: s_idx
+				},
+				success: function (data) {
+					let order1 = 0;
+					let order2 = 0;
+					let order3 = 0;
+					let order4 = 0;
+					let order6 = 0;
+					let order7 = 0;
+					let order8 = 0;
+					
+					 for(let i = 0; i<data.length; i++) {
+			                if (data[i].bos_state == 1) {
+			                    order1++;
+			                } else if (data[i].bos_state == 2) {
+			                    order2++;
+			                } else if (data[i].bos_state == 3) {
+			                    order3++;
+			                } else if (data[i].bos_state == 4) {
+			                    order4++;
+			                } else if (data[i].bos_state == 6) {
+			                    order6++;
+			                } else if (data[i].bos_state == 7) {
+			                    order7++;
+			                } else if (data[i].bos_state == 8) {
+			                    order8++;
+			                }
+			            }
+					
+					$("#order1").text(order1);
+					$("#order2").text(order2);
+					$("#order3").text(order3);
+					$("#order4").text(order4);
+					$("#order6").text(order6);
+					$("#order7").text(order7);
+					$("#order8").text(order8);
+				},
+				
+				error: function () {
+					console.log("실패");
+				}
+			});
+		}
 	
 		$(function () {
-			// 페이지 로드 시 자동으로 실행
-			getItems();
+			getItem();
+			getOrder();
 		});
 	</script>
 </head>
@@ -81,7 +132,7 @@
                         <div class="seller_main_contents_top_box">
                             <div class="seller_main_contents_top_box_items">
                                 <span>신규주문</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order1"></a> 건</span>
                             </div>
                             <div class="seller_main_contents_top_box_items">
                             </div>
@@ -91,29 +142,29 @@
                         <div class="seller_main_contents_top_box">
                             <div class="seller_main_contents_top_box_items">
                                 <span>배송준비</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order2"></a> 건</span>
                             </div>
                             <div class="seller_main_contents_top_box_items">
                                 <span>배송중</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order3"></a> 건</span>
                             </div>
                             <div class="seller_main_contents_top_box_items">
                                 <span>배송완료</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order4"></a> 건</span>
                             </div>
                         </div>
                         <div class="seller_main_contents_top_box">
                             <div class="seller_main_contents_top_box_items">
                                 <span>환불요청</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order6"></a> 건</span>
                             </div>
                             <div class="seller_main_contents_top_box_items">
                                 <span>반품요청</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order7"></a> 건</span>
                             </div>
                             <div class="seller_main_contents_top_box_items">
                                 <span>교환요청</span>
-                                <span><a href="">(0)</a> 건</span>
+                                <span><a href="" id="order8"></a> 건</span>
                             </div>
                         </div>
                         <div class="seller_main_contents_top_box">
