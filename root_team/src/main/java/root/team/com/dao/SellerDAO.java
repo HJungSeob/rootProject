@@ -118,6 +118,10 @@ public class SellerDAO {
 		return sqlSession.selectOne(MAPPER + ".getItemTotalCount", vo);
 	}
 	
+	public List<OrderStateVO> getOrder(int s_idx){
+		return sqlSession.selectList(MAPPER + ".getOrder", s_idx);
+	}
+	
 	public List<OrderStateVO> getOrders(SearchVO vo) {
 		return sqlSession.selectList(MAPPER + ".getOrders", vo);
 	}

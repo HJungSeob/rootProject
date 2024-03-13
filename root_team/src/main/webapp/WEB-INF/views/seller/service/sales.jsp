@@ -45,7 +45,7 @@
                                     <div class="seller_sales_contents_search_item1">
                                     	<span>
                                         	주문번호
-                                        	<input type="text" name="orderNum" autocomplete='off' placeholder="상품번호를 입력하세요." value="${sVO.orderNum}">
+                                        	<input type="text" name="orderNum" autocomplete='off' placeholder="주문번호를 입력하세요." value="${sVO.orderNum}">
                                         </span>
                                         <span>
                                         	닉네임

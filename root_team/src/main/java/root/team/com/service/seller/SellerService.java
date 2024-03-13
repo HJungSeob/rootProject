@@ -78,6 +78,10 @@ public interface SellerService {
 		return null;
 	}
 	
+	default List<OrderStateVO> getOrder(int s_idx) {
+		return null;
+	}
+	
 	default List<OrderStateVO> getOrders(SearchVO vo) {
 		return null;
 	}

@@ -356,6 +356,12 @@
 		</choose>
 	</select>
 	
+	<select id="getOrder" parameterType="_int" resultType="orderStateVO">
+	select  * from vw_item vi
+	INNER JOIN tb_buyer_order_state bos ON vi.i_idx = bos.i_idx
+	and vi.s_idx = #{s_idx}
+	</select>
+	
 	<select id="getOrders" parameterType="searchVO" resultType="orderStateVO">
 		<choose>
 			<when test="orderNum != '' or orderNickname != '' or orderState != 0 or startDate != null or endDate != null">
@@ -367,7 +373,7 @@
 				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
 				WHERE s.s_idx = #{s_idx}
 				<if test="orderNum != ''">
-					and bo_idx = #{orderNum}
+					and bo.bo_idx = #{orderNum}
 				</if>
 				<if test="orderNickname != ''">
 					and b_nickname like CONCAT('%', #{orderNickname}, '%')
@@ -440,7 +446,7 @@
 				INNER JOIN tb_seller s ON s.s_idx  = i.s_idx
 				WHERE s.s_idx = #{s_idx}
 				<if test="orderNum != ''">
-					and bo_idx = #{orderNum}
+					and bo.bo_idx = #{orderNum}
 				</if>
 				<if test="orderNickname != ''">
 					and b_nickname like CONCAT('%', #{orderNickname}, '%')

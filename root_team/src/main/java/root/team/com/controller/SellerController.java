@@ -223,11 +223,20 @@ public class SellerController {
 		return sUpdate.verifyEmail(s_email);
 	}
 
-	@PostMapping("/getItemsProcess.do")
+	@PostMapping("/getItemProcess.do")
 	@ResponseBody
-	public List<ItemVO> getItemsProcess(Model model, int s_idx) {
+	public List<ItemVO> getItemProcess(Model model, int s_idx) {
 		List<ItemVO> newVO = sList.getItem(s_idx);
 		model.addAttribute("item", newVO);
+
+		return newVO;
+	}
+	
+	@PostMapping("/getOrderProcess.do")
+	@ResponseBody
+	public List<OrderStateVO> getOrderProcess(Model model, int s_idx) {
+		List<OrderStateVO> newVO = sList.getOrder(s_idx);
+		model.addAttribute("order", newVO);
 
 		return newVO;
 	}
