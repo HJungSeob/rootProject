@@ -18,6 +18,7 @@ import root.team.com.service.global.GlobalService;
 import root.team.com.service.order.OrderService;
 import root.team.com.vo.AddressVO;
 import root.team.com.vo.CartVO;
+import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.OrderVO;
 
 @Controller
@@ -31,7 +32,7 @@ public class OrderController {
 	BuyerService bGetAddress;
 	
 	@Setter(onMethod_ = { @Autowired })
-	OrderService oInsert, oDelete, oSuccess;
+	OrderService oInsert, oDelete, oSuccess, oFind;
 	
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gDateUpdate, gFileNameUpdate;
@@ -66,6 +67,12 @@ public class OrderController {
 	@ResponseBody
 	public int successOrder(@RequestBody OrderVO orderVO) {
 		return oSuccess.successOrder(orderVO);	
+	}
+	
+	@PostMapping("/findOrder.do")
+	@ResponseBody
+	public List<OrderStateVO> findOrder(int b_idx, int i_idx) {
+		return oFind.findOrder(b_idx, i_idx);	
 	}
 	
 	

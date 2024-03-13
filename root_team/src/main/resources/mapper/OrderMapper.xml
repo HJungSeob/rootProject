@@ -34,4 +34,14 @@
 		where i_idx = #{i_idx}
 	</update>
 
+	<select id="findOrder" parameterType="map" resultType="orderStateVO">
+		SELECT 
+		    *		    
+		FROM 
+		tb_buyer_order_state bos, tb_buyer_order bo
+		WHERE bos.bo_idx = bo.bo_idx		
+		AND b_idx = #{b_idx}
+		AND i_idx = #{i_idx}
+	</select>
+
 </mapper>

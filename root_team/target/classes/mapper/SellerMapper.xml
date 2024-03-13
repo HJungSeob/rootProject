@@ -16,7 +16,7 @@
 	
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
-			VALUES (#{s_idx}, '기본프로필.png', CONCAT('rootstore', #{s_idx}))
+			VALUES (#{s_idx}, '기본!@프로필.jpg', CONCAT('rootstore', #{s_idx}))
 	</insert>
 	
 	<insert id="state" parameterType="_int">
@@ -65,7 +65,7 @@
 				SET si.s_profile = #{s_profile}, si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
 			</when>
 			<otherwise>
-				SET si.s_profile = "기본프로필.png", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+				SET si.s_profile = "기본!@프로필.jpg", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
 			</otherwise>
 		</choose>
 		WHERE s.s_idx = #{s_idx};
@@ -86,6 +86,12 @@
 		s.s_modifydate = NOW()
 		WHERE s.s_idx = #{s_idx};
 	</update>
+	
+	<select id="storenameCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tb_seller_info
+		where s_storename = #{s_storename}
+	</select>
 	
 	<select id="telCheck" parameterType="string" resultType="_int">
 		select count(*)
@@ -502,4 +508,11 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	<update id="updateState" parameterType="orderStateVO">
+		update
+		tb_buyer_order_state set bos_state = #{bos_state}
+		where bo_idx = #{bo_idx}
+		and bos_option = #{bos_option}
+	</update>
 </mapper>
