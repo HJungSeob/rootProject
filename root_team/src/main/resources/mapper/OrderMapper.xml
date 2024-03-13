@@ -38,10 +38,13 @@
 		SELECT 
 		    *		    
 		FROM 
-		tb_buyer_order_state bos, tb_buyer_order bo
-		WHERE bos.bo_idx = bo.bo_idx		
+		tb_buyer_order_state bos  
+		INNER JOIN tb_buyer_order bo ON bos.bo_idx = bo.bo_idx
+		LEFT JOIN tb_buyer_review br ON br.bos_idx = bos.bos_idx
+		WHERE 1=1
 		AND b_idx = #{b_idx}
 		AND i_idx = #{i_idx}
+		AND br_idx IS NULL
 	</select>
 
 </mapper>
