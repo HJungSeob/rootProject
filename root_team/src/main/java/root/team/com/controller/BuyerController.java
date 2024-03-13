@@ -224,6 +224,12 @@ public class BuyerController {
 
 		return viewPage;
 	}
+	
+	@PostMapping("/nicknameCheckProcess.do")
+	@ResponseBody
+	public int nicknameCheckProcess(String b_nickname) {
+		return bCheck.nicknameCheck(b_nickname);
+	}
 
 	@PostMapping("/emailCheckProcess.do")
 	@ResponseBody

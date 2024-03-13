@@ -84,6 +84,10 @@ public class BuyerDAO {
 	public int cancel(int b_idx) throws SQLException {
 		return sqlSession.update(MAPPER + ".cancel", b_idx);
 	}
+	
+	public int nicknameCheck(String b_nickname) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".nicknameCheck", b_nickname);
+	}
 
 	public int emailCheck(String b_email) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".emailCheck", b_email);

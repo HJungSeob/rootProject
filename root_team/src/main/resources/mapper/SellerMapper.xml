@@ -16,7 +16,7 @@
 	
 	<insert id="info" parameterType="_int">
 		INSERT INTO tb_seller_info (s_idx, s_profile, s_storename) 
-			VALUES (#{s_idx}, '기본프로필.png', CONCAT('rootstore', #{s_idx}))
+			VALUES (#{s_idx}, '기본!@프로필.jpg', CONCAT('rootstore', #{s_idx}))
 	</insert>
 	
 	<insert id="state" parameterType="_int">
@@ -65,7 +65,7 @@
 				SET si.s_profile = #{s_profile}, si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
 			</when>
 			<otherwise>
-				SET si.s_profile = "기본프로필.png", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
+				SET si.s_profile = "기본!@프로필.jpg", si.s_storename = #{s_storename}, si.s_storeintro = #{s_storeintro}, s.s_modifydate = NOW()
 			</otherwise>
 		</choose>
 		WHERE s.s_idx = #{s_idx};

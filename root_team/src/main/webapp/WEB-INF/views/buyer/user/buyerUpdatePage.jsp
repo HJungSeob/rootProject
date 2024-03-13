@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -10,10 +10,37 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/global.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdatePage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/buyer/user/buyerUpdatePage.css">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/buyer/user/buyerUpdatePage.js"></script>
+
+<script>
+$(function(){
+	$("#nickNameInput").focusout(function() {
+		var nickNameInput = $('#nickNameInput').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '${pageContext.request.contextPath}/buyer/nicknameCheckProcess.do',
+			data: {
+				b_nickname: nickNameInput
+				},
+			success: function(data) {	
+				if (data == 1) {
+					$("#nickNameMsg").text("사용중인 닉네임입니다.");
+					$("#nickNamesubmitBtn").attr("disabled", true);
+				} else {
+					$("#nickNameMsg").text("");
+					$("#nickNamesubmitBtn").attr("disabled", false);
+				}
+			},
+			error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
 </head>
 
 <body>
@@ -67,7 +94,7 @@
 					<div class="m_buyerUpdatePage4_flax1">
 						<div class="m_buyerUpdatePage4_submitBtnRegion">
 							<label>
-								<div class="m_buyerUpdatePage4_submitBtn">확정</div>
+								<div class="m_buyerUpdatePage4_submitBtn">수정</div>
 								<input
 								type="submit" class="m_buyerUpdatePage4_profileInput">
 							</label>
@@ -78,6 +105,7 @@
 					</div>
 				</div>
 			</form>
+			
 			<form name="buyerUpdate" method="post" action="buyerInfoUpdateProcess.do">
 			<input type="hidden" name="b_idx" value="${buyer.b_idx}">
 				<div class="m_buyerUpdatePage4_nickNameRegion" id="nickNameRegion">
@@ -91,9 +119,8 @@
 					<div class="m_buyerUpdatePage4_flax1">
 						<div class="m_buyerUpdatePage4_submitBtnRegion">
 							<label>
-								<div class="m_buyerUpdatePage4_submitBtn">확정</div> <input
-								type="submit" id="nickNamesubmitBtn"
-								class="m_buyerUpdatePage4_profileInput" disabled="disabled">
+								<div class="m_buyerUpdatePage4_submitBtn">수정</div>
+								<input type="submit" id="nickNamesubmitBtn" class="m_buyerUpdatePage4_profileInput" disabled="disabled">
 							</label>
 						</div>
 						<div class="m_buyerUpdatePage4_cancelBtnRegion">
