@@ -10,6 +10,7 @@ public class OrderStateVO {
 	private String i_name;
 	private Date bo_orderdate;
 	
+	private int bos_idx;
 	private int bo_idx;
 	private int i_idx;
 	private String bos_option;
