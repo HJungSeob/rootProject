@@ -16,7 +16,7 @@
 
 <script>
 $(function(){
-	$("#nickNameInput").focusout(function() {
+	$("#nickNameInput").keyup(function() {
 		var nickNameInput = $('#nickNameInput').val();
 		
 		$.ajax({
@@ -26,10 +26,16 @@ $(function(){
 				b_nickname: nickNameInput
 				},
 			success: function(data) {	
-				if (data == 1) {
-					$("#nickNameMsg").text("사용중인 닉네임입니다.");
+				if($('#nickNameInput').val() === ""){
+		        	$("#nickNamesubmitBtn").attr("disabled", true);
+		            $('#nickNameInput').css("border", "1px solid #F74848")
+		            $('#nickNameMsg').text("닉네임이 있어야 합니다.")
+		        }else if (data == 1) {
+					$("#nickNameMsg").text("사용중인 닉네임 입니다.");
 					$("#nickNamesubmitBtn").attr("disabled", true);
+					$('#nickNameInput').css("border", "1px solid #F74848")
 				} else {
+					$('#nickNameInput').css("border", "1px solid #848484")
 					$("#nickNameMsg").text("");
 					$("#nickNamesubmitBtn").attr("disabled", false);
 				}
