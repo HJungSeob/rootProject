@@ -121,11 +121,13 @@
                         i_idx: i_idx
                     },
                     success: function (data) {
-                    	for(let i = 0; i< data.length; i++){
-                    		$('.m_l_view_buyerOrder').append($('<option>', {
-                    	        value: data[i].bos_option,
-                    	        text: data[i].bos_option
-                    	    }));
+                    	if(data !== null){
+	                    	for(let i = 0; i< data.length; i++){
+	                    		$('.m_l_view_buyerOrder').append($('<option>', {
+	                    	        value: data[i].bos_option,
+	                    	        text: data[i].bos_option
+	                    	    }));                   		
+	                    	}
                     	}
                     },
                     error: function (xhr, status, error) {                   
@@ -1060,19 +1062,23 @@
 		                        	</li>	
 	                        	</c:when>
 	                    		<c:otherwise>
-	                    			<li class="m_l_view_review">
-		                            	<div>
-											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
-											<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>
-											<span>구매한 옵션</span>
-											<select class ="m_l_view_buyerOrder">
-											</select>									
-										</div>
-		                            	<textarea rows="" cols="" placeholder="구매하신 상품에 대해 리뷰를 남겨보세요."></textarea>
-		                            	<div>
-		                            		<button type="button" class="m_l_view_reviewBtn">등록</button> 
-		                            	</div>                      	                         
-		                            </li> 
+	                    			<c:choose>
+	                    				<c:when test="${empty buyer}">
+			                    			<li class="m_l_view_review">
+				                            	<div>
+													<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
+													<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>
+													<span>구매한 옵션</span>
+													<select class ="m_l_view_buyerOrder">
+													</select>									
+												</div>
+				                            	<textarea rows="" cols="" placeholder="구매하신 상품에 대해 리뷰를 남겨보세요."></textarea>
+				                            	<div>
+				                            		<button type="button" class="m_l_view_reviewBtn">등록</button> 
+				                            	</div>       	                         
+				                            </li>
+			                            </c:when>
+		                            </c:choose>
 	                    		</c:otherwise>
 		                	</c:choose>
                     	</ul>                 	
