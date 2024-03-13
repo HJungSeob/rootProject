@@ -219,21 +219,22 @@
     border-bottom: 1px solid #B7B7B7;
 }
 
-.seller_view_edit_contents_table_edit_btn a {
-    display: block;
-    margin: 0 auto;
-    width: 35px;
+.seller_view_edit_contents_table_edit_btn button {
+	display: block;
+	margin: 0 auto;
+	width: 35px;
+	border: none;
+	background-color: #00CD08;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .seller_view_edit_contents_table_edit_btn span {
-    box-sizing: border-box;
-    width: 35px;
-    height: 20px;
-    background-color: #00CD08;
-    border-radius: 5px;
-    line-height: 20px;
-    color: #ffffff;
-
+	box-sizing: border-box;
+	width: 35px;
+	height: 20px;
+	line-height: 20px;
+	color: #ffffff;
 }
 
 .seller_view_edit_contents_table_product_name {

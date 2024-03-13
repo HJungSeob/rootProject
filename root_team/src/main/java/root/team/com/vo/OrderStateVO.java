@@ -16,6 +16,6 @@ public class OrderStateVO {
 	private String bos_price;
 	private int bos_count;
 	private String bos_sattle;
-	private String bos_state;
+	private int bos_state;
 	private Date bos_postdate;
 }

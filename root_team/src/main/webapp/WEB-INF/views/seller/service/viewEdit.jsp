@@ -133,7 +133,7 @@
 											
 											<tr>
 				                                <td><span>${i}</span></td>
-				                                <td class="seller_view_edit_contents_table_edit_btn"><a href=""><span>수정</span></a></td>
+				                                <td class="seller_view_edit_contents_table_edit_btn"><button type="button" id="editButton"><span>수정</span></button></td>
 				                                <td class="seller_view_edit_contents_table_product_name">
 				                                	<a href=""><span>${itemList[vs.count-1].i_name}</span></a>
 				                                </td>

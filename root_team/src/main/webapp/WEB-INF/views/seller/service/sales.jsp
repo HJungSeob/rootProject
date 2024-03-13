@@ -128,7 +128,11 @@
 											
 											<tr>
 				                                <td><span>${i}</span></td>
-				                                <td class="seller_sales_contents_table_edit_btn"><a href=""><span>수정</span></a></td>
+				                                <td class="seller_sales_contents_table_edit_btn">
+				                                	<button type="button" class="editButton" data-order="${orderList[vs.count-1]}"><span>수정</span></button>	
+				                                	<input type="hidden" class="bo_idx" value="${orderList[vs.count-1].bo_idx}">
+				                                	<input type="hidden" class="bos_option" value="${orderList[vs.count-1].bos_option}">			               
+				                                </td>
 				                                <td><span>${orderList[vs.count-1].b_nickname}</span></td>
 				                                <td class="seller_sales_contents_table_product_name">
 				                                	<a href=""><span>${orderList[vs.count-1].i_name}</span></a>
@@ -141,7 +145,7 @@
 												<td><span>
 												    <c:choose>
 												        <c:when test="${orderState eq 1}">결제완료</c:when>
-												        <c:when test="${orderState eq 2}">배송대기</c:when>
+												        <c:when test="${orderState eq 2}">배송준비</c:when>
 												    	<c:when test="${orderState eq 3}">배송중</c:when>
 												        <c:when test="${orderState eq 4}">배송완료</c:when>
 												        <c:when test="${orderState eq 5}">주문취소</c:when>
@@ -168,40 +172,61 @@
                 </div>
             </div>
             
-           <!--  <div id="select_list" class="seller_sales_option_box">
-           		<div id="sl_refund" class="seller_sales_point"><span>환불</span></div>
-           		<div id="sl_exchange" class="seller_sales_point"><span>교환</span></div>
-           		<div id="sl_return" class="seller_sales_point"><span>반품</span></div>
-            </div> -->
+           <div class="stateList">
+           		<div class="changeState" data-state="1"><span>결제완료</span></div>
+           		<div class="changeState" data-state="2"><span>배송준비</span></div>
+           		<div class="changeState" data-state="3"><span>배송중</span></div>
+           		<div class="changeState" data-state="4"><span>배송완료</span></div>
+           		<div class="changeState" data-state="5"><span>주문취소</span></div>
+           		<div class="changeState" data-state="6"><span>환불</span></div>
+           		<div class="changeState" data-state="7"><span>교환</span></div>
+           		<div class="changeState" data-state="8"><span>반품</span></div>
+            </div>
 
         </section>
 
     </div>
 
-	<!-- <script>
-		$(document).ready(function() {
-			$("#editButton").click(function() {
-				var buttonPosition = $(this).offset(); // 수정 버튼의 위치를 가져옴
-				var topPosition = buttonPosition.top + $(this).outerHeight(); // 수정 버튼 아래에 위치하도록 계산
-
-				$(".seller_sales_option_box").css({
+	<script>
+		$(document).ready(function() {		
+			let bo_idx = 0;
+			let bos_option = null;			
+	
+			$(".editButton").click(function() {
+				var buttonPosition = $(this).offset();
+				var topPosition = buttonPosition.top + $(this).outerHeight();
+				bo_idx = parseInt($(this).siblings(".bo_idx").val(), 10);
+				bos_option = $(this).siblings(".bos_option").val();			
+	
+				$(".stateList").css({
 					"position" : "absolute",
 					"top" : topPosition + "px",
 					"left" : buttonPosition.left + "px"
-				}).toggle(); // 위치 설정 후 toggle을 사용하여 보이기/숨기기를 토글
+				}).toggle();
+			});
+	
+			$(".changeState").click(function() {
+				var bos_state = $(this).data('state');
+				var orderState = {"bo_idx": bo_idx, "bos_option": bos_option, "bos_state": bos_state};												
+				
+				$.ajax({
+					type: 'post',
+					url: '${pageContext.request.contextPath}/seller/updateStateProcess.do',
+					data: JSON.stringify(orderState),
+					contentType: "application/json;charset=utf-8;",
+					dataType: 'json',
+					success: function (data) {
+						if(data == 1){
+							window.location.reload();
+						}
+					},
+					error: function () {
+						console.log("실패");
+					}
+				}); 
 			});
 		});
-
-		$("#sl_refund").click(function() {
-			console.log("환불");
-		});
-		$("#sl_exchange").click(function() {
-			console.log("교환");
-		});
-		$("#sl_return").click(function() {
-			console.log("반품");
-		});
-	</script> -->
+	</script>
 
 	<footer>
 		<%@include file="../../buyer/common/global_footer.jsp"%>

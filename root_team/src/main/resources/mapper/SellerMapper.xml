@@ -508,4 +508,11 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	<update id="updateState" parameterType="orderStateVO">
+		update
+		tb_buyer_order_state set bos_state = #{bos_state}
+		where bo_idx = #{bo_idx}
+		and bos_option = #{bos_option}
+	</update>
 </mapper>
