@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -332,6 +333,12 @@ public class SellerController {
 		model.addAttribute("pageNav", pageNav);
 		
 		return "seller/service/sales";
+	}
+	
+	@PostMapping("/updateStateProcess.do")
+	@ResponseBody
+	public int updateStateProcess(@RequestBody OrderStateVO orderStateVO) {
+		return sUpdate.updateState(orderStateVO);
 	}
 
 	@GetMapping("/delivery.do")

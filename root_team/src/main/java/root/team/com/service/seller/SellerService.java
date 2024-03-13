@@ -93,4 +93,8 @@ public interface SellerService {
 	default int getOrderTotalCount(SearchVO vo){
 		return 0;
 	}
+	
+	default int updateState(OrderStateVO orderStateVO){
+		return 0;
+	}
 }

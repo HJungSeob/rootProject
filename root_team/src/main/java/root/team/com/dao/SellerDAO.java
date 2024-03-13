@@ -133,4 +133,8 @@ public class SellerDAO {
 	public int getOrderTotalCount(SearchVO vo) {	
 		return sqlSession.selectOne(MAPPER + ".getOrderTotalCount", vo);
 	}
+	
+	public int updateState(OrderStateVO orderStateVO) {
+		return sqlSession.update(MAPPER + ".updateState", orderStateVO);
+	}
 }
