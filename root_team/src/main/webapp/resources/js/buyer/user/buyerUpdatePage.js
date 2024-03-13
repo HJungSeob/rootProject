@@ -20,34 +20,21 @@ $(function () {
         $('#nickNameRegion').fadeOut(150)
     })
 
-    $('#nickNameInput').keyup(function(){
-        nickNamevalue()
-    })
     $('#nickNameInput').focus(function(){
-        $('#nickNameInput').css("border", "1px solid #0071E3'")
+        $('#nickNameInput').css("border", "1px solid #0071E3")
         $('#nickNameInput').css("boxShadow", "0px 0px 4px 0px #0071e3")
     })
     
     $('#nickNameInput').blur(function () {
-	if (this.value.length === 0) {
-		$('#nickNameInput').css("border", "1px solid #F74848")
-        $('#nickNameMsg').text("입력 되어 있지 않습니다.")
-		$('#nickNamesubmitBtn').prop('disabled', true);
-	}
+		$('#nickNameInput').css("boxShadow", "")
+		if($('#nickNameInput').val() === ""){
+		        	$("#nickNamesubmitBtn").attr("disabled", true);
+		            $('#nickNameInput').css("border", "1px solid #F74848")
+		            $('#nickNameMsg').text("닉네임이 있어야 합니다.")
+		        }
 	})
 });
 
-function nickNamevalue(){
-    if($('#nickNameInput').val() !== ''){
-        $('#nickNameInput').css("border", "1px solid #848484")
-        $('#nickNameMsg').text("")
-        $('#nickNamesubmitBtn').prop('disabled', false);
-    }else{
-        $('#nickNameMsg').text("입력 되어 있지 않습니다.")
-        $('#nickNameInput').css("border", "1px solid #F74848")
-        $('#nickNamesubmitBtn').prop('disabled', true);
-    }
-}
 
 function setThumbnail(event) {
     var reader = new FileReader();
