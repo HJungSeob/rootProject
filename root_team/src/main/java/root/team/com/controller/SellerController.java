@@ -24,6 +24,7 @@ import root.team.com.common.PageNav;
 import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -238,36 +239,6 @@ public class SellerController {
 		return "seller/dashBoard";
 	}
 
-	@GetMapping("/delivery.do")
-	public String delivery() {
-		return "seller/service/delivery";
-	}
-
-	@GetMapping("/inquiry.do")
-	public String inquiry() {
-		return "seller/service/inquiry";
-	}
-
-	@GetMapping("/review.do")
-	public String review() {
-		return "seller/service/review";
-	}
-
-	@GetMapping("/sales.do")
-	public String sales() {
-		return "seller/service/sales";
-	}
-
-	@GetMapping("/settlement.do")
-	public String settlement() {
-		return "seller/service/settlement";
-	}
-
-	@GetMapping("/store.do")
-	public String store() {
-		return "seller/service/store";
-	}
-
 	@GetMapping("/viewEdit.do")
 	public String viewEdit(@ModelAttribute("sVO") SearchVO searchVO, String sDate, String eDate, Model model) {
 		if (searchVO.getPageNum() == 0) {
@@ -286,7 +257,6 @@ public class SellerController {
 			searchVO.setItemName("");
 		}
 
-
 		if (sDate != null && eDate != null) { // 시작일자와 마침일자에 날짜값이 입력된 경우
 			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
 			try {
@@ -304,11 +274,74 @@ public class SellerController {
 		List<ItemVO> itemList = sList.getItems(searchVO);
 		model.addAttribute("itemList", itemList);
 
-		pageNav.setTotalRows(sTotalCount.getTotalCount(searchVO));
+		pageNav.setTotalRows(sTotalCount.getItemTotalCount(searchVO));
 		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
 		model.addAttribute("pageNav", pageNav);
 
 		return "seller/service/viewEdit";
+	}
+
+	@GetMapping("/sales.do")
+	public String sales(@ModelAttribute("sVO") SearchVO searchVO, String sDate, String eDate, Model model) {
+		if (searchVO.getPageNum() == 0) {
+			searchVO.setPageNum(1);
+		}
+
+		if (searchVO.getOrderNum() == null) {
+			searchVO.setOrderNum("");
+		}
+
+		if (searchVO.getOrderNickname() == null) {
+			searchVO.setOrderNickname("");
+		}
+		
+		if (sDate != null && eDate != null) {
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				Date startDate = dtFormat.parse(sDate);
+				Date endDate = dtFormat.parse(eDate);
+
+				searchVO.setStartDate(startDate);
+				searchVO.setEndDate(endDate);
+
+			} catch (ParseException e) {
+			}
+		}
+		
+		List<OrderStateVO> orderList = sList.getOrders(searchVO);
+		model.addAttribute("orderList", orderList);
+
+		pageNav.setTotalRows(sTotalCount.getOrderTotalCount(searchVO));
+		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+		model.addAttribute("pageNav", pageNav);
+		
+		return "seller/service/sales";
+	}
+
+	@GetMapping("/delivery.do")
+	public String delivery() {
+		return "seller/service/delivery";
+	}
+
+	@GetMapping("/inquiry.do")
+	public String inquiry() {
+		return "seller/service/inquiry";
+	}
+
+	@GetMapping("/review.do")
+	public String review() {
+		return "seller/service/review";
+	}
+
+	@GetMapping("/settlement.do")
+	public String settlement() {
+		return "seller/service/settlement";
+	}
+
+	@GetMapping("/store.do")
+	public String store() {
+		return "seller/service/store";
 	}
 
 }

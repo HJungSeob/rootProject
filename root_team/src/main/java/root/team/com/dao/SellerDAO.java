@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.ItemVO;
+import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -113,7 +114,15 @@ public class SellerDAO {
 		return sqlSession.selectList(MAPPER + ".getItems", vo);
 	}
 	
-	public int getTotalCount(SearchVO vo) {	
-		return sqlSession.selectOne(MAPPER + ".getTotalCount", vo);
+	public int getItemTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getItemTotalCount", vo);
+	}
+	
+	public List<OrderStateVO> getOrders(SearchVO vo) {
+		return sqlSession.selectList(MAPPER + ".getOrders", vo);
+	}
+	
+	public int getOrderTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getOrderTotalCount", vo);
 	}
 }

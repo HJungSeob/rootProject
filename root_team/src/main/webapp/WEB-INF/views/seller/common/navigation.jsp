@@ -29,13 +29,8 @@
 			</ul>
 		</div>
 		<div>
-			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/sales.do">
-				<span class="">판매관리</span>
-			</a>
-		</div>
-		<div>
-			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/delivery.do">
-				<span class="">배송관리</span>
+			<a class="seller_global_category_btn" href="${pageContext.request.contextPath}/seller/sales.do?s_idx=${seller.s_idx}">
+				<span class="">주문관리</span>
 			</a>
 		</div>
 		<div>

@@ -12,9 +12,11 @@ public class SellerTotalCountService implements SellerService {
 
 	private SellerDAO dao;
 	
-	public int getTotalCount(SearchVO vo) {	
-		return dao.getTotalCount(vo);
+	public int getItemTotalCount(SearchVO vo) {	
+		return dao.getItemTotalCount(vo);
 	}
 	
-
+	public int getOrderTotalCount(SearchVO vo) {	
+		return dao.getOrderTotalCount(vo);
+	}
 }
