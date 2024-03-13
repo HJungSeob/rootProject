@@ -70,6 +70,10 @@ public class SellerDAO {
 		return sqlSession.update(MAPPER + ".cancel", s_idx);
 	}
 	
+	public int storenameCheck(String s_storename) throws SQLException {
+		return sqlSession.selectOne(MAPPER + ".storenameCheck", s_storename);
+	}
+	
 	public int telCheck(String s_tel) throws SQLException {
 		return sqlSession.selectOne(MAPPER + ".telCheck", s_tel);
 	}

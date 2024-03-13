@@ -171,9 +171,15 @@ public class SellerController {
 		return viewPage;
 	}
 
+	@PostMapping("/storenameCheckProcess.do")
+	@ResponseBody
+	public int storenameCheckProcess(String s_storename) {
+		return sCheck.storenameCheck(s_storename);
+	}
+	
 	@PostMapping("/telCheckProcess.do")
 	@ResponseBody
-	public int telCheckProcess(@RequestParam("s_tel") String s_tel) {
+	public int telCheckProcess(String s_tel) {
 		return sCheck.telCheck(s_tel);
 	}
 

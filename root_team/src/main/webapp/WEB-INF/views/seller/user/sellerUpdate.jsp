@@ -70,15 +70,13 @@
 				
 				$.ajax({
 					type: 'post',
-					url: '${pageContext.request.contextPath}/seller/telCheckProcess.do?s_tel=' + telInput,
-					data: {tel: telInput},
-					dataType: "text",
+					url: '${pageContext.request.contextPath}/seller/telCheckProcess.do',
+					data: {s_tel: telInput},
 					success: function(data) {	
 						if (data == 1) {
 							$("#telSmg").text("사용중인 전화번호입니다.");
 							$("#nextPage").attr("disabled", true);
 						} else {
-							$("#telSmg").text("");
 							$("#nextPage").attr("disabled", false);
 						}
 					},
@@ -102,7 +100,7 @@
 		            	s_idx: s_idx},
 		            success: function(data) {    
 		                if (data == 1) {
-		                    $("#existingPwMsg").text("기존 비밀번호가 일치합니다.");
+		                    $("#existingPwMsg").text("");
 		                    // 기존 비밀번호가 일치할 경우 새로운 비밀번호 입력란 활성화
 		                    $('#newPwInput').prop('disabled', false);
 		                    $('#ckeckPwInput').prop('disabled', false);
@@ -120,6 +118,34 @@
 		            }
 		        });
 		    });
+		});
+		
+		$(function(){
+			$("#sellerTitleInput").focusout(function() {
+				var s_idx = $('#hiddenS_idx').val();
+				var sellerTitleInput = $('#sellerTitleInput').val();
+				
+				$.ajax({
+					type: 'post',
+					url: '${pageContext.request.contextPath}/seller/storenameCheckProcess.do',
+					data: {
+						s_storename: sellerTitleInput,
+						s_idx: s_idx
+						},
+					success: function(data) {	
+						if (data == 1) {
+							$("#sellerTitleMsg").text("사용중인 매장이름입니다.");
+							$("#upSellerSubmit").attr("disabled", true);
+						} else {
+							$("#sellerTitleMsg").text("");
+							$("#upSellerSubmit").attr("disabled", false);
+						}
+					},
+					error: function() {
+						console.log("실패");
+					}
+				});
+			});
 		});
 
 	</script>
@@ -141,8 +167,7 @@
                         <span>메인 > 회원정보관리</span>
                     </div>
 
-					<form name="sellerInfoUpdate" method="post" action="sellerInfoUpdateProcess.do"
-						enctype="multipart/form-data">
+					<form name="sellerInfoUpdate" method="post" action="sellerInfoUpdateProcess.do" enctype="multipart/form-data">
 						<input type="hidden" name="s_idx" value="${seller.s_idx}">
 						<div class="m_sellerUpdateService_mainTitle">매장정보 수정</div>
 						<hr>
