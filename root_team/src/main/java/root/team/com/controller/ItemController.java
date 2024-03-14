@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.Setter;
 import root.team.com.common.PageNav;
@@ -88,9 +89,9 @@ public class ItemController {
 
 	@GetMapping("/view.do")
 	public String view(@ModelAttribute("sVO") SearchVO searchVO, Model model) {
-
+		
 		ItemVO item = iView.view(searchVO.getI_idx());
-		List<ReviewVO> reviewList = iReviewList.reviewList(searchVO.getI_idx());
+		List<ReviewVO> reviewList = iReviewList.reviewList(searchVO);
 		int point5 = 0;
 		int point4 = 0;
 		int point3 = 0;
@@ -99,15 +100,15 @@ public class ItemController {
 		if (reviewList != null) {
 			for (int i = 0; i < reviewList.size(); i++) {
 				switch (reviewList.get(i).getBr_star()) {
-				case "5.0": point5++;		
+				case 5: point5++;		
 					break;
-				case "4.0": point4++;
+				case 4: point4++;
 					break;
-				case "3.0": point3++;
+				case 3: point3++;
 					break;
-				case "2.0": point2++;
+				case 2: point2++;
 					break;
-				case "1.0": point1++;
+				case 1: point1++;
 					break;
 				}
 			}
@@ -122,12 +123,17 @@ public class ItemController {
 		int[] starArr = { point5, point4, point3, point2, point1};
 		model.addAttribute("imgArr", imgArr);
 		model.addAttribute("optionArr", optionArr);
-		model.addAttribute("item", item);
-				
+		model.addAttribute("item", item);				
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("starArr", starArr);
 
 		return "buyer/service/view";
+	}
+	
+	@PostMapping("/insertReview.do")
+	@ResponseBody
+	public int insertReview(ReviewVO ReviewVO) {	
+		return iReviewInsert.insertReview(ReviewVO);	
 	}
 
 }

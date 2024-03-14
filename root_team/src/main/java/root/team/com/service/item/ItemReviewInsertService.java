@@ -4,22 +4,14 @@ import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 import root.team.com.dao.ItemDAO;
-import root.team.com.vo.ItemVO;
+import root.team.com.vo.ReviewVO;
 
 @Service("iReviewInsert")
 @AllArgsConstructor
 public class ItemReviewInsertService implements ItemService {
 	private ItemDAO dao;
 
-	public int insert(ItemVO vo) {
-
-		int result = 0;
-
-		if (dao.insert(vo) == 1) {
-			if (dao.insertItemOption(vo) == 1 && dao.insertItemImage(vo) == 1 && dao.insertItemThumbnail(vo) == 1) {
-				result = 1;
-			}
-		}
-		return result;
+	public int insertReview(ReviewVO reviewVO) {		
+		return dao.insertReview(reviewVO);
 	}
 }

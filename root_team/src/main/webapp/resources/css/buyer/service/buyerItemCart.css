@@ -63,7 +63,7 @@ section{
     width: 400px;
     height: 100px;
 }
-.m_buyerItemCart_itemsTitle span{
+.m_buyerItemCart_itemsOption{
 	font-size: 16px;
 	color: gray;
 	position: relative;

@@ -56,7 +56,7 @@
             $(document).on("click", "#deleteBtn", function () {
                 var i_idx = $(this).closest(".m_buyerItemCart_items").find("#i_idx").val();
                 var i_option = $(this).closest(".m_buyerItemCart_items").find(
-                    ".m_buyerItemCart_itemsTitle span").text();
+                    "#optionInfo").text();
                 $.ajax({
                     type: "POST",
                     url: "${pageContext.request.contextPath}/cart/deleteCart.do",
@@ -129,7 +129,9 @@
                                                     href="${pageContext.request.contextPath}/item/view.do?i_idx=${cart.i_idx}">
                                                     ${cart.i_name}
                                                 </a><br>
-                                                <span class="m_buyerItemCart_itemsOption">옵션: ${cart.i_option}</span>
+                                                <c:if test="${not empty cart.i_option}">
+                                                <span class="m_buyerItemCart_itemsOption">옵션: <span id="optionInfo">${cart.i_option}</span></span>
+                                            	</c:if>
                                             </div>                                         
                                         </div>
                                         <div class="m_buyerItemCart_itemsCountTitle">수량:</div>

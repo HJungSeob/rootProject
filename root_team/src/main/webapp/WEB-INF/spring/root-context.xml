@@ -8,7 +8,7 @@
 	<!-- MySQL 관련 설정 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/root?
+		<property name="url" value="jdbc:mysql://175.213.250.106:3306/root?
 									characterEncoding-UTF-8
 									&amp;
 									useSSL=false
@@ -16,7 +16,7 @@
 									allowPublicKeyRetrieval=true
 									&amp;
 									serverTimezone=UTC" />
-		<property name="username" value="root" />
+		<property name="username" value="teamroot" />
 		<property name="password" value="1234" />
 	</bean>
 		

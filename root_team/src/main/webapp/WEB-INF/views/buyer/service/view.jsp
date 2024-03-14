@@ -37,11 +37,13 @@
                     	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
                     }
                     return false;
-                }
- 
-                if (m_l_view_option_count !== i_option.split(',').length) {
-                    alert('모든 옵션을 선택해 주세요.');
-                    return false;
+                } 
+                
+                if (m_l_view_option_count > 0){
+	                if (m_l_view_option_count !== i_option.split(',').length || i_option == "") {
+	                    alert('모든 옵션을 선택해 주세요.');
+	                    return false;
+	                }
                 }
                 
                 $.ajax({
@@ -69,86 +71,7 @@
                     }
                 });
             });
-
-            $("#getLikeItem").click(function () {
-
-                i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
-                i_price = $("#i_price").val();
-                
-                
-                if ($("#b_idx").val() != "") {
-                    var b_idx = $("#b_idx").val();
-                }else{
-                	if(confirm("로그인이 필요한 서비스 입니다. 로그인 페이지로 이동하시겠습니까?")){
-                    	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
-                    }
-                    return false;
-                }
- 
-                if (m_l_view_option_count !== i_option.split(',').length) {
-                    alert('모든 옵션을 선택해 주세요.');
-                    return false;
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: "${pageContext.request.contextPath}/cart/likeItem.do",
-                    data: {
-                    	b_idx: b_idx,
-                        i_idx: i_idx,
-                        i_name: i_name,
-                        i_img: i_img,
-                        i_option: i_option,
-                        i_price: i_price
-                    },
-                    success: function (data) {
-                        alert("관심목록에 상품이 추가되었습니다.");
-                    },
-                    error: function (xhr, status, error) {
-                        alert("관심목록에 상품을 추가하는데 실패했습니다.");
-                    }
-                });
-            });
-            
-            $(".m_l_view_reviewBtn").click(function () {
-
-                i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
-                i_price = $(".m_l_view_buyerOrder").val();
-                
-                
-                if ($("#b_idx").val() != "") {
-                    var b_idx = $("#b_idx").val();
-                }else{
-                	if(confirm("로그인이 필요한 서비스 입니다. 로그인 페이지로 이동하시겠습니까?")){
-                    	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
-                    }
-                    return false;
-                }
- 
-                if (m_l_view_option_count !== i_option.split(',').length) {
-                    alert('모든 옵션을 선택해 주세요.');
-                    return false;
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: "${pageContext.request.contextPath}/cart/likeItem.do",
-                    data: {
-                    	b_idx: b_idx,
-                        i_idx: i_idx,
-                        i_name: i_name,
-                        i_img: i_img,
-                        i_option: i_option,
-                        i_price: i_price
-                    },
-                    success: function (data) {
-                        alert("관심목록에 상품이 추가되었습니다.");
-                    },
-                    error: function (xhr, status, error) {
-                        alert("관심목록에 상품을 추가하는데 실패했습니다.");
-                    }
-                });
-            });            
+             
             
             if ($("#b_idx").val() != "") {
                 var b_idx = $("#b_idx").val();
@@ -166,14 +89,23 @@
                     	    $(".m_l_view_buyerReviewBox").append('<select class="m_l_view_buyerOrder"></select>');
 	                    	for(let i = 0; i< data.length; i++){
 	                    		$('.m_l_view_buyerOrder').append($('<option>', {
-	                    	        value: data[i].bos_option,
+	                    	        value: data[i].bos_idx,
 	                    	        text: data[i].bos_option
 	                    	    }));
 	                    	}
+	                    	var selectStar = $('<select id="m_l_view_buyerStar">' +
+	                                '<option value="5">5점</option>' +
+	                                '<option value="4">4점</option>' +
+	                                '<option value="3">3점</option>' +
+	                                '<option value="2">2점</option>' +
+	                                '<option value="1">1점</option>' +
+	                            '</select>');
+	                    	$('.m_l_view_buyerReviewBox').append(selectStar);
+	                    	
 	                    	var textarea = $('<textarea>').attr({
                     		    'rows': '',
                     		    'cols': '',
-                    		    'placeholder': '구매하신 상품에 대해 리뷰를 남겨보세요.'
+                    		    'placeholder': '구매한 상품에 대해 리뷰를 남겨보세요.'
                     		});
 
                     		var button = $('<button>').attr({
@@ -189,8 +121,30 @@
                     error: function (xhr, status, error) {                   
                     }
                 });
-                         
-            }
+                
+                $(document).on('click', '.m_l_view_reviewBtn', function () {
+
+                    var bos_idx = $('.m_l_view_buyerOrder').val(); 
+                    var br_star = $('#m_l_view_buyerStar').val();
+                    var br_content = $('.m_l_view_review textarea').val();                          
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "${pageContext.request.contextPath}/item/insertReview.do",
+                        data: {
+                        	bos_idx: bos_idx,
+                        	br_star: br_star,
+                        	br_content: br_content
+                        },
+                        success: function (data) {
+                        	location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            
+                        }
+                    });
+                }); 
+            }          
         });
 
 
@@ -940,6 +894,13 @@
         	line-height: 52px;
         	vertical-align: top;
 		}
+		
+		#m_l_view_buyerStar{
+			display:inline-block;
+        	height: 30px;    	
+        	vertical-align: top;       	
+        	margin: 10px 0 0 5px;			
+		}
 
         /* ---------------------------------------------- */
     </style>
@@ -1191,7 +1152,7 @@
                         </ul>
                         <ul class="m_l_view_reviews">                                                             	
 	                        <c:choose>
-	                        	<c:when test="${empty review}">
+	                        	<c:when test="${empty reviewList}">
 		                            <li class="m_l_view_review">		                          	
 		                                <div>
 		                                	<span class="m_l_view_notFoundReview">등록된 리뷰가 없습니다.</span>	                                
@@ -1199,23 +1160,23 @@
 		                            <li>
 		                        </c:when>
 		                        <c:otherwise>
-	                            	<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs">
-			                            <c:if test="${not empty reviewList[vs.count-1]}">
+	                            	<c:forEach var="review"  items="${reviewList}">
+			                            <c:if test="${not empty review}">
 				                            <li class="m_l_view_review">
 												<div>
-													<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${reviewList[vs.count-1].b_profile}">
-													<span class="m_l_view_reviewNickname">${reviewList[vs.count-1].b_nickname}</span>
-													<span class="m_l_view_reviewModifydate">${reviewList[vs.count-1].br_modifydate}</span>
+													<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${review.b_profile}">
+													<span class="m_l_view_reviewNickname">${review.b_nickname}</span>
+													<span class="m_l_view_reviewModifydate">${review.br_modifydate}</span>
 												</div>
 												<div>
-													<span class="m_l_view_reviewOption">선택 옵션</span>											
+													<span class="m_l_view_reviewOption">선택 옵션 : ${review.bos_option}</span>											
 												</div>
 												<div class="m_l_view_star_box">
 									                <span class="m_l_view_star empty"></span>
-									                <span class="m_l_view_star full" style='width: ${(reviewList[vs.count-1].br_star / 5) * 100}%'></span>
+									                <span class="m_l_view_star full" style='width: ${(review.br_star / 5) * 100}%'></span>
 									            </div>
 												<div>
-													<span class="m_l_view_reviewContent">${reviewList[vs.count-1].br_content}</span>
+													<span class="m_l_view_reviewContent">${review.br_content}</span>
 												</div>
 				                            </li>
 		                            	</c:if>

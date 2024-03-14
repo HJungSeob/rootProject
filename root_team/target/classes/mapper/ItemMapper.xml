@@ -41,17 +41,6 @@
 		WHERE
 			i_idx = #{i_idx}
 	</select>
-	
-	<select id="getReviews" parameterType="_int" resultType="reviewVO">
-		SELECT 
-		    *		    
-		FROM 
-		tb_buyer_review br, tb_buyer_info bi, tb_buyer_order_state bos, tb_buyer_order bo
-		WHERE br.bos_idx = bos.bos_idx
-		AND bos.bo_idx = bo.bo_idx
-		AND bi.b_idx = bo.b_idx
-		AND i_idx = #{i_idx}
-	</select>
 
 	<select id="getItems" parameterType="searchVO" resultType="itemVO">
 		SELECT 
@@ -155,6 +144,45 @@
 				</when>
 			</choose>
 		</if>
+	</select>
+	
+	<insert id="insertReview" parameterType="reviewVO">
+		INSERT INTO tb_buyer_review (bos_idx, br_content, br_star)
+		VALUES (#{bos_idx}, #{br_content}, #{br_star})
+	</insert>
+	
+	<select id="getReviews" parameterType="searchVO" resultType="reviewVO">
+		SELECT 
+		    *		    
+		FROM 
+		tb_buyer_review br, tb_buyer_info bi, tb_buyer_order_state bos, tb_buyer_order bo
+		WHERE br.bos_idx = bos.bos_idx
+		AND bos.bo_idx = bo.bo_idx
+		AND bi.b_idx = bo.b_idx
+		<if test="searchWord != null">
+			AND bos_option like CONCAT('%',#{searchWord},'%')
+		</if>
+		<if test="br_star != 0">
+			AND br_star = #{br_star}
+		</if>
+		AND i_idx = #{i_idx}
+	</select>
+	
+	<select id="getReviewTotalCount" parameterType="searchVO" resultType="reviewVO">
+		SELECT 
+		count(*)		    
+		FROM 
+		tb_buyer_review br, tb_buyer_info bi, tb_buyer_order_state bos, tb_buyer_order bo
+		WHERE br.bos_idx = bos.bos_idx
+		AND bos.bo_idx = bo.bo_idx
+		AND bi.b_idx = bo.b_idx
+		<if test="searchWord != null">
+			AND bos_option like CONCAT('%',#{searchWord},'%')
+		</if>
+		<if test="br_star != 0">
+			AND br_star = #{br_star}
+		</if>
+		AND i_idx = #{i_idx}
 	</select>
 
 </mapper>

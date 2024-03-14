@@ -22,6 +22,7 @@ public class SearchVO {
 	private String searchWord;
 	private String searchField;
 	private String orderByType;
+	private int br_star;
 	
 	private int i_idx;
 	private int p_idx;

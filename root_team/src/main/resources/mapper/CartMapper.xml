@@ -8,7 +8,7 @@
 	<select id="searchCart" parameterType="cartVO" resultType="_int">
 		SELECT count(*)
 		FROM tb_buyer_cart
-		WHERE b_idx = #{b_idx}
+		WHERE i_idx = #{i_idx}
 		AND i_option = #{i_option}
 	    AND b_idx = #{b_idx}
 	</select>

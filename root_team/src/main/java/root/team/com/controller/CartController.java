@@ -55,6 +55,7 @@ public class CartController {
 	@PostMapping("/deleteCart.do")
 	@ResponseBody
 	public int deleteCart(CartVO cartVO) {
+		System.out.println(cartVO);
 		return cDelete.deleteCart(cartVO);
 	}
 	

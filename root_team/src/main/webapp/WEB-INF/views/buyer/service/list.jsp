@@ -274,11 +274,10 @@
         }
 
         .m_list_item_info h4 {
-        	box-sizing: border-box;
+        	box-sizing: border-box;      	
             margin-bottom: 5px;
-            height: 56px;
-			padding: 10px 0;
-			overflow: hidden;
+            height: 54px;
+			overflow: hidden;			
 			text-overflow: ellipsis;
         }
 

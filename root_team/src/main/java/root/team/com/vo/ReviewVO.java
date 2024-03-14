@@ -12,8 +12,10 @@ public class ReviewVO {
 	private String b_nickname;
 	
 	private int br_idx;
+	private int bos_idx;
+	private String bos_option;
 	private String br_content;
-	private String br_star;
+	private int br_star;
 	private String br_check;
 	private String br_postdate;
 	private String br_modifydate;
