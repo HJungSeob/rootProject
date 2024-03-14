@@ -335,10 +335,16 @@ public class SellerController {
 		return "seller/service/sales";
 	}
 	
-	@PostMapping("/updateStateProcess.do")
+	@PostMapping("/updateOrderStateProcess.do")
 	@ResponseBody
-	public int updateStateProcess(@RequestBody OrderStateVO orderStateVO) {
-		return sUpdate.updateState(orderStateVO);
+	public int updateOrderStateProcess(@RequestBody OrderStateVO orderStateVO) {
+		return sUpdate.updateOrderState(orderStateVO);
+	}
+	
+	@PostMapping("/updateItemStateProcess.do")
+	@ResponseBody
+	public int updateItemStateProcess(@RequestBody ItemVO itemVO) {
+		return sUpdate.updateItemState(itemVO);
 	}
 
 	@GetMapping("/delivery.do")

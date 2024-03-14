@@ -134,7 +134,11 @@ public class SellerDAO {
 		return sqlSession.selectOne(MAPPER + ".getOrderTotalCount", vo);
 	}
 	
-	public int updateState(OrderStateVO orderStateVO) {
-		return sqlSession.update(MAPPER + ".updateState", orderStateVO);
+	public int updateOrderState(OrderStateVO orderStateVO) {
+		return sqlSession.update(MAPPER + ".updateOrderState", orderStateVO);
+	}
+	
+	public int updateItemState(ItemVO itemVO) {
+		return sqlSession.update(MAPPER + ".updateItemState", itemVO);
 	}
 }
