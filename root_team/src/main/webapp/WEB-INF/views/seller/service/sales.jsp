@@ -211,7 +211,7 @@
 				
 				$.ajax({
 					type: 'post',
-					url: '${pageContext.request.contextPath}/seller/updateStateProcess.do',
+					url: '${pageContext.request.contextPath}/seller/updateOrderStateProcess.do',
 					data: JSON.stringify(orderState),
 					contentType: "application/json;charset=utf-8;",
 					dataType: 'json',

@@ -36,11 +36,11 @@
 					let soldOutItems = 0;
 					
 					for(let i = 0; i<data.length; i++){
-						if(data[i].i_state = 1) {
+						if(data[i].i_state == 1) {
 							sellingItems++;
-						} else if(data[i].i_state = 2){
+						} else if(data[i].i_state == 2){
 							waitingItems++;
-						} else if(data[i].i_state = 3){
+						} else if(data[i].i_state == 3){
 							soldOutItems++;
 						}
 					}

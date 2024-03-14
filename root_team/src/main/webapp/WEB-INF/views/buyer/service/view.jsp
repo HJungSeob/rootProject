@@ -110,6 +110,46 @@
                 });
             });
             
+            $(".m_l_view_reviewBtn").click(function () {
+
+                i_option = $('.m_l_view_getitem .m_l_view_checkedoption').text(); 
+                i_price = $(".m_l_view_buyerOrder").val();
+                
+                
+                if ($("#b_idx").val() != "") {
+                    var b_idx = $("#b_idx").val();
+                }else{
+                	if(confirm("로그인이 필요한 서비스 입니다. 로그인 페이지로 이동하시겠습니까?")){
+                    	window.location.href = "${pageContext.request.contextPath}/buyer/buyerLogin.do";                    	
+                    }
+                    return false;
+                }
+ 
+                if (m_l_view_option_count !== i_option.split(',').length) {
+                    alert('모든 옵션을 선택해 주세요.');
+                    return false;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "${pageContext.request.contextPath}/cart/likeItem.do",
+                    data: {
+                    	b_idx: b_idx,
+                        i_idx: i_idx,
+                        i_name: i_name,
+                        i_img: i_img,
+                        i_option: i_option,
+                        i_price: i_price
+                    },
+                    success: function (data) {
+                        alert("관심목록에 상품이 추가되었습니다.");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("관심목록에 상품을 추가하는데 실패했습니다.");
+                    }
+                });
+            });            
+            
             if ($("#b_idx").val() != "") {
                 var b_idx = $("#b_idx").val();
     		
@@ -121,13 +161,29 @@
                         i_idx: i_idx
                     },
                     success: function (data) {
-                    	if(data !== null){
+                    	if(data.length !== 0){
+                    		$(".m_l_view_buyerReviewBox").append('<span class="m_l_view_buyerOrders">구매한 옵션 : </span>');
+                    	    $(".m_l_view_buyerReviewBox").append('<select class="m_l_view_buyerOrder"></select>');
 	                    	for(let i = 0; i< data.length; i++){
 	                    		$('.m_l_view_buyerOrder').append($('<option>', {
 	                    	        value: data[i].bos_option,
 	                    	        text: data[i].bos_option
-	                    	    }));                   		
+	                    	    }));
 	                    	}
+	                    	var textarea = $('<textarea>').attr({
+                    		    'rows': '',
+                    		    'cols': '',
+                    		    'placeholder': '구매하신 상품에 대해 리뷰를 남겨보세요.'
+                    		});
+
+                    		var button = $('<button>').attr({
+                    		    'type': 'button',
+                    		    'class': 'm_l_view_reviewBtn'
+                    		}).text('등록');
+                    		var div = $('<div>').append(button);
+                    		$('.m_l_view_buyerReviewBox').after(div).after(textarea);
+                    	}else{
+                    		$(".m_l_view_buyerReviewBox").append('<div><span class="m_l_view_notFoundBuyer">리뷰를 작성할 주문내역이 없습니다.</span></div>');
                     	}
                     },
                     error: function (xhr, status, error) {                   
@@ -190,7 +246,7 @@
                 $(".m_l_view_checkedoption").text("");
                 $(".m_l_view_firstoption").addClass("hide");
             });
-
+ 
             $('.m_l_view_itemimg_btn button:first').trigger('click');
 
             $(".m_l_view_btn_itemexplain").click(function () {
@@ -748,6 +804,8 @@
 			text-decoration: underline;
 		}
 		
+
+		
         .m_l_view_starorder {
             position: relative;
             display: inline-block;
@@ -814,7 +872,8 @@
             line-height: 52px;
             vertical-align: top;
             float: right;
-        }
+        }      
+
         
         .m_l_view_reviewOption{
         	color:gray;
@@ -848,8 +907,8 @@
         .m_l_view_review textarea{
         	box-sizing: border-box;
         	height: 200px;
-        	padding: 20px;
-        	font-size: 20px;
+        	padding: 20px 120px 20px 20px;
+        	font-size: 16px;
         	margin-top: 20px;
         }
         
@@ -871,8 +930,16 @@
         	height: 30px;    	
         	vertical-align: top;
         	max-width: 500px;
-        	margin: 10px 0 0 20px;
+        	margin: 10px 0 0 5px;
         }
+        
+        .m_l_view_buyerOrders{
+        	font-size: 12px;
+        	color: gray;
+        	margin-left: 10px;
+        	line-height: 52px;
+        	vertical-align: top;
+		}
 
         /* ---------------------------------------------- */
     </style>
@@ -1062,23 +1129,12 @@
 		                        	</li>	
 	                        	</c:when>
 	                    		<c:otherwise>
-	                    			<c:choose>
-	                    				<c:when test="${empty buyer}">
-			                    			<li class="m_l_view_review">
-				                            	<div>
-													<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
-													<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>
-													<span>구매한 옵션</span>
-													<select class ="m_l_view_buyerOrder">
-													</select>									
-												</div>
-				                            	<textarea rows="" cols="" placeholder="구매하신 상품에 대해 리뷰를 남겨보세요."></textarea>
-				                            	<div>
-				                            		<button type="button" class="m_l_view_reviewBtn">등록</button> 
-				                            	</div>       	                         
-				                            </li>
-			                            </c:when>
-		                            </c:choose>
+	                    			<li class="m_l_view_review">
+		                            	<div class="m_l_view_buyerReviewBox">
+											<img class="m_l_view_reviewImg" alt="" src="${pageContext.request.contextPath}/resources/uploads/${buyer.b_profile}">
+											<span class="m_l_view_reviewNickname">${buyer.b_nickname}</span>								
+										</div>     	                         
+		                            </li>
 	                    		</c:otherwise>
 		                	</c:choose>
                     	</ul>                 	

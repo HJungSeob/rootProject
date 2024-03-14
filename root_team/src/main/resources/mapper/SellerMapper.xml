@@ -509,10 +509,16 @@
 		</choose>
 	</select>
 	
-	<update id="updateState" parameterType="orderStateVO">
+	<update id="updateOrderState" parameterType="orderStateVO">
 		update
 		tb_buyer_order_state set bos_state = #{bos_state}
 		where bo_idx = #{bo_idx}
 		and bos_option = #{bos_option}
+	</update>
+	
+	<update id="updateItemState" parameterType="itemVO">
+		update
+		tb_item set i_state = #{i_state}
+		where i_idx = #{i_idx}
 	</update>
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 import root.team.com.dao.SellerDAO;
+import root.team.com.vo.ItemVO;
 import root.team.com.vo.OrderStateVO;
 import root.team.com.vo.SellerVO;
 
@@ -36,7 +37,11 @@ public class SellerUpdateService implements SellerService {
 		return dao.verifyEmail(dao.getS_idx(s_email));
 	}
 	
-	public int updateState(OrderStateVO orderStateVO) {
-		return dao.updateState(orderStateVO);
+	public int updateOrderState(OrderStateVO orderStateVO) {
+		return dao.updateOrderState(orderStateVO);
+	}
+	
+	public int updateItemState(ItemVO itemVO) {
+		return dao.updateItemState(itemVO);
 	}
 }

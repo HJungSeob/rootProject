@@ -94,7 +94,11 @@ public interface SellerService {
 		return 0;
 	}
 	
-	default int updateState(OrderStateVO orderStateVO){
+	default int updateOrderState(OrderStateVO orderStateVO){
+		return 0;
+	}
+	
+	default int updateItemState(ItemVO itemVO){
 		return 0;
 	}
 }

@@ -133,7 +133,10 @@
 											
 											<tr>
 				                                <td><span>${i}</span></td>
-				                                <td class="seller_view_edit_contents_table_edit_btn"><button type="button" id="editButton"><span>수정</span></button></td>
+				                                <td class="seller_view_edit_contents_table_edit_btn">
+				                                	<button type="button" class="editButton"><span>수정</span></button>
+				                                	<input type="hidden" class="i_idx" value="${itemList[vs.count-1].i_idx}">
+				                                </td>
 				                                <td class="seller_view_edit_contents_table_product_name">
 				                                	<a href=""><span>${itemList[vs.count-1].i_name}</span></a>
 				                                </td>
@@ -165,8 +168,55 @@
                     
                 </div>
             </div>
+            
+        	<div class="stateList">
+           		<div class="changeState" data-state="1"><span>판매중</span></div>
+           		<div class="changeState" data-state="2"><span>판매대기</span></div>
+           		<div class="changeState" data-state="3"><span>품절</span></div>
+            </div>
+
         </section>
+
     </div>
+
+	<script>
+		$(document).ready(function() {		
+			let i_idx = 0;
+			
+			$(".editButton").click(function() {
+				var buttonPosition = $(this).offset();
+				var topPosition = buttonPosition.top + $(this).outerHeight();
+				i_idx = parseInt($(this).siblings(".i_idx").val(), 12);		
+	
+				$(".stateList").css({
+					"position" : "absolute",
+					"top" : topPosition + "px",
+					"left" : buttonPosition.left + "px"
+				}).toggle();
+			});
+	
+			$(".changeState").click(function() {
+				var i_state = $(this).data('state');
+				var itemState = {"i_idx": i_idx, "i_state": i_state};												
+				
+				$.ajax({
+					type: 'post',
+					url: '${pageContext.request.contextPath}/seller/updateItemStateProcess.do',
+					data: JSON.stringify(itemState),
+					contentType: "application/json;charset=utf-8;",
+					dataType: 'json',
+					success: function (data) {
+						if(data == 1){
+							window.location.reload();
+						}
+					},
+					error: function () {
+						console.log("실패");
+					}
+				}); 
+			});
+		});
+	</script>
 
 	<footer>
 		<%@include file="../../buyer/common/global_footer.jsp"%>
