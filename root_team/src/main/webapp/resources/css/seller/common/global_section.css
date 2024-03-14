@@ -156,3 +156,27 @@
     color: #00CD08;
     font-weight: bold;
 }
+
+/* ------------------------------ editButton ------------------------------ */
+
+.stateList {
+	display: none;
+	text-align: center;
+	background-color: #ffffff;
+	border: 1px solid #00CD08;
+	border-radius: 4px;
+}
+
+.stateList span {
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.stateList span:hover {
+	text-decoration: underline;
+}
+
+.changeState {
+	width: 120px;
+	height: 23px;
+}
