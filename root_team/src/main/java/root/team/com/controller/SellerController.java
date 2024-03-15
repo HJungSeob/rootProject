@@ -26,6 +26,7 @@ import root.team.com.service.global.GlobalService;
 import root.team.com.service.seller.SellerService;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.OrderStateVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -335,6 +336,44 @@ public class SellerController {
 		return "seller/service/sales";
 	}
 	
+	@GetMapping("/review.do")
+	public String review(@ModelAttribute("sVO") SearchVO searchVO, String sDate, String eDate, Model model) {
+		if (searchVO.getPageNum() == 0) {
+			searchVO.setPageNum(1);
+		}
+
+		if (searchVO.getItemNum() == null) {
+			searchVO.setItemNum("");
+		}
+
+		if (searchVO.getBuyerNickname() == null) {
+			searchVO.setBuyerNickname("");
+		}
+		
+		if (sDate != null && eDate != null) {
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				Date startDate = dtFormat.parse(sDate);
+				Date endDate = dtFormat.parse(eDate);
+
+				searchVO.setStartDate(startDate);
+				searchVO.setEndDate(endDate);
+
+			} catch (ParseException e) {
+			}
+		}
+		
+		List<ReviewVO> reviewList = sList.getReviews(searchVO);
+		model.addAttribute("reviewList", reviewList);
+
+		pageNav.setTotalRows(sTotalCount.getOrderTotalCount(searchVO));
+		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
+		model.addAttribute("pageNav", pageNav);
+		
+		return "seller/service/review";
+	}
+	
 	@PostMapping("/updateOrderStateProcess.do")
 	@ResponseBody
 	public int updateOrderStateProcess(@RequestBody OrderStateVO orderStateVO) {
@@ -355,11 +394,6 @@ public class SellerController {
 	@GetMapping("/inquiry.do")
 	public String inquiry() {
 		return "seller/service/inquiry";
-	}
-
-	@GetMapping("/review.do")
-	public String review() {
-		return "seller/service/review";
 	}
 
 	@GetMapping("/settlement.do")

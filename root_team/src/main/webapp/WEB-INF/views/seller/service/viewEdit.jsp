@@ -150,7 +150,7 @@
 												        <c:when test="${itemState eq 3}">품절</c:when>
 												    </c:choose>
 												</span></td>
-				                                <td><span>${itemList[vs.count-1].i_count}</span></td>
+				                                <td><span>${itemList[vs.count-1].i_count}개</span></td>
 				                                <td><span><fmt:formatNumber type="number" pattern="#,###" value="${itemList[vs.count-1].i_price}" />원</span></td>
 				                            </tr>
 										</c:if>
@@ -186,7 +186,7 @@
 			$(".editButton").click(function() {
 				var buttonPosition = $(this).offset();
 				var topPosition = buttonPosition.top + $(this).outerHeight();
-				i_idx = parseInt($(this).siblings(".i_idx").val(), 12);		
+				i_idx = parseInt($(this).siblings(".i_idx").val(), 10);		
 	
 				$(".stateList").css({
 					"position" : "absolute",

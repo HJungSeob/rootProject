@@ -138,7 +138,7 @@
 				                                	<a href=""><span>${orderList[vs.count-1].i_name}</span></a>
 				                                </td>
 				                                <td><span>${orderList[vs.count-1].bos_option}</span></td>
-				                                <td><span>${orderList[vs.count-1].bos_count}</span></td>
+				                                <td><span>${orderList[vs.count-1].bos_count}개</span></td>
 				                                <c:set var="orderNumber" value="${orderList[vs.count-1].bo_idx}" />
 				                                <td><span>R<fmt:formatNumber type="custom" pattern="00000000" value="${orderNumber}" /></span></td>
 				                                <c:set var="orderState" value="${orderList[vs.count-1].bos_state}" />

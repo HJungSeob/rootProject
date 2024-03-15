@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.OrderStateVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -140,5 +141,9 @@ public class SellerDAO {
 	
 	public int updateItemState(ItemVO itemVO) {
 		return sqlSession.update(MAPPER + ".updateItemState", itemVO);
+	}
+	
+	public List<ReviewVO> getReviews(SearchVO vo) {
+		return sqlSession.selectList(MAPPER + ".getReviews", vo);
 	}
 }
