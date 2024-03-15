@@ -69,9 +69,6 @@
 				<when test='p_idx == 5'>
 					AND c_idx BETWEEN 21 AND 25
 				</when>
-				<otherwise>
-					
-				</otherwise>
 			</choose>
 		</if>
 		<if test="searchWord != null">
@@ -84,6 +81,7 @@
 				</when>
 			</choose>
 		</if>
+		AND i_state = 1
 		<if test="orderByType != null">
 			<choose>
 				<when test='orderByType == "pop"'>
@@ -129,9 +127,6 @@
 				<when test='p_idx == 5'>
 					AND i.c_idx BETWEEN 21 AND 25
 				</when>
-				<otherwise>
-					
-				</otherwise>
 			</choose>
 		</if>
 		<if test="searchWord != null">
@@ -144,6 +139,7 @@
 				</when>
 			</choose>
 		</if>
+		AND i_state = 1
 	</select>
 	
 	<insert id="insertReview" parameterType="reviewVO">
