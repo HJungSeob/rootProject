@@ -121,6 +121,7 @@
                                 <th>판매상태</th>
                                 <th>재고상태</th>
                                 <th>판매가</th>
+                                <th></th>
                             </tr>
 								
 							<c:choose>
@@ -138,7 +139,7 @@
 				                                	<input type="hidden" class="i_idx" value="${itemList[vs.count-1].i_idx}">
 				                                </td>
 				                                <td class="seller_view_edit_contents_table_product_name">
-				                                	<a href=""><span>${itemList[vs.count-1].i_name}</span></a>
+				                                	<a href="${pageContext.request.contextPath}/item/view.do?i_idx=${itemList[vs.count-1].i_idx}"><span>${itemList[vs.count-1].i_name}</span></a>
 				                                </td>
 				                                <c:set var="itemNumber" value="${itemList[vs.count-1].i_idx}" />
 				                                <td><span>P<fmt:formatNumber type="custom" pattern="00000000" value="${itemNumber}" /></span></td>
@@ -152,6 +153,7 @@
 												</span></td>
 				                                <td><span>${itemList[vs.count-1].i_count}개</span></td>
 				                                <td><span><fmt:formatNumber type="number" pattern="#,###" value="${itemList[vs.count-1].i_price}" />원</span></td>
+				    							<td><button class="itemDelete" data-i_idx="${itemList[vs.count-1].i_idx}"><span>X</span></button><td>
 				                            </tr>
 										</c:if>
 									</c:forEach>
@@ -180,6 +182,7 @@
     </div>
 
 	<script>
+	
 		$(document).ready(function() {		
 			let i_idx = 0;
 			
@@ -215,6 +218,26 @@
 					}
 				}); 
 			});
+			
+		    $(".itemDelete").click(function() {
+		        var i_idx = $(this).data('i_idx');
+		        
+		         $.ajax({
+		            url: '${pageContext.request.contextPath}/item/deleteItemProcess.do',
+		            type: 'POST',
+		            data: { i_idx: i_idx },
+		            success: function(data) {
+		            	if(data == 1){
+							window.location.reload();
+		            	}
+		            },
+		            
+		            error: function() {
+		            	console.log("실패");
+		            }
+		        });
+		    });
+
 		});
 	</script>
 

@@ -26,7 +26,7 @@ import root.team.com.vo.SearchVO;
 public class ItemController {
 
 	@Setter(onMethod_ = { @Autowired })
-	ItemService iInsert, iView, iList, iTotalCount, iReviewList, iReviewInsert, iReviewTotalCount;
+	ItemService iInsert, iView, iList, iTotalCount, iReviewList, iReviewInsert, iReviewTotalCount, iDelete;
 
 	@Setter(onMethod_ = { @Autowired })
 	GlobalService gFileNameUpdate, gDateUpdate, gPage;
@@ -140,4 +140,9 @@ public class ItemController {
 		return iReviewInsert.insertReview(ReviewVO);	
 	}
 
+	@PostMapping("/deleteItemProcess.do")
+	@ResponseBody
+	public int deleteItemProcess(int i_idx) {
+		return iDelete.deleteItem(i_idx);
+	}
 }

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import root.team.com.vo.CartVO;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
@@ -56,4 +57,7 @@ public class ItemDAO {
 		return sqlSession.insert(MAPPER + ".insertReview", vo);
 	}
 	
+	public int deleteItem(int i_idx) {
+        return sqlSession.delete(MAPPER + ".deleteItem", i_idx);
+    }
 }
