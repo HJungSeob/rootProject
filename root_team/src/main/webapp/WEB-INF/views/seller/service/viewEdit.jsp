@@ -219,23 +219,27 @@
 				}); 
 			});
 			
+		
 		    $(".itemDelete").click(function() {
 		        var i_idx = $(this).data('i_idx');
 		        
-		         $.ajax({
-		            url: '${pageContext.request.contextPath}/item/deleteItemProcess.do',
-		            type: 'POST',
-		            data: { i_idx: i_idx },
-		            success: function(data) {
-		            	if(data == 1){
-							window.location.reload();
-		            	}
-		            },
-		            
-		            error: function() {
-		            	console.log("실패");
-		            }
-		        });
+		        if(confirm("정말 삭제하시겠습니까?")){
+		        
+			         $.ajax({
+			            url: '${pageContext.request.contextPath}/item/deleteItemProcess.do',
+			            type: 'POST',
+			            data: { i_idx: i_idx },
+			            success: function(data) {
+			            	if(data == 1){
+								window.location.reload();
+			            	}
+			            },
+			            
+			            error: function() {
+			            	console.log("실패");
+			            }
+			        });
+		        }
 		    });
 
 		});

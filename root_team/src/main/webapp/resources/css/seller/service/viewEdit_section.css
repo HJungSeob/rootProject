@@ -244,3 +244,7 @@
 .seller_view_edit_contents_table_product_name a:hover {
     text-decoration: underline;
 }
+
+.itemDelete{
+	cursor: pointer;
+}
