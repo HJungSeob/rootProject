@@ -23,6 +23,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/buyer/service/buyerShoppingPage.js"></script>
     <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script>
+    telCheckValid = true
         $(function () {
 
             function formatNumberToCode(number) {
@@ -198,46 +199,46 @@
             <div class="m_buyerShopping_newAddress">새 주소 사용</div>
         </div>
         <div id="InputNewAddress" class="m_buyerShopping_InputNewAddress">
-            <div class="m_buyerShopping_newAddressFirstBox" id="firstNameRegion">
-                <div class="m_buyerShopping_newAddressTitle" id="firstNameTitle">성</div>
-                <input type="text" class="m_buyerShopping_newAddressInput nAInput" name="firstName" disabled="disabled"
+            <div class="_inputRegion" id="firstNameRegion">
+                <input placeholder=" " type="text" class="nAInput" name="firstName" disabled="disabled"
                     id="firstNameInput">
+                <span class="" id="firstNameTitle">성</span>
             </div>
             <div class="m_buyerShopping_errorMsg" id="firstNameMsg"></div>
 
-            <div class="m_buyerShopping_newAddressBox" id="lastNameRegion">
-                <div class="m_buyerShopping_newAddressTitle" id="lastNameTitle">이름</div>
-                <input type="text" class="m_buyerShopping_newAddressInput nAInput" name="lastName" disabled="disabled"
+            <div class="_inputRegion" id="lastNameRegion">
+                <input placeholder=" " type="text" class="nAInput" name="lastName" disabled="disabled"
                     id="lastNameInput">
+                <span class="" id="lastNameTitle">이름</span>
             </div>
             <div class="m_buyerShopping_errorMsg" id="lastNameMsg"></div>
 
-            <div class="m_buyerShopping_newAddressBox" id="zonecodeRegion">
-                <div class="m_buyerShopping_newAddressTitle" id="zonecodeTitle">우편번호</div>
-                <input type="text" class="m_buyerShopping_newAddressInput nAInput" name="zonecode" disabled="disabled"
+            <div class="_inputRegion" id="zonecodeRegion">
+                <input placeholder=" " type="text" class="nAInput" name="zonecode" disabled="disabled"
                     id="zonecodeInput">
+                <span class="" id="zonecodeTitle">우편번호</span>
             </div>
             <div class="m_buyerShopping_errorMsg" id="zonecodeMsg"></div>
 
-            <div class="m_buyerShopping_newAddressBox" id="addressRegion">
-                <div class="m_buyerShopping_newAddressTitle" id="addressTitle">건물 번지, 이름 또는 거리 이름</div>
-                <input type="text" class="m_buyerShopping_newAddressInput nAInput" name="address" disabled="disabled"
+            <div class="_inputRegion" id="addressRegion">
+                <input placeholder=" " type="text" class="nAInput" name="address" disabled="disabled"
                     id="addressInput">
+                <span class="" id="addressTitle">건물 번지, 이름 또는 거리 이름</span>
             </div>
             <div class="m_buyerShopping_errorMsg" id="zonecodeMsg"></div>
 
-            <div class="m_buyerShopping_newAddressLastBox" id="plusAddressRegion">
-                <div class="m_buyerShopping_newAddressTitle" id="plusAddressTitle">상세주소 및 아파트 등의 건물 출입 코드(선택사항)</div>
-                <input type="text" class="m_buyerShopping_newAddressInput nAInput" name="addaddress" disabled="disabled"
+            <div class="_inputRegion" id="plusAddressRegion">
+                <input placeholder=" " type="text" class="nAInput" name="addaddress" disabled="disabled"
                     id="plusAddressInput">
+                <span class="" id="plusAddressTitle">상세주소 및 아파트 등의 건물 출입 코드(선택사항)</span>
             </div>
         </div>
         <div class="_hr"></div>
         <div class="m_buyerShopping_subTitle">연락처 정보를 알려주십시오.</div>
-        <div class="m_buyerShopping_newAddressBox" id="telRegion">
-            <div class="m_buyerShopping_newAddressTitle" id="telTitle">전화번호</div>
-            <input type="tel" class="m_buyerShopping_newAddressInput" id="telInput" maxlength="13"
+        <div class="_inputRegion" id="telRegion">
+            <input placeholder=" " type="tel" class="" id="telInput" maxlength="13"
                 value="${address.ba_contact}">
+            <span class="" id="telTitle">전화번호</span>
         </div>
         <div class="m_buyerShopping_errorMsg" id="telSmg"></div>
 

@@ -175,3 +175,37 @@
 .m_buyerShopping_submitInput{
     display: none;
 }
+
+
+
+._inputRegion{
+    width: 500px;
+    position: relative;
+    margin-top: 20px;
+}
+._inputRegion input{
+    width: 460px;
+    height: 60px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #858585;
+    padding: 20px;
+    background-color:#ffffff00;
+    padding-bottom: 0px;
+}
+
+._inputRegion input+span{
+    position: absolute;
+    pointer-events: none;
+    color: #858585;
+    transition: all 0.3s ease;
+    left: 20px;
+    top: 30px;
+    font-size: 20px;
+}
+
+._inputRegion input:focus + span,
+._inputRegion input:not(:placeholder-shown) + span{
+    top: 10px;
+    font-size: 14px;
+}
