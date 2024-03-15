@@ -88,7 +88,7 @@
                             
 							<c:choose>
 								<c:when test="${empty reviewList}">
-									<tr><td colspan="9">등록된 주문이 없습니다.</td></tr>
+									<tr><td colspan="9">등록된 리뷰가 없습니다.</td></tr>
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="i" begin="${pageNav.startNum}" end="${pageNav.endNum}" varStatus="vs" >
