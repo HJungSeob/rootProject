@@ -2,6 +2,7 @@ package root.team.com.service.item;
 
 import java.util.List;
 
+import root.team.com.vo.CartVO;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
@@ -40,4 +41,7 @@ public interface ItemService {
 		return 0;
 	}
 
+	default int deleteItem(int i_idx) {
+		return 0;
+	}
 }

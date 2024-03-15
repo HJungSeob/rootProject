@@ -185,4 +185,8 @@
 		AND i_idx = #{i_idx}
 	</select>
 
+	<delete id="deleteItem" parameterType="_int">
+	    DELETE FROM tb_item
+	    WHERE i_idx = #{i_idx}
+	</delete>
 </mapper>
