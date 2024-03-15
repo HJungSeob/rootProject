@@ -69,6 +69,10 @@ public class ItemController {
 			searchVO.setPageNum(1);
 		}
 
+		if (searchVO.getSearchField() == null) {
+			searchVO.setSearchField("i_name");
+		}
+		
 		if (searchVO.getViewNum() == 0) {
 			searchVO.setViewNum(9);
 		}

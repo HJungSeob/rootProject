@@ -85,7 +85,7 @@ let telCheckValid = true;
 						<div class="m_info_trvle_list_info">배송을 조회하고, 주문을 변경 또는
 							취소하거나 반품을 신청하세요.</div>
 						<div class="m_info_trvle_list_info_list">
-							<a href="#" class="m_info_trvle_list_info_a">주문 기록 확인
+							<a href="${pageContext.request.contextPath}/order/orderList.do?b_idx=${buyer.b_idx}" class="m_info_trvle_list_info_a">주문 기록 확인
 								<div class="arrow_small a20"></div>
 							</a>
 						</div>

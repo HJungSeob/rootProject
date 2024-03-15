@@ -237,35 +237,35 @@
             </div>
             <div class="global_nav_list">
                 <div class="global_nav_searchField">
-                    <form action="">
+                    <form action="${pageContext.request.contextPath}/item/list.do">
                         <label class="search">
                             <input type="submit">
                         </label>
-                        <input type="text" class="global_nav_searchBox" placeholder="root.com 검색하기">
+                        <input type="text" class="global_nav_searchBox" name="searchWord" placeholder="root.com 검색하기">
                     </form>
                     <span>실시간 쇼핑 키워드</span>
                     <div class="global_nav_list_keywords">
                         <ul>
-                            <li class="active"><span class="arrow_small"></span><a href="">키워드 입니다</a></li>
-                            <li><span class="arrow_small"></span><a href="">대충 컴퓨터 부품 중 존나 긴 일므 가진애</a></li>
-                            <li><span class="arrow_small"></span><a href="">주방용품중에 준내 긴이름 가진놈</a></li>
-                            <li><span class="arrow_small"></span><a href="">티비에 나오던 음식 재료</a></li>
-                            <li><span class="arrow_small"></span><a href="">몸에좋은 영양 간식</a></li>
-                            <li><span class="arrow_small"></span><a href="">키워드 입니다</a></li>
-                            <li><span class="arrow_small"></span><a href="">개비싼 강아지 사료</a></li>
-                            <li><span class="arrow_small"></span><a href="">마우스마우스마우스마우스마우스</a></li>
-                            <li><span class="arrow_small"></span><a href="">키보드키보드</a></li>
-                            <li><span class="arrow_small"></span><a href="">스피커커피스</a></li>
-                            <li><span class="arrow_small"></span><a href="">준내게 긴 키워드 입니다아아아아아아</a></li>
-                            <li><span class="arrow_small"></span><a href="">아아아아아아아아아아아아</a></li>
+                            <li class="active"><span class="arrow_small"></span><a href="">의자</a></li>
+                            <li><span class="arrow_small"></span><a href="">원피스</a></li>
+                            <li><span class="arrow_small"></span><a href="">주방용품</a></li>
+                            <li><span class="arrow_small"></span><a href="">모니터</a></li>
+                            <li><span class="arrow_small"></span><a href="">키보드</a></li>
+                            <li><span class="arrow_small"></span><a href="">휴대폰케이스</a></li>
+                            <li><span class="arrow_small"></span><a href="">청소기</a></li>
+                            <li><span class="arrow_small"></span><a href="">TV</a></li>
+                            <li><span class="arrow_small"></span><a href="">노트북</a></li>
+                            <li><span class="arrow_small"></span><a href="">스피커</a></li>
+                            <li><span class="arrow_small"></span><a href="">블루투스이어폰</a></li>
+                            <li><span class="arrow_small"></span><a href="">냉장고</a></li>
                             <li><span class="arrow_small"></span><a href="">플레이스테이션5</a></li>
-                            <li><span class="arrow_small"></span><a href="">대충 기다란 문구</a></li>
-                            <li><span class="arrow_small"></span><a href="">키워드 적을게 없다</a></li>
-                            <li><span class="arrow_small"></span><a href="">키워드 입니다</a></li>
-                            <li><span class="arrow_small"></span><a href="">엄</a></li>
-                            <li><span class="arrow_small"></span><a href="">준</a></li>
-                            <li><span class="arrow_small"></span><a href="">식</a></li>
-                            <li><span class="arrow_small"></span><a href="">엄준식은 살아있다</a></li>
+                            <li><span class="arrow_small"></span><a href="">세탁기</a></li>
+                            <li><span class="arrow_small"></span><a href="">닌텐도</a></li>
+                            <li><span class="arrow_small"></span><a href="">케이스</a></li>
+                            <li><span class="arrow_small"></span><a href="">소파</a></li>
+                            <li><span class="arrow_small"></span><a href="">식탁</a></li>
+                            <li><span class="arrow_small"></span><a href="">조명</a></li>
+                            <li><span class="arrow_small"></span><a href="">책상</a></li>
                         </ul>
                     </div>
                 </div>
