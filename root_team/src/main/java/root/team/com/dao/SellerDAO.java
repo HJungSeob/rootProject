@@ -146,4 +146,9 @@ public class SellerDAO {
 	public List<ReviewVO> getReviews(SearchVO vo) {
 		return sqlSession.selectList(MAPPER + ".getReviews", vo);
 	}
+	
+	public int getReviewTotalCount(SearchVO vo) {	
+		return sqlSession.selectOne(MAPPER + ".getReviewTotalCount", vo);
+	}
+	
 }

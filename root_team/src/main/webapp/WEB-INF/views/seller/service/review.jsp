@@ -48,17 +48,6 @@
                                     </div>
                                 </div>
                                 <div class="seller_review_contents_search_items">
-                                    <span class="seller_review_contents_search_title">판매상태</span>
-                                    <div class="seller_review_contents_search_item2">
-                                        <input type="radio" id="0" name="reviewState" value="0" ${sVO.reviewState eq 0 and sVO.reviewState eq '' ? 'checked' : '' }>
-                                        <label for="0"><span>전체</span></label>
-                                        <input type="radio" id="1" class="restCheckBox" name="reviewState" value="1" ${sVO.reviewState eq 1 ? 'checked' : '' }>
-                                        <label for="1"><span>유지된 리뷰(O)</span></label>
-                                        <input type="radio" id="2" class="restCheckBox" name="reviewState" value="2" ${sVO.reviewState eq 2 ? 'checked' : '' }>
-                                        <label for="2"><span>삭제된 리뷰(X)</span></label>
-                                    </div>
-                                </div>
-                                <div class="seller_review_contents_search_items">
                                     <span class="seller_review_contents_search_title">등록기간</span>
                                     <div class="seller_review_contents_search_item3">
                                         <input type="date" id="startDate" name="sDate" value="${param.sDate}">
@@ -79,7 +68,7 @@
 
                     <div class="seller_review_contents_list">
                     	<c:choose>
-							<c:when test="${empty orderList}">
+							<c:when test="${empty reviewList}">
 								<div><span>리뷰목록 (총 0개)</span></div>
 							</c:when>
 							<c:otherwise>
@@ -90,13 +79,11 @@
                         <table class="seller_review_contents_table">
                             <tr class="seller_review_contents_table_title">
                                 <th>구분</th>
-                                <th>수정</th>
                                 <th>작성일</th>
                                 <th>닉네임</th>
                                 <th>리뷰</th>
                                 <th>별점</th>
                                 <th>상품번호</th>
-                                <th>삭제여부</th>
                             </tr>
                             
 							<c:choose>
@@ -108,10 +95,7 @@
 										<c:if test="${not empty reviewList[vs.count-1]}">
 											
 											<tr>
-				                                <td><span>${i}</span></td>
-				                                <td class="seller_review_contents_table_edit_btn">
-				                                	<button type="button" class="editButton" data-order="${reviewList[vs.count-1]}"><span>수정</span></button>		               
-				                                </td>
+				                                <td><span>${i}</span></td>	
 				                                <td><span>${reviewList[vs.count-1].br_postdate}</span></td>
 				                                <td><span>${reviewList[vs.count-1].b_nickname}</span></td>
 				                                <td class="seller_review_contents_table_product_name">
@@ -120,13 +104,7 @@
 				                                <td><span>${reviewList[vs.count-1].br_star}점</span></td>
 				                                 <c:set var="itemNumber" value="${reviewList[vs.count-1].i_idx}" />
 				                                <td><span>P<fmt:formatNumber type="custom" pattern="00000000" value="${itemNumber}" /></span></td>
-				                                <c:set var="reviewState" value="${reviewList[vs.count-1].br_cancel}" /> 
-												<td><span>
-												    <c:choose>
-												        <c:when test="${reviewState eq 1}">O</c:when>
-												        <c:when test="${reviewState eq 2}">X</c:when>
-												    </c:choose>
-												</span></td>
+				                                <c:set var="reviewState" value="${reviewList[vs.count-1].br_cancel}" />
 											</tr>
 										</c:if>
 									</c:forEach>
@@ -144,55 +122,9 @@
                 </div>
             </div>
 
-			<div class="stateList">
-           		<div class="changeState" data-state="1"><span>리뷰복원</span></div>
-           		<div class="changeState" data-state="2"><span>리뷰삭제</span></div>
-            </div>
-
         </section>
 
     </div>
-
-	<!-- <script>
-		$(document).ready(function() {		
-			let bo_idx = 0;
-			let bos_option = null;			
-	
-			$(".editButton").click(function() {
-				var buttonPosition = $(this).offset();
-				var topPosition = buttonPosition.top + $(this).outerHeight();
-				bo_idx = parseInt($(this).siblings(".bo_idx").val(), 10);
-				bos_option = $(this).siblings(".bos_option").val();			
-	
-				$(".stateList").css({
-					"position" : "absolute",
-					"top" : topPosition + "px",
-					"left" : buttonPosition.left + "px"
-				}).toggle();
-			});
-	
-			$(".changeState").click(function() {
-				var bos_state = $(this).data('state');
-				var orderState = {"bo_idx": bo_idx, "bos_option": bos_option, "bos_state": bos_state};												
-				
-				$.ajax({
-					type: 'post',
-					url: '${pageContext.request.contextPath}/seller/updateOrderStateProcess.do',
-					data: JSON.stringify(orderState),
-					contentType: "application/json;charset=utf-8;",
-					dataType: 'json',
-					success: function (data) {
-						if(data == 1){
-							window.location.reload();
-						}
-					},
-					error: function () {
-						console.log("실패");
-					}
-				}); 
-			});
-		});
-	</script> -->
 
 	<footer>
 		<%@include file="../../buyer/common/global_footer.jsp"%>

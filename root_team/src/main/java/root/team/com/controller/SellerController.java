@@ -367,7 +367,7 @@ public class SellerController {
 		List<ReviewVO> reviewList = sList.getReviews(searchVO);
 		model.addAttribute("reviewList", reviewList);
 
-		pageNav.setTotalRows(sTotalCount.getOrderTotalCount(searchVO));
+		pageNav.setTotalRows(sTotalCount.getReviewTotalCount(searchVO));
 		pageNav = sPage.setPageNav(pageNav, searchVO.getPageNum(), searchVO.getPageBlock());
 		model.addAttribute("pageNav", pageNav);
 		
