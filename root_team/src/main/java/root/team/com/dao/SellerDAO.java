@@ -150,5 +150,4 @@ public class SellerDAO {
 	public int getReviewTotalCount(SearchVO vo) {	
 		return sqlSession.selectOne(MAPPER + ".getReviewTotalCount", vo);
 	}
-	
 }
