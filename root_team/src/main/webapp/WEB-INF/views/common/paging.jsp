@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="buyerNickname" value="${sVO.buyerNickname}" />
-<c:set var="reviewState" value="${sVO.reviewState}" />
 <c:set var="orderNum" value="${sVO.orderNum}" />
 <c:set var="orderNickname" value="${sVO.orderNickname}" />
 <c:set var="orderState" value="${sVO.orderState}" />
@@ -34,9 +33,6 @@
 		    </c:if>
 		    <c:if test="${'' ne buyerNickname}">
 		    	<c:param name="buyerNickname" value="${buyerNickname}" />
-		    </c:if>
-		    <c:if test="${0 ne reviewState}">
-		    	<c:param name="reviewState" value="${reviewState}" />
 		    </c:if>
 		    <c:if test="${null ne startDate}">
 		    	<c:param name="startDate" value="${startDate}" />

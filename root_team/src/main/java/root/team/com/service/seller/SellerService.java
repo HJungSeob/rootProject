@@ -106,4 +106,8 @@ public interface SellerService {
 	default List<ReviewVO> getReviews(SearchVO vo) {
 		return null;
 	}
+	
+	default int getReviewTotalCount(SearchVO vo){
+		return 0;
+	}
 }
