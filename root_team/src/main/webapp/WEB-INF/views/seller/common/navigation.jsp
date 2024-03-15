@@ -52,7 +52,7 @@
 			</button>
 			<ul class="seller_global_category_drop_list">
 				<li class="seller_global_category_list">
-					<a href="${pageContext.request.contextPath}/seller/review.do">상품 리뷰</a>
+					<a href="${pageContext.request.contextPath}/seller/review.do?s_idx=${seller.s_idx}">상품 리뷰</a>
 				</li>
 				<li class="seller_global_category_list">
 					<a href="${pageContext.request.contextPath}/seller/inquiry.do">상품 문의</a>

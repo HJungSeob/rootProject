@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import root.team.com.dao.SellerDAO;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.OrderStateVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 
 @Service("sList")
@@ -35,4 +36,9 @@ public class SellerListService implements SellerService {
 		return dao.getOrders(vo);
 	}
 	
+	public List<ReviewVO> getReviews(SearchVO vo) {
+		vo.setStartIdx((vo.getPageNum() - 1) * 6);
+		
+		return dao.getReviews(vo);
+	}
 }

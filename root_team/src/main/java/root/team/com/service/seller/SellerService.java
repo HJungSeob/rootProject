@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import root.team.com.common.PageNav;
 import root.team.com.vo.ItemVO;
 import root.team.com.vo.OrderStateVO;
+import root.team.com.vo.ReviewVO;
 import root.team.com.vo.SearchVO;
 import root.team.com.vo.SellerVO;
 
@@ -100,5 +101,9 @@ public interface SellerService {
 	
 	default int updateItemState(ItemVO itemVO){
 		return 0;
+	}
+	
+	default List<ReviewVO> getReviews(SearchVO vo) {
+		return null;
 	}
 }

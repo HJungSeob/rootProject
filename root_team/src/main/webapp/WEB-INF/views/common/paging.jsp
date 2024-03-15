@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="buyerNickname" value="${sVO.buyerNickname}" />
+<c:set var="reviewState" value="${sVO.reviewState}" />
 <c:set var="orderNum" value="${sVO.orderNum}" />
 <c:set var="orderNickname" value="${sVO.orderNickname}" />
 <c:set var="orderState" value="${sVO.orderState}" />
@@ -25,6 +27,28 @@
 <c:set var="jspPage" value="${url.substring(lastSlashIndex + 1)}"/>
 
 <c:choose>
+	<c:when test="${jspPage eq 'review.jsp'}">
+		<c:url value="review.do?" var="listUrl" >
+		    <c:if test="${'' ne itemNum}">
+		    	<c:param name="itemNum" value="${itemNum}" />
+		    </c:if>
+		    <c:if test="${'' ne buyerNickname}">
+		    	<c:param name="buyerNickname" value="${buyerNickname}" />
+		    </c:if>
+		    <c:if test="${0 ne reviewState}">
+		    	<c:param name="reviewState" value="${reviewState}" />
+		    </c:if>
+		    <c:if test="${null ne startDate}">
+		    	<c:param name="startDate" value="${startDate}" />
+		    </c:if>
+		    <c:if test="${null ne endDate}">
+		    	<c:param name="endDate" value="${endDate}" />
+		    </c:if>
+		    <c:if test="${0 ne s_idx}">
+		    	<c:param name="s_idx" value="${s_idx}" />
+		    </c:if>
+		</c:url>
+	</c:when>
 	<c:when test="${jspPage eq 'sales.jsp'}">
 		<c:url value="sales.do?" var="listUrl" >
 		    <c:if test="${'' ne orderNum}">
